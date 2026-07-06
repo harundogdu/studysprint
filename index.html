@@ -3,109 +3,111 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Support — Study Sprint Timer</title>
+<title>Study Sprint Timer — Focus, Pomodoro & Streaks</title>
 <style>
   :root {
-    --bg: #f5faff; --card: #ffffff; --text: #1a1a1a; --muted: #5a6472;
+    --bg: #f5faff; --card: #ffffff; --text: #14202b; --muted: #5a6472;
     --accent: #0a84c7; --accent-2: #34aaff; --border: #e3ecf5;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #0c1017; --card: #141a23; --text: #eef2f7; --muted: #9aa7b5;
+      --bg: #0b0f16; --card: #141a23; --text: #eef2f7; --muted: #9aa7b5;
       --accent: #4cb3ff; --accent-2: #2f8fe0; --border: #232c38;
     }
   }
   * { box-sizing: border-box; }
   body {
     margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: var(--bg); color: var(--text); line-height: 1.65; -webkit-font-smoothing: antialiased;
+    background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased;
   }
-  .hero {
-    background: linear-gradient(135deg, var(--accent-2), var(--accent));
-    color: #fff; padding: 56px 24px 48px; text-align: center;
-  }
-  .badge {
-    width: 74px; height: 74px; border-radius: 18px; margin: 0 auto 18px; display: grid; place-items: center;
-    background: rgba(255,255,255,0.18); font-size: 38px;
-  }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
-  .hero h1 { margin: 0 0 6px; font-size: 2rem; letter-spacing: -0.02em; }
-  .hero p { margin: 0; opacity: 0.92; }
-  main { padding: 40px 0 72px; }
-  .card {
-    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
-    padding: 26px 28px; margin: 0 0 20px;
-  }
-  h2 { font-size: 1.15rem; margin: 0 0 10px; letter-spacing: -0.01em; }
-  .q { font-weight: 600; margin: 18px 0 4px; }
-  .q:first-of-type { margin-top: 4px; }
-  p, li { color: var(--text); }
-  .muted { color: var(--muted); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
   a { color: var(--accent); text-decoration: none; }
   a:hover { text-decoration: underline; }
-  .btn {
-    display: inline-block; background: var(--accent); color: #fff; padding: 12px 22px;
-    border-radius: 12px; font-weight: 600; margin-top: 8px;
+
+  /* Hero */
+  .hero { text-align: center; padding: 72px 0 48px; }
+  .icon {
+    width: 104px; height: 104px; border-radius: 24px; margin: 0 auto 22px; display: block;
+    box-shadow: 0 12px 34px rgba(10,132,199,0.28);
   }
-  .btn:hover { text-decoration: none; opacity: 0.92; }
-  footer { text-align: center; padding: 32px 24px 48px; color: var(--muted); font-size: 0.85rem; }
+  .hero h1 { font-size: 2.6rem; margin: 0 0 10px; letter-spacing: -0.03em; }
+  .hero .tag { font-size: 1.25rem; color: var(--accent); font-weight: 600; margin: 0 0 8px; }
+  .hero .sub { font-size: 1.05rem; color: var(--muted); max-width: 620px; margin: 0 auto 22px; }
+  .store-note {
+    display: inline-block; border: 1px solid var(--border); background: var(--card);
+    color: var(--muted); padding: 9px 18px; border-radius: 999px; font-size: 0.9rem; font-weight: 500;
+  }
+
+  /* Features */
+  section { padding: 40px 0; }
+  h2.section-title { text-align: center; font-size: 1.7rem; letter-spacing: -0.02em; margin: 0 0 32px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+  .feature {
+    background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px;
+  }
+  .feature .emoji { font-size: 30px; display: block; margin-bottom: 10px; }
+  .feature h3 { margin: 0 0 6px; font-size: 1.1rem; }
+  .feature p { margin: 0; color: var(--muted); font-size: 0.96rem; }
+
+  /* Screenshots */
+  .shots { display: flex; gap: 20px; overflow-x: auto; padding: 8px 4px 20px; scroll-snap-type: x mandatory; }
+  .shots img {
+    height: 520px; border-radius: 30px; scroll-snap-align: center; flex: 0 0 auto;
+    box-shadow: 0 14px 40px rgba(0,0,0,0.16); border: 1px solid var(--border);
+  }
+
+  footer {
+    text-align: center; padding: 40px 24px 56px; color: var(--muted); font-size: 0.9rem;
+    border-top: 1px solid var(--border); margin-top: 24px;
+  }
+  footer a { margin: 0 8px; }
 </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="wrap">
-      <div class="badge">⏱️</div>
+  <div class="wrap">
+    <header class="hero">
+      <img class="icon" src="./icon.png" alt="Study Sprint Timer icon" />
       <h1>Study Sprint Timer</h1>
-      <p>Support &amp; Help Center</p>
-    </div>
-  </header>
+      <p class="tag">Focus, Pomodoro &amp; Streaks</p>
+      <p class="sub">Beat procrastination with focused study sprints. Set a timer, build daily streaks,
+      and stay motivated — fully offline, no account needed.</p>
+      <span class="store-note">📱 Coming soon to the App Store</span>
+    </header>
 
-  <main>
-    <div class="wrap">
-      <div class="card">
-        <h2>Get in touch</h2>
-        <p>Need help, found a bug, or have a feature idea? We'd love to hear from you.</p>
-        <a class="btn" href="mailto:studysprinttimer@gmail.com?subject=Study%20Sprint%20Timer%20Support">Contact Support</a>
-        <p class="muted" style="margin-top:14px;">Or email us directly at
-        <a href="mailto:studysprinttimer@gmail.com">studysprinttimer@gmail.com</a>. We typically reply within a few days.</p>
+    <section>
+      <h2 class="section-title">Why you'll love it</h2>
+      <div class="grid">
+        <div class="feature"><span class="emoji">⏱️</span><h3>Focused sprints</h3>
+          <p>Pick 20, 40, or a custom duration and start a distraction-free study session instantly.</p></div>
+        <div class="feature"><span class="emoji">🔥</span><h3>Daily streaks</h3>
+          <p>Build a study habit that sticks. Watch your streak grow one day at a time.</p></div>
+        <div class="feature"><span class="emoji">🍅</span><h3>Pomodoro flow</h3>
+          <p>Proven focus/break cycles keep your mind fresh through long study sessions.</p></div>
+        <div class="feature"><span class="emoji">🎨</span><h3>Beautiful themes</h3>
+          <p>Pick the color that matches your mood — the app icon even changes to match.</p></div>
+        <div class="feature"><span class="emoji">⏰</span><h3>Smart reminders</h3>
+          <p>Gentle study reminders help you never miss a session.</p></div>
+        <div class="feature"><span class="emoji">📴</span><h3>100% offline</h3>
+          <p>No sign-up, no account, no distractions. Your data stays on your device.</p></div>
       </div>
+    </section>
 
-      <div class="card">
-        <h2>Frequently Asked Questions</h2>
-
-        <p class="q">Does the app work offline?</p>
-        <p>Yes. Study Sprint Timer is offline-first — no account or internet connection is required to run
-        study sessions and track your progress.</p>
-
-        <p class="q">How do streaks work?</p>
-        <p>Complete at least one study session on a given day to keep your streak going. Miss a day and the
-        streak resets — a gentle nudge to stay consistent.</p>
-
-        <p class="q">How do I change the theme?</p>
-        <p>Open Settings → Theme and pick any color you like. On supported devices, the home-screen app icon
-        updates to match your selected theme.</p>
-
-        <p class="q">How do I remove ads?</p>
-        <p>Upgrade to Premium from the app to enjoy an ad-free experience and unlock extra themes.</p>
-
-        <p class="q">How do I restore my purchase?</p>
-        <p>Go to Settings → Restore Purchases. Make sure you're signed in with the same Apple ID you used
-        for the original purchase.</p>
-
-        <p class="q">How do I delete my data?</p>
-        <p>All data is stored locally. You can clear everything from Settings → Clear Data, or by uninstalling
-        the app.</p>
+    <section>
+      <h2 class="section-title">Take a look</h2>
+      <div class="shots">
+        <img src="./shots/01-home.png" alt="Home screen with focus timer" />
+        <img src="./shots/02-streak.png" alt="Study streak calendar" />
+        <img src="./shots/03-alarms.png" alt="Study reminders" />
+        <img src="./shots/04-session-complete.png" alt="Session complete summary" />
       </div>
-
-      <div class="card">
-        <h2>Legal</h2>
-        <p><a href="./privacy.html">Privacy Policy</a></p>
-      </div>
-    </div>
-  </main>
+    </section>
+  </div>
 
   <footer>
-    © 2026 Harun Doğdu · Study Sprint Timer
+    © 2026 Harun Doğdu · Study Sprint Timer<br />
+    <a href="./privacy.html">Privacy Policy</a> ·
+    <a href="./support.html">Support</a> ·
+    <a href="mailto:studysprinttimer@gmail.com">Contact</a>
   </footer>
 </body>
 </html>
