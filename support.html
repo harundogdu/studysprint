@@ -4,108 +4,108 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Support — Study Sprint Timer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
-  :root {
-    --bg: #f5faff; --card: #ffffff; --text: #1a1a1a; --muted: #5a6472;
-    --accent: #0a84c7; --accent-2: #34aaff; --border: #e3ecf5;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #0c1017; --card: #141a23; --text: #eef2f7; --muted: #9aa7b5;
-      --accent: #4cb3ff; --accent-2: #2f8fe0; --border: #232c38;
-    }
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: var(--bg); color: var(--text); line-height: 1.65; -webkit-font-smoothing: antialiased;
-  }
-  .hero {
-    background: linear-gradient(135deg, var(--accent-2), var(--accent));
-    color: #fff; padding: 56px 24px 48px; text-align: center;
-  }
-  .badge {
-    width: 74px; height: 74px; border-radius: 18px; margin: 0 auto 18px; display: grid; place-items: center;
-    background: rgba(255,255,255,0.18); font-size: 38px;
-  }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
-  .hero h1 { margin: 0 0 6px; font-size: 2rem; letter-spacing: -0.02em; }
-  .hero p { margin: 0; opacity: 0.92; }
-  main { padding: 40px 0 72px; }
-  .card {
-    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
-    padding: 26px 28px; margin: 0 0 20px;
-  }
-  h2 { font-size: 1.15rem; margin: 0 0 10px; letter-spacing: -0.01em; }
-  .q { font-weight: 600; margin: 18px 0 4px; }
-  .q:first-of-type { margin-top: 4px; }
-  p, li { color: var(--text); }
-  .muted { color: var(--muted); }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .btn {
-    display: inline-block; background: var(--accent); color: #fff; padding: 12px 22px;
-    border-radius: 12px; font-weight: 600; margin-top: 8px;
-  }
-  .btn:hover { text-decoration: none; opacity: 0.92; }
-  footer { text-align: center; padding: 32px 24px 48px; color: var(--muted); font-size: 0.85rem; }
+  :root { --accent:#8b5cf6; --accent-d:#7c3aed; --ink:#1c1636; --muted:#6b6a80; --line:#ececf3; --bg:#fff; --soft:#f7f6fb; --footer:#131017; --peach:#fde4d0; --lav:#eadcff; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Inter',sans-serif; color:var(--ink); background:var(--bg); -webkit-font-smoothing:antialiased; line-height:1.7; }
+  h1,h2,h3,.brand { font-family:'Sora',sans-serif; letter-spacing:-0.02em; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { max-width:1140px; margin:0 auto; padding:0 24px; }
+  .prose-wrap { max-width:820px; }
+  header.nav { position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.82); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
+  .nav-in { display:flex; align-items:center; justify-content:space-between; height:74px; }
+  .brand { display:flex; align-items:center; gap:10px; font-weight:700; font-size:1.35rem; }
+  .brand img { width:34px; height:34px; border-radius:9px; }
+  nav.links { display:flex; gap:30px; }
+  nav.links a { color:var(--muted); font-weight:500; font-size:0.96rem; }
+  nav.links a:hover { color:var(--ink); }
+  .btn { display:inline-flex; align-items:center; gap:8px; border-radius:999px; padding:12px 24px; font-weight:600; font-family:'Sora',sans-serif; font-size:0.95rem; transition:transform .15s; }
+  .btn:hover { transform:translateY(-1px); }
+  .btn-primary { background:var(--accent); color:#fff; box-shadow:0 8px 22px rgba(139,92,246,0.32); }
+  .btn-ghost { background:#fff; color:var(--ink); border:1px solid var(--line); box-shadow:0 6px 18px rgba(0,0,0,0.05); }
+  @media (max-width:760px){ nav.links{ display:none; } }
+
+  .legal-hero { text-align:center; padding:70px 0 60px; background:linear-gradient(120deg,var(--peach),#fbf5f0 42%,var(--lav)); border-radius:0 0 40px 40px; }
+  .legal-hero h1 { font-size:clamp(2.2rem,4.6vw,3.2rem); font-weight:800; }
+  .legal-hero p { color:var(--muted); margin-top:12px; }
+
+  main { padding:56px 0 40px; }
+  .card { background:var(--soft); border:1px solid var(--line); border-radius:22px; padding:32px; margin-bottom:22px; }
+  .card h2 { font-size:1.3rem; margin-bottom:10px; }
+  .q { font-family:'Sora',sans-serif; font-weight:600; margin:18px 0 4px; color:var(--ink); }
+  .q:first-of-type { margin-top:4px; }
+  .card p { color:#3d3a52; }
+  .card a { color:var(--accent); }
+  .card a:hover { text-decoration:underline; }
+
+  footer.ft { background:var(--footer); color:#cbc9d6; border-radius:40px 40px 0 0; margin-top:50px; }
+  .ft-in { display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:36px; padding:60px 0 30px; }
+  .ft .brand { color:#fff; }
+  .ft p.desc { color:#9a97a8; margin-top:16px; max-width:260px; font-size:0.95rem; }
+  .ft h5 { color:#fff; font-family:'Sora',sans-serif; font-size:1rem; margin-bottom:16px; }
+  .ft a { display:block; color:#9a97a8; margin-bottom:12px; font-size:0.95rem; }
+  .ft a:hover { color:#fff; }
+  .ft-bar { border-top:1px solid #262230; padding:22px 0 40px; color:#8a8797; font-size:0.88rem; }
+  @media (max-width:820px){ .ft-in{ grid-template-columns:1fr 1fr; } }
 </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="wrap">
-      <div class="badge">⏱️</div>
-      <h1>Study Sprint Timer</h1>
-      <p>Support &amp; Help Center</p>
+  <header class="nav">
+    <div class="wrap nav-in">
+      <a class="brand" href="./index.html"><img src="./icon.png" alt="" /> Study Sprint</a>
+      <nav class="links"><a href="./index.html">Home</a><a href="./privacy.html">Privacy</a><a href="./terms.html">Terms</a></nav>
+      <a class="btn btn-primary" href="mailto:studysprinttimer@gmail.com?subject=Study%20Sprint%20Timer%20Support">Contact</a>
     </div>
   </header>
 
-  <main>
+  <div class="legal-hero">
     <div class="wrap">
+      <h1>Support &amp; Help Center</h1>
+      <p>We're here to help you focus.</p>
+    </div>
+  </div>
+
+  <main>
+    <div class="wrap prose-wrap">
       <div class="card">
         <h2>Get in touch</h2>
         <p>Need help, found a bug, or have a feature idea? We'd love to hear from you.</p>
-        <a class="btn" href="mailto:studysprinttimer@gmail.com?subject=Study%20Sprint%20Timer%20Support">Contact Support</a>
-        <p class="muted" style="margin-top:14px;">Or email us directly at
-        <a href="mailto:studysprinttimer@gmail.com">studysprinttimer@gmail.com</a>. We typically reply within a few days.</p>
+        <p style="margin-top:16px;"><a class="btn btn-primary" href="mailto:studysprinttimer@gmail.com?subject=Study%20Sprint%20Timer%20Support" style="color:#fff;">Contact Support</a></p>
+        <p style="margin-top:14px; color:var(--muted);">Or email us directly at <a href="mailto:studysprinttimer@gmail.com">studysprinttimer@gmail.com</a>. We typically reply within a few days.</p>
       </div>
 
       <div class="card">
         <h2>Frequently Asked Questions</h2>
-
         <p class="q">Does the app work offline?</p>
-        <p>Yes. Study Sprint Timer is offline-first — no account or internet connection is required to run
-        study sessions and track your progress.</p>
-
+        <p>Yes. Study Sprint Timer is offline-first — no account or internet connection is required to run study sessions and track your progress.</p>
         <p class="q">How do streaks work?</p>
-        <p>Complete at least one study session on a given day to keep your streak going. Miss a day and the
-        streak resets — a gentle nudge to stay consistent.</p>
-
+        <p>Complete at least one study session on a given day to keep your streak going. Miss a day and the streak resets — a gentle nudge to stay consistent.</p>
         <p class="q">How do I change the theme?</p>
-        <p>Open Settings → Theme and pick any color you like. On supported devices, the home-screen app icon
-        updates to match your selected theme.</p>
-
+        <p>Open Settings → Theme and pick any color you like. On supported devices, the home-screen app icon updates to match your selected theme.</p>
         <p class="q">How do I remove ads?</p>
         <p>Upgrade to Premium from the app to enjoy an ad-free experience and unlock extra themes.</p>
-
         <p class="q">How do I restore my purchase?</p>
-        <p>Go to Settings → Restore Purchases. Make sure you're signed in with the same Apple ID you used
-        for the original purchase.</p>
-
+        <p>Go to Settings → Restore Purchases. Make sure you're signed in with the same Apple ID you used for the original purchase.</p>
         <p class="q">How do I delete my data?</p>
-        <p>All data is stored locally. You can clear everything from Settings → Clear Data, or by uninstalling
-        the app.</p>
-      </div>
-
-      <div class="card">
-        <h2>Legal</h2>
-        <p><a href="./privacy.html">Privacy Policy</a> · <a href="./index.html">Home</a></p>
+        <p>All data is stored locally. You can clear everything from Settings → Clear Data, or by uninstalling the app.</p>
       </div>
     </div>
   </main>
 
-  <footer>
-    © 2026 Harun Doğdu · Study Sprint Timer
+  <footer class="ft">
+    <div class="wrap">
+      <div class="ft-in">
+        <div><a class="brand" href="./index.html"><img src="./icon.png" alt="" style="width:34px;height:34px;border-radius:9px;" /> Study Sprint</a><p class="desc">Focus, Pomodoro & streaks — a simple offline study timer.</p></div>
+        <div><h5>Product</h5><a href="./index.html#features">Features</a><a href="./index.html#more">How It Works</a><a href="./index.html#reviews">Reviews</a></div>
+        <div><h5>Support</h5><a href="./support.html">Help Center</a><a href="mailto:studysprinttimer@gmail.com">Contact Us</a></div>
+        <div><h5>Legal</h5><a href="./privacy.html">Privacy Policy</a><a href="./terms.html">Terms of Service</a></div>
+      </div>
+      <div class="ft-bar">© 2026 Study Sprint Timer · Harun Doğdu</div>
+    </div>
   </footer>
 </body>
 </html>
