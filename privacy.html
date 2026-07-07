@@ -6,11 +6,13 @@
 <title>Privacy Policy — Study Sprint Timer</title>
 <link rel="icon" type="image/png" href="./favicon.png" />
 <link rel="apple-touch-icon" href="./icon.png" />
+<script>(function(){try{var t=localStorage.getItem('sst_theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
-  :root { --accent:#8b5cf6; --accent-d:#7c3aed; --ink:#1c1636; --muted:#6b6a80; --line:#ececf3; --bg:#fff; --soft:#f7f6fb; --footer:#131017; --peach:#fde4d0; --lav:#eadcff; }
+  :root { --accent:#8b5cf6; --accent-d:#7c3aed; --ink:#1c1636; --muted:#6b6a80; --line:#ececf3; --bg:#fff; --soft:#f7f6fb; --footer:#131017; --peach:#fde4d0; --lav:#eadcff; --surface:#fff; --nav-bg:rgba(255,255,255,0.82); --h1:#fde4d0; --h2:#fbf5f0; --h3:#eadcff; --prose:#3d3a52; --ease:cubic-bezier(.22,.61,.36,1); }
+  :root[data-theme="dark"] { --ink:#eef0f7; --muted:#a09eb5; --line:#272433; --bg:#0f0d15; --soft:#17141f; --surface:#1a1725; --nav-bg:rgba(15,13,21,0.72); --h1:#241a33; --h2:#191622; --h3:#2a2140; --prose:#c7c4d6; }
   * { box-sizing:border-box; margin:0; padding:0; }
   html { scroll-behavior:smooth; }
   body { font-family:'Plus Jakarta Sans',sans-serif; color:var(--ink); background:var(--bg); -webkit-font-smoothing:antialiased; line-height:1.7; }
@@ -18,7 +20,7 @@
   a { color:inherit; text-decoration:none; }
   .wrap { max-width:1140px; margin:0 auto; padding:0 24px; }
   .prose-wrap { max-width:820px; }
-  header.nav { position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.82); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
+  header.nav { position:sticky; top:0; z-index:50; background:var(--nav-bg); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
   .nav-in { display:flex; align-items:center; justify-content:space-between; height:74px; }
   .brand { display:flex; align-items:center; gap:10px; font-weight:700; font-size:1.35rem; }
   .brand img { width:34px; height:34px; border-radius:9px; }
@@ -26,18 +28,25 @@
   nav.links a { color:var(--muted); font-weight:500; font-size:0.96rem; }
   nav.links a:hover { color:var(--ink); }
   .btn { display:inline-flex; align-items:center; gap:8px; border-radius:999px; padding:12px 24px; font-weight:600; font-family:'Plus Jakarta Sans',sans-serif; font-size:0.95rem; }
-  .btn-ghost { background:#fff; color:var(--ink); border:1px solid var(--line); box-shadow:0 6px 18px rgba(0,0,0,0.05); }
+  .btn-ghost { background:var(--surface); color:var(--ink); border:1px solid var(--line); box-shadow:0 6px 18px rgba(0,0,0,0.05); }
   @media (max-width:760px){ nav.links{ display:none; } }
+  .nav-right { display:flex; align-items:center; gap:12px; }
+  .theme-toggle { width:42px; height:42px; border-radius:50%; background:var(--surface); border:1px solid var(--line); color:var(--ink); display:grid; place-items:center; cursor:pointer; box-shadow:0 6px 18px rgba(0,0,0,0.05); transition:transform .2s var(--ease), background .25s; }
+  .theme-toggle:hover { transform:translateY(-1px) rotate(12deg); }
+  .theme-toggle svg { width:19px; height:19px; }
+  .theme-toggle .moon { display:none; }
+  :root[data-theme="dark"] .theme-toggle .sun { display:none; }
+  :root[data-theme="dark"] .theme-toggle .moon { display:block; }
 
-  .legal-hero { text-align:center; padding:70px 0 60px; background:linear-gradient(120deg,var(--peach),#fbf5f0 42%,var(--lav)); border-radius:0 0 40px 40px; }
+  .legal-hero { text-align:center; padding:70px 0 60px; background:linear-gradient(120deg,var(--h1),var(--h2) 42%,var(--h3)); border-radius:0 0 40px 40px; }
   .legal-hero h1 { font-size:clamp(2.2rem,4.6vw,3.2rem); font-weight:800; }
   .legal-hero p { color:var(--muted); margin-top:12px; }
-  .pill { display:inline-block; margin-top:16px; background:#fff; border:1px solid var(--line); color:var(--muted); font-size:0.85rem; padding:7px 16px; border-radius:999px; }
+  .pill { display:inline-block; margin-top:16px; background:var(--surface); border:1px solid var(--line); color:var(--muted); font-size:0.85rem; padding:7px 16px; border-radius:999px; }
 
   main { padding:60px 0 40px; }
   .prose h2 { font-size:1.3rem; margin:34px 0 10px; }
   .prose h2:first-child { margin-top:0; }
-  .prose p, .prose li { color:#3d3a52; }
+  .prose p, .prose li { color:var(--prose); }
   .prose ul { padding-left:22px; margin:8px 0; }
   .prose li { margin:6px 0; }
   .prose a { color:var(--accent); }
@@ -59,7 +68,7 @@
     <div class="wrap nav-in">
       <a class="brand" href="./index.html"><img src="./icon.png" alt="" /> Study Sprint</a>
       <nav class="links"><a href="./index.html">Home</a><a href="./support.html">Support</a><a href="./terms.html">Terms</a></nav>
-      <a class="btn btn-ghost" href="./support.html">Get Help</a>
+      <div class="nav-right"><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button><a class="btn btn-ghost" href="./support.html">Get Help</a></div>
     </div>
   </header>
 
@@ -124,5 +133,6 @@
       <div class="ft-bar">© 2026 Study Sprint Timer · Harun Doğdu</div>
     </div>
   </footer>
+<script>(function(){var t=document.getElementById('themeToggle');if(t)t.addEventListener('click',function(){var c=document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';var n=c==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);try{localStorage.setItem('sst_theme',n);}catch(e){}});})();</script>
 </body>
 </html>
