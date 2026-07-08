@@ -37,6 +37,18 @@
   .theme-toggle .moon { display:none; }
   :root[data-theme="dark"] .theme-toggle .sun { display:none; }
   :root[data-theme="dark"] .theme-toggle .moon { display:block; }
+  .lang { position:relative; }
+  .lang-btn { display:inline-flex; align-items:center; gap:7px; background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:9px 14px; font-weight:700; font-size:0.88rem; color:var(--ink); cursor:pointer; font-family:inherit; box-shadow:0 6px 18px rgba(0,0,0,0.05); transition:transform .2s var(--ease); }
+  .lang-btn:hover { transform:translateY(-1px); }
+  .lang-btn svg { width:17px; height:17px; }
+  .lang-btn .chev { transition:transform .2s var(--ease); }
+  .lang.open .lang-btn .chev { transform:rotate(180deg); }
+  .lang-menu { position:absolute; top:calc(100% + 8px); right:0; background:var(--surface); border:1px solid var(--line); border-radius:14px; box-shadow:0 16px 44px rgba(28,22,54,0.16); padding:6px; min-width:158px; opacity:0; visibility:hidden; transform:translateY(-6px); transition:opacity .2s var(--ease), transform .2s var(--ease), visibility .2s; z-index:60; }
+  .lang.open .lang-menu { opacity:1; visibility:visible; transform:none; }
+  .lang-menu button { display:flex; align-items:center; gap:9px; width:100%; background:none; border:none; text-align:left; padding:10px 12px; border-radius:10px; font-family:inherit; font-size:0.92rem; font-weight:600; color:var(--ink); cursor:pointer; transition:background .18s; }
+  .lang-menu button:hover { background:var(--soft); }
+  .lang-menu button.active { color:var(--accent-d); }
+  .lang-menu button .flag { font-size:1.05rem; }
 
   .legal-hero { text-align:center; padding:70px 0 60px; background:linear-gradient(120deg,var(--h1),var(--h2) 42%,var(--h3)); border-radius:0 0 40px 40px; }
   .legal-hero h1 { font-size:clamp(2.2rem,4.6vw,3.2rem); font-weight:800; }
@@ -67,72 +79,55 @@
   <header class="nav">
     <div class="wrap nav-in">
       <a class="brand" href="./index.html"><img src="./icon.png" alt="" /> Study Sprint</a>
-      <nav class="links"><a href="./index.html">Home</a><a href="./support.html">Support</a><a href="./terms.html">Terms</a></nav>
-      <div class="nav-right"><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button><a class="btn btn-ghost" href="./support.html">Get Help</a></div>
+      <nav class="links"><a href="./index.html" data-i18n="nav_home">Home</a><a href="./support.html" data-i18n="nav_support">Support</a><a href="./terms.html" data-i18n="nav_terms">Terms</a></nav>
+      <div class="nav-right"><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button><div class="lang" id="lang"><button class="lang-btn" aria-haspopup="true" aria-label="Change language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span id="langCode">EN</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><path d="m6 9 6 6 6-6"/></svg></button><div class="lang-menu"><button data-lang="en"><span class="flag">🇬🇧</span> English</button><button data-lang="tr"><span class="flag">🇹🇷</span> Türkçe</button><button data-lang="de"><span class="flag">🇩🇪</span> Deutsch</button><button data-lang="es"><span class="flag">🇪🇸</span> Español</button><button data-lang="fr"><span class="flag">🇫🇷</span> Français</button><button data-lang="ru"><span class="flag">🇷🇺</span> Русский</button></div></div><a class="btn btn-ghost" href="./support.html" data-i18n="nav_help">Get Help</a></div>
     </div>
   </header>
 
   <div class="legal-hero">
     <div class="wrap">
-      <h1>Privacy Policy</h1>
-      <p>How Study Sprint Timer handles your data.</p>
-      <span class="pill">Last updated: July 7, 2026</span>
+      <h1 data-i18n="priv_hero_title">Privacy Policy</h1>
+      <p data-i18n="priv_hero_sub">How Study Sprint Timer handles your data.</p>
+      <span class="pill" data-i18n="priv_updated">Last updated: July 7, 2026</span>
     </div>
   </div>
 
   <main>
     <div class="wrap prose-wrap prose">
-      <h2>Overview</h2>
-      <p>Study Sprint Timer ("the app") is an offline-first focus and Pomodoro study timer. We built it to respect your privacy. The app does not require an account and does not ask for your name, email, or any personal details to work.</p>
-
-      <h2>Information We Collect</h2>
-      <p><strong>We (the developer) do not collect or store your personal data on any server.</strong> All of your app data — study sessions, streaks, statistics, and settings such as theme and language — is stored <strong>locally on your device only</strong>. It is not transmitted to us.</p>
-
-      <h2>Advertising &amp; Third-Party Services</h2>
-      <p>The free version of the app displays ads through <strong>Google AdMob</strong>. To deliver and measure ads, Google may collect and process certain information, such as a device advertising identifier, IP address, and general usage data. This processing is performed by Google, not by us.</p>
-      <ul>
-        <li>We use Google's User Messaging Platform to request your consent where required.</li>
-        <li>On iOS, we show Apple's App Tracking Transparency prompt. If you do not allow tracking, the app still works fully and you may see less relevant ads.</li>
-        <li>Learn more in <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a> and how <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google uses information from apps that use its services</a>.</li>
-      </ul>
-      <p>Purchasing <strong>Premium</strong> removes all ads.</p>
-
-      <h2>Purchases</h2>
-      <p>Subscriptions and purchases are processed by <strong>Apple</strong> through the App Store. We never receive or store your payment information. Apple's handling is governed by <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a>.</p>
-
-      <h2>Data Sharing</h2>
-      <p>We do not sell, rent, or trade your information. We do not share your locally stored study data with anyone.</p>
-
-      <h2>Your Choices</h2>
-      <ul>
-        <li>Manage tracking via iOS Settings → Privacy &amp; Security → Tracking.</li>
-        <li>Reset your advertising identifier in iOS Settings.</li>
-        <li>Remove ads entirely by purchasing Premium.</li>
-        <li>Delete all local data anytime from the app's Settings → Clear Data, or by uninstalling the app.</li>
-      </ul>
-
-      <h2>Children's Privacy</h2>
-      <p>The app is not directed to children under 13 and we do not knowingly collect personal information from children.</p>
-
-      <h2>Changes to This Policy</h2>
-      <p>We may update this policy from time to time. Material changes will be reflected on this page with a new "Last updated" date.</p>
-
-      <h2>Contact</h2>
-      <p>Questions about this Privacy Policy? Contact us at <a href="mailto:studysprinttimer@gmail.com">studysprinttimer@gmail.com</a>.</p>
+      <h2 data-i18n="priv_h1">Overview</h2>
+      <p data-i18n="priv_p1">Study Sprint Timer ("the app") is an offline-first focus and Pomodoro study timer. We built it to respect your privacy. The app does not require an account and does not ask for your name, email, or any personal details to work.</p>
+      <h2 data-i18n="priv_h2">Information We Collect</h2>
+      <p data-i18n="priv_p2"><strong>We (the developer) do not collect or store your personal data on any server.</strong> All of your app data is stored locally on your device only.</p>
+      <h2 data-i18n="priv_h3">Advertising &amp; Third-Party Services</h2>
+      <p data-i18n="priv_p3">The free version of the app displays ads through <strong>Google AdMob</strong>. Google may collect and process certain information to deliver and measure ads. This processing is performed by Google, not by us.</p>
+      <ul data-i18n="priv_l3"><li>We use Google's User Messaging Platform to request your consent where required.</li><li>On iOS, we show Apple's App Tracking Transparency prompt. If you decline, the app still works fully.</li><li>Learn more in <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li></ul>
+      <p data-i18n="priv_p3b">Purchasing <strong>Premium</strong> removes all ads.</p>
+      <h2 data-i18n="priv_h4">Purchases</h2>
+      <p data-i18n="priv_p4">Subscriptions and purchases are processed by <strong>Apple</strong> through the App Store. We never receive or store your payment information. See <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a>.</p>
+      <h2 data-i18n="priv_h5">Data Sharing</h2>
+      <p data-i18n="priv_p5">We do not sell, rent, or trade your information. We do not share your locally stored study data with anyone.</p>
+      <h2 data-i18n="priv_h6">Your Choices</h2>
+      <ul data-i18n="priv_l6"><li>Manage tracking via iOS Settings.</li><li>Reset your advertising identifier in iOS Settings.</li><li>Remove ads entirely by purchasing Premium.</li><li>Delete all local data from the app's Settings, or by uninstalling the app.</li></ul>
+      <h2 data-i18n="priv_h7">Children's Privacy</h2>
+      <p data-i18n="priv_p7">The app is not directed to children under 13 and we do not knowingly collect personal information from children.</p>
+      <h2 data-i18n="priv_h8">Changes to This Policy</h2>
+      <p data-i18n="priv_p8">We may update this policy from time to time. Material changes will be reflected on this page with a new "Last updated" date.</p>
+      <h2 data-i18n="priv_h9">Contact</h2>
+      <p data-i18n="priv_p9">Questions? Contact us at <a href="mailto:studysprinttimer@gmail.com">studysprinttimer@gmail.com</a>.</p>
     </div>
   </main>
 
   <footer class="ft">
     <div class="wrap">
       <div class="ft-in">
-        <div><a class="brand" href="./index.html"><img src="./icon.png" alt="" style="width:34px;height:34px;border-radius:9px;" /> Study Sprint</a><p class="desc">Focus, Pomodoro & streaks — a simple offline study timer.</p></div>
-        <div><h5>Product</h5><a href="./index.html#features">Features</a><a href="./index.html#more">How It Works</a><a href="./index.html#reviews">Reviews</a></div>
-        <div><h5>Support</h5><a href="./support.html">Help Center</a><a href="mailto:studysprinttimer@gmail.com">Contact Us</a></div>
-        <div><h5>Legal</h5><a href="./privacy.html">Privacy Policy</a><a href="./terms.html">Terms of Service</a></div>
+        <div><a class="brand" href="./index.html"><img src="./icon.png" alt="" style="width:34px;height:34px;border-radius:9px;" /> Study Sprint</a><p class="desc" data-i18n="ft_desc">Focus, Pomodoro &amp; streaks — a simple offline study timer.</p></div>
+        <div><h5 data-i18n="ft_productH">Product</h5><a href="./index.html#features" data-i18n="ft_features">Features</a><a href="./index.html#more" data-i18n="ft_how">How It Works</a><a href="./index.html#reviews" data-i18n="ft_reviews">Reviews</a></div>
+        <div><h5 data-i18n="ft_supportH">Support</h5><a href="./support.html" data-i18n="ft_help">Help Center</a><a href="mailto:studysprinttimer@gmail.com" data-i18n="ft_contact">Contact Us</a></div>
+        <div><h5 data-i18n="ft_legalH">Legal</h5><a href="./privacy.html" data-i18n="ft_privacy">Privacy Policy</a><a href="./terms.html" data-i18n="ft_terms">Terms of Service</a></div>
       </div>
-      <div class="ft-bar">© 2026 Study Sprint Timer · Harun Doğdu</div>
+      <div class="ft-bar" data-i18n="ft_copy">© 2026 Study Sprint Timer · Harun Doğdu</div>
     </div>
   </footer>
-<script>(function(){var t=document.getElementById('themeToggle');if(t)t.addEventListener('click',function(){var c=document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';var n=c==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);try{localStorage.setItem('sst_theme',n);}catch(e){}});})();</script>
+<script src="./legal.js"></script>
 </body>
 </html>

@@ -37,6 +37,18 @@
   .theme-toggle .moon { display:none; }
   :root[data-theme="dark"] .theme-toggle .sun { display:none; }
   :root[data-theme="dark"] .theme-toggle .moon { display:block; }
+  .lang { position:relative; }
+  .lang-btn { display:inline-flex; align-items:center; gap:7px; background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:9px 14px; font-weight:700; font-size:0.88rem; color:var(--ink); cursor:pointer; font-family:inherit; box-shadow:0 6px 18px rgba(0,0,0,0.05); transition:transform .2s var(--ease); }
+  .lang-btn:hover { transform:translateY(-1px); }
+  .lang-btn svg { width:17px; height:17px; }
+  .lang-btn .chev { transition:transform .2s var(--ease); }
+  .lang.open .lang-btn .chev { transform:rotate(180deg); }
+  .lang-menu { position:absolute; top:calc(100% + 8px); right:0; background:var(--surface); border:1px solid var(--line); border-radius:14px; box-shadow:0 16px 44px rgba(28,22,54,0.16); padding:6px; min-width:158px; opacity:0; visibility:hidden; transform:translateY(-6px); transition:opacity .2s var(--ease), transform .2s var(--ease), visibility .2s; z-index:60; }
+  .lang.open .lang-menu { opacity:1; visibility:visible; transform:none; }
+  .lang-menu button { display:flex; align-items:center; gap:9px; width:100%; background:none; border:none; text-align:left; padding:10px 12px; border-radius:10px; font-family:inherit; font-size:0.92rem; font-weight:600; color:var(--ink); cursor:pointer; transition:background .18s; }
+  .lang-menu button:hover { background:var(--soft); }
+  .lang-menu button.active { color:var(--accent-d); }
+  .lang-menu button .flag { font-size:1.05rem; }
 
   .legal-hero { text-align:center; padding:70px 0 60px; background:linear-gradient(120deg,var(--h1),var(--h2) 42%,var(--h3)); border-radius:0 0 40px 40px; }
   .legal-hero h1 { font-size:clamp(2.2rem,4.6vw,3.2rem); font-weight:800; }
@@ -67,73 +79,57 @@
   <header class="nav">
     <div class="wrap nav-in">
       <a class="brand" href="./index.html"><img src="./icon.png" alt="" /> Study Sprint</a>
-      <nav class="links"><a href="./index.html">Home</a><a href="./support.html">Support</a><a href="./privacy.html">Privacy</a></nav>
-      <div class="nav-right"><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button><a class="btn btn-ghost" href="./support.html">Get Help</a></div>
+      <nav class="links"><a href="./index.html" data-i18n="nav_home">Home</a><a href="./support.html" data-i18n="nav_support">Support</a><a href="./privacy.html" data-i18n="nav_privacy">Privacy</a></nav>
+      <div class="nav-right"><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button><div class="lang" id="lang"><button class="lang-btn" aria-haspopup="true" aria-label="Change language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span id="langCode">EN</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><path d="m6 9 6 6 6-6"/></svg></button><div class="lang-menu"><button data-lang="en"><span class="flag">🇬🇧</span> English</button><button data-lang="tr"><span class="flag">🇹🇷</span> Türkçe</button><button data-lang="de"><span class="flag">🇩🇪</span> Deutsch</button><button data-lang="es"><span class="flag">🇪🇸</span> Español</button><button data-lang="fr"><span class="flag">🇫🇷</span> Français</button><button data-lang="ru"><span class="flag">🇷🇺</span> Русский</button></div></div><a class="btn btn-ghost" href="./support.html" data-i18n="nav_help">Get Help</a></div>
     </div>
   </header>
 
   <div class="legal-hero">
     <div class="wrap">
-      <h1>Terms of Service</h1>
-      <p>The rules for using Study Sprint Timer.</p>
-      <span class="pill">Last updated: July 7, 2026</span>
+      <h1 data-i18n="term_hero_title">Terms of Service</h1>
+      <p data-i18n="term_hero_sub">The rules for using Study Sprint Timer.</p>
+      <span class="pill" data-i18n="term_updated">Last updated: July 7, 2026</span>
     </div>
   </div>
 
   <main>
     <div class="wrap prose-wrap prose">
-      <h2>1. Acceptance of Terms</h2>
-      <p>By downloading or using Study Sprint Timer ("the app"), you agree to these Terms of Service. If you do not agree, please do not use the app.</p>
-
-      <h2>2. The Service</h2>
-      <p>Study Sprint Timer is an offline focus and Pomodoro study timer. It helps you run timed study sessions, track streaks, and stay motivated. The app works without an account and stores your data locally on your device.</p>
-
-      <h2>3. License</h2>
-      <p>We grant you a personal, non-transferable, non-exclusive license to use the app on Apple devices you own or control, in accordance with the Apple Media Services Terms and the standard <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Apple End User License Agreement (EULA)</a>.</p>
-
-      <h2>4. Advertising</h2>
-      <p>The free version of the app displays advertisements provided by Google AdMob. By using the free version, you agree that ads may be shown. Purchasing Premium removes ads.</p>
-
-      <h2>5. Subscriptions &amp; Purchases</h2>
-      <ul>
-        <li><strong>Premium</strong> is offered as an auto-renewable subscription (for example, weekly or yearly plans).</li>
-        <li>Payment is charged to your Apple ID at confirmation of purchase.</li>
-        <li>Subscriptions renew automatically unless cancelled at least 24 hours before the end of the current period.</li>
-        <li>You can manage or cancel subscriptions anytime in your Apple ID account settings.</li>
-        <li>All purchases are processed and managed by Apple, subject to Apple's terms.</li>
-      </ul>
-
-      <h2>6. Acceptable Use</h2>
-      <p>You agree to use the app only for lawful, personal purposes and not to misuse, reverse-engineer, or interfere with the app or its security.</p>
-
-      <h2>7. Health Disclaimer</h2>
-      <p>Study Sprint Timer is a productivity and focus tool. It does not provide medical, psychological, or professional advice, and should not be relied upon for any such purpose.</p>
-
-      <h2>8. Disclaimer of Warranties</h2>
-      <p>The app is provided "as is" and "as available" without warranties of any kind, to the maximum extent permitted by law. We do not guarantee that the app will be uninterrupted or error-free.</p>
-
-      <h2>9. Limitation of Liability</h2>
-      <p>To the maximum extent permitted by law, we are not liable for any indirect, incidental, or consequential damages arising from your use of the app.</p>
-
-      <h2>10. Changes to These Terms</h2>
-      <p>We may update these Terms from time to time. Continued use of the app after changes constitutes acceptance of the updated Terms.</p>
-
-      <h2>11. Contact</h2>
-      <p>Questions about these Terms? Contact us at <a href="mailto:studysprinttimer@gmail.com">studysprinttimer@gmail.com</a>.</p>
+      <h2 data-i18n="term_h1">1. Acceptance of Terms</h2>
+      <p data-i18n="term_p1">By downloading or using Study Sprint Timer ("the app"), you agree to these Terms of Service. If you do not agree, please do not use the app.</p>
+      <h2 data-i18n="term_h2">2. The Service</h2>
+      <p data-i18n="term_p2">Study Sprint Timer is an offline focus and Pomodoro study timer. It works without an account and stores your data locally on your device.</p>
+      <h2 data-i18n="term_h3">3. License</h2>
+      <p data-i18n="term_p3">We grant you a personal, non-transferable, non-exclusive license to use the app on Apple devices you own or control, per the <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Apple End User License Agreement (EULA)</a>.</p>
+      <h2 data-i18n="term_h4">4. Advertising</h2>
+      <p data-i18n="term_p4">The free version displays advertisements provided by Google AdMob. Purchasing Premium removes ads.</p>
+      <h2 data-i18n="term_h5">5. Subscriptions &amp; Purchases</h2>
+      <ul data-i18n="term_l5"><li><strong>Premium</strong> is offered as an auto-renewable subscription.</li><li>Payment is charged to your Apple ID at confirmation of purchase.</li><li>Subscriptions renew automatically unless cancelled at least 24 hours before the end of the current period.</li><li>You can manage or cancel subscriptions anytime in your Apple ID settings.</li><li>All purchases are processed and managed by Apple.</li></ul>
+      <h2 data-i18n="term_h6">6. Acceptable Use</h2>
+      <p data-i18n="term_p6">You agree to use the app only for lawful, personal purposes and not to misuse, reverse-engineer, or interfere with the app or its security.</p>
+      <h2 data-i18n="term_h7">7. Health Disclaimer</h2>
+      <p data-i18n="term_p7">Study Sprint Timer is a productivity and focus tool. It does not provide medical, psychological, or professional advice.</p>
+      <h2 data-i18n="term_h8">8. Disclaimer of Warranties</h2>
+      <p data-i18n="term_p8">The app is provided "as is" and "as available" without warranties of any kind, to the maximum extent permitted by law.</p>
+      <h2 data-i18n="term_h9">9. Limitation of Liability</h2>
+      <p data-i18n="term_p9">To the maximum extent permitted by law, we are not liable for any indirect, incidental, or consequential damages arising from your use of the app.</p>
+      <h2 data-i18n="term_h10">10. Changes to These Terms</h2>
+      <p data-i18n="term_p10">We may update these Terms from time to time. Continued use of the app after changes constitutes acceptance.</p>
+      <h2 data-i18n="term_h11">11. Contact</h2>
+      <p data-i18n="term_p11">Questions? Contact us at <a href="mailto:studysprinttimer@gmail.com">studysprinttimer@gmail.com</a>.</p>
     </div>
   </main>
 
   <footer class="ft">
     <div class="wrap">
       <div class="ft-in">
-        <div><a class="brand" href="./index.html"><img src="./icon.png" alt="" style="width:34px;height:34px;border-radius:9px;" /> Study Sprint</a><p class="desc">Focus, Pomodoro & streaks — a simple offline study timer.</p></div>
-        <div><h5>Product</h5><a href="./index.html#features">Features</a><a href="./index.html#more">How It Works</a><a href="./index.html#reviews">Reviews</a></div>
-        <div><h5>Support</h5><a href="./support.html">Help Center</a><a href="mailto:studysprinttimer@gmail.com">Contact Us</a></div>
-        <div><h5>Legal</h5><a href="./privacy.html">Privacy Policy</a><a href="./terms.html">Terms of Service</a></div>
+        <div><a class="brand" href="./index.html"><img src="./icon.png" alt="" style="width:34px;height:34px;border-radius:9px;" /> Study Sprint</a><p class="desc" data-i18n="ft_desc">Focus, Pomodoro &amp; streaks — a simple offline study timer.</p></div>
+        <div><h5 data-i18n="ft_productH">Product</h5><a href="./index.html#features" data-i18n="ft_features">Features</a><a href="./index.html#more" data-i18n="ft_how">How It Works</a><a href="./index.html#reviews" data-i18n="ft_reviews">Reviews</a></div>
+        <div><h5 data-i18n="ft_supportH">Support</h5><a href="./support.html" data-i18n="ft_help">Help Center</a><a href="mailto:studysprinttimer@gmail.com" data-i18n="ft_contact">Contact Us</a></div>
+        <div><h5 data-i18n="ft_legalH">Legal</h5><a href="./privacy.html" data-i18n="ft_privacy">Privacy Policy</a><a href="./terms.html" data-i18n="ft_terms">Terms of Service</a></div>
       </div>
-      <div class="ft-bar">© 2026 Study Sprint Timer · Harun Doğdu</div>
+      <div class="ft-bar" data-i18n="ft_copy">© 2026 Study Sprint Timer · Harun Doğdu</div>
     </div>
   </footer>
-<script>(function(){var t=document.getElementById('themeToggle');if(t)t.addEventListener('click',function(){var c=document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';var n=c==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);try{localStorage.setItem('sst_theme',n);}catch(e){}});})();</script>
+<script src="./legal.js"></script>
 </body>
 </html>
