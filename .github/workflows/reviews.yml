@@ -1,0 +1,43 @@
+name: Yorumları tazele
+
+# Haftada bir App Store yorumlarını çekip reviews.json'u günceller.
+# Değişiklik yoksa commit atmaz, yani boş geçmiş kaydı birikmez.
+on:
+  schedule:
+    - cron: "17 6 * * 1"   # her pazartesi 06:17 UTC
+  workflow_dispatch:        # elle de tetiklenebilir
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install --quiet pyjwt cryptography
+
+      - name: Yorumları çek
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_PRIVATE_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
+          ASC_APP_ID: ${{ secrets.ASC_APP_ID }}
+        run: python3 scripts/fetch_reviews.py
+
+      - name: Değişiklik varsa yayınla
+        run: |
+          if git diff --quiet reviews.json; then
+            echo "Yorumlar değişmedi."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reviews.json
+          git commit -m "content: App Store yorumları tazelendi"
+          git push

@@ -376,9 +376,9 @@
         <h2 class="title" data-i18n="r_title">Study Companions, Not Chores</h2>
       </div>
       <div class="t-grid">
-        <div class="t-card reveal"><div class="stars">★★★★★</div><p class="q" data-i18n="q1">"In the first week of using it, I watched my study output double."</p><div class="who"><span class="av a1">U</span><div><b>Umeyr musab</b><br /><span data-i18n="q1_role">App Store review</span></div></div></div>
-        <div class="t-card reveal d1"><div class="stars">★★★★★</div><p class="q" data-i18n="q2">"The app turned out really nice and practical, and the owl mascot is adorable."</p><div class="who"><span class="av a2">S</span><div><b>Sunay Tazegül</b><br /><span data-i18n="q2_role">App Store review</span></div></div></div>
-        <div class="t-card reveal d2"><div class="stars">★★★★★</div><p class="q" data-i18n="q3">"Seeing how much you have worked lifts your output. The motivational lines keep you going too."</p><div class="who"><span class="av a3">A</span><div><b>Akın Çömlek</b><br /><span data-i18n="q3_role">App Store review</span></div></div></div>
+        <div class="t-card reveal"><div class="stars">★★★★★</div><p class="q" data-q="1">"In the first week of using it, I watched my study output double."</p><div class="who"><span class="av a1">U</span><div><b>Umeyr musab</b><br /><span data-role="1">App Store review</span></div></div></div>
+        <div class="t-card reveal d1"><div class="stars">★★★★★</div><p class="q" data-q="2">"The app turned out really nice and practical, and the owl mascot is adorable."</p><div class="who"><span class="av a2">S</span><div><b>Sunay Tazegül</b><br /><span data-role="2">App Store review</span></div></div></div>
+        <div class="t-card reveal d2"><div class="stars">★★★★★</div><p class="q" data-q="3">"Seeing how much you have worked lifts your output. The motivational lines keep you going too."</p><div class="who"><span class="av a3">A</span><div><b>Akın Çömlek</b><br /><span data-role="3">App Store review</span></div></div></div>
       </div>
     </div>
   </section>
@@ -690,6 +690,57 @@
     };
     Object.keys(I18N_EXTRA).forEach(function(l){ Object.assign(I18N[l], I18N_EXTRA[l]); });
 
+
+    // ——— App Store yorumları ———
+    // reviews.json'u haftalık bir GitHub Actions işi tazeliyor (scripts/fetch_reviews.py).
+    // Dosya yoksa ya da ağ yoksa HTML'de gömülü duran son kartlar olduğu gibi kalır.
+    var REVIEWS = null;
+
+    var TERRITORY = {
+      TUR:{en:'Türkiye',tr:'Türkiye',de:'Türkei',es:'Turquía',fr:'Turquie',ru:'Турция'},
+      USA:{en:'United States',tr:'ABD',de:'USA',es:'EE. UU.',fr:'États-Unis',ru:'США'},
+      GBR:{en:'United Kingdom',tr:"Birleşik Krallık",de:'Vereinigtes Königreich',es:'Reino Unido',fr:'Royaume-Uni',ru:'Великобритания'},
+      DEU:{en:'Germany',tr:'Almanya',de:'Deutschland',es:'Alemania',fr:'Allemagne',ru:'Германия'},
+      FRA:{en:'France',tr:'Fransa',de:'Frankreich',es:'Francia',fr:'France',ru:'Франция'},
+      ESP:{en:'Spain',tr:'İspanya',de:'Spanien',es:'España',fr:'Espagne',ru:'Испания'},
+      RUS:{en:'Russia',tr:'Rusya',de:'Russland',es:'Rusia',fr:'Russie',ru:'Россия'},
+      AZE:{en:'Azerbaijan',tr:'Azerbaycan',de:'Aserbaidschan',es:'Azerbaiyán',fr:'Azerbaïdjan',ru:'Азербайджан'}
+    };
+
+    function renderReviews(l){
+      var d = I18N[l] || I18N.en;
+      var cards = document.querySelectorAll('.t-card');
+      if (!REVIEWS || !REVIEWS.reviews) {
+        // Yedek: gömülü metinler i18n'den gelsin
+        cards.forEach(function(card){
+          var q = card.querySelector('[data-q]'), r = card.querySelector('[data-role]');
+          if (q && d['q' + q.getAttribute('data-q')]) q.textContent = d['q' + q.getAttribute('data-q')];
+          if (r && d['q' + r.getAttribute('data-role') + '_role']) r.textContent = d['q' + r.getAttribute('data-role') + '_role'];
+        });
+        return;
+      }
+      REVIEWS.reviews.forEach(function(rev, i){
+        var card = cards[i];
+        if (!card) return;
+        var q = card.querySelector('.q');
+        var name = card.querySelector('.who b');
+        var role = card.querySelector('[data-role]');
+        var av = card.querySelector('.av');
+        if (q) q.textContent = '"' + rev.body + '"';
+        if (name) name.textContent = rev.nickname;
+        if (av) av.textContent = (rev.nickname || '?').trim().charAt(0).toUpperCase();
+        if (role) {
+          var place = (TERRITORY[rev.territory] || {})[l];
+          role.textContent = place ? place + ' · ' + d.q1_role : d.q1_role;
+        }
+      });
+    }
+
+    fetch('./reviews.json', {cache:'no-cache'})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(j){ if (j && j.reviews && j.reviews.length) { REVIEWS = j; renderReviews(document.documentElement.lang || 'en'); } })
+      .catch(function(){});
+
     function applyLang(l){
       var d = I18N[l] || I18N.en;
       document.querySelectorAll('[data-i18n]').forEach(function(el){
@@ -701,6 +752,7 @@
       if (code) code.textContent = l.toUpperCase();
       document.querySelectorAll('.lang-menu button').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang') === l); });
       try { localStorage.setItem('sst_lang', l); } catch(e){}
+      renderReviews(l);
     }
 
     (function(){
