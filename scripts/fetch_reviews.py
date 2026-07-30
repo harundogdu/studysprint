@@ -114,9 +114,14 @@ def main() -> int:
         return 0
 
     picked = sorted(five_star, key=score, reverse=True)[:CARD_COUNT]
+    ratings = [r["attributes"].get("rating") for r in rows
+               if isinstance(r["attributes"].get("rating"), int)]
+    average = round(sum(ratings) / len(ratings), 1) if ratings else None
+
     payload = {
         "updatedAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "totalReviews": len(rows),
+        "averageRating": average,
         "reviews": [
             {
                 "body": clean(a.get("body") or ""),
