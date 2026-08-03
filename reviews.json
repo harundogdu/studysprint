@@ -1,8 +1,15 @@
 {
-  "updatedAt": "2026-07-30T00:04:43Z",
-  "totalReviews": 14,
+  "updatedAt": "2026-08-03T10:05:38Z",
+  "totalReviews": 15,
   "averageRating": 5.0,
   "reviews": [
+    {
+      "body": "Uygulamayı kullanmaya başladıktan sonra günün nasıl geçtiğini değil günü nasıl değerlendirdiğimi düşünmeye başladım. Sprintleri tamamladıkça hem motivasyonum artıyor hem de “bugün zamanımı iyi kullandım”…",
+      "nickname": "Cekubalm",
+      "territory": "TUR",
+      "rating": 5,
+      "date": "2026-07-29"
+    },
     {
       "body": "Benim gibi odağı çabuk dağılan birisiyseniz kesinlikle öneririm. Veri depolaması ve sunumu gerçekten çok iyi. Kullanmaya başladığım ilk haftada çalışmamdaki verimin iki kat arttığını görüyorum.",
       "nickname": "Umeyr musab",
@@ -13,13 +20,6 @@
     {
       "body": "Günlük işleriniz yada çalışmalarınız için süper bir takip uygulaması olmuş. Ne kadar çalıştığınızı takip etmek verimi artırıyor. Motivasyon cümleleri de insanı daha çok çalışmaya motive ediyor.",
       "nickname": "Akın Çömlek",
-      "territory": "TUR",
-      "rating": 5,
-      "date": "2026-07-22"
-    },
-    {
-      "body": "Mentalitesine uygun odak toplamak üzerine tasarlanmış. Şu zamanlarda oldukça kaybettiğimiz odaklanma özelliğimiz harika düşünülmüş bir uygulama; düzenli olarak kullanmak gerek.",
-      "nickname": "kxnffnkskr",
       "territory": "TUR",
       "rating": 5,
       "date": "2026-07-22"
