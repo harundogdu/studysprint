@@ -6,7 +6,7 @@
 <title>Study Sprint Timer: Focus, Pomodoro & Streaks</title>
 <meta name="description" content="Beat procrastination with focused study sprints. Set a timer, build daily streaks, track exam countdowns. Fully offline, no account needed." />
 <link rel="canonical" href="https://studysprinttimer.com/" />
-<meta name="theme-color" content="#1e1917" />
+<meta name="theme-color" content="#0a171a" />
 <meta name="apple-itunes-app" content="app-id=6788031531" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Study Sprint Timer" />
@@ -29,27 +29,30 @@
 <style>
   :root {
     --ease: cubic-bezier(.22,.61,.36,1);
-    --accent:#f2705c; --accent2:#d45fae; --gold:#d9a53f;
+    /* Palet uygulamanın Turkuaz temasından türetiliyor (ThemeProvider.turquoise /
+       turquoiseDark): accent app primary, accent2 aynı ailenin yeşile kayan tonu.
+       Altın, ikondaki baykuşun ayak ve püskülünden geliyor, üçüncü renk olarak kaldı. */
+    --accent:#40d9db; --accent2:#4fe0a8; --gold:#d9a53f;
   }
   :root[data-theme="dark"] {
-    --bg:#1e1917; --soft:#282120; --surface:#2b2422; --line:rgba(255,255,255,0.07);
-    --ink:#efe9e5; --muted:#b3a9a3; --dim:#8a807a;
-    --nav-bg:rgba(30,25,23,0.78);
-    --on-accent:#211714;
-    --chip1-bg:rgba(242,112,92,0.13); --chip2-bg:rgba(212,95,174,0.13);
-    --frame:#3a302d; --phone-bg:#161211;
-    --band:linear-gradient(135deg,#2e2321,#262020);
-    --glow:rgba(242,112,92,0.22);
+    --bg:#0a171a; --soft:#0f2024; --surface:#142629; --line:rgba(255,255,255,0.07);
+    --ink:#f2fafa; --muted:#9eb8ba; --dim:#748e90;
+    --nav-bg:rgba(10,23,26,0.78);
+    --on-accent:#062022;
+    --chip1-bg:rgba(64,217,219,0.13); --chip2-bg:rgba(79,224,168,0.13);
+    --frame:#22383b; --phone-bg:#0a1416;
+    --band:linear-gradient(135deg,#12262a,#0f2023);
+    --glow:rgba(64,217,219,0.22);
   }
   :root[data-theme="light"] {
-    --bg:#faf6f2; --soft:#f1eae4; --surface:#ffffff; --line:rgba(35,25,20,0.09);
-    --ink:#2a211d; --muted:#6f635c; --dim:#95897f;
-    --nav-bg:rgba(250,246,242,0.8);
-    --on-accent:#ffffff;
-    --chip1-bg:rgba(242,112,92,0.12); --chip2-bg:rgba(212,95,174,0.12);
-    --frame:#e4d9d1; --phone-bg:#efe7e0;
-    --band:linear-gradient(135deg,#f4e8e2,#f2ece5);
-    --glow:rgba(242,112,92,0.18);
+    --bg:#f2fbfb; --soft:#e6f4f4; --surface:#ffffff; --line:rgba(20,35,35,0.09);
+    --ink:#172a2b; --muted:#5c6f70; --dim:#87999a;
+    --nav-bg:rgba(242,251,251,0.8);
+    --on-accent:#062022;
+    --chip1-bg:rgba(64,217,219,0.16); --chip2-bg:rgba(79,224,168,0.16);
+    --frame:#d1e4e4; --phone-bg:#e2efef;
+    --band:linear-gradient(135deg,#e2f4f3,#e8f3f0);
+    --glow:rgba(64,217,219,0.18);
   }
   * { box-sizing:border-box; margin:0; padding:0; }
   html { scroll-behavior:smooth; }
@@ -70,8 +73,8 @@
   .nav-right { display:flex; align-items:center; gap:11px; }
   .btn { display:inline-flex; align-items:center; gap:8px; border-radius:999px; padding:13px 24px; font-weight:700; font-size:0.93rem; transition:transform .22s var(--ease), box-shadow .3s var(--ease), background .25s; cursor:pointer; border:none; font-family:inherit; }
   .btn:hover { transform:translateY(-2px); }
-  .btn-primary { background:var(--accent); color:var(--on-accent); box-shadow:0 12px 28px rgba(242,112,92,0.3); }
-  .btn-primary:hover { box-shadow:0 18px 36px rgba(242,112,92,0.4); }
+  .btn-primary { background:var(--accent); color:var(--on-accent); box-shadow:0 12px 28px rgba(64,217,219,0.3); }
+  .btn-primary:hover { box-shadow:0 18px 36px rgba(64,217,219,0.4); }
   .btn-ghost { background:transparent; color:var(--ink); border:1px solid var(--line); }
   .btn-ghost:hover { border-color:var(--accent); }
   .theme-toggle { width:41px; height:41px; border-radius:50%; background:var(--surface); border:1px solid var(--line); color:var(--ink); display:grid; place-items:center; cursor:pointer; transition:transform .2s var(--ease); }
@@ -170,7 +173,7 @@
   /* Cards */
   .cards3 { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:46px; }
   .card { background:var(--soft); border:1px solid var(--line); border-radius:22px; padding:28px 26px; text-align:left; transition:transform .3s var(--ease), border-color .28s; }
-  .card:hover { transform:translateY(-5px); border-color:rgba(242,112,92,0.4); }
+  .card:hover { transform:translateY(-5px); border-color:rgba(64,217,219,0.4); }
   .ic { width:44px; height:44px; border-radius:13px; display:grid; place-items:center; margin-bottom:16px; font-size:19px; transition:transform .3s var(--ease); }
   .ic.c1 { background:var(--chip1-bg); color:var(--accent); }
   .ic.c2 { background:var(--chip2-bg); color:var(--accent2); }
@@ -235,7 +238,7 @@
   .ft p.desc { color:var(--muted); margin-top:15px; max-width:280px; font-size:0.92rem; }
   .ft-badge { display:inline-flex; align-items:center; gap:8px; margin-top:20px; padding:9px 16px; border-radius:999px; background:var(--chip1-bg); color:var(--accent); font-size:0.82rem; font-weight:700; }
   .ft-badge .dot { width:8px; height:8px; border-radius:50%; background:var(--accent); animation:pulse 2.4s infinite; }
-  @keyframes pulse { 0%{ box-shadow:0 0 0 0 rgba(242,112,92,0.5);} 70%{ box-shadow:0 0 0 8px rgba(242,112,92,0);} 100%{ box-shadow:0 0 0 0 rgba(242,112,92,0);} }
+  @keyframes pulse { 0%{ box-shadow:0 0 0 0 rgba(64,217,219,0.5);} 70%{ box-shadow:0 0 0 8px rgba(64,217,219,0);} 100%{ box-shadow:0 0 0 0 rgba(64,217,219,0);} }
   .ft h5 { font-size:0.76rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:800; margin-bottom:16px; color:var(--ink); }
   .ft a.lnk { display:block; color:var(--muted); margin-bottom:12px; font-size:0.92rem; transition:color .25s var(--ease), transform .25s var(--ease); width:fit-content; }
   .ft a.lnk:hover { color:var(--ink); transform:translateX(4px); }
@@ -432,7 +435,7 @@
       </div>
       <div class="bento">
         <div class="card s2 reveal"><div class="ic c1">🔥</div><div><h3 data-i18n="g1_t">Daily Streaks</h3><p data-i18n="g1_d">Build a study habit that lasts. Watch your streak grow one day at a time.</p></div></div>
-        <div class="card s2 reveal d1"><div class="ic c2">🎨</div><div><h3 data-i18n="g2_t">Beautiful Themes</h3><p data-i18n="g2_d">Pick the color that matches your mood. The app icon changes to match.</p></div></div>
+        <div class="card s2 reveal d1"><div class="ic c2">🎨</div><div><h3 data-i18n="g2_t">Appearance Studio</h3><p data-i18n="g2_d">26 themes, a timer dial and an effect on one screen, with a live preview. Nothing changes until you tap Done, and the app icon follows the color you pick.</p></div></div>
         <div class="card reveal"><div class="ic c1">📊</div><div><h3 data-i18n="g3_t">Progress Insights</h3><p data-i18n="g3_d">See completed sessions and streaks at a glance to stay motivated.</p></div></div>
         <div class="card reveal d1"><div class="ic c2">✈️</div><div><h3 data-i18n="g4_t">100% Offline</h3><p data-i18n="g4_d">No sign-up, no account, no distractions. Your data stays on your device.</p></div></div>
         <div class="card reveal d2"><div class="ic c1">🦉</div><div><h3 data-i18n="g5_t">Your Study Owl</h3><p data-i18n="g5_d">Earn coins as you study and unlock rooms, outfits and achievements for your owl.</p></div></div>
@@ -443,6 +446,8 @@
         <div class="card reveal"><div class="ic c2">📚</div><div><h3 data-i18n="g10_t">My Library</h3><p data-i18n="g10_d">Add the books you're reading, log pages after a session and watch each one fill up.</p></div></div>
         <div class="card reveal d1"><div class="ic c1">🗓️</div><div><h3 data-i18n="g11_t">Today's Plan</h3><p data-i18n="g11_d">Set how many sprints you want per subject, then watch the day fill in as you work.</p></div></div>
         <div class="card s2 reveal d2"><div class="ic c2">🎯</div><div><h3 data-i18n="g12_t">Exam-Linked Sessions</h3><p data-i18n="g12_d">Tie a session to an exam and see how many hours went into it. Finished sessions can go to Apple Calendar too.</p></div></div>
+        <div class="card reveal"><div class="ic c1">🚀</div><div><h3 data-i18n="g13_t">Set Up in a Minute</h3><p data-i18n="g13_d">Say why you're studying and the app suggests your subjects, a daily goal and an exam countdown. Change any of it later.</p></div></div>
+        <div class="card s2 reveal d1"><div class="ic c2">🔎</div><div><h3 data-i18n="g14_t">Find Any Setting</h3><p data-i18n="g14_d">Settings has a search field and shortcuts to the rows you open most, so nothing is buried three taps deep.</p></div></div>
       </div>
     </div>
   </section>
@@ -557,7 +562,7 @@
         g_eyebrow:`Smart Features`, g_title:`Designed for Simple Daily Study`,
         g_sub:`Every feature nudges you along, so study time turns into clear progress and a habit that sticks.`,
         g1_t:`Daily Streaks`, g1_d:`Build a study habit that lasts. Watch your streak grow one day at a time.`,
-        g2_t:`Beautiful Themes`, g2_d:`Pick the color that matches your mood. The app icon changes to match.`,
+        g2_t:`Appearance Studio`, g2_d:`26 themes, a timer dial and an effect on one screen, with a live preview. Nothing changes until you tap Done, and the app icon follows the color you pick.`,
         g3_t:`Progress Insights`, g3_d:`See completed sessions and streaks at a glance to stay motivated.`,
         g4_t:`100% Offline`, g4_d:`No sign-up, no account, no distractions. Your data stays on your device.`,
         g5_t:`Your Study Owl`, g5_d:`Earn coins as you study and unlock rooms, outfits and achievements for your owl.`,
@@ -568,6 +573,8 @@
         g10_t:`My Library`, g10_d:`Add the books you're reading, log pages after a session and watch each one fill up.`,
         g11_t:`Today's Plan`, g11_d:`Set how many sprints you want per subject, then watch the day fill in as you work.`,
         g12_t:`Exam-Linked Sessions`, g12_d:`Tie a session to an exam and see how many hours went into it. Finished sessions can go to Apple Calendar too.`,
+        g13_t:`Set Up in a Minute`, g13_d:`Say why you're studying and the app suggests your subjects, a daily goal and an exam countdown. Change any of it later.`,
+        g14_t:`Find Any Setting`, g14_d:`Settings has a search field and shortcuts to the rows you open most, so nothing is buried three taps deep.`,
         r_eyebrow:`From the App Store`, r_title:`Study Companions, Not Chores`,
         q1:`"In the first week of using it, I watched my study output double."`, q1_role:`App Store review`,
         q2:`"The app turned out really nice and practical, and the owl mascot is adorable."`, q2_role:`App Store review`,
@@ -598,7 +605,7 @@
         g_eyebrow:`Akıllı Özellikler`, g_title:`Basit Günlük Çalışma İçin Tasarlandı`,
         g_sub:`Her özellik seni nazikçe yönlendirir, çalışma zamanını net ilerlemeye ve kalıcı bir alışkanlığa dönüştürür.`,
         g1_t:`Günlük Seriler`, g1_d:`Kalıcı bir çalışma alışkanlığı oluştur. Serini her gün büyürken izle.`,
-        g2_t:`Güzel Temalar`, g2_d:`Ruh hâline uyan rengi seç, uygulama ikonu bile buna göre değişir.`,
+        g2_t:`Görünüm Stüdyosu`, g2_d:`26 tema, gösterge ve efekt tek ekranda, canlı önizlemeyle. Sen Tamam'a basana kadar hiçbir şey değişmiyor; uygulama ikonu da seçtiğin renge geçiyor.`,
         g3_t:`İlerleme Görünümü`, g3_d:`Tamamlanan seansları ve serileri tek bakışta gör, motive kal.`,
         g4_t:`%100 Çevrimdışı`, g4_d:`Kayıt yok, hesap yok, dikkat dağıtan yok. Verilerin cihazında kalır.`,
         g5_t:`Çalışma Baykuşun`, g5_d:`Çalıştıkça coin kazan, baykuşun için odalar, kostümler ve başarımlar aç.`,
@@ -609,6 +616,8 @@
         g10_t:`Kitaplığım`, g10_d:`Okuduğun kitapları ekle, oturumdan sonra sayfa gir ve her birinin dolmasını izle.`,
         g11_t:`Bugünün Planı`, g11_d:`Her ders için kaç sprint istediğini belirle, gün çalıştıkça dolsun.`,
         g12_t:`Sınava Bağlı Oturumlar`, g12_d:`Oturumu bir sınava bağla, o sınav için kaç saat harcadığını gör. Biten oturumlar istersen Apple Takvim'e de yazılır.`,
+        g13_t:`Bir Dakikada Kurulum`, g13_d:`Neden çalıştığını söyle, uygulama sana dersleri, günlük hedefi ve sınav geri sayımını önersin. Hepsini sonradan değiştirebilirsin.`,
+        g14_t:`Aradığın Ayarı Bul`, g14_d:`Ayarlar'da arama alanı ve en çok açtığın satırların kısayolu var; hiçbir şey üç dokunuş derinde kalmıyor.`,
         r_eyebrow:`App Store'dan`, r_title:`Yük Değil, Çalışma Arkadaşı`,
         q1:`"Kullanmaya başladığım ilk haftada çalışmamdaki verimin iki kat arttığını görüyorum."`, q1_role:`App Store yorumu`,
         q2:`"Uygulama gerçekten güzel ve kullanışlı olmuş. Baykuş maskotu da çok tatlı."`, q2_role:`App Store yorumu`,
@@ -639,7 +648,7 @@
         g_eyebrow:`Smarte Funktionen`, g_title:`Für einfaches tägliches Lernen gemacht`,
         g_sub:`Jede Funktion leitet dich sanft, sie macht Lernzeit zu klarem Fortschritt und einer bleibenden Gewohnheit.`,
         g1_t:`Tägliche Serien`, g1_d:`Baue eine dauerhafte Lerngewohnheit auf. Sieh deiner Serie beim Wachsen zu.`,
-        g2_t:`Schöne Themes`, g2_d:`Wähle die Farbe, die zu deiner Stimmung passt, sogar das App-Icon passt sich an.`,
+        g2_t:`Darstellungs-Studio`, g2_d:`26 Themes, Timer-Anzeige und Effekt auf einem Bildschirm, mit Live-Vorschau. Nichts ändert sich, bis du auf Fertig tippst, und das App-Symbol übernimmt deine Farbe.`,
         g3_t:`Fortschritts-Einblicke`, g3_d:`Sieh abgeschlossene Sessions und Serien auf einen Blick und bleib motiviert.`,
         g4_t:`100 % Offline`, g4_d:`Keine Anmeldung, kein Konto, keine Ablenkung. Deine Daten bleiben auf deinem Gerät.`,
         g5_t:`Deine Lern-Eule`, g5_d:`Verdiene Coins beim Lernen, schalte Räume, Outfits und Erfolge für deine Eule frei.`,
@@ -650,6 +659,8 @@
         g10_t:`Meine Bibliothek`, g10_d:`Trag die Bücher ein, die du liest, halte nach einer Session die Seiten fest und sieh jedes Buch voller werden.`,
         g11_t:`Plan für heute`, g11_d:`Leg fest, wie viele Sprints du pro Fach schaffen willst, und sieh den Tag beim Arbeiten voller werden.`,
         g12_t:`Sitzungen mit Prüfungsbezug`, g12_d:`Verknüpf eine Session mit einer Prüfung und sieh, wie viele Stunden hineingeflossen sind. Beendete Sessions können auch in Apple Kalender wandern.`,
+        g13_t:`In einer Minute eingerichtet`, g13_d:`Sag, wofür du lernst, und die App schlägt dir Fächer, ein Tagesziel und einen Prüfungs-Countdown vor. Alles lässt sich später ändern.`,
+        g14_t:`Jede Einstellung finden`, g14_d:`Die Einstellungen haben ein Suchfeld und Kurzbefehle für die Zeilen, die du am häufigsten öffnest. Nichts liegt drei Tipps tief vergraben.`,
         r_eyebrow:`Aus dem App Store`, r_title:`Lernbegleiter statt Pflicht`,
         q1:`„In der ersten Woche habe ich gesehen, wie sich mein Lernpensum verdoppelt hat."`, q1_role:`App-Store-Rezension`,
         q2:`„Die App ist wirklich schön und praktisch geworden, und das Eulen-Maskottchen ist zuckersüß."`, q2_role:`App-Store-Rezension`,
@@ -680,7 +691,7 @@
         g_eyebrow:`Funciones inteligentes`, g_title:`Diseñada para estudiar a diario con simplicidad`,
         g_sub:`Cada función te guía con suavidad, convierte el tiempo de estudio en progreso claro y un hábito que perdura.`,
         g1_t:`Rachas diarias`, g1_d:`Crea un hábito de estudio duradero. Mira crecer tu racha día a día.`,
-        g2_t:`Temas bonitos`, g2_d:`Elige el color que va con tu ánimo, hasta el icono de la app cambia para combinar.`,
+        g2_t:`Estudio de apariencia`, g2_d:`26 temas, la esfera del temporizador y el efecto en una pantalla, con vista previa en vivo. Nada cambia hasta que tocas Listo, y el icono adopta tu color.`,
         g3_t:`Perspectivas de progreso`, g3_d:`Ve tus sesiones completadas y rachas de un vistazo para mantener la motivación.`,
         g4_t:`100 % sin conexión`, g4_d:`Sin registro, sin cuenta, sin distracciones. Tus datos se quedan en tu dispositivo.`,
         g5_t:`Tu búho de estudio`, g5_d:`Gana monedas al estudiar, desbloquea salas, atuendos y logros para tu búho.`,
@@ -691,6 +702,8 @@
         g10_t:`Mi biblioteca`, g10_d:`Añade los libros que estás leyendo, anota las páginas al terminar una sesión y ve cómo se van llenando.`,
         g11_t:`Plan de hoy`, g11_d:`Decide cuántos sprints quieres por asignatura y mira cómo se completa el día mientras trabajas.`,
         g12_t:`Sesiones ligadas a un examen`, g12_d:`Vincula una sesión a un examen y consulta cuántas horas le has dedicado. Las sesiones terminadas también pueden ir a Calendario de Apple.`,
+        g13_t:`Configúrala en un minuto`, g13_d:`Di por qué estudias y la app te propone tus asignaturas, una meta diaria y una cuenta atrás para el examen. Todo se puede cambiar después.`,
+        g14_t:`Encuentra cualquier ajuste`, g14_d:`Ajustes tiene un campo de búsqueda y accesos directos a las filas que más abres. Nada queda enterrado a tres toques.`,
         r_eyebrow:`Del App Store`, r_title:`Compañeros de estudio, no tareas`,
         q1:`"En la primera semana de uso vi que mi rendimiento al estudiar se duplicaba."`, q1_role:`Reseña de App Store`,
         q2:`"La app quedó muy bonita y práctica, y la mascota búho es adorable."`, q2_role:`Reseña de App Store`,
@@ -721,7 +734,7 @@
         g_eyebrow:`Fonctions malines`, g_title:`Conçue pour une étude quotidienne simple`,
         g_sub:`Chaque fonction vous guide en douceur, elle transforme le temps d'étude en progrès clair et en habitude durable.`,
         g1_t:`Séries quotidiennes`, g1_d:`Installez une habitude d'étude durable. Regardez votre série grandir jour après jour.`,
-        g2_t:`Beaux thèmes`, g2_d:`Choisissez la couleur qui colle à votre humeur, même l'icône de l'appli s'adapte.`,
+        g2_t:`Studio d'apparence`, g2_d:`26 thèmes, le cadran du minuteur et l'effet sur un seul écran, avec aperçu en direct. Rien ne change tant que vous n'avez pas touché Terminé, et l'icône prend votre couleur.`,
         g3_t:`Aperçu des progrès`, g3_d:`Voyez sessions terminées et séries d'un coup d'œil pour rester motivé.`,
         g4_t:`100 % hors ligne`, g4_d:`Pas d'inscription, pas de compte, pas de distraction. Vos données restent sur votre appareil.`,
         g5_t:`Votre chouette d'étude`, g5_d:`Gagnez des pièces en étudiant, débloquez salles, tenues et succès pour votre chouette.`,
@@ -732,6 +745,8 @@
         g10_t:`Ma bibliothèque`, g10_d:`Ajoutez les livres que vous lisez, notez les pages après une session et voyez chacun se remplir.`,
         g11_t:`Plan du jour`, g11_d:`Choisissez combien de sprints vous voulez par matière, puis regardez la journée se remplir.`,
         g12_t:`Sessions liées à un examen`, g12_d:`Reliez une session à un examen et voyez combien d'heures vous y avez consacrées. Les sessions terminées peuvent aussi rejoindre Calendrier Apple.`,
+        g13_t:`Configurée en une minute`, g13_d:`Dites pourquoi vous révisez et l'app vous propose vos matières, un objectif quotidien et un compte à rebours d'examen. Tout reste modifiable ensuite.`,
+        g14_t:`Trouvez n'importe quel réglage`, g14_d:`Les Réglages ont un champ de recherche et des raccourcis vers les lignes que vous ouvrez le plus. Rien n'est enfoui à trois touches.`,
         r_eyebrow:`Depuis l'App Store`, r_title:`Des compagnons d'étude, pas des corvées`,
         q1:`« Dès la première semaine, j'ai vu mon rendement de travail doubler. »`, q1_role:`Avis App Store`,
         q2:`« L'appli est vraiment réussie et pratique, et la mascotte hibou est adorable. »`, q2_role:`Avis App Store`,
@@ -762,7 +777,7 @@
         g_eyebrow:`Умные функции`, g_title:`Создано для простой ежедневной учёбы`,
         g_sub:`Каждая функция мягко направляет вас, превращает время учёбы в понятный прогресс и стойкую привычку.`,
         g1_t:`Ежедневные серии`, g1_d:`Формируйте стойкую привычку к учёбе. Наблюдайте, как растёт ваша серия день за днём.`,
-        g2_t:`Красивые темы`, g2_d:`Выберите цвет под настроение, даже иконка приложения меняется в тон.`,
+        g2_t:`Студия оформления`, g2_d:`26 тем, циферблат таймера и эффект на одном экране, с живым предпросмотром. Ничего не меняется, пока ты не нажмёшь «Готово», а иконка подхватывает выбранный цвет.`,
         g3_t:`Обзор прогресса`, g3_d:`Видите завершённые сессии и серии с одного взгляда, чтобы оставаться мотивированными.`,
         g4_t:`100% офлайн`, g4_d:`Без регистрации, без аккаунта, без отвлечений. Ваши данные остаются на устройстве.`,
         g5_t:`Ваша учебная сова`, g5_d:`Зарабатывайте монеты за учёбу, открывайте комнаты, наряды и достижения для совы.`,
@@ -773,6 +788,8 @@
         g10_t:`Моя библиотека`, g10_d:`Добавляйте книги, которые читаете, отмечайте страницы после сессии и следите, как каждая заполняется.`,
         g11_t:`План на день`, g11_d:`Задайте, сколько спринтов хотите по каждому предмету, и наблюдайте, как день заполняется.`,
         g12_t:`Сессии, привязанные к экзамену`, g12_d:`Привяжите сессию к экзамену и смотрите, сколько часов на него ушло. Завершённые сессии могут уходить и в Календарь Apple.`,
+        g13_t:`Настройка за минуту`, g13_d:`Скажи, ради чего ты занимаешься, и приложение предложит предметы, дневную цель и обратный отсчёт до экзамена. Всё можно поменять позже.`,
+        g14_t:`Найди любую настройку`, g14_d:`В настройках есть поиск и быстрые ссылки на строки, которые ты открываешь чаще всего. Ничего не спрятано на три касания вглубь.`,
         r_eyebrow:`Из App Store`, r_title:`Спутники в учёбе, а не рутина`,
         q1:`«За первую неделю моя продуктивность выросла вдвое.»`, q1_role:`Отзыв в App Store`,
         q2:`«Приложение получилось по-настоящему красивым и удобным, а совёнок-маскот очень милый.»`, q2_role:`Отзыв в App Store`,
