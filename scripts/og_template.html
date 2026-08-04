@@ -7,7 +7,7 @@
   /* og.png sablonu. index.html'deki paletle ayni degerler; renk degisirse
      burasi da guncellenir ve `python3 scripts/gen_og.py` yeniden uretir. */
   :root{
-    --accent:#40d9db; --accent2:#4fe0a8;
+    --accent:#40d9db; --accent2:#4fe0a8; --accent-ink:#4ce0e3;
     --bg:#0a171a; --surface:#142629; --ink:#f2fafa; --muted:#9eb8ba;
     --frame:#22383b; --on-accent:#062022;
   }
@@ -23,11 +23,11 @@
   .brand span{font-family:'Space Grotesk',sans-serif;font-size:29px;font-weight:700;letter-spacing:-0.02em}
   h1{font-family:'Space Grotesk',sans-serif;font-size:66px;line-height:1.06;font-weight:700;
      letter-spacing:-0.03em;margin-bottom:26px}
-  h1 em{color:var(--accent);font-style:normal}
+  h1 em{color:var(--accent-ink);font-style:normal}
   p{font-size:25px;color:var(--muted);line-height:1.4;margin-bottom:34px}
   .pills{display:flex;gap:14px}
   .pill{background:rgba(64,217,219,0.12);border:1px solid rgba(64,217,219,0.28);
-        color:var(--accent);padding:13px 22px;border-radius:999px;font-size:19px;font-weight:700}
+        color:var(--accent-ink);padding:13px 22px;border-radius:999px;font-size:19px;font-weight:700}
   /* Telefon kadraja tam sigmali: 630px yukseklikte alttan kesilirse yarim
      cihaz gorunuyor (ilk uretimde oldu). */
   .phone{width:246px;height:486px;border-radius:38px;background:var(--frame);padding:8px;
