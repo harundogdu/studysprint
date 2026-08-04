@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+<style>
+  /* og.png sablonu. index.html'deki paletle ayni degerler; renk degisirse
+     burasi da guncellenir ve `python3 scripts/gen_og.py` yeniden uretir. */
+  :root{
+    --accent:#40d9db; --accent2:#4fe0a8;
+    --bg:#0a171a; --surface:#142629; --ink:#f2fafa; --muted:#9eb8ba;
+    --frame:#22383b; --on-accent:#062022;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{width:1200px;height:630px;background:var(--bg);font-family:'Manrope',sans-serif;
+       color:var(--ink);overflow:hidden;position:relative}
+  .glow{position:absolute;width:900px;height:900px;right:-220px;top:-320px;border-radius:50%;
+        background:radial-gradient(circle,rgba(64,217,219,0.20),transparent 62%)}
+  .pad{position:absolute;inset:0;padding:72px 76px;display:flex;justify-content:space-between}
+  .left{width:640px;display:flex;flex-direction:column}
+  .brand{display:flex;align-items:center;gap:18px;margin-bottom:52px}
+  .brand img{width:52px;height:52px;border-radius:13px;display:block}
+  .brand span{font-family:'Space Grotesk',sans-serif;font-size:29px;font-weight:700;letter-spacing:-0.02em}
+  h1{font-family:'Space Grotesk',sans-serif;font-size:66px;line-height:1.06;font-weight:700;
+     letter-spacing:-0.03em;margin-bottom:26px}
+  h1 em{color:var(--accent);font-style:normal}
+  p{font-size:25px;color:var(--muted);line-height:1.4;margin-bottom:34px}
+  .pills{display:flex;gap:14px}
+  .pill{background:rgba(64,217,219,0.12);border:1px solid rgba(64,217,219,0.28);
+        color:var(--accent);padding:13px 22px;border-radius:999px;font-size:19px;font-weight:700}
+  /* Telefon kadraja tam sigmali: 630px yukseklikte alttan kesilirse yarim
+     cihaz gorunuyor (ilk uretimde oldu). */
+  .phone{width:246px;height:486px;border-radius:38px;background:var(--frame);padding:8px;
+         align-self:center;box-shadow:0 34px 76px rgba(0,0,0,0.55)}
+  .phone img{width:100%;height:100%;object-fit:cover;object-position:top;
+             border-radius:31px;display:block}
+</style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="pad">
+    <div class="left">
+      <div class="brand"><img src="../icon.png" alt="" /><span>Study Sprint Timer</span></div>
+      <h1>Focus in timed <em>study sprints.</em></h1>
+      <p>Pomodoro, streaks and exam countdowns, fully offline.</p>
+      <div class="pills">
+        <div class="pill">100% offline</div>
+        <div class="pill">6 languages</div>
+        <div class="pill">iOS &middot; Watch &middot; iPad</div>
+      </div>
+    </div>
+    <div class="phone"><img src="../shots/dark-01-home.png" alt="" /></div>
+  </div>
+</body>
+</html>
