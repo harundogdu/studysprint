@@ -152,19 +152,15 @@
     <a class="btn ghost" href="#sahneler">Özellikleri gör</a>
   </div>
   <div class="stage">
-    <div class="device"><img data-dark="../shots/dark-04-streak.png" data-light="../shots/light-04-streak.png" alt="" width="520" height="1129" /></div>
-    <div class="device main">
-      <video data-dark-src="../clips/timer-dark.mp4" data-light-src="../clips/timer-light.mp4"
-             data-dark-poster="../clips/timer-dark.jpg" data-light-poster="../clips/timer-light.jpg"
-             muted loop playsinline autoplay preload="metadata"></video>
-    </div>
-    <div class="device"><img data-dark="../shots/dark-03-owl.png" data-light="../shots/light-03-owl.png" alt="" width="520" height="1129" /></div>
+    <div class="device"><img data-shot="07-streak" alt="Seri takvimi" width="660" height="1434" /></div>
+    <div class="device main"><img data-shot="01-home" alt="Ana ekran: günlük hedef halkası, çalışma serisi ve bugünün planı" width="660" height="1434" /></div>
+    <div class="device"><img data-shot="06-owl" alt="Çalışma baykuşunun odası" width="660" height="1434" /></div>
   </div>
 </div>
 
 <!-- SAHNE 1: OKUMA MODU (1.4) -->
 <section class="scene" id="okuma"><div class="wrap in">
-  <div class="media"><div class="device"><img data-dark="../shots/dark-01-home.png" data-light="../shots/light-01-home.png" alt="Okuma modunda ana ekran" width="520" height="1129" /></div></div>
+  <div class="media"><div class="device"><img data-shot="02-reading" alt="Okuma modunda ana ekran: okunan kitap, sayfa ilerlemesi ve kalan okuma süresi" width="660" height="1434" /></div></div>
   <div>
     <span class="eyebrow">Sürüm 1.4<span class="badge-new">YENİ</span></span>
     <h2>Study Sprint artık kitap uygulaman da olabilir.</h2>
@@ -179,7 +175,7 @@
 
 <!-- SAHNE 2: ODAK KALKANI -->
 <section class="scene"><div class="wrap in">
-  <div class="media"><div class="device"><video data-dark-src="../clips/timer-dark.mp4" data-light-src="../clips/timer-light.mp4" data-dark-poster="../clips/timer-dark.jpg" data-light-poster="../clips/timer-light.jpg" muted loop playsinline preload="none"></video></div></div>
+  <div class="media"><div class="device"><img data-shot="03-shield" alt="Odak Kalkanı ayarları: engellenecek uygulamalar listesi" loading="lazy" width="660" height="1434" /></div></div>
   <div>
     <span class="eyebrow">Odak Kalkanı</span>
     <h2>Seni çeken uygulamalar oturum boyunca kapalı.</h2>
@@ -193,7 +189,7 @@
 
 <!-- SAHNE 3: GÖRÜNÜM STÜDYOSU -->
 <section class="scene"><div class="wrap in">
-  <div class="media"><div class="device"><video data-dark-src="../clips/studio-dark.mp4" data-light-src="../clips/studio-light.mp4" data-dark-poster="../clips/studio-dark.jpg" data-light-poster="../clips/studio-light.jpg" muted loop playsinline preload="none"></video></div></div>
+  <div class="media"><div class="device"><img data-shot="04-studio" alt="Görünüm Stüdyosu: tema paleti ve canlı önizleme" loading="lazy" width="660" height="1434" /></div></div>
   <div>
     <span class="eyebrow">Görünüm Stüdyosu</span>
     <h2>26 tema, tek ekranda, canlı önizlemeyle.</h2>
@@ -207,7 +203,7 @@
 
 <!-- SAHNE 4: ODAK SESLERİ -->
 <section class="scene"><div class="wrap in">
-  <div class="media"><div class="device"><video data-dark-src="../clips/sounds-dark.mp4" data-light-src="../clips/sounds-light.mp4" data-dark-poster="../clips/sounds-dark.jpg" data-light-poster="../clips/sounds-light.jpg" muted loop playsinline preload="none"></video></div></div>
+  <div class="media"><div class="device"><img data-shot="05-sounds" alt="Odak sesleri karıştırıcısı: yağmur, kafe ve derin uzay katmanları" loading="lazy" width="660" height="1434" /></div></div>
   <div>
     <span class="eyebrow">Odak sesleri</span>
     <h2>Yağmuru ateşin üstüne koy, ikisini ayrı ayarla.</h2>
@@ -221,7 +217,7 @@
 
 <!-- SAHNE 5: BAYKUŞ + SERİ -->
 <section class="scene"><div class="wrap in">
-  <div class="media"><div class="device"><img data-dark="../shots/dark-03-owl.png" data-light="../shots/light-03-owl.png" alt="" width="520" height="1129" /></div></div>
+  <div class="media"><div class="device"><img data-shot="06-owl" alt="Çalışma baykuşunun odası: coin, başarımlar ve dükkân" loading="lazy" width="660" height="1434" /></div></div>
   <div>
     <span class="eyebrow">Baykuşun ve serin</span>
     <h2>Çalıştıkça biriken, seni geri çağıran bir şey.</h2>
@@ -235,7 +231,7 @@
 
 <!-- SAHNE 6: SINAV + PLAN -->
 <section class="scene"><div class="wrap in">
-  <div class="media"><div class="device"><img data-dark="../shots/dark-05-analytics.png" data-light="../shots/light-05-analytics.png" alt="" width="520" height="1129" /></div></div>
+  <div class="media"><div class="device"><img data-shot="09-exam" alt="Sınav geri sayımı ekranı: eklenen sınavlar ve kalan günler" loading="lazy" width="660" height="1434" /></div></div>
   <div>
     <span class="eyebrow">Sınavlar ve plan</span>
     <h2>Hangi sınava kaç saat verdiğini gör.</h2>
@@ -300,12 +296,12 @@
 (function(){
   var root=document.documentElement;
   try{ if(new URLSearchParams(location.search).get('tema')==='acik') root.setAttribute('data-theme','light'); }catch(e){}
+  // Ekran görüntüleri artık DİLE ve temaya göre seçiliyor: shots/<dil>/<tema>-<ekran>.webp
+  var SHOT_LANG='tr';
   function applyMedia(){
-    var d=root.getAttribute('data-theme')==='dark';
-    document.querySelectorAll('img[data-dark]').forEach(function(i){i.src=d?i.dataset.dark:i.dataset.light});
-    document.querySelectorAll('video[data-dark-src]').forEach(function(v){
-      var s=d?v.dataset.darkSrc:v.dataset.lightSrc;
-      if(v.getAttribute('src')!==s){v.setAttribute('src',s);v.poster=d?v.dataset.darkPoster:v.dataset.lightPoster;v.load();}
+    var d=root.getAttribute('data-theme')==='dark'?'dark':'light';
+    document.querySelectorAll('img[data-shot]').forEach(function(i){
+      i.src='../shots/'+SHOT_LANG+'/'+d+'-'+i.dataset.shot+'.webp';
     });
   }
   document.getElementById('tt').addEventListener('click',function(){
@@ -313,9 +309,7 @@
   });
   applyMedia();
   var io=new IntersectionObserver(function(es){es.forEach(function(e){
-    if(e.isIntersecting){e.target.classList.add('in2');
-      var v=e.target.querySelector('video');if(v){v.play().catch(function(){})}
-      io.unobserve(e.target);}
+    if(e.isIntersecting){e.target.classList.add('in2');io.unobserve(e.target);}
   })},{threshold:.15});
   document.querySelectorAll('.scene .in, .more, .revs, .rv').forEach(function(e){e.classList.add('rv');io.observe(e)});
 })();

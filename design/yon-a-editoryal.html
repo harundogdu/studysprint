@@ -189,9 +189,7 @@
   </div>
   <div class="hero-shot">
     <div class="device">
-      <video data-dark-src="../clips/timer-dark.mp4" data-light-src="../clips/timer-light.mp4"
-             data-dark-poster="../clips/timer-dark.jpg" data-light-poster="../clips/timer-light.jpg"
-             muted loop playsinline autoplay preload="metadata"></video>
+      <img data-shot="01-home" alt="Ana ekran: günün sözü, günlük hedef halkası, çalışma serisi ve bugünün planı" width="660" height="1434" />
     </div>
   </div>
 </div>
@@ -228,7 +226,7 @@
       </ul>
     </div>
     <div>
-      <div class="device"><img data-dark="../shots/dark-01-home.png" data-light="../shots/light-01-home.png" alt="Okuma modunda ana ekran" width="520" height="1129" /></div>
+      <div class="device"><img data-shot="02-reading" alt="Okuma modunda ana ekran: okunan kitap, sayfa ilerlemesi ve kalan okuma süresi" width="660" height="1434" /></div>
     </div>
   </div>
 </div></section>
@@ -272,12 +270,18 @@
     </div>
   </div>
   <div class="strip rv">
-    <figure><div class="device"><img data-dark="../shots/dark-01-home.png" data-light="../shots/light-01-home.png" alt="" loading="lazy" width="520" height="1129" /></div><figcaption><b>01</b>Zamanlayıcı ve sınav geri sayımı</figcaption></figure>
-    <figure><div class="device"><img data-dark="../shots/dark-02-focus-sounds.png" data-light="../shots/light-02-focus-sounds.png" alt="" loading="lazy" width="520" height="1129" /></div><figcaption><b>02</b>Odak sesleri</figcaption></figure>
-    <figure><div class="device"><img data-dark="../shots/dark-03-owl.png" data-light="../shots/light-03-owl.png" alt="" loading="lazy" width="520" height="1129" /></div><figcaption><b>03</b>Çalışma baykuşun</figcaption></figure>
-    <figure><div class="device"><img data-dark="../shots/dark-04-streak.png" data-light="../shots/light-04-streak.png" alt="" loading="lazy" width="520" height="1129" /></div><figcaption><b>04</b>Seri takvimi</figcaption></figure>
-    <figure><div class="device"><img data-dark="../shots/dark-05-analytics.png" data-light="../shots/light-05-analytics.png" alt="" loading="lazy" width="520" height="1129" /></div><figcaption><b>05</b>İstatistikler</figcaption></figure>
-    <figure><div class="device"><img data-dark="../shots/dark-06-daily-tasks.png" data-light="../shots/light-06-daily-tasks.png" alt="" loading="lazy" width="520" height="1129" /></div><figcaption><b>06</b>Günlük görevler</figcaption></figure>
+    <figure><div class="device"><img data-shot="01-home" alt="" loading="lazy" width="660" height="1434" /></div><figcaption><b>01</b>Ana ekran ve günlük hedef</figcaption></figure>
+    <figure><div class="device"><img data-shot="02-reading" alt="" loading="lazy" width="660" height="1434" /></div><figcaption><b>02</b>Okuma modu</figcaption></figure>
+    <figure><div class="device"><img data-shot="03-shield" alt="" loading="lazy" width="660" height="1434" /></div><figcaption><b>03</b>Odak Kalkanı</figcaption></figure>
+    <figure><div class="device"><img data-shot="04-studio" alt="" loading="lazy" width="660" height="1434" /></div><figcaption><b>04</b>Görünüm Stüdyosu</figcaption></figure>
+    <figure><div class="device"><img data-shot="05-sounds" alt="" loading="lazy" width="660" height="1434" /></div><figcaption><b>05</b>Odak sesleri</figcaption></figure>
+    <figure><div class="device"><img data-shot="06-owl" alt="" loading="lazy" width="660" height="1434" /></div><figcaption><b>06</b>Çalışma baykuşun</figcaption></figure>
+    <figure><div class="device"><img data-shot="07-streak" alt="" loading="lazy" width="660" height="1434" /></div><figcaption><b>07</b>Seri takvimi</figcaption></figure>
+    <figure><div class="device"><img data-shot="08-analytics" alt="" loading="lazy" width="660" height="1434" /></div><figcaption><b>08</b>İstatistikler</figcaption></figure>
+    <figure><div class="device"><img data-shot="09-exam" alt="" loading="lazy" width="660" height="1434" /></div><figcaption><b>09</b>Sınav geri sayımı</figcaption></figure>
+    <figure><div class="device"><img data-shot="10-library" alt="" loading="lazy" width="660" height="1434" /></div><figcaption><b>10</b>Kitaplığım</figcaption></figure>
+    <figure><div class="device"><img data-shot="11-planning" alt="" loading="lazy" width="660" height="1434" /></div><figcaption><b>11</b>Bugünün planı</figcaption></figure>
+    <figure><div class="device"><img data-shot="12-tasks" alt="" loading="lazy" width="660" height="1434" /></div><figcaption><b>12</b>Günlük görevler</figcaption></figure>
   </div>
 </div></section>
 
@@ -327,14 +331,14 @@
 (function(){
   var root=document.documentElement;
   try{ if(new URLSearchParams(location.search).get('tema')==='acik') root.setAttribute('data-theme','light'); }catch(e){}
+  // Ekran görüntüleri artık DİLE ve temaya göre seçiliyor: shots/<dil>/<tema>-<ekran>.webp
+  // Deneme sayfaları Türkçe; asıl sitede bu değişken dil seçicisine bağlanacak,
+  // seti olmayan diller 'en'e düşecek.
+  var SHOT_LANG='tr';
   function applyMedia(){
-    var d=root.getAttribute('data-theme')==='dark';
-    document.querySelectorAll('img[data-dark]').forEach(function(i){
-      i.src=d?i.dataset.dark:i.dataset.light;
-    });
-    document.querySelectorAll('video[data-dark-src]').forEach(function(v){
-      var s=d?v.dataset.darkSrc:v.dataset.lightSrc;
-      if(v.getAttribute('src')!==s){v.setAttribute('src',s);v.poster=d?v.dataset.darkPoster:v.dataset.lightPoster;v.load();v.play().catch(function(){});}
+    var d=root.getAttribute('data-theme')==='dark'?'dark':'light';
+    document.querySelectorAll('img[data-shot]').forEach(function(i){
+      i.src='../shots/'+SHOT_LANG+'/'+d+'-'+i.dataset.shot+'.webp';
     });
   }
   document.getElementById('tt').addEventListener('click',function(){

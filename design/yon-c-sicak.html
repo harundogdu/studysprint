@@ -202,9 +202,7 @@
     <div class="hero-art">
       <span class="sticker st1"><span class="em">🔥</span> 7 günlük seri</span>
       <div class="device">
-        <video data-dark-src="../clips/timer-dark.mp4" data-light-src="../clips/timer-light.mp4"
-               data-dark-poster="../clips/timer-dark.jpg" data-light-poster="../clips/timer-light.jpg"
-               muted loop playsinline autoplay preload="metadata"></video>
+        <img data-shot="01-home" alt="Ana ekran: günün sözü, günlük hedef halkası, çalışma serisi ve bugünün planı" width="660" height="1434" />
       </div>
       <span class="sticker st2"><span class="em">🪙</span> 900 coin</span>
     </div>
@@ -226,7 +224,7 @@
       <li><span class="bub">☕</span><div><b>Okur diliyle hatırlatma</b><span>Ödev değil: kahve yanında birkaç sayfa.</span></div></li>
     </ul>
   </div>
-  <div class="read-art"><div class="device"><img data-dark="../shots/dark-01-home.png" data-light="../shots/light-01-home.png" alt="Okuma modunda ana ekran" width="520" height="1129" /></div></div>
+  <div class="read-art"><div class="device"><img data-shot="02-reading" alt="Okuma modunda ana ekran: okunan kitap, sayfa ilerlemesi ve kalan okuma süresi" width="660" height="1434" /></div></div>
 </div></section>
 
 <svg class="curve up" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0,20 C240,64 560,70 860,44 C1100,24 1300,10 1440,16 L1440,70 L0,70 Z"/></svg>
@@ -295,12 +293,12 @@
     <h2>Her ekran odak için tasarlandı.</h2>
   </div>
   <div class="shot-row rv">
-    <figure class="shot"><div class="device"><img data-dark="../shots/dark-01-home.png" data-light="../shots/light-01-home.png" alt="" loading="lazy" width="520" height="1129" /></div><figcaption>Zamanlayıcı</figcaption></figure>
-    <figure class="shot"><div class="device"><img data-dark="../shots/dark-02-focus-sounds.png" data-light="../shots/light-02-focus-sounds.png" alt="" loading="lazy" width="520" height="1129" /></div><figcaption>Odak sesleri</figcaption></figure>
-    <figure class="shot"><div class="device"><img data-dark="../shots/dark-03-owl.png" data-light="../shots/light-03-owl.png" alt="" loading="lazy" width="520" height="1129" /></div><figcaption>Baykuşun</figcaption></figure>
-    <figure class="shot"><div class="device"><img data-dark="../shots/dark-04-streak.png" data-light="../shots/light-04-streak.png" alt="" loading="lazy" width="520" height="1129" /></div><figcaption>Seri takvimi</figcaption></figure>
-    <figure class="shot"><div class="device"><img data-dark="../shots/dark-05-analytics.png" data-light="../shots/light-05-analytics.png" alt="" loading="lazy" width="520" height="1129" /></div><figcaption>İstatistikler</figcaption></figure>
-    <figure class="shot"><div class="device"><img data-dark="../shots/dark-06-daily-tasks.png" data-light="../shots/light-06-daily-tasks.png" alt="" loading="lazy" width="520" height="1129" /></div><figcaption>Günlük görevler</figcaption></figure>
+    <figure class="shot"><div class="device"><img data-shot="01-home" alt="" loading="lazy" width="660" height="1434" /></div><figcaption>Ana ekran</figcaption></figure>
+    <figure class="shot"><div class="device"><img data-shot="02-reading" alt="" loading="lazy" width="660" height="1434" /></div><figcaption>Okuma modu</figcaption></figure>
+    <figure class="shot"><div class="device"><img data-shot="05-sounds" alt="" loading="lazy" width="660" height="1434" /></div><figcaption>Odak sesleri</figcaption></figure>
+    <figure class="shot"><div class="device"><img data-shot="06-owl" alt="" loading="lazy" width="660" height="1434" /></div><figcaption>Baykuşun</figcaption></figure>
+    <figure class="shot"><div class="device"><img data-shot="07-streak" alt="" loading="lazy" width="660" height="1434" /></div><figcaption>Seri takvimi</figcaption></figure>
+    <figure class="shot"><div class="device"><img data-shot="10-library" alt="" loading="lazy" width="660" height="1434" /></div><figcaption>Kitaplığım</figcaption></figure>
   </div>
 </div></section>
 
@@ -358,12 +356,12 @@
 (function(){
   var root=document.documentElement;
   try{ if(new URLSearchParams(location.search).get('tema')==='acik') root.setAttribute('data-theme','light'); }catch(e){}
+  // Ekran görüntüleri artık DİLE ve temaya göre seçiliyor: shots/<dil>/<tema>-<ekran>.webp
+  var SHOT_LANG='tr';
   function applyMedia(){
-    var d=root.getAttribute('data-theme')==='dark';
-    document.querySelectorAll('img[data-dark]').forEach(function(i){i.src=d?i.dataset.dark:i.dataset.light});
-    document.querySelectorAll('video[data-dark-src]').forEach(function(v){
-      var s=d?v.dataset.darkSrc:v.dataset.lightSrc;
-      if(v.getAttribute('src')!==s){v.setAttribute('src',s);v.poster=d?v.dataset.darkPoster:v.dataset.lightPoster;v.load();v.play().catch(function(){});}
+    var d=root.getAttribute('data-theme')==='dark'?'dark':'light';
+    document.querySelectorAll('img[data-shot]').forEach(function(i){
+      i.src='../shots/'+SHOT_LANG+'/'+d+'-'+i.dataset.shot+'.webp';
     });
   }
   document.getElementById('tt').addEventListener('click',function(){
