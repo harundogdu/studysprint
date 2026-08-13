@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Site tasarım denemeleri · Study Sprint</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{--bg:#0a171a;--panel:#0f2024;--line:rgba(255,255,255,.09);--ink:#f2fafa;--muted:#9eb8ba;--dim:#6f8a8c;--accent:#4ce0e3}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Manrope',-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;padding:56px 28px 80px}
+  .wrap{max-width:940px;margin:0 auto}
+  h1{font-family:'Space Grotesk';font-weight:500;font-size:2.1rem;letter-spacing:-.03em}
+  .lede{color:var(--muted);margin-top:12px;max-width:60ch}
+  .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:38px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:26px 28px}
+  .card h2{font-family:'Space Grotesk';font-weight:500;font-size:1.3rem;letter-spacing:-.02em}
+  .card .tag{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+  .card p{color:var(--muted);font-size:.94rem;margin-top:10px;max-width:66ch}
+  .card ul{color:var(--dim);font-size:.88rem;margin:12px 0 0 18px}
+  .links{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+  a.b{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:10px 18px;font-weight:700;font-size:.86rem;text-decoration:none;background:var(--accent);color:#062022}
+  a.b.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .note{margin-top:36px;padding:20px 24px;border-radius:16px;border:1px dashed var(--line);color:var(--muted);font-size:.9rem}
+  .note b{color:var(--ink)}
+</style>
+</head>
+<body><div class="wrap">
+  <h1>Site tasarım denemeleri</h1>
+  <p class="lede">Üç yön, aynı içerikle. Hepsinde koyu/açık tema düğmesi sağ üstte; bağlantıdaki <code>?tema=acik</code> doğrudan açık modda açar. Beğendiğin yönü asıl siteye geçireceğim.</p>
+
+  <div class="grid">
+    <div class="card">
+      <span class="tag">Yön A</span>
+      <h2>Editoryal / tipografik</h2>
+      <p>Kart neredeyse yok. İri başlıklar, bol boşluk, saç teli çizgiler. Özellikler 01–16 numaralı tipografik dizin halinde; emoji yerine sade numaralar.</p>
+      <ul><li>En “premium ürün sayfası” duran yön</li><li>Ekranlar yatay kaydırmalı şeritte</li><li>Yorumlar iri alıntı olarak, kutusuz</li></ul>
+      <div class="links"><a class="b" href="./yon-a-editoryal.html">Koyu</a><a class="b ghost" href="./yon-a-editoryal.html?tema=acik">Açık</a></div>
+    </div>
+
+    <div class="card">
+      <span class="tag">Yön B</span>
+      <h2>Ekran merkezli / sahneler</h2>
+      <p>Uygulamanın kendi ekranları sayfayı taşıyor. Altı dönüşümlü sahne: bir yanda büyük telefon (video ya da ekran), diğer yanda birkaç cümle. 16 kutu yerine 6 sahne + tek bir “ayrıca” bölümü.</p>
+      <ul><li>Videoların en çok işe yaradığı yön</li><li>Hero'da üç telefonluk sahne</li><li>Çizgi ikonlar, emoji yok</li></ul>
+      <div class="links"><a class="b" href="./yon-b-sahneler.html">Koyu</a><a class="b ghost" href="./yon-b-sahneler.html?tema=acik">Açık</a></div>
+    </div>
+
+    <div class="card">
+      <span class="tag">Yön C</span>
+      <h2>Sıcak / baykuş karakterli</h2>
+      <p>Serif başlıklar (Fraunces), krem zemin, eğri bölüm ayraçları, yumuşak gölgeler. Özellikler üç bölüme ayrılmış: Odaklan, İlerle, Şımart. Yorumlar konuşma balonu.</p>
+      <ul><li><b>Açık modda bak</b>, asıl karakteri orada</li><li>Emoji bilinçli: karakteri o taşıyor</li><li>SaaS'tan en uzak, tüketici uygulamasına en yakın</li></ul>
+      <div class="links"><a class="b" href="./yon-c-sicak.html?tema=acik">Açık</a><a class="b ghost" href="./yon-c-sicak.html">Koyu</a></div>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>Not:</b> Okuma modu bölümündeki telefon görseli şimdilik mevcut ana ekran görüntüsü. Yön seçilince simülatörden koyu/açık gerçek okuma modu ekranı çekilip yerine konacak.
+  </div>
+</div></body>
+</html>
