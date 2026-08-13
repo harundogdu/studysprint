@@ -13,7 +13,9 @@ an offline-first Pomodoro study timer for iPhone, iPad and Apple Watch.
 - `support.html` — help center & FAQ
 - `privacy.html` / `terms.html` — legal pages (content dictionaries in `legal.js`)
 - `404.html`, `robots.txt`, `sitemap.xml`, `og.png` — SEO & error handling
-- `shots/` — real app screenshots used across the site
+- `shots/<lang>/<theme>-<screen>.webp` — real app screenshots, one set per language and
+  theme (6 languages × light/dark × 12 screens). The page swaps them when the visitor
+  changes language or theme, so a Turkish reader sees a Turkish phone.
 - `app-ads.txt` — AdMob authorized sellers
 
 ## Features
@@ -32,6 +34,21 @@ No tooling required — open the files in a browser, or serve locally:
 ```bash
 python3 -m http.server 8000
 ```
+
+### Refreshing the screenshots
+
+The screens on the page come straight from the app, captured per language and theme.
+Build the app for a simulator first, then:
+
+```bash
+scripts/capture_shots.sh --hepsi && scripts/process_shots.sh
+```
+
+`capture_shots.sh` uses its own simulator (`SST-Shots`) and creates it if missing:
+capturing on a shared device knocks over another session's test run, and vice versa.
+Its screen list matches the `data-shot` names in `index.html`, so a new section on the
+page needs a new line in the script. `process_shots.sh` needs `cwebp`
+(`brew install webp`).
 
 ## Deployment
 
