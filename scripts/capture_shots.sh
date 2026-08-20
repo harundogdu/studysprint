@@ -102,6 +102,8 @@ capture 09-exam       -seedExam -settings -examCountdown
 capture 10-library    -library
 capture 11-planning   -planning
 capture 12-tasks      -owlTab -owlDailyTasks
+# 13-widgets burada YOK: widget karesi ana ekrandan geliyor ve arada bir sayfa kaydırması
+# gerekiyor (simctl'de dokunuş komutu yok). Bkz. widget_kare.sh.
 
 echo "Bitti → $OUT"
 if [ ${#DUSEN[@]} -gt 0 ]; then

@@ -166,11 +166,6 @@
   .mitem h3 { font-size:0.98rem; font-weight:600; margin-bottom:6px; display:flex; align-items:center; gap:10px; }
   .mitem h3 svg { width:17px; height:17px; stroke:var(--accent-ink); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; flex:0 0 auto; }
   .mitem p { color:var(--muted); font-size:0.88rem; line-height:1.55; }
-  /* 10 kart, 3 sutun: son satirda tek kart kaliyor. Solda birakinca ustundeki
-     ayrac cizgisi satirin yalniz ucte birini geciyor ve satir yarim kalmis gibi
-     duruyor; ortalayinca kasitli okunuyor. Kural yalniz son kart yeni bir satiri
-     tek basina acinca isliyor, yani kart sayisi degisince kendiliginden susuyor. */
-  @media (min-width:881px){ .mgrid > .mitem:last-child:nth-child(3n+1){ grid-column:2; } }
   @media (max-width:880px){ .mgrid{ grid-template-columns:1fr; } }
 
   /* Yorumlar */
@@ -402,6 +397,22 @@
     </div>
   </section>
 
+  <!-- SAHNE 7: WIDGET'LAR -->
+  <section class="scene">
+    <div class="wrap scene-in reveal">
+      <div class="media"><div class="device"><img data-shot="13-widgets" data-i18n-alt="alt_widgets" alt="" loading="lazy" width="660" height="1434" /></div></div>
+      <div>
+        <span class="eyebrow" data-i18n="g17_t">Widgets &amp; Live Activity</span>
+        <h2 data-i18n="s7_t">Your streak and your next exam, without opening the app.</h2>
+        <p class="lede" data-i18n="g17_d">Put your streak, an exam countdown or a one-tap start on the Home Screen or the Lock Screen.</p>
+        <ul class="points">
+          <li><b data-i18n="w_p1_t">Live Activity</b><span data-i18n="w_p1_d">While a sprint runs, the timer keeps counting in the Dynamic Island and on the Lock Screen.</span></li>
+          <li><b data-i18n="w_p2_t">Your theme comes along</b><span data-i18n="w_p2_d">Widgets use the accent color you picked in the app.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <!-- AYRICA -->
   <section class="more" id="more">
     <div class="wrap">
@@ -416,7 +427,6 @@
         <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"/></svg><span data-i18n="g4_t">100% Offline</span></h3><p data-i18n="g4_d">No sign-up, no account, no distractions. Your data stays on your device.</p></div>
         <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span data-i18n="f2_t">Pomodoro Flow</span></h3><p data-i18n="f2_d">Proven focus/break cycles keep your mind fresh through long study sessions.</p></div>
         <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="3"/><path d="M9 22v-4h6v4"/></svg><span data-i18n="g6_t">Watch &amp; iPad</span></h3><p data-i18n="g6_d">Start sprints from your wrist with the Apple Watch app. Full iPad support included.</p></div>
-        <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg><span data-i18n="g17_t">Widgets &amp; Live Activity</span></h3><p data-i18n="g17_d">Put your streak, an exam countdown or a one-tap start on the home screen or Lock Screen. While a sprint runs, the timer keeps counting in the Dynamic Island.</p></div>
         <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg><span data-i18n="g16_t">Siri in Six Languages</span></h3><p data-i18n="g16_d">Ask Siri to start a sprint in English, Turkish, German, Spanish, French or Russian.</p></div>
         <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span data-i18n="g10_t">My Library</span></h3><p data-i18n="g10_d">Add the books you're reading, log pages after a session and watch each one fill up.</p></div>
         <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><span data-i18n="g14_t">Find Any Setting</span></h3><p data-i18n="g14_d">Settings has a search field and shortcuts to the rows you open most, so nothing is buried three taps deep.</p></div>
@@ -540,7 +550,10 @@
         g4_t:`100% Offline`, g4_d:`No sign-up, no account, no distractions. Your data stays on your device.`,
         g5_t:`Your Study Owl`, g5_d:`Earn coins as you study and unlock rooms, outfits and achievements for your owl.`,
         g6_t:`Watch & iPad`, g6_d:`Start sprints from your wrist with the Apple Watch app. Full iPad support included.`,
-        g17_t:`Widgets & Live Activity`, g17_d:`Put your streak, an exam countdown or a one-tap start on the home screen or Lock Screen. While a sprint runs, the timer keeps counting in the Dynamic Island.`,
+        g17_t:`Widgets & Live Activity`, g17_d:`Put your streak, an exam countdown or a one-tap start on the Home Screen or the Lock Screen.`,
+        s7_t:`Your streak and your next exam, without opening the app.`,
+        w_p1_t:`Live Activity`, w_p1_d:`While a sprint runs, the timer keeps counting in the Dynamic Island and on the Lock Screen.`,
+        w_p2_t:`Your theme comes along`, w_p2_d:`Widgets use the accent color you picked in the app.`,
         g7_t:`Exam Countdowns`, g7_d:`Add every exam you're preparing for and see the days left on your home screen and Lock Screen.`,
         g8_t:`Streak Safety Net`, g8_d:`Freeze tokens and one-day repair keep a busy day from breaking your streak.`,
         g9_t:`Game Center Leaderboards`, g9_d:`Compete for weekly focus minutes and longest streak, and unlock 15 achievements along the way.`,
@@ -578,14 +591,15 @@
         s6_t:`See how many hours went into each exam.`,
         mo_e:`Also inside`,
         mo_t:`Small things you actually use every day.`,
-        mo_d:`Ten more things that come up in a normal week.`,
+        mo_d:`Nine more things that come up in a normal week.`,
         alt_home:`Home screen: daily goal ring, current streak and today's plan`,
         alt_reading:`Reading mode home screen with the current book, page progress and reading time left`,
         alt_shield:`Focus Shield settings with the list of blocked apps`,
         alt_studio:`Appearance Studio with the theme palette and a live preview`,
         alt_sounds:`Focus sounds mixer with rain, cafe and deep space layers`,
         alt_owl:`The study owl's room with coins, achievements and the shop`,
-        alt_exam:`Exam countdown screen listing exams and the days left`
+        alt_exam:`Exam countdown screen listing exams and the days left`,
+        alt_widgets:`Home screen with the Study Sprint widgets: streak, exam countdown and one-tap start`
       },
       tr: {
         d_eyebrow:`Hareket Hâlinde`, d_title:`Uygulamanın Kendisi, Çalışırken`, d_sub:`Doğrudan uygulamadan alınmış kısa kayıtlar. Tasarım maketi yok, kurgu yok.`, d1_t:`Süren işlerken`, d1_d:`Dakikalar geçtikçe kadran doluyor, baykuşun aşağıda seni bekliyor.`, d2_t:`Temalar, anında önizlemeli`, d2_d:`Bir renk seç, yukarıdaki telefon onaylamadan önce sana göstersin.`, d3_t:`Sesleri karıştır`, d3_d:`Yağmuru ateşin üstüne koy, her birinin sesini ayrı ayarla.`,
@@ -612,7 +626,10 @@
         g4_t:`%100 Çevrimdışı`, g4_d:`Kayıt yok, hesap yok, dikkat dağıtan yok. Verilerin cihazında kalır.`,
         g5_t:`Çalışma Baykuşun`, g5_d:`Çalıştıkça coin kazan, baykuşun için odalar, kostümler ve başarımlar aç.`,
         g6_t:`Watch ve iPad`, g6_d:`Apple Watch uygulamasıyla sprintleri bileğinden başlat, artık tam iPad desteğiyle.`,
-        g17_t:`Widget'lar ve Live Activity`, g17_d:`Çalışma serini, sınav geri sayımını ya da tek dokunuşla başlatmayı ana ekrana veya kilit ekranına koy. Sprint sürerken sayaç Dynamic Island'da işlemeye devam ediyor.`,
+        g17_t:`Widget'lar ve Live Activity`, g17_d:`Çalışma serini, sınav geri sayımını ya da tek dokunuşla başlatmayı ana ekrana veya kilit ekranına koy.`,
+        s7_t:`Çalışma serin ve sıradaki sınavın, uygulamayı açmadan.`,
+        w_p1_t:`Live Activity`, w_p1_d:`Sprint sürerken sayaç Dynamic Island'da ve kilit ekranında işlemeye devam ediyor.`,
+        w_p2_t:`Temanı da götürüyor`, w_p2_d:`Widget'lar uygulamada seçtiğin vurgu rengini kullanıyor.`,
         g7_t:`Sınav Geri Sayımı`, g7_d:`Hazırlandığın her sınavı ekle; kalan günleri ana ekranda ve kilit ekranında gör.`,
         g8_t:`Seri Güvencesi`, g8_d:`Dondurma jetonu ve tek günlük telafi, yoğun bir günün çalışma serini bozmasına izin vermez.`,
         g9_t:`Game Center Liderlik Tabloları`, g9_d:`Haftalık odak dakikan ve en uzun çalışma serin için yarış, 15 başarımın kilidini aç.`,
@@ -650,14 +667,15 @@
         s6_t:`Hangi sınava kaç saat verdiğini gör.`,
         mo_e:`Ayrıca`,
         mo_t:`Küçük ama her gün işine yarayanlar.`,
-        mo_d:`Normal bir haftada karşına çıkan on şey daha.`,
+        mo_d:`Normal bir haftada karşına çıkan dokuz şey daha.`,
         alt_home:`Ana ekran: günlük hedef halkası, mevcut seri ve bugünün planı`,
         alt_reading:`Okuma modunda ana ekran: okunan kitap, sayfa ilerlemesi ve kalan okuma süresi`,
         alt_shield:`Odak Kalkanı ayarları ve engellenecek uygulamalar listesi`,
         alt_studio:`Görünüm Stüdyosu: tema paleti ve canlı önizleme`,
         alt_sounds:`Odak sesleri karıştırıcısı: yağmur, kafe ve derin uzay katmanları`,
         alt_owl:`Çalışma baykuşunun odası: coin, başarımlar ve dükkân`,
-        alt_exam:`Sınav geri sayımı ekranı: eklenen sınavlar ve kalan günler`
+        alt_exam:`Sınav geri sayımı ekranı: eklenen sınavlar ve kalan günler`,
+        alt_widgets:`Ana ekranda Study Sprint widget'ları: seri, sınav geri sayımı ve tek dokunuşla başlatma`
       },
       de: {
         d_eyebrow:`In Bewegung`, d_title:`Die App, im laufenden Betrieb`, d_sub:`Kurze Aufnahmen direkt aus der App. Keine Mockups, kein Schnitt.`, d1_t:`Ein laufender Sprint`, d1_d:`Der Ring füllt sich mit den Minuten, deine Eule wartet unten.`, d2_t:`Themes in der Live-Vorschau`, d2_d:`Wähle eine Farbe und das Handy oben zeigt sie dir vor dem Übernehmen.`, d3_t:`Klänge zum Mischen`, d3_d:`Leg Regen über ein Feuer und regle beide getrennt.`,
@@ -684,7 +702,10 @@
         g4_t:`100 % Offline`, g4_d:`Keine Anmeldung, kein Konto, keine Ablenkung. Deine Daten bleiben auf deinem Gerät.`,
         g5_t:`Deine Lern-Eule`, g5_d:`Verdiene Coins beim Lernen, schalte Räume, Outfits und Erfolge für deine Eule frei.`,
         g6_t:`Watch & iPad`, g6_d:`Starte Sprints mit der Apple-Watch-App vom Handgelenk, jetzt mit voller iPad-Unterstützung.`,
-        g17_t:`Widgets & Live Activity`, g17_d:`Leg deine Serie, einen Prüfungs-Countdown oder den Start mit einem Tipp auf Start- oder Sperrbildschirm. Während eines Sprints läuft der Timer in der Dynamic Island weiter.`,
+        g17_t:`Widgets & Live Activity`, g17_d:`Leg deine Serie, einen Prüfungs-Countdown oder den Start mit einem Tipp auf Start- oder Sperrbildschirm.`,
+        s7_t:`Deine Serie und die nächste Prüfung, ohne die App zu öffnen.`,
+        w_p1_t:`Live Activity`, w_p1_d:`Während eines Sprints läuft der Timer in der Dynamic Island und auf dem Sperrbildschirm weiter.`,
+        w_p2_t:`Dein Thema kommt mit`, w_p2_d:`Widgets übernehmen die Akzentfarbe, die du in der App gewählt hast.`,
         g7_t:`Prüfungs-Countdown`, g7_d:`Füge jede Prüfung hinzu und sieh die verbleibenden Tage auf Start- und Sperrbildschirm.`,
         g8_t:`Serien-Schutz`, g8_d:`Einfrier-Token und die Ein-Tages-Reparatur verhindern, dass ein voller Tag deine Serie beendet.`,
         g9_t:`Game-Center-Bestenlisten`, g9_d:`Tritt mit deinen wöchentlichen Lernminuten und deiner längsten Serie an und schalte 15 Erfolge frei.`,
@@ -722,14 +743,15 @@
         s6_t:`Sieh, wie viele Stunden in jede Prüfung geflossen sind.`,
         mo_e:`Außerdem in der App`,
         mo_t:`Kleinigkeiten, die du wirklich jeden Tag nutzt.`,
-        mo_d:`Zehn weitere Dinge, die in einer normalen Woche vorkommen.`,
+        mo_d:`Neun weitere Dinge, die in einer normalen Woche vorkommen.`,
         alt_home:`Startbildschirm: Tagesziel-Ring, aktuelle Serie und der Plan für heute`,
         alt_reading:`Startbildschirm im Lesemodus mit aktuellem Buch, Seitenfortschritt und verbleibender Lesezeit`,
         alt_shield:`Einstellungen des Fokus-Schilds mit der Liste gesperrter Apps`,
         alt_studio:`Aussehen-Studio mit Theme-Palette und Live-Vorschau`,
         alt_sounds:`Mixer für Fokus-Sounds mit Regen, Cafe und Weltraum`,
         alt_owl:`Das Zimmer der Lern-Eule mit Münzen, Erfolgen und Shop`,
-        alt_exam:`Prüfungs-Countdown mit den eingetragenen Prüfungen und den verbleibenden Tagen`
+        alt_exam:`Prüfungs-Countdown mit den eingetragenen Prüfungen und den verbleibenden Tagen`,
+        alt_widgets:`Startbildschirm mit den Study-Sprint-Widgets: Serie, Prüfungs-Countdown und Schnellstart`
       },
       es: {
         d_eyebrow:`En movimiento`, d_title:`La app, funcionando de verdad`, d_sub:`Clips cortos grabados directamente de la app. Sin maquetas ni montajes.`, d1_t:`Un sprint en marcha`, d1_d:`El círculo se llena con los minutos y tu búho espera abajo.`, d2_t:`Temas con vista previa en vivo`, d2_d:`Elige un color y el teléfono de arriba te lo muestra antes de aplicarlo.`, d3_t:`Sonidos que puedes mezclar`, d3_d:`Pon lluvia sobre un fuego y ajusta el volumen de cada uno.`,
@@ -756,7 +778,10 @@
         g4_t:`100 % sin conexión`, g4_d:`Sin registro, sin cuenta, sin distracciones. Tus datos se quedan en tu dispositivo.`,
         g5_t:`Tu búho de estudio`, g5_d:`Gana monedas al estudiar, desbloquea salas, atuendos y logros para tu búho.`,
         g6_t:`Watch y iPad`, g6_d:`Inicia sprints desde tu muñeca con la app de Apple Watch, ahora con soporte completo para iPad.`,
-        g17_t:`Widgets y Live Activity`, g17_d:`Pon tu racha, una cuenta atrás de examen o el inicio con un toque en la pantalla de inicio o la de bloqueo. Mientras corre un sprint, el temporizador sigue en la Dynamic Island.`,
+        g17_t:`Widgets y Live Activity`, g17_d:`Pon tu racha, una cuenta atrás de examen o el inicio con un toque en la pantalla de inicio o la de bloqueo.`,
+        s7_t:`Tu racha y tu próximo examen, sin abrir la app.`,
+        w_p1_t:`Live Activity`, w_p1_d:`Mientras corre un sprint, el temporizador sigue en la Dynamic Island y en la pantalla bloqueada.`,
+        w_p2_t:`Tu tema va contigo`, w_p2_d:`Los widgets usan el color de acento que elegiste en la app.`,
         g7_t:`Cuenta atrás de exámenes`, g7_d:`Añade cada examen que preparas y ve los días restantes en la pantalla de inicio y la de bloqueo.`,
         g8_t:`Red de seguridad para tu racha`, g8_d:`Los tokens de congelación y la reparación de un día evitan que un día ocupado rompa tu racha.`,
         g9_t:`Tablas de Game Center`, g9_d:`Compite por tus minutos de enfoque semanales y tu racha más larga, y desbloquea 15 logros.`,
@@ -794,14 +819,15 @@
         s6_t:`Mira cuántas horas fueron a cada examen.`,
         mo_e:`También en la app`,
         mo_t:`Cosas pequeñas que de verdad usas cada día.`,
-        mo_d:`Diez cosas más que aparecen en una semana normal.`,
+        mo_d:`Nueve cosas más que aparecen en una semana normal.`,
         alt_home:`Pantalla de inicio: anillo de meta diaria, racha actual y plan de hoy`,
         alt_reading:`Pantalla de inicio en modo lectura con el libro actual, el progreso de páginas y el tiempo de lectura restante`,
         alt_shield:`Ajustes del Escudo de enfoque con la lista de apps bloqueadas`,
         alt_studio:`Estudio de apariencia con la paleta de temas y vista previa en vivo`,
         alt_sounds:`Mezclador de sonidos de enfoque con lluvia, cafe y espacio profundo`,
         alt_owl:`La habitación del búho de estudio con monedas, logros y tienda`,
-        alt_exam:`Pantalla de cuenta atrás con los exámenes añadidos y los días que quedan`
+        alt_exam:`Pantalla de cuenta atrás con los exámenes añadidos y los días que quedan`,
+        alt_widgets:`Pantalla de inicio con los widgets de Study Sprint: racha, cuenta atrás de examen e inicio rápido`
       },
       fr: {
         d_eyebrow:`En mouvement`, d_title:`L'appli, vraiment en marche`, d_sub:`De courts extraits enregistrés directement depuis l'appli. Sans maquette ni montage.`, d1_t:`Une session en cours`, d1_d:`Le cadran se remplit au fil des minutes et votre hibou attend en bas.`, d2_t:`Les thèmes en aperçu direct`, d2_d:`Choisissez une couleur : le téléphone du haut vous la montre avant validation.`, d3_t:`Des sons à mélanger`, d3_d:`Posez la pluie sur un feu et réglez le volume de chacun.`,
@@ -828,7 +854,10 @@
         g4_t:`100 % hors ligne`, g4_d:`Pas d'inscription, pas de compte, pas de distraction. Vos données restent sur votre appareil.`,
         g5_t:`Votre chouette d'étude`, g5_d:`Gagnez des pièces en étudiant, débloquez salles, tenues et succès pour votre chouette.`,
         g6_t:`Watch et iPad`, g6_d:`Lancez des sprints depuis votre poignet avec l'app Apple Watch, désormais avec prise en charge complète de l'iPad.`,
-        g17_t:`Widgets et Live Activity`, g17_d:`Placez votre série, un compte à rebours d'examen ou le démarrage en un geste sur l'écran d'accueil ou l'écran verrouillé. Pendant un sprint, le minuteur continue dans la Dynamic Island.`,
+        g17_t:`Widgets et Live Activity`, g17_d:`Placez votre série, un compte à rebours d'examen ou le démarrage en un geste sur l'écran d'accueil ou l'écran verrouillé.`,
+        s7_t:`Votre série et votre prochain examen, sans ouvrir l'app.`,
+        w_p1_t:`Live Activity`, w_p1_d:`Pendant un sprint, le minuteur continue dans la Dynamic Island et sur l'écran verrouillé.`,
+        w_p2_t:`Votre thème suit`, w_p2_d:`Les widgets reprennent la couleur d'accent choisie dans l'app.`,
         g7_t:`Comptes à rebours d'examens`, g7_d:`Ajoutez chaque examen que vous préparez et voyez les jours restants sur l'écran d'accueil et l'écran verrouillé.`,
         g8_t:`Filet de sécurité pour votre série`, g8_d:`Les jetons de gel et la réparation d'un jour évitent qu'une journée chargée ne brise votre série.`,
         g9_t:`Classements Game Center`, g9_d:`Affrontez les autres avec vos minutes de concentration hebdomadaires et votre plus longue série, et débloquez 15 succès.`,
@@ -866,14 +895,15 @@
         s6_t:`Vois combien d'heures sont allées à chaque examen.`,
         mo_e:`Aussi dans l'app`,
         mo_t:`De petites choses que tu utilises vraiment tous les jours.`,
-        mo_d:`Dix autres choses qui reviennent dans une semaine normale.`,
+        mo_d:`Neuf autres choses qui reviennent dans une semaine normale.`,
         alt_home:`Écran d'accueil : anneau d'objectif quotidien, série en cours et plan du jour`,
         alt_reading:`Écran d'accueil en mode lecture avec le livre en cours, la progression des pages et le temps de lecture restant`,
         alt_shield:`Réglages du Bouclier de concentration avec la liste des apps bloquées`,
         alt_studio:`Studio d'apparence avec la palette de thèmes et l'aperçu direct`,
         alt_sounds:`Mixeur de sons de concentration avec pluie, cafe et espace profond`,
         alt_owl:`La chambre de la chouette d'étude avec pièces, succès et boutique`,
-        alt_exam:`Écran de compte à rebours listant les examens et les jours restants`
+        alt_exam:`Écran de compte à rebours listant les examens et les jours restants`,
+        alt_widgets:`Écran d'accueil avec les widgets Study Sprint : série, compte à rebours d'examen et démarrage rapide`
       },
       ru: {
         d_eyebrow:`В движении`, d_title:`Приложение в действии`, d_sub:`Короткие записи прямо из приложения. Без макетов и монтажа.`, d1_t:`Отрезок в процессе`, d1_d:`Круг заполняется минута за минутой, а сова ждёт внизу.`, d2_t:`Темы с живым предпросмотром`, d2_d:`Выберите цвет: телефон сверху покажет его ещё до применения.`, d3_t:`Звуки можно смешивать`, d3_d:`Наложите дождь на огонь и задайте каждому свою громкость.`,
@@ -900,7 +930,10 @@
         g4_t:`100% офлайн`, g4_d:`Без регистрации, без аккаунта, без отвлечений. Ваши данные остаются на устройстве.`,
         g5_t:`Ваша учебная сова`, g5_d:`Зарабатывайте монеты за учёбу, открывайте комнаты, наряды и достижения для совы.`,
         g6_t:`Watch и iPad`, g6_d:`Запускайте спринты с запястья через приложение для Apple Watch, теперь с полной поддержкой iPad.`,
-        g17_t:`Виджеты и Live Activity`, g17_d:`Разместите серию, обратный отсчёт до экзамена или запуск в одно касание на главном экране или экране блокировки. Во время спринта таймер продолжает идти в Dynamic Island.`,
+        g17_t:`Виджеты и Live Activity`, g17_d:`Разместите серию, обратный отсчёт до экзамена или запуск в одно касание на главном экране или экране блокировки.`,
+        s7_t:`Серия и ближайший экзамен, не открывая приложение.`,
+        w_p1_t:`Live Activity`, w_p1_d:`Во время спринта таймер продолжает идти в Dynamic Island и на экране блокировки.`,
+        w_p2_t:`Тема переезжает с вами`, w_p2_d:`Виджеты используют акцентный цвет, выбранный в приложении.`,
         g7_t:`Обратный отсчёт до экзаменов`, g7_d:`Добавьте каждый экзамен и следите за оставшимися днями на главном экране и экране блокировки.`,
         g8_t:`Защита серии`, g8_d:`Жетоны заморозки и восстановление пропущенного дня не дадут загруженному дню оборвать вашу серию.`,
         g9_t:`Рейтинги Game Center`, g9_d:`Соревнуйся за недельные минуты фокуса и самую длинную серию, открывай 15 достижений.`,
@@ -938,14 +971,15 @@
         s6_t:`Смотри, сколько часов ушло на каждый экзамен.`,
         mo_e:`Ещё в приложении`,
         mo_t:`Мелочи, которыми ты правда пользуешься каждый день.`,
-        mo_d:`Ещё десять вещей, которые всплывают за обычную неделю.`,
+        mo_d:`Ещё девять вещей, которые всплывают за обычную неделю.`,
         alt_home:`Главный экран: кольцо дневной цели, текущая серия и план на сегодня`,
         alt_reading:`Главный экран в режиме чтения: текущая книга, прогресс по страницам и оставшееся время чтения`,
         alt_shield:`Настройки Щита фокуса со списком заблокированных приложений`,
         alt_studio:`Студия оформления с палитрой тем и живым превью`,
         alt_sounds:`Микшер звуков фокуса: дождь, кафе и открытый космос`,
         alt_owl:`Комната учебной совы с монетами, достижениями и магазином`,
-        alt_exam:`Экран отсчёта до экзаменов со списком экзаменов и оставшимися днями`
+        alt_exam:`Экран отсчёта до экзаменов со списком экзаменов и оставшимися днями`,
+        alt_widgets:`Главный экран с виджетами Study Sprint: серия, отсчёт до экзамена и быстрый старт`
       }
     };
     Object.keys(I18N_EXTRA).forEach(function(l){ Object.assign(I18N[l], I18N_EXTRA[l]); });
