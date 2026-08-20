@@ -44,6 +44,14 @@ Build the app for a simulator first, then:
 scripts/capture_shots.sh --hepsi && scripts/process_shots.sh
 ```
 
+The widget frame (`13-widgets`) comes from a different script, `scripts/widget_kare.sh`:
+widgets live on the home screen, not inside the app, so the frame is taken from the
+springboard. It runs in two phases because opening and closing the app sends the home
+screen back to its first page while the widgets sit on the second, and `simctl` has no
+swipe command: run `widget_kare.sh <lang> <theme> hazirla`, swipe to the widget page,
+then `widget_kare.sh <lang> <theme> cek`. The widgets themselves were placed on
+`SST-Shots` by hand, once; the layout survives reboots but not `simctl erase`.
+
 `capture_shots.sh` uses its own simulator (`SST-Shots`) and creates it if missing:
 capturing on a shared device knocks over another session's test run, and vice versa.
 Its screen list matches the `data-shot` names in `index.html`, so a new section on the
