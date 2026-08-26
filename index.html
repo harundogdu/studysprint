@@ -199,6 +199,7 @@
   .cta h2 { font-size:clamp(1.7rem,3.2vw,2.4rem); font-weight:500; position:relative; }
   .cta p { opacity:0.85; max-width:48ch; margin:13px auto 26px; position:relative; }
   .cta .btn { position:relative; background:#062022; color:#f2fafa; }
+  .cta .cta-row { margin-top:0; }
 
   /* Footer */
   footer.ft { position:relative; overflow:hidden; background:var(--soft); border-top:1px solid var(--line); }
@@ -237,12 +238,13 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "Study Sprint Timer",
-  "operatingSystem": "iOS, iPadOS, watchOS",
+  "operatingSystem": "iOS, iPadOS, watchOS, Android",
   "applicationCategory": "EducationalApplication",
   "description": "An offline-first Pomodoro study timer with daily streaks, exam countdowns, focus sounds and a study owl companion.",
   "url": "https://studysprinttimer.com/",
   "image": "https://studysprinttimer.com/og.png",
   "installUrl": "https://apps.apple.com/app/id6788031531",
+  "sameAs": ["https://apps.apple.com/app/id6788031531", "https://play.google.com/store/apps/details?id=com.harundogdu.studysprinttimer"],
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
   "author": { "@type": "Person", "name": "Harun Doğdu" },
   "inLanguage": ["en","tr","de","es","fr","ru"]
@@ -295,6 +297,7 @@
     <p class="sub up d2" data-i18n="hero_sub">Beat procrastination with focused study sessions. Set a timer, build daily streaks, and stay motivated. Fully offline, no account needed.</p>
     <div class="cta-row up d3">
       <a class="btn btn-primary" href="https://apps.apple.com/app/id6788031531" target="_blank" rel="noopener" data-i18n="hero_cta1">Download on the App Store</a>
+      <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.harundogdu.studysprinttimer" target="_blank" rel="noopener" data-i18n="hero_cta_play">Get it on Google Play</a>
       <a class="btn btn-ghost" href="#okuma" data-i18n="hero_cta2">See Features</a>
     </div>
     <div class="stats up d4">
@@ -461,8 +464,11 @@
   <div class="wrap">
     <div class="cta reveal">
       <h2 data-i18n="cta_title">Turn Scattered Hours into Focused Sprints</h2>
-      <p data-i18n="cta_sub">Study Sprint Timer is now on the App Store. Simple, offline, and built to help you focus.</p>
-      <a class="btn" href="https://apps.apple.com/app/id6788031531" target="_blank" rel="noopener" data-i18n="cta_btn">Download Now</a>
+      <p data-i18n="cta_sub">Study Sprint Timer is on the App Store and Google Play. Simple, offline, and built to help you focus.</p>
+      <div class="cta-row">
+        <a class="btn" href="https://apps.apple.com/app/id6788031531" target="_blank" rel="noopener" data-i18n="cta_btn">Download on the App Store</a>
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.harundogdu.studysprinttimer" target="_blank" rel="noopener" data-i18n="cta_btn_play">Get it on Google Play</a>
+      </div>
     </div>
   </div>
 
@@ -530,7 +536,7 @@
         rs_label:`App Store reviews`,
         nav_home:`Home`, nav_features:`Features`, nav_reviews:`Reviews`, nav_support:`Support`, nav_help:`Get Help`,
         hero_sub:`Beat procrastination with focused study sessions. Set a timer, build daily streaks, and stay motivated. Fully offline, no account needed.`,
-        hero_cta1:`Download on the App Store`, hero_cta2:`See Features`,
+        hero_cta1:`Download on the App Store`, hero_cta_play:`Get it on Google Play`, hero_cta2:`See Features`,
         p_eyebrow:`The Struggle`, p_title:`Studying Without Structure Feels Hard`,
         p_sub:`Focus is easy to lose and hard to rebuild. Most study tools are cluttered, online-only, or simply get in the way.`,
         p1_t:`Endless Distractions`, p1_d:`Notifications and open tabs pull your attention away the moment you sit down to study.`,
@@ -568,7 +574,7 @@
         q1:`"In the first week of using it, I watched my study output double."`, q1_role:`App Store review`,
         q2:`"The app turned out really nice and practical, and the owl mascot is adorable."`, q2_role:`App Store review`,
         q3:`"Seeing how much you have worked lifts your output. The motivational lines keep you going too."`, q3_role:`App Store review`,
-        cta_title:`Turn Scattered Hours into Focused Sprints`, cta_sub:`Study Sprint Timer is now on the App Store. Simple, offline, and built to help you focus.`, cta_btn:`Download Now`,
+        cta_title:`Turn Scattered Hours into Focused Sprints`, cta_sub:`Study Sprint Timer is on the App Store and Google Play. Simple, offline, and built to help you focus.`, cta_btn:`Download on the App Store`, cta_btn_play:`Get it on Google Play`,
         ft_desc:`Focus, Pomodoro & streaks: a simple offline study timer for everyday focus.`, ft_badge:`Now on the App Store`,
         ft_productH:`Product`, ft_supportH:`Support`, ft_legalH:`Legal`,
         ft_features:`Features`, ft_how:`How It Works`, ft_reviews:`Reviews`, ft_help:`Help Center`, ft_contact:`Contact Us`, ft_privacy:`Privacy Policy`, ft_terms:`Terms of Service`,
@@ -606,7 +612,7 @@
         rs_label:`App Store yorumu`,
         nav_home:`Ana Sayfa`, nav_features:`Özellikler`, nav_reviews:`Yorumlar`, nav_support:`Destek`, nav_help:`Yardım Al`,
         hero_sub:`Odaklı çalışma seanslarıyla erteleme alışkanlığını yen. Zamanlayıcıyı kur, günlük seriler oluştur ve motive kal, tamamen çevrimdışı, hesap gerekmez.`,
-        hero_cta1:`App Store'dan İndir`, hero_cta2:`Özellikleri Gör`,
+        hero_cta1:`App Store'dan İndir`, hero_cta_play:`Google Play'den İndir`, hero_cta2:`Özellikleri Gör`,
         p_eyebrow:`Zorluk`, p_title:`Düzensiz Çalışmak Zor Geliyor`,
         p_sub:`Odak kolayca kaybolur, yeniden kurmak zordur. Çoğu çalışma aracı karmaşık, yalnızca çevrimiçi ya da yolunda engeldir.`,
         p1_t:`Bitmeyen Dikkat Dağınıklığı`, p1_d:`Çalışmaya oturduğun an bildirimler ve açık sekmeler dikkatini dağıtır.`,
@@ -644,7 +650,7 @@
         q1:`"Kullanmaya başladığım ilk haftada çalışmamdaki verimin iki kat arttığını görüyorum."`, q1_role:`App Store yorumu`,
         q2:`"Uygulama gerçekten güzel ve kullanışlı olmuş. Baykuş maskotu da çok tatlı."`, q2_role:`App Store yorumu`,
         q3:`"Ne kadar çalıştığınızı takip etmek verimi artırıyor. Motivasyon cümleleri de insanı daha çok çalışmaya motive ediyor."`, q3_role:`App Store yorumu`,
-        cta_title:`Dağınık Saatleri Odaklı Sprint'lere Çevir`, cta_sub:`Study Sprint Timer artık App Store'da. Basit, çevrimdışı ve odaklanmana yardımcı olacak şekilde tasarlandı.`, cta_btn:`Hemen İndir`,
+        cta_title:`Dağınık Saatleri Odaklı Sprint'lere Çevir`, cta_sub:`Study Sprint Timer App Store ve Google Play'de. Basit, çevrimdışı ve odaklanmana yardımcı olacak şekilde tasarlandı.`, cta_btn:`App Store'dan İndir`, cta_btn_play:`Google Play'den İndir`,
         ft_desc:`Odak, Pomodoro ve seriler, günlük odak için basit, çevrimdışı bir çalışma zamanlayıcısı.`, ft_badge:`Artık App Store'da`,
         ft_productH:`Ürün`, ft_supportH:`Destek`, ft_legalH:`Yasal`,
         ft_features:`Özellikler`, ft_how:`Nasıl Çalışır`, ft_reviews:`Yorumlar`, ft_help:`Yardım Merkezi`, ft_contact:`Bize Ulaşın`, ft_privacy:`Gizlilik Politikası`, ft_terms:`Kullanım Şartları`,
@@ -682,7 +688,7 @@
         rs_label:`App-Store-Rezensionen`,
         nav_home:`Start`, nav_features:`Funktionen`, nav_reviews:`Bewertungen`, nav_support:`Support`, nav_help:`Hilfe`,
         hero_sub:`Überwinde Aufschieberei mit fokussierten Lernsessions. Timer stellen, tägliche Serien aufbauen und motiviert bleiben, komplett offline, kein Konto nötig.`,
-        hero_cta1:`Jetzt im App Store laden`, hero_cta2:`Funktionen ansehen`,
+        hero_cta1:`Jetzt im App Store laden`, hero_cta_play:`Jetzt bei Google Play laden`, hero_cta2:`Funktionen ansehen`,
         p_eyebrow:`Die Herausforderung`, p_title:`Lernen ohne Struktur fällt schwer`,
         p_sub:`Fokus geht leicht verloren und ist schwer wiederherzustellen. Die meisten Lern-Tools sind überladen, nur online oder einfach im Weg.`,
         p1_t:`Endlose Ablenkungen`, p1_d:`Benachrichtigungen und offene Tabs ziehen deine Aufmerksamkeit ab, sobald du dich hinsetzt.`,
@@ -720,7 +726,7 @@
         q1:`„In der ersten Woche habe ich gesehen, wie sich mein Lernpensum verdoppelt hat."`, q1_role:`App-Store-Rezension`,
         q2:`„Die App ist wirklich schön und praktisch geworden, und das Eulen-Maskottchen ist zuckersüß."`, q2_role:`App-Store-Rezension`,
         q3:`„Zu sehen, wie viel man gearbeitet hat, steigert die Leistung. Die Motivationssprüche spornen zusätzlich an."`, q3_role:`App-Store-Rezension`,
-        cta_title:`Mach aus verstreuten Stunden fokussierte Sprints`, cta_sub:`Study Sprint Timer ist jetzt im App Store. Einfach, offline und fürs Fokussieren gemacht.`, cta_btn:`Jetzt laden`,
+        cta_title:`Mach aus verstreuten Stunden fokussierte Sprints`, cta_sub:`Study Sprint Timer gibt es im App Store und bei Google Play. Einfach, offline und fürs Fokussieren gemacht.`, cta_btn:`Jetzt im App Store laden`, cta_btn_play:`Jetzt bei Google Play laden`,
         ft_desc:`Fokus, Pomodoro & Serien, ein einfacher, offline Lern-Timer für den Alltag.`, ft_badge:`Jetzt im App Store`,
         ft_productH:`Produkt`, ft_supportH:`Support`, ft_legalH:`Rechtliches`,
         ft_features:`Funktionen`, ft_how:`So funktioniert's`, ft_reviews:`Bewertungen`, ft_help:`Hilfe-Center`, ft_contact:`Kontakt`, ft_privacy:`Datenschutz`, ft_terms:`Nutzungsbedingungen`,
@@ -758,7 +764,7 @@
         rs_label:`reseñas de App Store`,
         nav_home:`Inicio`, nav_features:`Funciones`, nav_reviews:`Opiniones`, nav_support:`Soporte`, nav_help:`Ayuda`,
         hero_sub:`Vence la procrastinación con sesiones de estudio enfocadas. Pon un temporizador, crea rachas diarias y mantén la motivación, totalmente sin conexión, sin cuenta.`,
-        hero_cta1:`Descargar en la App Store`, hero_cta2:`Ver funciones`,
+        hero_cta1:`Descargar en la App Store`, hero_cta_play:`Descargar en Google Play`, hero_cta2:`Ver funciones`,
         p_eyebrow:`El reto`, p_title:`Estudiar sin estructura se hace difícil`,
         p_sub:`La concentración se pierde fácil y cuesta recuperarla. La mayoría de apps son recargadas, solo en línea o simplemente estorban.`,
         p1_t:`Distracciones sin fin`, p1_d:`Las notificaciones y las pestañas abiertas roban tu atención en cuanto te sientas a estudiar.`,
@@ -796,7 +802,7 @@
         q1:`"En la primera semana de uso vi que mi rendimiento al estudiar se duplicaba."`, q1_role:`Reseña de App Store`,
         q2:`"La app quedó muy bonita y práctica, y la mascota búho es adorable."`, q2_role:`Reseña de App Store`,
         q3:`"Ver cuánto has trabajado aumenta el rendimiento. Las frases de motivación también animan a seguir."`, q3_role:`Reseña de App Store`,
-        cta_title:`Convierte horas dispersas en sprints enfocados`, cta_sub:`Study Sprint Timer ya está en la App Store. Simple, sin conexión y hecho para ayudarte a concentrarte.`, cta_btn:`Descargar ahora`,
+        cta_title:`Convierte horas dispersas en sprints enfocados`, cta_sub:`Study Sprint Timer está en la App Store y en Google Play. Simple, sin conexión y hecho para ayudarte a concentrarte.`, cta_btn:`Descargar en la App Store`, cta_btn_play:`Descargar en Google Play`,
         ft_desc:`Enfoque, Pomodoro y rachas, un temporizador de estudio simple y sin conexión para el día a día.`, ft_badge:`Ya en la App Store`,
         ft_productH:`Producto`, ft_supportH:`Soporte`, ft_legalH:`Legal`,
         ft_features:`Funciones`, ft_how:`Cómo funciona`, ft_reviews:`Opiniones`, ft_help:`Centro de ayuda`, ft_contact:`Contáctanos`, ft_privacy:`Política de privacidad`, ft_terms:`Términos del servicio`,
@@ -834,7 +840,7 @@
         rs_label:`avis App Store`,
         nav_home:`Accueil`, nav_features:`Fonctionnalités`, nav_reviews:`Avis`, nav_support:`Support`, nav_help:`Aide`,
         hero_sub:`Vainquez la procrastination avec des sessions d'étude concentrées. Lancez un minuteur, bâtissez des séries quotidiennes et restez motivé, 100 % hors ligne, sans compte.`,
-        hero_cta1:`Télécharger sur l'App Store`, hero_cta2:`Voir les fonctionnalités`,
+        hero_cta1:`Télécharger sur l'App Store`, hero_cta_play:`Télécharger sur Google Play`, hero_cta2:`Voir les fonctionnalités`,
         p_eyebrow:`Le défi`, p_title:`Étudier sans structure, c'est difficile`,
         p_sub:`La concentration se perd vite et se reconstruit mal. La plupart des outils sont surchargés, uniquement en ligne ou tout simplement gênants.`,
         p1_t:`Distractions sans fin`, p1_d:`Notifications et onglets ouverts détournent votre attention dès que vous vous asseyez.`,
@@ -872,7 +878,7 @@
         q1:`« Dès la première semaine, j'ai vu mon rendement de travail doubler. »`, q1_role:`Avis App Store`,
         q2:`« L'appli est vraiment réussie et pratique, et la mascotte hibou est adorable. »`, q2_role:`Avis App Store`,
         q3:`« Voir combien vous avez travaillé augmente le rendement. Les phrases de motivation donnent envie de continuer. »`, q3_role:`Avis App Store`,
-        cta_title:`Transformez des heures éparpillées en sprints concentrés`, cta_sub:`Study Sprint Timer est maintenant sur l'App Store. Simple, hors ligne et conçu pour vous aider à vous concentrer.`, cta_btn:`Télécharger`,
+        cta_title:`Transformez des heures éparpillées en sprints concentrés`, cta_sub:`Study Sprint Timer est sur l'App Store et Google Play. Simple, hors ligne et conçu pour vous aider à vous concentrer.`, cta_btn:`Télécharger sur l'App Store`, cta_btn_play:`Télécharger sur Google Play`,
         ft_desc:`Concentration, Pomodoro & séries, un minuteur d'étude simple et hors ligne pour tous les jours.`, ft_badge:`Maintenant sur l'App Store`,
         ft_productH:`Produit`, ft_supportH:`Support`, ft_legalH:`Légal`,
         ft_features:`Fonctionnalités`, ft_how:`Comment ça marche`, ft_reviews:`Avis`, ft_help:`Centre d'aide`, ft_contact:`Nous contacter`, ft_privacy:`Politique de confidentialité`, ft_terms:`Conditions d'utilisation`,
@@ -910,7 +916,7 @@
         rs_label:`отзывов в App Store`,
         nav_home:`Главная`, nav_features:`Функции`, nav_reviews:`Отзывы`, nav_support:`Поддержка`, nav_help:`Помощь`,
         hero_sub:`Победите прокрастинацию с помощью сфокусированных учебных сессий. Ставьте таймер, набирайте ежедневные серии и оставайтесь мотивированными, полностью офлайн, без аккаунта.`,
-        hero_cta1:`Загрузить в App Store`, hero_cta2:`Смотреть функции`,
+        hero_cta1:`Загрузить в App Store`, hero_cta_play:`Загрузить в Google Play`, hero_cta2:`Смотреть функции`,
         p_eyebrow:`Проблема`, p_title:`Учиться без структуры тяжело`,
         p_sub:`Концентрацию легко потерять и трудно восстановить. Большинство инструментов перегружены, работают только онлайн или просто мешают.`,
         p1_t:`Бесконечные отвлечения`, p1_d:`Уведомления и открытые вкладки крадут внимание, как только вы садитесь за учёбу.`,
@@ -948,7 +954,7 @@
         q1:`«За первую неделю моя продуктивность выросла вдвое.»`, q1_role:`Отзыв в App Store`,
         q2:`«Приложение получилось по-настоящему красивым и удобным, а совёнок-маскот очень милый.»`, q2_role:`Отзыв в App Store`,
         q3:`«Видеть, сколько ты позанимался, повышает отдачу. Мотивирующие фразы тоже подталкивают продолжать.»`, q3_role:`Отзыв в App Store`,
-        cta_title:`Превратите разрозненные часы в сфокусированные спринты`, cta_sub:`Study Sprint Timer уже в App Store. Просто, офлайн и создано, чтобы помочь вам сосредоточиться.`, cta_btn:`Скачать`,
+        cta_title:`Превратите разрозненные часы в сфокусированные спринты`, cta_sub:`Study Sprint Timer уже в App Store и Google Play. Просто, офлайн и создано, чтобы помочь вам сосредоточиться.`, cta_btn:`Загрузить в App Store`, cta_btn_play:`Загрузить в Google Play`,
         ft_desc:`Фокус, Pomodoro и серии, простой офлайн-таймер для ежедневной учёбы.`, ft_badge:`Уже в App Store`,
         ft_productH:`Продукт`, ft_supportH:`Поддержка`, ft_legalH:`Правовое`,
         ft_features:`Функции`, ft_how:`Как это работает`, ft_reviews:`Отзывы`, ft_help:`Центр помощи`, ft_contact:`Связаться`, ft_privacy:`Политика конфиденциальности`, ft_terms:`Условия использования`,
