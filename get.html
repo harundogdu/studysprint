@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Get Study Sprint Timer</title>
+<meta name="robots" content="noindex" />
+<link rel="canonical" href="https://studysprinttimer.com/get.html" />
+<link rel="icon" type="image/png" href="./favicon.png" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Manrope',sans-serif;background:#0a171a;color:#f2fafa;min-height:100vh;
+    display:grid;place-items:center;text-align:center;padding:24px;}
+  h1{font-family:'Space Grotesk';font-size:1.6rem;margin-bottom:10px}
+  p{color:#9eb8ba;margin-bottom:26px;font-size:1rem}
+  .btn{display:inline-block;background:#40d9db;color:#062022;font-weight:700;padding:14px 28px;
+    border-radius:999px;text-decoration:none;margin:6px}
+  .btn.ghost{background:transparent;color:#40d9db;border:1.5px solid #40d9db}
+</style>
+<script>
+  // Kullanıcı-ajanına göre doğru mağazaya yönlendirir (kullanıcı kararı, 6 Eyl
+  // 2026): paylaşılan bir link Android'e gidince App Store'a düşüyordu. Masaüstü/
+  // tanınmayan tarayıcıda yönlendirme yok -- kullanıcı iki düğmeyi de görüp seçer.
+  (function () {
+    var ua = navigator.userAgent || '';
+    var appStore = 'https://apps.apple.com/app/id6788031531';
+    var playStore = 'https://play.google.com/store/apps/details?id=com.harundogdu.studysprinttimer';
+    if (/iPhone|iPad|iPod/i.test(ua)) {
+      window.location.replace(appStore);
+    } else if (/Android/i.test(ua)) {
+      window.location.replace(playStore);
+    }
+  })();
+</script>
+</head>
+<body>
+  <div>
+    <h1>Study Sprint Timer</h1>
+    <p>Opening the right store for your device&hellip;</p>
+    <a class="btn" href="https://apps.apple.com/app/id6788031531" target="_blank" rel="noopener">Download on the App Store</a>
+    <a class="btn ghost" href="https://play.google.com/store/apps/details?id=com.harundogdu.studysprinttimer" target="_blank" rel="noopener">Get it on Google Play</a>
+  </div>
+</body>
+</html>
