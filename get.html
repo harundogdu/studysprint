@@ -12,34 +12,29 @@
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Manrope',sans-serif;background:#0a171a;color:#f2fafa;min-height:100vh;
     display:grid;place-items:center;text-align:center;padding:24px;}
-  h1{font-family:'Space Grotesk';font-size:1.6rem;margin-bottom:10px}
-  p{color:#9eb8ba;margin-bottom:26px;font-size:1rem}
-  .btn{display:inline-block;background:#40d9db;color:#062022;font-weight:700;padding:14px 28px;
-    border-radius:999px;text-decoration:none;margin:6px}
-  .btn.ghost{background:transparent;color:#40d9db;border:1.5px solid #40d9db}
+  h1{font-family:'Space Grotesk';font-size:1.4rem;margin-bottom:8px}
+  p{color:#9eb8ba;font-size:0.95rem}
+  a{color:#40d9db;font-weight:700}
 </style>
 <script>
-  // Kullanıcı-ajanına göre doğru mağazaya yönlendirir (kullanıcı kararı, 6 Eyl
-  // 2026): paylaşılan bir link Android'e gidince App Store'a düşüyordu. Masaüstü/
-  // tanınmayan tarayıcıda yönlendirme yok -- kullanıcı iki düğmeyi de görüp seçer.
+  // Otomatik yönlendirme, SEÇİM YOK (kullanıcı kararı, 6 Eyl 2026): Android'i
+  // Play Store'a, geri kalan HER ŞEYİ (iPhone, iPad -- iPadOS Safari'nin
+  // varsayılan kullanıcı ajanı "Macintosh" yazdığı için "masaüstü" gibi
+  // görünür, ve gerçek masaüstü) App Store'a gönderir. İki düğmeli seçim
+  // ekranı kaldırıldı; birebir uygulamanın birincil platformu App Store.
   (function () {
     var ua = navigator.userAgent || '';
-    var appStore = 'https://apps.apple.com/app/id6788031531';
-    var playStore = 'https://play.google.com/store/apps/details?id=com.harundogdu.studysprinttimer';
-    if (/iPhone|iPad|iPod/i.test(ua)) {
-      window.location.replace(appStore);
-    } else if (/Android/i.test(ua)) {
-      window.location.replace(playStore);
-    }
+    var target = /Android/i.test(ua)
+      ? 'https://play.google.com/store/apps/details?id=com.harundogdu.studysprinttimer'
+      : 'https://apps.apple.com/app/id6788031531';
+    window.location.replace(target);
   })();
 </script>
 </head>
 <body>
   <div>
     <h1>Study Sprint Timer</h1>
-    <p>Opening the right store for your device&hellip;</p>
-    <a class="btn" href="https://apps.apple.com/app/id6788031531" target="_blank" rel="noopener">Download on the App Store</a>
-    <a class="btn ghost" href="https://play.google.com/store/apps/details?id=com.harundogdu.studysprinttimer" target="_blank" rel="noopener">Get it on Google Play</a>
+    <p>Redirecting&hellip; if nothing happens, <a href="https://apps.apple.com/app/id6788031531">open the App Store</a>.</p>
   </div>
 </body>
 </html>
