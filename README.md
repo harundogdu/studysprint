@@ -17,6 +17,8 @@ an offline-first Pomodoro study timer for iPhone, iPad and Apple Watch.
   theme (6 languages × light/dark × 12 screens). The page swaps them when the visitor
   changes language or theme, so a Turkish reader sees a Turkish phone.
 - `app-ads.txt` — AdMob authorized sellers
+- `.well-known/security.txt` — where to report a security issue (RFC 9116); `.nojekyll` keeps
+  GitHub Pages from dropping that dot-folder
 
 ## Features
 
