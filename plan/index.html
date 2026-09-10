@@ -713,12 +713,12 @@
             },
             {
               short: 'Tamamlama', sub: 'Kayıt, proje, sonraki adım', phase: 'Ödül anı',
-              title: 'Önce emek kayda girer, sonra kutlama gelir',
-              summary: 'Seans sonucu, proje katkısı ve ödül tek bir sırada gösterilir. Kullanıcı reklam veya paywall yüzünden sonucunu kaybetmez.',
-              user: ['Tamamlanan süre ve kategori', 'Köy projesindeki somut ilerleme', 'Yeni seans veya çıkış'],
-              system: ['Kaydı atomik yazar', 'eventId ile ödülü tekilleştirir', 'Plan ve kitaba geri alınabilir katkı ekler'],
-              guard: ['Oturum desteği en fazla +30, günlük destek +10 coin', 'Rewarded sonrası aynı geçişte interstitial veya paywall yok', 'Günlük rewarded toplamı en fazla 40 coin'],
-              outcome: 'Çalışma görünür bir sonuca dönüşür ve kullanıcı kontrolü elinde tutar.'
+              title: 'Sonuç üç adımda okunur: kayıt, karşılık, devam',
+              summary: 'Toplam süre ve çalışma bağlamı ilk ekrandadır. Proje ile ödül ikinci sırada, mola veya tekrar kararı son sıradadır. Ayrıntılar daha sonra takvimden de düzenlenebilir.',
+              user: ['54 dk odak + çalışma bağlamı', 'Tur çizelgesi ve Ayrıntı ekle', '5 dk mola / Aynı düzenle tekrar / Takvimde gör'],
+              system: ['Kaydı ekran açılmadan atomik yazar', 'eventId ile ödülü tekilleştirir', 'Taslağı otomatik kaydeder ve takvim kaydına bağlar'],
+              guard: ['Otomatik paywall yok', 'Interstitial yalnız sonuçtan ayrılırken sıklık uygunsa', 'Erken biten kayıtta sahte kutlama veya ödül yok'],
+              outcome: 'Kullanıcı çalışmasının sonucunu anlar, kaydını tamamlar ve ne yapacağına kendisi karar verir.'
             },
             {
               short: 'Köy projesi', sub: 'Emeğin kalıcı karşılığı', phase: '14+ döngü',
@@ -817,6 +817,24 @@
               outcome: 'Dönüşüm, genel bir özellik listesine değil kişisel sahnedeki farkı görmeye dayanır.'
             },
             {
+              short: 'Tamamlama', sub: 'Kutlama yığınından net sonuca', phase: 'Öncelik 1',
+              title: 'Tamamlama ekranı üç katmana iner',
+              summary: 'Bugünkü rozet, iki giriş alanı, rekor, istatistik, ödül, söz, iki çıkış ve zamanlanmış satış sırası sadeleşir. İlk ekranda yalnız sonuç ve bağlam vardır.',
+              user: ['Çok sayıda eşit ağırlıklı kart', 'Her oturumda büyük kutlama', '1,4 saniye sonra açılabilen paywall'],
+              system: ['Kayıt → karşılık → sonraki adım', 'Tur çizelgesi + tek Ayrıntı ekle alanı', 'Mola, aynı düzenle tekrar ve takvim bağlantısı'],
+              guard: ['Sonuç önceden kaydedilir', 'Taslak çıkışta kaybolmaz', 'Rewarded, interstitial ve paywall aynı geçişte birleşmez'],
+              outcome: 'Tamamlama ekranı bir reklam bekleme alanı değil, çalışmanın anlaşılır kapanışı olur.'
+            },
+            {
+              short: 'Çalışma Takvimi', sub: 'Seri aracından çalışma günlüğüne', phase: 'Öncelik 1',
+              title: 'Takvim geçmişten yeni çalışmaya götürür',
+              summary: 'Hafta görünümü varsayılan olur. Ay gerçek dakikayı gösterir; dondurma ve onarım ayrı işaretlenir. Gün ve oturum ayrıntısı tam sayfada açılır.',
+              user: ['Geçmişten önce gelen seri araçları', 'Yalnız çalışıldı işareti veren günler', 'Sığ gün detayı'],
+              system: ['Hafta / Ay / Yıl', 'Kategori ve çalışma biçimi filtreleri', 'Günlük oturum listesi + Aynı düzenle başlat'],
+              guard: ['Son 90 gün ve temel düzenleme ücretsiz', 'Geçmiş düzenleme ödülü değiştirmez', 'Özel not telemetriye gitmez'],
+              outcome: 'Kullanıcı geçmişine bakıp örüntüsünü anlar ve aynı çalışma düzenine tek dokunuşla döner.'
+            },
+            {
               short: 'İlerleme', sub: 'Sayı duvarından içgörüye', phase: 'Öncelik 3',
               title: 'İstatistik “sırada ne var?” sorusunu yanıtlar',
               summary: 'Kart tekrarları azalır. Haftalık tek içgörü, güvenilir grafik ve doğrulanabilir cihaz kaynağı öne çıkar.',
@@ -870,9 +888,9 @@
             {
               short: 'Faz 1', sub: 'Cihaz güvenliği', phase: 'İlk paket',
               title: 'Telefon, tablet ve saat açıkları kapanır',
-              summary: 'Mevcut akış küçük telefon, iPad, Android tablet, pencere değişimi ve Apple Watch birlikte kullanımında doğrulanır.',
-              user: ['Gerçek cihaz turları', 'Taşma ve erişim düzeltmeleri', 'Watch kullanım telemetrisi'],
-              system: ['Dönüşte durum korunur', 'Saat çift ödül üretmez', 'Android geniş ekran temeli + Mac uyumluluk kontrolü'],
+              summary: 'Mevcut akış küçük telefon, iPad, Android tablet, pencere değişimi ve Apple Watch birlikte kullanımında doğrulanır. Tamamlama kaydı satış yüzeyinden bağımsız hale gelir.',
+              user: ['Gerçek cihaz turları', 'Tamamlama durumlarının ayrı doğrulanması', 'Watch kullanım telemetrisi'],
+              system: ['Dönüşte durum korunur', 'Otomatik paywall kaldırılır ve sonuç önce kaydedilir', 'Saat çift ödül üretmez'],
               guard: ['Büyük navigasyon bu faza yüklenmez', 'Başkasının oturumu kesilmez', 'Build ve QA iki platformda yeşil'],
               outcome: 'Yeni görsel ve ekonomi katmanı güvenli mevcut ürüne eklenebilir.'
             },
@@ -897,9 +915,9 @@
             {
               short: 'Faz 4', sub: 'Ana bilgi mimarisi', phase: 'Kontrollü geçiş',
               title: 'Odak, Plan, Köy ve İlerleme kabuğu açılır',
-              summary: 'Mevcut yollar feature flag arkasında dört kalıcı alana taşınır. Tablet sidebar ve geniş ekran düzeni aynı kavramları kullanır.',
-              user: ['Dört sabit alan', 'Sade üst bar', 'Profil ve bildirim merkezi'],
-              system: ['Deep link ve tutorial taşınır', 'Sheet zincirleri azaltılır', 'Eski/yeni akış karşılaştırılır'],
+              summary: 'Mevcut yollar feature flag arkasında dört kalıcı alana taşınır. Tamamlama ile takvim arasında tekrar kullanılabilen bir çalışma döngüsü kurulur.',
+              user: ['Dört sabit alan', 'Üç katmanlı tamamlama', 'Hafta / Ay / Yıl çalışma takvimi'],
+              system: ['Gün ve oturum günlüğü', 'Aynı düzenle başlat', 'Deep link, tutorial ve eski/yeni akış karşılaştırması'],
               guard: ['Seans başlatma düşerse geri alınır', 'Erişim ve analitik kaybı kabul edilmez', 'iOS/Android aynı görevde'],
               outcome: 'Yeni özellikler ana ekranı kalabalıklaştırmadan büyüyebilecek bir ürün kabuğuna kavuşur.'
             },
@@ -1114,10 +1132,10 @@
   <div class="full-plan-layout">
     <aside class="full-plan-toc" aria-label="Tam plan bölüm listesi">
       <strong>Bölümler</strong>
-      <a href="#yonetici-ozeti">Yönetici özeti</a><a href="#1-urunun-yeni-merkezi">1. Ürünün yeni merkezi</a><a href="#2-degismeyecek-ilkeler">2. Değişmeyecek ilkeler</a><a href="#3-baykus-marka-kimligi">3. Baykuş marka kimliği</a><a href="#4-gunduz-gece-ve-hareket-sistemi">4. Gündüz, gece ve hareket sistemi</a><a href="#5-kisisel-widget">5. Kişisel widget</a><a href="#6-baykus-koyu-14-seviyeden-sonra">6. Baykuş Köyü: 14. seviyeden sonra</a><a href="#7-koy-projeleri-ve-etkinlikler">7. Köy projeleri ve etkinlikler</a><a href="#8-xp-ve-40-seviyeye-giden-yol">8. XP ve 40. seviyeye giden yol</a><a href="#9-odul-ekonomisi">9. Ödül ekonomisi</a><a href="#10-baslatma-modeli-kronometre-ve-kotuye-kullanim-korumasi">10. Başlatma modeli, kronometre ve kötüye kullanım koruması</a><a href="#11-premium-tasarimi">11. Premium tasarımı</a><a href="#12-reklam-politikasi">12. Reklam politikası</a><a href="#13-ilk-48-saat-ve-geri-donus">13. İlk 48 saat ve geri dönüş</a><a href="#14-organik-buyume">14. Organik büyüme</a><a href="#15-hesap-bulut-ve-sahsi-baykus">15. Hesap, bulut ve şahsi baykuş</a><a href="#16-odak-yuvasi-ve-birlikte-calisma">16. Odak Yuvası ve birlikte çalışma</a><a href="#17-koy-vitrini-ve-sosyal-sergileme">17. Köy Vitrini ve sosyal sergileme</a><a href="#18-mevcut-platformlarin-gercek-durumu">18. Mevcut platformların gerçek durumu</a><a href="#19-her-platformun-gorevi">19. Her platformun görevi</a><a href="#20-butun-sst-istemcilerinde-ortak-sync">20. Bütün SST istemcilerinde ortak sync</a><a href="#21-web-app-ve-masaustu-urun-kapsami">21. Web app ve masaüstü ürün kapsamı</a><a href="#22-ui-ux-tasarim-cizgisi-ve-ekran-donusumu">22. UI/UX tasarım çizgisi ve ekran dönüşümü</a><a href="#23-coklu-platformla-geliri-nasil-artiririz">23. Çoklu platformla geliri nasıl artırırız?</a><a href="#24-eksikler-ve-zorunlu-altyapilar">24. Eksikler ve zorunlu altyapılar</a><a href="#25-bildirim-ve-iletisim-sinirlari">25. Bildirim ve iletişim sınırları</a><a href="#26-guncellenmis-uygulama-sirasi">26. Güncellenmiş uygulama sırası</a><a href="#27-basari-olculeri">27. Başarı ölçüleri</a><a href="#28-ilk-yayimlanabilir-ticari-paket">28. İlk yayımlanabilir ticari paket</a><a href="#29-degerlendirilen-alternatifler-ve-nihai-karar">29. Değerlendirilen alternatifler ve nihai karar</a><a href="#30-henuz-canli-veriyle-dogrulanmasi-gerekenler">30. Henüz canlı veriyle doğrulanması gerekenler</a>
+      <a href="#yonetici-ozeti">Yönetici özeti</a><a href="#1-urunun-yeni-merkezi">1. Ürünün yeni merkezi</a><a href="#2-degismeyecek-ilkeler">2. Değişmeyecek ilkeler</a><a href="#3-baykus-marka-kimligi">3. Baykuş marka kimliği</a><a href="#4-gunduz-gece-ve-hareket-sistemi">4. Gündüz, gece ve hareket sistemi</a><a href="#5-kisisel-widget">5. Kişisel widget</a><a href="#6-baykus-koyu-14-seviyeden-sonra">6. Baykuş Köyü: 14. seviyeden sonra</a><a href="#7-koy-projeleri-ve-etkinlikler">7. Köy projeleri ve etkinlikler</a><a href="#8-xp-ve-40-seviyeye-giden-yol">8. XP ve 40. seviyeye giden yol</a><a href="#9-odul-ekonomisi">9. Ödül ekonomisi</a><a href="#10-baslatma-tamamlama-kronometre-ve-calisma-takvimi">10. Başlatma, tamamlama, kronometre ve çalışma takvimi</a><a href="#11-premium-tasarimi">11. Premium tasarımı</a><a href="#12-reklam-politikasi">12. Reklam politikası</a><a href="#13-ilk-48-saat-ve-geri-donus">13. İlk 48 saat ve geri dönüş</a><a href="#14-organik-buyume">14. Organik büyüme</a><a href="#15-hesap-bulut-ve-sahsi-baykus">15. Hesap, bulut ve şahsi baykuş</a><a href="#16-odak-yuvasi-ve-birlikte-calisma">16. Odak Yuvası ve birlikte çalışma</a><a href="#17-koy-vitrini-ve-sosyal-sergileme">17. Köy Vitrini ve sosyal sergileme</a><a href="#18-mevcut-platformlarin-gercek-durumu">18. Mevcut platformların gerçek durumu</a><a href="#19-her-platformun-gorevi">19. Her platformun görevi</a><a href="#20-butun-sst-istemcilerinde-ortak-sync">20. Bütün SST istemcilerinde ortak sync</a><a href="#21-web-app-ve-masaustu-urun-kapsami">21. Web app ve masaüstü ürün kapsamı</a><a href="#22-ui-ux-tasarim-cizgisi-ve-ekran-donusumu">22. UI/UX tasarım çizgisi ve ekran dönüşümü</a><a href="#23-coklu-platformla-geliri-nasil-artiririz">23. Çoklu platformla geliri nasıl artırırız?</a><a href="#24-eksikler-ve-zorunlu-altyapilar">24. Eksikler ve zorunlu altyapılar</a><a href="#25-bildirim-ve-iletisim-sinirlari">25. Bildirim ve iletişim sınırları</a><a href="#26-guncellenmis-uygulama-sirasi">26. Güncellenmiş uygulama sırası</a><a href="#27-basari-olculeri">27. Başarı ölçüleri</a><a href="#28-ilk-yayimlanabilir-ticari-paket">28. İlk yayımlanabilir ticari paket</a><a href="#29-degerlendirilen-alternatifler-ve-nihai-karar">29. Değerlendirilen alternatifler ve nihai karar</a><a href="#30-henuz-canli-veriyle-dogrulanmasi-gerekenler">30. Henüz canlı veriyle doğrulanması gerekenler</a>
     </aside>
     <article class="full-plan-article"><h1 id="studysprinttimer-ana-urun-plani">StudySprintTimer ana ürün planı</h1>
-<p>Son editoryal düzenleme: 10 Eylül 2026. Kapsam yalnız StudySprintTimer.</p>
+ <p>Son editoryal düzenleme: 11 Eylül 2026. Kapsam yalnız StudySprintTimer.</p>
 <p>Bu dosya Baykuş kimliği, gündüz ve gece deneyimi, UI/UX tasarım çizgisi, kişisel widget, 14. seviyeden sonraki köy, ekonomi, Premium, reklamlar, kullanıcıyı elde tutma, hile koruması, hesap, bulut eşitleme, şahsi baykuş ve birlikte çalışma kararlarını tek yerde toplar. Önceki ayrı çalışma belgeleri ayrıntı arşivi olarak kalır. Bir çelişki olduğunda bu dosyadaki karar geçerlidir.</p>
 <p>Buradaki içeriklerin çoğu ürün ve mimari önerisidir. Uygulamaya henüz eklenmiş veya mağazaya gönderilmiş sayılmaz. Değişmeyecek ilkeler bağlayıcı ürün sözleşmesidir. Sayısal ekonomi, reklam sıklığı ve kapasite değerleri canlı veriyle ayarlanacak başlangıç değerleridir. Web, Wear OS, native masaüstü ve açık sosyal keşif gibi başlıklar ise belirtilen başarı kapıları geçilirse değerlendirilecek sonraki yatırımlardır.</p>
 <h2 id="yonetici-ozeti">Yönetici özeti</h2>
@@ -1339,7 +1357,7 @@
 <p>Bu tempoda sıfır bakiyeyle başlayan kullanıcının küçük bir parçaya ulaşması ücretsiz modelde yaklaşık 4 ile 8 çalışma günü, tam giysiye 11 ile 20 gün, büyük koleksiyon parçasına 32 ile 55 gün sürer. Premium bu süreleri yaklaşık yarıya indirir fakat parçaları anında dağıtmaz.</p>
 <p>Bir köy bölümündeki bütün genel parçaları sıfır bakiyeyle toplamak, günde 100 uygun dakika çalışan ücretsiz kullanıcı için yaklaşık 45 ile 75 çalışma günü hedefler. Canlı gelir ve harcama dağılımı bu aralığın dışına çıkarsa yalnız yeni katalog fiyatı ayarlanır. Mevcut katalog ve kullanıcının daha önce gördüğü fiyatlar sonradan pahalılaştırılmaz. Coin vergisi, eşya bakım ücreti ve kullanılmadığında kayıp uygulanmaz.</p>
 <p>Eski kullanıcının biriktirdiği coin eritilmez. Bazı yeni eşyaları ilk gün alabilmesi emeğinin doğal karşılığıdır.</p>
-<h2 id="10-baslatma-modeli-kronometre-ve-kotuye-kullanim-korumasi">10. Başlatma modeli, kronometre ve kötüye kullanım koruması</h2>
+<h2 id="10-baslatma-tamamlama-kronometre-ve-calisma-takvimi">10. Başlatma, tamamlama, kronometre ve çalışma takvimi</h2>
 <p>Bugünkü iOS ve Android uygulamalarında yukarı sayan <code>stopwatch</code> motoru, çalışan seansı geri yükleme ve iki saatlik kullanım kontrolü zaten bulunuyor. Sorun motorun yokluğu değil; bu yeteneğin “Serbest” adıyla 20 dk, 40 dk ve Özel süreyle aynı seçenek sırasında gösterilmesi. Aynı satır bugün iki farklı kararı karıştırıyor: <strong>nasıl sayılacak</strong> ve <strong>ne kadar çalışılacak</strong>.</p>
 <p>Kullanıcıya görünen yeni adlar <strong>Geri Sayım</strong> ve <strong>Kronometre</strong> olur. “Serbest” yeni metinlerde kullanılmaz. Mevcut <code>.free</code> ve <code>STOPWATCH</code> kayıtları göç sırasında Kronometre olarak okunur; geçmiş oturum adı veya süresi değişmez.</p>
 <h3 id="baslatma-seceneklerinin-yeni-yapisi">Başlatma seçeneklerinin yeni yapısı</h3>
@@ -1435,15 +1453,45 @@
 </tr>
 </tbody></table></div>
 <p>Bu kayıt üç ayrı oturum değildir. Geçmiş, seri ve ekonomi 54 dakikalık tek oturumu işler; tur çizelgesi yalnız o sürenin nasıl kullanıldığını anlatır.</p>
-<h3 id="seans-sonu-ve-gecmis">Seans sonu ve geçmiş</h3>
-<p>Seans sonucunda toplam süre ilk sırada kalır. Altında tur çizelgesi açılır. Kullanıcı:</p>
+<h3 id="tamamlama-ekrani-kayit-karsilik-ve-sonraki-adim">Tamamlama ekranı: kayıt, karşılık ve sonraki adım</h3>
+<p>Bugünkü ekranda tamamlanma rozeti, kategori, başlangıç niyeti, sayfa veya soru girişi, oturum sonu notu, rekor, üç istatistik, XP ve coin, motivasyon sözü, iki çıkış ve zamanlanmış satış yüzeyi aynı sırada yer alıyor. Bu yüzden çalışmanın sonucu ikinci plana düşebiliyor. Yeni ekran üç soruyu sırayla yanıtlar:</p>
+<div class="table-scroll"><table><thead><tr><th>Katman</th><th>Kullanıcı ne görür?</th><th>Davranış</th></tr></thead><tbody>
+<tr><td>1. Kayıt</td><td>“54 dk odak”, Matematik, 21:10-22:04, Kronometre ve varsa tur çizelgesi</td><td>Sonuç cihazda zaten kaydedilmiştir. Sayfa, soru, çalışma biçimi ve not sonradan da düzenlenebilir.</td></tr>
+<tr><td>2. Karşılık</td><td>Günlük hedefteki değişim, proje katkısı, kazanılan XP ve coin, yalnız gerçekten oluştuysa seri veya rekor</td><td>Her değer önceki ve yeni haliyle gösterilir. Aynı ödül <code>completionEventId</code> ile bir kez işlenir.</td></tr>
+<tr><td>3. Sonraki adım</td><td>Bağlama göre “5 dk mola başlat”, “Aynı düzenle tekrar” veya “Ana sayfaya dön”</td><td>Birincil düğme yalnız bir tanedir. “Takvimde gör” ve paylaşım ikincil eylemdir.</td></tr>
+</tbody></table></div>
+<p>İlk ekrana toplam süre ve çalışma bağlamı gelir. Tur çizelgesi varsa ilk iki parça ve toplam görünür; devamı kullanıcı açınca gelir. Sayfa veya soru girişi ile kısa not tek bir “Ayrıntı ekle” alanında toplanır. Kullanıcı hiçbir alanı doldurmadan çıkabilir ve daha sonra takvimden geri dönebilir. Yazdığı taslak çıkış anında otomatik kaydedilir.</p>
+<p>Kutlama yapılan işle orantılıdır. Geçerli bir odak oturumu kısa başarı hareketi alır. Rekor veya seviye artışı varsa ikinci bir vurgu gelir. Erken bitirilen ya da ödül eşiğinin altında kalan kayıt nötr biçimde “7 dk kaydedildi” der; konfeti ve kazanılmamış ödül göstermez. Kronometre ekonomik tavanı geçtiyse gerçek süre ile ödüle giren süre aynı kartta açıkça ayrılır.</p>
+<p>Baykuş sonucu anlatır, ekranı ele geçirmez. Gündüz kalemi bırakabilir veya kitabı rafa koyabilir. Gece fincanını masaya bırakıp esneyebilir. Hareket bir kez oynar, sonraki eylemi geciktirmez. Reduce Motion açıkken aynı durum tek poz ve kısa renk geçişiyle gösterilir.</p>
+<p>Paywall tamamlama ekranı açıldıktan 1,4 saniye sonra kendiliğinden gelmez. Premium önerisi ancak kullanıcıya ait somut bir bağlama dayanır ve kullanıcı dokununca açılır. Örneğin dört farklı çalışma biçimi kaydetmiş bir kullanıcı “Haftalık çalışma dağılımını karşılaştır” önizlemesini görebilir. Interstitial da sonuç okunurken görünmez; yalnız kullanıcı sonuçtan ayrılmayı seçtikten sonra, sıklık kapısı uygunsa sonraki ekran geçişinde gösterilebilir. Rewarded “Oturum desteği” sonuç ve normal ödül görüldükten sonra ayrı, isteğe bağlı bir satırdır.</p>
+<h3 id="calisma-takvimi-gecmisten-yeniden-baslatma">Çalışma takvimi: geçmişten yeniden başlatma</h3>
+<p>Çalışma Takvimi'nin ana işi seri onarmak değil, kullanıcının ne zaman ve neye çalıştığını bulmasını sağlamaktır. Bugünkü uzun sırada seri özeti, ödül yolu, onarım, dondurma, ısı haritası ve ay takvimi geçmişten önce geliyor. Yeni yapı takvimi öne alır; seri araçları “Seriyi yönet” adlı ikincil sayfaya taşır.</p>
+<p>Takvim üç görünüm sunar:</p>
+<div class="table-scroll"><table><thead><tr><th>Görünüm</th><th>Ücretsiz kapsam</th><th>Gösterilen bilgi</th><th>Ana eylem</th></tr></thead><tbody>
+<tr><td>Hafta</td><td>İçinde bulunulan hafta ve yakın haftalar</td><td>Yedi günlük şerit, günlük dakika, haftalık hedef, ders ve çalışma biçimi dağılımı</td><td>Bir günü aç</td></tr>
+<tr><td>Ay</td><td>Son 90 gün</td><td>Dakikaya göre yoğunluk, gerçek çalışma, dondurulan veya onarılan gün için ayrı işaret, toplam süre</td><td>Filtrele veya güne git</td></tr>
+<tr><td>Yıl</td><td>Son 90 gün özet olarak; Premium'da 12 ay ve dönem karşılaştırması</td><td>Isı haritası, aktif gün ve düzen eğilimi</td><td>Dönemi incele</td></tr>
+</tbody></table></div>
+<p>Varsayılan görünüm “Bu hafta”dır. Üstte “4 gün · 3 sa 25 dk” gibi tek özet, altında yedi gün bulunur. Boş günler başarısızlık gibi çizilmez. Dondurulan veya coin ile onarılan gün gerçek çalışma rengi almaz; kar tanesi ya da onarım işaretiyle ayrı gösterilir. Böylece seri ile çalışılan dakika birbirine karışmaz.</p>
+<p>Kategori, çalışma biçimi, Geri Sayım/Kronometre ve kitap veya sınav bağı filtrelenebilir. Son kullanılan filtre cihazda hatırlanır, fakat paylaşım ve telemetriye özel ders adı ya da not gönderilmez. Filtre sonucu boşsa kullanıcıya “Bu aralıkta Test kaydı yok” denir ve filtreyi temizleme eylemi verilir.</p>
+<h3 id="gun-ve-oturum-ayrintisi">Gün ve oturum ayrıntısı</h3>
+<p>Bir güne dokununca orta boy geçici sheet yerine tam bir gün günlüğü açılır. Üstte o güne ait toplam süre ve oturum sayısı, altında zaman sırasıyla oturumlar yer alır. Bir oturum satırında süre, başlangıç-bitiş saati, kategori, çalışma biçimi, bağlı plan/kitap/sınav ve varsa sayfa veya soru adedi görünür. Tur kullanılan kayıtta küçük bir bölüm çubuğu Konu Anlatımı, Test ve Tekrar dağılımını gösterir.</p>
+<p>Oturuma dokununca tam ayrıntı açılır. Kullanıcı:</p>
 <ul>
 <li>Etiketsiz parçaya çalışma biçimi ekleyebilir.</li>
-<li>Bir etiketi düzeltebilir.</li>
-<li>Yanlış işareti silebilir; iki komşu süre kayıpsız birleşir.</li>
-<li>Turları tek çalışma özeti olarak paylaşabilir.</li>
+<li>Bir tur etiketini, kategori bağını, kitap veya sınavı, sayfa/soru adedini ve notu düzeltebilir.</li>
+<li>Yanlış işareti kaldırabilir; iki komşu süre kayıpsız birleşir.</li>
+<li>“Aynı düzenle başlat” ile aynı mod, süre, bağlam ve ambiyansı Odak ekranına taşıyabilir.</li>
+<li>Baykuş ve seçtiği istatistiklerle tek çalışma özeti paylaşabilir.</li>
 </ul>
-<p>Etiket veya işaret düzenlemek toplam çalışma süresini, XP&#39;yi, coin&#39;i, seriyi ya da proje katkısını yeniden hesaplamaz. İstatistiklerde önce toplam süre gösterilir. Yeterli kullanım oluşursa “Bu hafta 3 sa 10 dk test, 1 sa 40 dk konu anlatımı” gibi ikinci katman içgörüler sunulur. Bir veya iki turdan kesin verimlilik yorumu çıkarılmaz.</p>
+<p>Bu düzenlemeler toplam çalışma süresini, XP'yi, coin'i, seriyi, proje katkısını veya geçmiş bir görevi yeniden hesaplamaz. “Kayıttan kaldır” fiziksel silme yapmaz; tombstone yazar ve sekiz saniye geri alma verir. Kazanılmış ödül ekonomi defterinde kalır, aynı oturumu silip tekrar eşitlemek ikinci ödül üretmez. Tarih ve süre değişikliği ilk sürümde elle düzenlenemez; veri bozuksa ayrı destek ve kurtarma yolu kullanılır.</p>
+<h3 id="gece-yarisi-sync-ve-veri-modeli">Gece yarısı, sync ve veri modeli</h3>
+<p>Takvim yalnız <code>dayKey</code> içindeki toplama güvenmez. Bir oturum gece yarısını geçerse tek <code>sessionId</code> olarak kalır, fakat günlük toplam her güne düşen gerçek süreyi gösterir. İkinci günün günlüğünde satır “önceki günden devam” etiketiyle görünür; dokununca aynı oturum ayrıntısı açılır. Başlangıç saat dilimi ve mutlak zamanlar saklanır, cihazın saat dilimi sonradan değişti diye eski kayıt başka güne taşınmaz.</p>
+<p>Tamamlama ekranı ve takvim aynı <code>SessionData</code>, <code>SessionMarker</code> ve ekonomi defterini okur. Ayrı özet kopyaları tutulmaz. Not, tur etiketi veya kategori düzenlemesi yeni <code>revision</code> ile eşitlenir. İki cihaz aynı metni farklı düzenlerse birini sessizce ezmek yerine iki taslak korunur ve kullanıcı seçer. Temel geçmiş, son 90 gün, gün ayrıntısı, düzenleme ve cihazlar arası sync ücretsizdir. Premium tam yıl, özel dönem karşılaştırması, gelişmiş çalışma biçimi grafikleri ve CSV/PDF dışa aktarma sunar.</p>
+<p>Tamamlama ve takvim birbirine kapalı iki uç değildir:</p>
+<p><code>Tamamla -&gt; sonucu gör -&gt; ayrıntı ekle -&gt; mola / tekrar / takvimde gör</code></p>
+<p><code>Takvim -&gt; günü aç -&gt; oturumu incele -&gt; aynı düzenle başlat -&gt; yeni sonuç</code></p>
+<p>Yeterli kullanım oluşursa “Bu hafta 3 sa 10 dk test, 1 sa 40 dk konu anlatımı” gibi ikinci katman içgörüler sunulur. Bir veya iki turdan kesin verimlilik yorumu çıkarılmaz. Gece çalışan kullanıcıya saat üzerinden sağlık, uyku veya verim hükmü verilmez.</p>
 <h3 id="veri-ve-sync-sozlesmesi">Veri ve sync sözleşmesi</h3>
 <p>Her işaret oturumun içinde sürümlü bir kayıt olur:</p>
 <p><code>SessionMarker(id, sessionId, elapsedSeconds, activityType, label, createdAt, sourceDeviceId, revision, deletedAt)</code></p>
@@ -2006,7 +2054,8 @@
 <div class="table-scroll"><table><thead><tr><th>Mevcut alan</th><th>Bugünkü sorun</th><th>Nihai değişiklik</th><th>İlk pakette yapılacak</th></tr></thead><tbody>
 <tr><td>Ana ekran</td><td>Üstte çok sayıda etiketsiz hedef, büyük söz kartı, küçük Baykuş; mod ile süre aynı çip sırasında</td><td>“Odak” alanına dönüşür; Baykuş ve timer tek sahne, Geri Sayım/Kronometre üst seçim, geri sayım süreleri alt seçim, tek ana CTA</td><td>Üst araçları grupla, sözü küçült, Baykuş'u büyüt, mod ve süre kararlarını ayır, başlangıç özetini görünür yap</td></tr>
 <tr><td>Aktif seans</td><td>Kontroller ve çevresel özellikler aynı önem düzeyine çıkabiliyor; çalışma içindeki geçiş kaydedilemiyor</td><td>Tam ekran sakin odak; süre, duraklat/sürdür, İşaretle, bitir, kategori ve Baykuş durumu</td><td>Hareket tavanı, tur geri bildirimi, gece hali ve başka cihaz bildirimi için yer ayır</td></tr>
-<tr><td>Seans sonu</td><td>Ödül, reklam ve sonraki adımın sırası kolayca karışabilir</td><td>Önce kayıt ve sonuç, sonra proje ilerlemesi, sonra isteğe bağlı ödül; reklam ancak çıkıştan sonra</td><td>Ödül tekilleştirme, proje kartı ve net “Yeni seans” eylemi</td></tr>
+<tr><td>Seans sonu</td><td>Kayıt alanları, genel istatistik, ödül, söz, reklam ve satış aynı anda yarışıyor</td><td>Kayıt, karşılık ve sonraki adım sırası; bağlama göre tek ana CTA; tur çizelgesi ve sonradan düzenlenebilir ayrıntı</td><td>Otomatik paywall'u kaldır, ilk ekrana süre ve bağlamı al, “Ayrıntı ekle” ile alanları birleştir, mola/tekrar/takvim yollarını bağla</td></tr>
+<tr><td>Çalışma Takvimi</td><td>Seri onarımı ve dondurma geçmişin önüne geçiyor; ay hücresi yalnız çalışıldı bilgisini veriyor; gün detayı sığ bir sheet</td><td>Hafta varsayılanı, dakika yoğunluklu ay, erişilebilir yıl özeti, tam gün ve oturum günlüğü</td><td>Seri araçlarını “Seriyi yönet”e taşı, gün ayrıntısını derinleştir, filtre ve “Aynı düzenle başlat” ekle</td></tr>
 <tr><td>Bugünkü Plan</td><td>Form uzun, çok seçenek aynı anda, ayrı sheet</td><td>Ajanda gibi okunur liste; hızlı ekle; karta dokununca hazır Odak ekranı</td><td>Hazır kategori ızgarasını daralt, mevcut planları üstte tut, silmeyi ikincil yap</td></tr>
 <tr><td>Kitaplık</td><td>Devam et önerisi iyi; okuma, hedef, erteleme ve katalog tek uzun sayfada</td><td>“Plan” içinde devam kartı ve ayrı kitaplık bölümü</td><td>“Kaldığın yerden devam et”i koru; ikincil araçları açılır bölümlere taşı</td></tr>
 <tr><td>Baykuş Köyü</td><td>Ayrı renk sistemi, proje odağının zayıf olması, çok sayıda pill</td><td>Sahne ilk sırada; aktif proje sahnede görünür; düzenle, gardırop ve mağaza ikincil</td><td>Baykuş master'ı, ışık düzeni, tek proje ve ortak buton/token dili</td></tr>
@@ -2177,6 +2226,8 @@
 <li>“Serbest” kullanıcı adını Kronometreye taşı; mevcut <code>.free</code> / <code>STOPWATCH</code> kayıtlarını veri kaybetmeden oku</li>
 <li>iOS ve Android'de çalışan seansa İşaretle, sekiz saniyelik geri alma, 100 işaret tavanı ve seans sonu tur çizelgesi ekle</li>
 <li>İşaretleri çalışan seans snapshot'ına kat; uygulama kapanması, restore, hızlı çift dokunma ve manuel bitirme testlerini iki platformda yaz</li>
+<li>Tamamlama ekranındaki otomatik paywall'u kaldır; sonuç kaydını, ayrıntı taslağını ve ödülü kullanıcı başka bir eyleme dokunmadan kalıcılaştır</li>
+<li>Erken biten, ödül eşiğini aşan, rekor kıran ve Kronometre tavanına ulaşan sonuç durumlarını iki platformda ayrı doğrula</li>
 <li>Gerçek iPad doğrulamasından sonra Apple silicon'da iPad uygulaması dağıtımını fiyat ve pencere davranışıyla küçük uyumluluk denemesi olarak kontrol et</li>
 <li>Büyük bilgi mimarisi dönüşümünü bu faza yükleme</li>
 </ul>
@@ -2208,6 +2259,9 @@
 <li>Üst ikon kalabalığını profil ve bağlamsal eylemlere indir</li>
 <li>Ana ekranda Geri Sayım/Kronometre modunu süre seçiminden ayır; 20 dk, 40 dk ve Özel'i yalnız Geri Sayım altında göster</li>
 <li>Ana CTA'yı seçime göre adlandır, tek satırlık oturum özetini ve Son oturumu tekrarla yolunu ekle</li>
+<li>Tamamlama ekranını kayıt, karşılık ve sonraki adım sırasına geçir; bağlama göre mola, aynı düzenle tekrar ve takvimde gör yollarını ekle</li>
+<li>Çalışma Takvimi'ni hafta varsayılanı, dakika yoğunluklu ay ve gün/oturum günlüğüyle yeniden kur; seri onarımı, dondurma ve ödül yolunu “Seriyi yönet”e taşı</li>
+<li>Takvim filtrelerini, gece yarısını geçen oturum parçalarını ve “Aynı düzenle başlat” dönüşünü iki platformda aynı veri sözleşmesiyle uygula</li>
 <li>Mevcut sheet zincirlerini ölçerek ana alanlara dönüştür; kısa seçim sheet'lerini koru</li>
 <li>Tablet ve geniş Android penceresinde sidebar/navigation rail ile iki bölmeli Study Desk davranışını aç</li>
 <li>Eski ve yeni navigasyonu ayrı feature flag gruplarında karşılaştır</li>
@@ -2330,6 +2384,10 @@
 <li>Açılıştan başlatmaya kadar mod, süre ve bağlam seçiminde terk oranı</li>
 <li>İşaret kullanılan oturum oranı, oturum başına işaret dağılımı ve yanlış işaret geri alma oranı</li>
 <li>Çalışma biçimi etiketleme oranı; özel etiket metnini telemetriye göndermeden yalnız sabit tip dağılımı</li>
+<li>Tamamlama ekranında ayrıntı ekleme, mola başlatma, aynı düzenle tekrar ve takvimde gör seçimlerinin dağılımı</li>
+<li>Sonuç ekranından çıkış süresi, otomatik satış yüzeyi kaldırıldıktan sonraki terk oranı ve bir sonraki seansa dönüş</li>
+<li>Takvimde hafta/ay/yıl görünümü kullanımı, güne ve oturuma inme oranı, filtre temizleme ve geçmişten tekrar başlatma</li>
+<li>Dondurulmuş veya onarılmış günün gerçek çalışma günü sanılmasına ilişkin destek ve düzeltme vakaları</li>
 <li>Plan, Köy, Mağaza ve İlerleme alanına ilk başarılı erişim</li>
 <li>Ana ekrandaki yanlış dokunma, geri dönüş ve yarım kalan sheet oranı</li>
 <li>Eski ve dört alanlı yeni navigasyonda seans başlatma ve tamamlama farkı</li>
@@ -2424,6 +2482,8 @@
 <li>Mevcut iPad ve Android tablet düzenlerinde erişim, taşma, yön değişimi ve durum koruma düzeltmeleri</li>
 <li>Telefon ile Apple Watch arasında çift ödül riskinin kapatılması</li>
 <li>Geri Sayım/Kronometre ayrımı, ücretsiz Çalışma İşaretleri ve seans sonu tur çizelgesi</li>
+<li>Tamamlama ekranında süre ve bağlam önceliği, tek ana eylem, sonradan düzenlenebilir ayrıntı ve otomatik paywall'un kaldırılması</li>
+<li>Çalışma Takvimi'nde hafta özeti, dakika yoğunluklu ay, gerçek çalışma ile seri korumasının ayrılması ve derin gün günlüğü</li>
 <li>Reduce Motion, düşük güç, gece yarısı ve uzun Kronometre seansı doğrulaması</li>
 <li>Ekonomi, proje, Premium önizleme ve haftalık odak günü analitiği</li>
 </ul>
