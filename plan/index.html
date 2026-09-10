@@ -688,28 +688,28 @@
               short: 'Açılış', sub: 'Tek sıradaki adım', phase: 'Günlük dönüş',
               title: 'Uygulama tek bir sonraki adımla açılır',
               summary: 'Sayaç, plan ve Baykuş aynı sahnede buluşur. Kullanıcı menü aramadan son kullandığı düzene veya bugünkü planına devam eder.',
-              user: ['Sıradaki çalışma', 'Pomodoro / Serbest seçimi', 'Sakin Baykuş durumu'],
+              user: ['Sıradaki çalışma', 'Geri Sayım / Kronometre seçimi', 'Sakin Baykuş durumu'],
               system: ['Son kullanılan preset ve planı hazırlar', 'Gündüz/gece ışığını uygular', 'Başka cihazdaki aktif seansı gösterir'],
               guard: ['Paywall açılışı kesmez', 'Hesap zorunlu değildir', 'Bildirim ve reklam üst üste gelmez'],
               outcome: 'Kullanıcı bir bakışta ne yapacağını bilir ve tek dokunuşla odaklanmaya geçer.'
             },
             {
-              short: 'Odak seçimi', sub: 'Süre, Serbest, kategori', phase: 'Odak',
-              title: 'Pomodoro ve Serbest eşit görünür',
-              summary: 'Serbest sayaç küçük bir seçenek içinde saklanmaz. Süre, kategori ve ses kısa seçimlerdir; 10 dakikadan kısa kullanım kayıt olur ama ekonomi üretmez.',
-              user: ['20 dk, 40 dk, Özel ve Serbest', 'Plan veya kitaptan hazır kategori', 'Son kullanılan ses ve mola tercihi'],
-              system: ['Seçimi yerelde kaydeder', 'Plan/kitap bağını seansa ekler', 'Seans kimliğini daha başlamadan üretir'],
-              guard: ['Ödül uygunluğu en az 10 dakika ister', 'Serbest ödülü zaman tavanına bağlıdır', 'Geçmiş silinmez'],
-              outcome: 'Kullanıcı kendi çalışma biçimini bulur; ürün hangi emeğin ödüle uygun olduğunu bilir.'
+              short: 'Odak seçimi', sub: 'Mod, süre, bağlam', phase: 'Odak',
+              title: 'Mod, süre ve çalışma bağlamı ayrı seçilir',
+              summary: 'Geri Sayım ile Kronometre iki ana moddur. 20 dk, 40 dk ve Özel yalnız Geri Sayım altında görünür; kategori ve çalışma biçimi isteğe bağlı kalır.',
+              user: ['Geri Sayım veya Kronometre', '20 dk, 40 dk ya da Özel süre', 'Ders, Test/Konu/Tekrar ve son ortam'],
+              system: ['Son seçimi ve oturum özetini hazırlar', 'Plan/kitap bağını seansa ekler', 'Seans kimliğini başlamadan üretir'],
+              guard: ['Ödül uygunluğu en az 10 dakika ister', 'Kronometre ödülü zaman tavanına bağlıdır', 'Bağlam seçmeden de başlanabilir'],
+              outcome: 'Kullanıcı neyi, hangi sayaçla ve hangi bağlamda başlattığını tek bakışta bilir.'
             },
             {
               short: 'Aktif seans', sub: 'Sessiz çalışma sahnesi', phase: 'Odak',
               title: 'Çalışırken arayüz geri çekilir',
-              summary: 'Aktif seans ekranında yalnız süre, duraklatma, bitirme ve gerekli bağlam kalır. Baykuş küçük çevresel tepkiler verir.',
-              user: ['Büyük ve güvenilir süre', 'Duraklat / Bitir', 'Geceyse kahve, loş ışık ve sakin hareket'],
-              system: ['Timestamp tabanlı süre tutar', 'Saat/telefon controller rolünü korur', 'Reduce Motion ve düşük güç tercihine uyar'],
-              guard: ['Reklam göstermez', 'İki cihazdan çift ödül üretmez', 'Ekranı açık bırakmak sınırsız XP vermez'],
-              outcome: 'Kullanıcı kesintisiz çalışır; teknik sistem seansı dürüst ve kurtarılabilir tutar.'
+              summary: 'Aktif seans ekranında süre, duraklatma, İşaretle, bitirme ve gerekli bağlam kalır. İşaretle, timerı durdurmadan konu, test veya tekrar geçişini tur gibi kaydeder.',
+              user: ['Büyük ve güvenilir süre', 'Duraklat / İşaretle / Bitir', 'Son turun süresi ve isteğe bağlı etiketi'],
+              system: ['Monotonik süreye Çalışma İşareti ekler', 'Aktif seansla birlikte işaretleri kurtarır', 'Saat/telefon controller rolünü korur'],
+              guard: ['İşaret XP veya coin üretmez', 'Tur sayısı uygun dakikayı çoğaltmaz', 'Ekranı açık bırakmak sınırsız XP vermez'],
+              outcome: 'Kullanıcı akışını bozmadan çalışmasının bölümlerini kaydeder; toplam süre tek oturum olarak kalır.'
             },
             {
               short: 'Tamamlama', sub: 'Kayıt, proje, sonraki adım', phase: 'Ödül anı',
@@ -776,7 +776,7 @@
               title: 'Ana ekran “Odak” alanına dönüşür',
               summary: 'Timer ve başlatma eylemi güçlü kalır. Üst ikon sırası sadeleşir; günün sözü küçülür; yaklaşık 15 düz Canvas katmanından oluşan Baykuş daha okunur bir kahramana dönüşür.',
               user: ['Yedi üst hedef', 'Büyük söz kartı', 'Timer altında küçük ve düz Baykuş'],
-              system: ['Profil + bildirim + bağlamsal eylem', 'Pomodoro / Serbest belirgin seçici', 'Ortak OwlRenderSpec ile timer ve Baykuş tek sahne'],
+              system: ['Profil + bildirim + bağlamsal eylem', 'Geri Sayım / Kronometre belirgin seçici', 'Ortak OwlRenderSpec ile timer ve Baykuş tek sahne'],
               guard: ['Mevcut sheet yolları ilk pakette korunur', 'Deep link ve tutorial regresyonu ölçülür', 'Başlatma oranı düşmemeli'],
               outcome: 'Kullanıcı daha az karar verir; ürünün karakteri ana değerle aynı anda görünür.'
             },
@@ -1114,7 +1114,7 @@
   <div class="full-plan-layout">
     <aside class="full-plan-toc" aria-label="Tam plan bölüm listesi">
       <strong>Bölümler</strong>
-      <a href="#yonetici-ozeti">Yönetici özeti</a><a href="#1-urunun-yeni-merkezi">1. Ürünün yeni merkezi</a><a href="#2-degismeyecek-ilkeler">2. Değişmeyecek ilkeler</a><a href="#3-baykus-marka-kimligi">3. Baykuş marka kimliği</a><a href="#4-gunduz-gece-ve-hareket-sistemi">4. Gündüz, gece ve hareket sistemi</a><a href="#5-kisisel-widget">5. Kişisel widget</a><a href="#6-baykus-koyu-14-seviyeden-sonra">6. Baykuş Köyü: 14. seviyeden sonra</a><a href="#7-koy-projeleri-ve-etkinlikler">7. Köy projeleri ve etkinlikler</a><a href="#8-xp-ve-40-seviyeye-giden-yol">8. XP ve 40. seviyeye giden yol</a><a href="#9-odul-ekonomisi">9. Ödül ekonomisi</a><a href="#10-serbest-sayac-ve-kotuye-kullanim-korumasi">10. Serbest sayaç ve kötüye kullanım koruması</a><a href="#11-premium-tasarimi">11. Premium tasarımı</a><a href="#12-reklam-politikasi">12. Reklam politikası</a><a href="#13-ilk-48-saat-ve-geri-donus">13. İlk 48 saat ve geri dönüş</a><a href="#14-organik-buyume">14. Organik büyüme</a><a href="#15-hesap-bulut-ve-sahsi-baykus">15. Hesap, bulut ve şahsi baykuş</a><a href="#16-odak-yuvasi-ve-birlikte-calisma">16. Odak Yuvası ve birlikte çalışma</a><a href="#17-koy-vitrini-ve-sosyal-sergileme">17. Köy Vitrini ve sosyal sergileme</a><a href="#18-mevcut-platformlarin-gercek-durumu">18. Mevcut platformların gerçek durumu</a><a href="#19-her-platformun-gorevi">19. Her platformun görevi</a><a href="#20-butun-sst-istemcilerinde-ortak-sync">20. Bütün SST istemcilerinde ortak sync</a><a href="#21-web-app-ve-masaustu-urun-kapsami">21. Web app ve masaüstü ürün kapsamı</a><a href="#22-ui-ux-tasarim-cizgisi-ve-ekran-donusumu">22. UI/UX tasarım çizgisi ve ekran dönüşümü</a><a href="#23-coklu-platformla-geliri-nasil-artiririz">23. Çoklu platformla geliri nasıl artırırız?</a><a href="#24-eksikler-ve-zorunlu-altyapilar">24. Eksikler ve zorunlu altyapılar</a><a href="#25-bildirim-ve-iletisim-sinirlari">25. Bildirim ve iletişim sınırları</a><a href="#26-guncellenmis-uygulama-sirasi">26. Güncellenmiş uygulama sırası</a><a href="#27-basari-olculeri">27. Başarı ölçüleri</a><a href="#28-ilk-yayimlanabilir-ticari-paket">28. İlk yayımlanabilir ticari paket</a><a href="#29-degerlendirilen-alternatifler-ve-nihai-karar">29. Değerlendirilen alternatifler ve nihai karar</a><a href="#30-henuz-canli-veriyle-dogrulanmasi-gerekenler">30. Henüz canlı veriyle doğrulanması gerekenler</a>
+      <a href="#yonetici-ozeti">Yönetici özeti</a><a href="#1-urunun-yeni-merkezi">1. Ürünün yeni merkezi</a><a href="#2-degismeyecek-ilkeler">2. Değişmeyecek ilkeler</a><a href="#3-baykus-marka-kimligi">3. Baykuş marka kimliği</a><a href="#4-gunduz-gece-ve-hareket-sistemi">4. Gündüz, gece ve hareket sistemi</a><a href="#5-kisisel-widget">5. Kişisel widget</a><a href="#6-baykus-koyu-14-seviyeden-sonra">6. Baykuş Köyü: 14. seviyeden sonra</a><a href="#7-koy-projeleri-ve-etkinlikler">7. Köy projeleri ve etkinlikler</a><a href="#8-xp-ve-40-seviyeye-giden-yol">8. XP ve 40. seviyeye giden yol</a><a href="#9-odul-ekonomisi">9. Ödül ekonomisi</a><a href="#10-baslatma-modeli-kronometre-ve-kotuye-kullanim-korumasi">10. Başlatma modeli, kronometre ve kötüye kullanım koruması</a><a href="#11-premium-tasarimi">11. Premium tasarımı</a><a href="#12-reklam-politikasi">12. Reklam politikası</a><a href="#13-ilk-48-saat-ve-geri-donus">13. İlk 48 saat ve geri dönüş</a><a href="#14-organik-buyume">14. Organik büyüme</a><a href="#15-hesap-bulut-ve-sahsi-baykus">15. Hesap, bulut ve şahsi baykuş</a><a href="#16-odak-yuvasi-ve-birlikte-calisma">16. Odak Yuvası ve birlikte çalışma</a><a href="#17-koy-vitrini-ve-sosyal-sergileme">17. Köy Vitrini ve sosyal sergileme</a><a href="#18-mevcut-platformlarin-gercek-durumu">18. Mevcut platformların gerçek durumu</a><a href="#19-her-platformun-gorevi">19. Her platformun görevi</a><a href="#20-butun-sst-istemcilerinde-ortak-sync">20. Bütün SST istemcilerinde ortak sync</a><a href="#21-web-app-ve-masaustu-urun-kapsami">21. Web app ve masaüstü ürün kapsamı</a><a href="#22-ui-ux-tasarim-cizgisi-ve-ekran-donusumu">22. UI/UX tasarım çizgisi ve ekran dönüşümü</a><a href="#23-coklu-platformla-geliri-nasil-artiririz">23. Çoklu platformla geliri nasıl artırırız?</a><a href="#24-eksikler-ve-zorunlu-altyapilar">24. Eksikler ve zorunlu altyapılar</a><a href="#25-bildirim-ve-iletisim-sinirlari">25. Bildirim ve iletişim sınırları</a><a href="#26-guncellenmis-uygulama-sirasi">26. Güncellenmiş uygulama sırası</a><a href="#27-basari-olculeri">27. Başarı ölçüleri</a><a href="#28-ilk-yayimlanabilir-ticari-paket">28. İlk yayımlanabilir ticari paket</a><a href="#29-degerlendirilen-alternatifler-ve-nihai-karar">29. Değerlendirilen alternatifler ve nihai karar</a><a href="#30-henuz-canli-veriyle-dogrulanmasi-gerekenler">30. Henüz canlı veriyle doğrulanması gerekenler</a>
     </aside>
     <article class="full-plan-article"><h1 id="studysprinttimer-ana-urun-plani">StudySprintTimer ana ürün planı</h1>
 <p>Son editoryal düzenleme: 10 Eylül 2026. Kapsam yalnız StudySprintTimer.</p>
@@ -1339,29 +1339,152 @@
 <p>Bu tempoda sıfır bakiyeyle başlayan kullanıcının küçük bir parçaya ulaşması ücretsiz modelde yaklaşık 4 ile 8 çalışma günü, tam giysiye 11 ile 20 gün, büyük koleksiyon parçasına 32 ile 55 gün sürer. Premium bu süreleri yaklaşık yarıya indirir fakat parçaları anında dağıtmaz.</p>
 <p>Bir köy bölümündeki bütün genel parçaları sıfır bakiyeyle toplamak, günde 100 uygun dakika çalışan ücretsiz kullanıcı için yaklaşık 45 ile 75 çalışma günü hedefler. Canlı gelir ve harcama dağılımı bu aralığın dışına çıkarsa yalnız yeni katalog fiyatı ayarlanır. Mevcut katalog ve kullanıcının daha önce gördüğü fiyatlar sonradan pahalılaştırılmaz. Coin vergisi, eşya bakım ücreti ve kullanılmadığında kayıp uygulanmaz.</p>
 <p>Eski kullanıcının biriktirdiği coin eritilmez. Bazı yeni eşyaları ilk gün alabilmesi emeğinin doğal karşılığıdır.</p>
-<h2 id="10-serbest-sayac-ve-kotuye-kullanim-korumasi">10. Serbest sayaç ve kötüye kullanım koruması</h2>
+<h2 id="10-baslatma-modeli-kronometre-ve-kotuye-kullanim-korumasi">10. Başlatma modeli, kronometre ve kötüye kullanım koruması</h2>
+<p>Bugünkü iOS ve Android uygulamalarında yukarı sayan <code>stopwatch</code> motoru, çalışan seansı geri yükleme ve iki saatlik kullanım kontrolü zaten bulunuyor. Sorun motorun yokluğu değil; bu yeteneğin “Serbest” adıyla 20 dk, 40 dk ve Özel süreyle aynı seçenek sırasında gösterilmesi. Aynı satır bugün iki farklı kararı karıştırıyor: <strong>nasıl sayılacak</strong> ve <strong>ne kadar çalışılacak</strong>.</p>
+<p>Kullanıcıya görünen yeni adlar <strong>Geri Sayım</strong> ve <strong>Kronometre</strong> olur. “Serbest” yeni metinlerde kullanılmaz. Mevcut <code>.free</code> ve <code>STOPWATCH</code> kayıtları göç sırasında Kronometre olarak okunur; geçmiş oturum adı veya süresi değişmez.</p>
+<h3 id="baslatma-seceneklerinin-yeni-yapisi">Başlatma seçeneklerinin yeni yapısı</h3>
+<p>Başlatma üç ayrı kararı sırayla ve gerektiği kadar gösterir:</p>
+<ol>
+<li><strong>Mod:</strong> Geri Sayım veya Kronometre</li>
+<li><strong>Çalışma bağlamı:</strong> ders/kategori, plan, kitap veya sınav; hepsi isteğe bağlı</li>
+<li><strong>Ortam:</strong> odak sesi, mola tercihi ve Odak Kalkanı</li>
+</ol>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Başlatma yolu</th>
+<th>Davranış</th>
+<th>Kullanım amacı</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Geri Sayım · 20 dk</td>
+<td>20 dakikadan geriye sayar</td>
+<td>Kısa odak</td>
+</tr>
+<tr>
+<td>Geri Sayım · 40 dk</td>
+<td>40 dakikadan geriye sayar</td>
+<td>Derin çalışma</td>
+</tr>
+<tr>
+<td>Geri Sayım · Özel</td>
+<td>Kullanıcının seçtiği ve son kullanılan süreyi hatırlar</td>
+<td>Kişisel çalışma düzeni</td>
+</tr>
+<tr>
+<td>Kronometre</td>
+<td><code>00:00</code> değerinden yukarı sayar, kullanıcı bitirir</td>
+<td>Süresi baştan belli olmayan çalışma</td>
+</tr>
+<tr>
+<td>Sıradakini başlat</td>
+<td>Plan, kitap veya sınav kartındaki bağlamı hazır getirir</td>
+<td>Günlük plana hızlı geçiş</td>
+</tr>
+<tr>
+<td>Son oturumu tekrarla</td>
+<td>Mod, süre ve bağlamı tek dokunuşla geri getirir</td>
+<td>Tekrarlanan rutin</td>
+</tr>
+</tbody></table></div>
+<p>Ana ekranda ilk katman <strong>Geri Sayım / Kronometre</strong> seçimidir. Geri Sayım seçilince 20 dk, 40 dk ve Özel görünür. Kronometre seçilince süre çipleri kaybolur; yerlerine “00:00&#39;dan başlar, sen bitirirsin” açıklaması ile son kullanılan çalışma bağlamı gelir. Böylece Kronometre küçük bir dördüncü çip gibi davranmaz.</p>
+<p>Ana düğme seçimi açıkça söyler: <strong>20 dk başlat</strong>, <strong>40 dk başlat</strong>, <strong>Özel süreyi başlat</strong> veya <strong>Kronometreyi başlat</strong>. Düğmenin hemen üstünde tek satırlık özet bulunur: örneğin “Matematik · Test · Yağmur sesi”. Özete dokunmak Oturumu Ayarla yüzeyini açar.</p>
+<p>İlk kullanımda çalışma bağlamı sorulabilir fakat zorunlu değildir. Kullanıcı “Şimdilik seçme” ile hemen başlar. Sonraki açılışlarda geçerli son seçim hazırlanır; ana düğme gereksiz bir seçim sheet&#39;i açmadan başlatır. Plan, kitap veya sınav kartından gelen bağlam sessizce ezilmez ve başlangıç özetinde görünür.</p>
+<p>“Konu” ile “çalışma biçimi” aynı alan değildir. Matematik ders/kategori olabilir; Test, Konu Anlatımı, Tekrar, Deneme ve Okuma ise çalışma biçimidir. Bu ayrım, aynı kronometre içinde farklı çalışma parçalarını anlamlı göstermeyi sağlar. Kullanıcı serbest metin yazmak zorunda kalmaz; isterse oturum notu ekleyebilir.</p>
+<h3 id="tur-mantigi-calisma-isaretleri">Tur mantığı: Çalışma İşaretleri</h3>
+<p>Kronometrede ve geri sayımda çalışan seansı durdurmadan <strong>İşaretle</strong> eylemi bulunur. Bu eylem klasik kronometredeki tur düğmesi gibi o anın geçen süresini kaydeder. Özellik yalnız Kronometreye bağlanmaz; kullanıcı 40 dakikalık geri sayımda önce konu anlatımı, sonra test çözümü yaptıysa aynı ayrımı kullanabilir.</p>
+<ul>
+<li>Dokunma anında monotonik geçen süre kaydedilir; timer durmaz ve ağ yanıtı beklenmez.</li>
+<li>Kısa haptic ve “1. tur · 12:48” geri bildirimi gelir.</li>
+<li>Sekiz saniyelik <strong>Geri al</strong> seçeneği yanlış dokunmayı düzeltir.</li>
+<li>İsterse kullanıcı az önce biten parçayı Test, Konu Anlatımı, Tekrar, Deneme, Okuma veya özel kısa etiketle tanımlar.</li>
+<li>Etiket seçimi timer&#39;ın üstüne modal olarak kapanmaz. Kullanıcı etiketi seans sonunda da ekleyebilir.</li>
+<li>Duraklatmak kendiliğinden tur oluşturmaz. Kullanıcı yalnız anlamlı geçişleri işaretler.</li>
+<li>Geri sayım sıfıra geldiğinde, Kronometre ise <strong>Bitir</strong> denildiğinde son açık parça otomatik kapanır.</li>
+</ul>
+<p>Aktif seans ekranında ana öncelik yine süredir. Kontrol sırası <strong>Duraklat / Sürdür</strong>, <strong>İşaretle</strong>, <strong>Bitir</strong> olur. Son işaret küçük bir satırda gösterilir; bütün tur listesi ancak kullanıcı açarsa görünür. Baykuş her işarette büyük kutlama yapmaz. Kısa bakış, kalem hareketi veya küçük masa tepkisi yeterlidir; çalışma bölünmez.</p>
+<p>Örnek bir 54 dakikalık Kronometre kaydı:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Parça</th>
+<th align="right">Süre</th>
+<th>Etiket</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="right">18:20</td>
+<td>Konu Anlatımı</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="right">24:10</td>
+<td>Test</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="right">11:30</td>
+<td>Yanlışlara Dönüş</td>
+</tr>
+<tr>
+<td>Toplam</td>
+<td align="right">54:00</td>
+<td>Matematik</td>
+</tr>
+</tbody></table></div>
+<p>Bu kayıt üç ayrı oturum değildir. Geçmiş, seri ve ekonomi 54 dakikalık tek oturumu işler; tur çizelgesi yalnız o sürenin nasıl kullanıldığını anlatır.</p>
+<h3 id="seans-sonu-ve-gecmis">Seans sonu ve geçmiş</h3>
+<p>Seans sonucunda toplam süre ilk sırada kalır. Altında tur çizelgesi açılır. Kullanıcı:</p>
+<ul>
+<li>Etiketsiz parçaya çalışma biçimi ekleyebilir.</li>
+<li>Bir etiketi düzeltebilir.</li>
+<li>Yanlış işareti silebilir; iki komşu süre kayıpsız birleşir.</li>
+<li>Turları tek çalışma özeti olarak paylaşabilir.</li>
+</ul>
+<p>Etiket veya işaret düzenlemek toplam çalışma süresini, XP&#39;yi, coin&#39;i, seriyi ya da proje katkısını yeniden hesaplamaz. İstatistiklerde önce toplam süre gösterilir. Yeterli kullanım oluşursa “Bu hafta 3 sa 10 dk test, 1 sa 40 dk konu anlatımı” gibi ikinci katman içgörüler sunulur. Bir veya iki turdan kesin verimlilik yorumu çıkarılmaz.</p>
+<h3 id="veri-ve-sync-sozlesmesi">Veri ve sync sözleşmesi</h3>
+<p>Her işaret oturumun içinde sürümlü bir kayıt olur:</p>
+<p><code>SessionMarker(id, sessionId, elapsedSeconds, activityType, label, createdAt, sourceDeviceId, revision, deletedAt)</code></p>
+<p><code>elapsedSeconds</code> cihaz duvar saatinden değil, timer motorunun güvenilir geçen süresinden gelir. Aktif seans snapshot&#39;ı marker listesini de saklar; uygulama kapanıp açıldığında tur çizelgesi kaybolmaz. Silme fiziksel satır yok etme yerine <code>deletedAt</code> tombstone&#39;u üretir; çevrimdışı iki cihaz sonradan birleştiğinde silinen işaret geri gelmez.</p>
+<p>Tek aktif seans kuralı burada da geçerlidir. Yalnız <code>controllerDeviceId</code> yeni işaret yazabilir. Telefon, tablet, web ve saat pasif aynaysa turu gösterir; kullanıcı kontrolü o cihaza aldıktan sonra İşaretle etkinleşir. Aynı <code>markerId</code> tekrar gelirse ikinci kayıt üretilmez.</p>
+<p>Serbest metin etiketleri sosyal profile, vitrine veya telemetriye gönderilmez. Ürün ölçümü yalnız sabit çalışma biçimi kimliğini ve tur sayısını alır. Kullanıcının ders adı, kitap adı ve özel notu analitik olayı olmaz.</p>
+<h3 id="ekonomi-ve-kotuye-kullanim-sinirlari">Ekonomi ve kötüye kullanım sınırları</h3>
 <p>Gerçek çalışma kaydıyla ekonomik ödül birbirinden ayrılır. Üç süre tutulur:</p>
 <ul>
 <li><code>elapsedMinutes</code>: kullanıcının gerçek kayıt süresi</li>
 <li><code>rewardEligibleMinutes</code>: XP, coin, görev ve proje için kabul edilen süre</li>
 <li><code>competitiveMinutes</code>: gelecekteki dış sıralama ve ortak rekabet için güvenilir süre</li>
 </ul>
-<p>Kullanıcı dört saat çalıştıysa geçmişinde dört saat görünür. Fakat tek serbest seans ödülü en fazla 120 uygun dakikadan hesaplanır. Yuvarlanan 24 saatte toplam ödüle uygun süre için 480 dakika üst sınırı uygulanır. Normal kullanıcı verisi silinmez; yalnız sınırsız ekonomi üretimi engellenir.</p>
-<p>Uzun serbest çalışmada iki saat civarında sakin bir kontrol gösterilir:</p>
+<p>Kullanıcı dört saat çalıştıysa geçmişinde dört saat görünür. Fakat tek Kronometre seansı ödülü en fazla 120 uygun dakikadan hesaplanır. Yuvarlanan 24 saatte toplam ödüle uygun süre için 480 dakika üst sınırı uygulanır. Normal kullanıcı verisi silinmez; yalnız sınırsız ekonomi üretimi engellenir.</p>
+<p>İşaret koymak coin, XP, seri, görev veya proje bonusu vermez. Oturumu turlara bölmek 10 dakikalık uygunluk eşiğini yeniden başlatmaz, iki saatlik kontrolü ertelemez ve günlük tavanı çoğaltmaz. Ödül bütün oturum için bir kez, tek <code>completionEventId</code> üzerinden hesaplanır. Turların uygun dakika toplamı hiçbir zaman oturumun uygun dakikasını aşamaz.</p>
+<p>Yanlışlık ve veri şişmesini önlemek için iki saniye içindeki aynı cihaz işaretleri tek dokunuş kabul edilir. Bir oturumda en fazla 100 işaret saklanır; sınır dolunca timer ve gerçek süre devam eder, yalnız yeni işaret düğmesi açıklamayla pasifleşir. Bu sınır çalışma davranışını cezalandırmak için değil, hatalı otomasyonun cihazı ve sync kuyruğunu doldurmasını önlemek içindir.</p>
+<p>Uzun Kronometre kullanımında iki saat civarında sakin bir kontrol gösterilir:</p>
 <ul>
 <li>Devam et</li>
 <li>Bitir ve kaydet</li>
 </ul>
-<p>Yanıt gelmezse gerçek sayaç geçmiş için devam edebilir fakat yeni ekonomik ödül birikimi durur. Kullanıcıya kayıt süresi ve ödüle giren süre açıkça yazılır. Uygulama arka planda kaldı diye tek başına hile kararı verilmez.</p>
+<p>Yanıt gelmezse gerçek sayaç geçmiş için devam edebilir fakat yeni ekonomik ödül birikimi durur. İşaret koymak bu kontrolün yanıtı sayılmaz. Kullanıcıya kayıt süresi ve ödüle giren süre açıkça yazılır. Uygulama arka planda kaldı diye tek başına hile kararı verilmez.</p>
 <p>Aynı uygun dakika XP, coin, günlük görev, haftalık hedef, köy projesi, ortak oda katkısı ve dış sıralamada ortak kaynaktan geçer. Her sistem kendi süresini ayrı hesaplayamaz.</p>
 <p>Ekonomik gün, yalnız değiştirilebilir duvar saatine bakmaz. Kalıcı <code>economyDayId</code>, son sıfırlama anı, yerel saat dilimi ve monotonik geçen süre birlikte saklanır. Saat veya saat dilimi değişikliği 20 gerçek saat dolmadan ikinci günlük XP, coin ya da görev kovası açamaz. Çevrimdışı kazanım korunur; sunucuya bağlanınca yalnız çifte açılan kova tekilleştirilir, çalışma geçmişi silinmez.</p>
 <p>Her ödül <code>eventId</code> ile tekilleştirilir. Coin, XP, proje katkısı, eşya sahipliği ve claim işareti aynı atomik işlemde yazılır. Uygulama kapanması, tekrar callback, yedek geri yükleme, saat dilimi ve yeniden deneme aynı ödülü ikinci kez üretmez.</p>
 <p>Şüpheli durumda kazanılmış seviye veya eşya sessizce silinmez. Gelecekteki sosyal ödül ve sıralama uygunluğu sınırlandırılır; kullanıcıya sade açıklama ve gerektiğinde kayıt düzeltme yolu verilir.</p>
+<h3 id="ucretsiz-premium-ve-cihaz-rolleri">Ücretsiz, Premium ve cihaz rolleri</h3>
+<p>Geri Sayım, Kronometre, İşaretle, tur geçmişi ve temel çalışma biçimleri ücretsizdir. Kullanıcının kendi çalışma kaydını anlamlandırması Premium&#39;a bağlanmaz.</p>
+<p>Premium; kayıtlı <strong>Odak Tarifleri</strong> sunabilir. Örneğin “25 dk konu + 20 dk test + 10 dk tekrar” tarifi, beklenen işaretleri ve mola önerisini hazırlar. Özel çalışma biçimi renkleri, gelişmiş haftalık tur karşılaştırması ve dışa aktarma da Premium olabilir. Tarif süreyi kendiliğinden çalışılmış saymaz, tur atlamaz ve ekonomik ödülü büyütmez.</p>
+<ul>
+<li>Apple Watch ve Wear OS: aktif seansı gösterir; kontrol saatteyse tek dokunuşla İşaretle sunar.</li>
+<li>Live Activity ve Android bildirimi: yer uygunsa İşaretle kısayolu eklenebilir; yanlış dokunma riski ölçülmeden varsayılan yapılmaz.</li>
+<li>Widget: çalışan seansı ve son işareti gösterebilir, fakat sık yazma ve yanlış dokunma nedeniyle ilk sürümde İşaretle eylemi taşımaz.</li>
+<li>Tablet, web ve masaüstü: geniş ekranda süre ile tur çizelgesini yan yana gösterebilir; telefon aynı bilgiyi açılır panelde sunar.</li>
+</ul>
+<p>Erişilebilirlikte düğmenin adı “Bir önceki çalışma bölümünü işaretle” olur. VoiceOver ve TalkBack işaret numarası, parça süresi ve toplam süreyi birlikte okur. Klavye kısayolu çakışmayacak biçimde tanımlanır; Reduce Motion işaret geri bildirimini kısa opacity ve haptic düzeyine indirir.</p>
 <h2 id="11-premium-tasarimi">11. Premium tasarımı</h2>
 <p>Premium mevcut aylık, yıllık ve ömürboyu planlarda genişler. Ayrı “Köy+” aboneliği açılmaz.</p>
 <p>Premium sözleşmesi bütün platformlarda aynıdır:</p>
 <div class="table-scroll"><table><thead><tr><th>Her kullanıcıda</th><th>Premium ile genişleyen</th></tr></thead><tbody>
-<tr><td>Offline sayaç, Serbest ve çalışma geçmişi</td><td>Reklamsız kullanım</td></tr>
+<tr><td>Offline Geri Sayım, Kronometre, İşaretle ve çalışma geçmişi</td><td>Reklamsız kullanım</td></tr>
 <tr><td>Temel gündüz-gece sahneleri ve Baykuş hareketleri</td><td>Sis, hava, ayrıntılı ışık ve ses ambiyansları</td></tr>
 <tr><td>Ana odalar, genel projeler ve coin koleksiyonları</td><td>Güncel ve arşivlenmiş Premium koleksiyonları</td></tr>
 <tr><td>İsteğe bağlı hesap, bulut yedeği ve aktif seans devri</td><td>Gelişmiş Baykuş Stüdyosu araçları</td></tr>
@@ -1645,7 +1768,7 @@
 <div class="table-scroll"><table><thead><tr><th>Yüzey</th><th>Bugünkü durum</th><th>Açık ihtiyaç</th></tr></thead><tbody>
 <tr><td>iPhone</td><td>Ana ve en eksiksiz ürün</td><td>Yeni bilgi mimarisi ve bulut profil tabanlı sync</td></tr>
 <tr><td>iPad</td><td>App Store hedefi, genişlik kuralları, yatay iki kolon ve UI testleri var</td><td>Gerçek iPad, Split View ve Stage Manager doğrulaması</td></tr>
-<tr><td>Apple Watch</td><td>Projede gömülü watchOS hedefi, bağımsız geri sayım ve serbest sayaç var</td><td>Tek aktif seans, canlı telefon aynası, complication ve eski README düzeltmesi</td></tr>
+<tr><td>Apple Watch</td><td>Projede gömülü watchOS hedefi, bağımsız geri sayım ve Kronometre var</td><td>Tek aktif seans, canlı telefon aynası, İşaretle, complication ve eski README düzeltmesi</td></tr>
 <tr><td>Android telefon</td><td>İşlevsel port ve ortak özellik seti var</td><td>Mimari borç, geniş ekran temeli ve bulut profil sync'i</td></tr>
 <tr><td>Android tablet ve foldable</td><td>Ayrı ürün düzeni yok, Activity'ler portreye kilitli</td><td>Window Size Class, yatay kullanım, multi-window ve adaptive navigation</td></tr>
 <tr><td>Wear OS</td><td>Uygulama yok</td><td>Mobil sync temeli sonrasında küçük companion</td></tr>
@@ -1658,17 +1781,18 @@
 <tr><td>Baykuş ruh hali seri üzerinden <code>happy / waiting / sad</code>; metin kullanıcıdan Baykuş'u neşelendirmesini istiyor</td><td>Hazır, odak, mola, kutlama, gece, dönüş ve veri belirsizliği gibi ürün olayları</td><td>2</td></tr>
 <tr><td>Haftalık paylaşım kartında beş stil var</td><td>Ortak Baykuş renderer'ıyla altıncı Köy stili</td><td>3</td></tr>
 <tr><td>Interstitial kapısı 2 seans toleransı, 180 saniye aralık ve günde 5 gösterim</td><td>İlk 24 saat + 2 geçerli seans + 50 dakika, 45 dakika aralık ve günde 2 gösterim</td><td>0, ayrı feature flag</td></tr>
+<tr><td>Kronometre motoru var fakat “Serbest” dördüncü süre çipi; tur kaydı yok</td><td>Geri Sayım/Kronometre ayrımı, ücretsiz Çalışma İşaretleri ve tek oturumluk tur çizelgesi</td><td>1 ve 4</td></tr>
 </tbody></table></div>
 <p>Bu tablo ürün planıyla bugünkü kod arasındaki ana fark listesidir. Kanıt noktaları: <a href="https://github.com/harundogdu/ios-apps/blob/main/apps/StudySprintTimer/StudySprintTimer/Core/Models/OwlModels.swift">iOS ekonomi ve ruh hali</a>, <a href="https://github.com/harundogdu/ios-apps/blob/main/apps/StudySprintTimer/StudySprintTimer/Features/Owl/OwlView.swift">iOS Baykuş metni</a>, <a href="https://github.com/harundogdu/ios-apps/blob/main/apps/StudySprintTimer/StudySprintTimer/Services/InterstitialAdPolicy.swift">iOS reklam kapısı</a>, <a href="https://github.com/harundogdu/ios-apps/blob/main/apps/StudySprintTimer/StudySprintTimer/Features/Analytics/ModernAnalyticsView.swift">iOS paylaşım stilleri</a>, <a href="https://github.com/harundogdu/ios-apps/blob/main/apps/StudySprintTimer/android/app/src/main/java/com/harundogdu/studysprinttimer/domain/OwlEconomy.kt">Android ekonomi</a> ve <a href="https://github.com/harundogdu/ios-apps/blob/main/apps/StudySprintTimer/android/app/src/main/java/com/harundogdu/studysprinttimer/ui/analytics/WeeklyShareCard.kt">Android paylaşım stilleri</a>. İlgili faz tamamlandığında satır, “uygulandı” kanıtı ve test bağlantısıyla kapanır; belge sessizce gelecekteki durumu bugünün gerçeği gibi anlatmaz.</p>
 <p>iOS projesi iPhone ve iPad cihaz ailelerini hedefliyor. <a href="https://github.com/harundogdu/ios-apps/blob/main/apps/StudySprintTimer/StudySprintTimer.xcodeproj/project.pbxproj">Xcode proje ayarları</a>. iPad için ortak genişlik token'ları, adaptive ızgara, iki bölmeli Ayarlar ve kapsamlı UI testleri yazılmış durumda. <a href="https://github.com/harundogdu/ios-apps/blob/main/apps/StudySprintTimer/StudySprintTimer/DesignSystem/AppLayout.swift">AppLayout</a>, <a href="https://github.com/harundogdu/ios-apps/blob/main/apps/StudySprintTimer/StudySprintTimerUITests/IPadLayoutUITests.swift">iPad UI testleri</a>. Açık risk, düzenin gerçek iPad'de ve çoklu pencere kullanımında henüz yeterince görülmemiş olmasıdır.</p>
-<p>Apple Watch target'ı bugün projeye gömülü. Saatte bağımsız geri sayım, serbest sayaç, yerel bitiş bildirimi ve telefona kuyruklanan tamamlama olayı var. <a href="https://github.com/harundogdu/ios-apps/blob/main/apps/StudySprintTimer/StudySprintTimerWatch%20Watch%20App/WatchTimerModel.swift">WatchTimerModel</a>, <a href="https://github.com/harundogdu/ios-apps/blob/main/apps/StudySprintTimer/StudySprintTimer/Features/Owl/WatchBridge.swift">WatchBridge</a>. Klasördeki README hâlâ target'ın eklenmediğini ve saatin yalnız telefonu uzaktan başlattığını söylüyor; bu bilgi bugünkü kaynakla uyuşmuyor. Uygulama çalışmasında README de düzeltilmelidir.</p>
+<p>Apple Watch target'ı bugün projeye gömülü. Saatte bağımsız geri sayım, Kronometre, yerel bitiş bildirimi ve telefona kuyruklanan tamamlama olayı var. <a href="https://github.com/harundogdu/ios-apps/blob/main/apps/StudySprintTimer/StudySprintTimerWatch%20Watch%20App/WatchTimerModel.swift">WatchTimerModel</a>, <a href="https://github.com/harundogdu/ios-apps/blob/main/apps/StudySprintTimer/StudySprintTimer/Features/Owl/WatchBridge.swift">WatchBridge</a>. Klasördeki README hâlâ target'ın eklenmediğini ve saatin yalnız telefonu uzaktan başlattığını söylüyor; bu bilgi bugünkü kaynakla uyuşmuyor. Uygulama çalışmasında README de düzeltilmelidir.</p>
 <p>Android tarafında <code>targetSdk 36</code> kullanılıyor fakat bütün giriş Activity'lerinde portre kilidi var ve Window Size Class bulunmuyor. <a href="https://github.com/harundogdu/ios-apps/blob/main/apps/StudySprintTimer/android/app/src/main/AndroidManifest.xml">Android manifest</a>, <a href="https://github.com/harundogdu/ios-apps/blob/main/apps/StudySprintTimer/android/app/build.gradle.kts">Android build ayarı</a>. Android 16, büyük ekranlarda orientation ve resizability kısıtlarını yok sayabildiği için bu artık yalnız görsel bir iyileştirme değildir; geniş ekran kırılmalarını önleme işidir. <a href="https://developer.android.com/develop/adaptive-apps/guides/app-orientation-aspect-ratio-resizability">Android büyük ekran yön ve yeniden boyutlandırma rehberi</a>.</p>
 <p>Bugünkü <code>sst-sync</code> kullanıcı geçmişini eşitlemez. RevenueCat abonelik kimliğinin sahiplik ve iptal katmanıdır. Bu servis korunur fakat adı ve Ayarlar metni, gelecekteki gerçek veri sync'iyle karışmayacak biçimde ayrıştırılır. Bulut profil geldiğinde eski <code>SST-XXXXXXXXXX</code> kodu kurtarma ve entitlement alias yolu olarak yaşamaya devam eder.</p>
 <h2 id="19-her-platformun-gorevi">19. Her platformun görevi</h2>
 <p>Aynı veriyi taşımak, her cihazda aynı ekranı göstermek anlamına gelmez. Ürünün ortak kuralları aynı, cihazların görevleri farklı olur.</p>
 <h3 id="telefon-tam-urun-ve-gunluk-kontrol">Telefon: tam ürün ve günlük kontrol</h3>
 <ul>
-<li>Sayaç, serbest çalışma, Odak Kalkanı ve bildirim yönetimi</li>
+<li>Geri Sayım, Kronometre, İşaretle, Odak Kalkanı ve bildirim yönetimi</li>
 <li>Hızlı oturum kurma</li>
 <li>Baykuş Köyü ve kişiselleştirme</li>
 <li>Kitaplık, plan, alarm ve ayrıntılı ayarlar</li>
@@ -1682,7 +1806,7 @@
 <li>Sağ destek bölmesinde bugünkü plan, devam edilen kitap, çalışma etiketi ve yaklaşan mola</li>
 <li>Yatay görünümde Odak Yuvası katılımcıları ile kişisel çalışma paneli yan yana</li>
 <li>Tam ekran Ambiyans Modu: saat, Baykuş odası, sade görev ve odak sesi</li>
-<li>Klavye kısayolları: başlat/duraklat, bitir, sonraki mola, serbest sayaç</li>
+<li>Klavye kısayolları: başlat/duraklat, işaretle, bitir, sonraki mola ve Kronometre</li>
 <li>Pointer, trackpad ve çoklu pencere desteği</li>
 <li>Split View veya multi-window daraldığında telefon düzenine güvenli dönüş</li>
 </ul>
@@ -1693,7 +1817,8 @@
 <ul>
 <li>Güncel seans ve kalan veya geçen süre</li>
 <li>Başlat, duraklat, sürdür ve bitir</li>
-<li>Son kullanılan üç süre ve Serbest</li>
+<li>Son kullanılan üç geri sayım süresi ve Kronometre</li>
+<li>Kontrol saatteyse tek dokunuşla İşaretle</li>
 <li>Haptic mola ve bitiş bildirimi</li>
 <li>Bugünkü dakika, seri ve sade kişisel Baykuş</li>
 <li>Odak Yuvası'nda hazır olma ve tek dokunuşluk hazır tepki</li>
@@ -1735,6 +1860,7 @@
 <li><code>startedAtServer</code>: ortak başlangıç zamanı</li>
 <li><code>startedAtLocalMonotonic</code>: cihazın güvenilir yerel ölçümü</li>
 <li><code>plannedDuration</code>, <code>mode</code>, <code>categoryId</code>, <code>state</code></li>
+<li><code>markers</code>: geçen süreye bağlı, kimliği tekilleştirilmiş Çalışma İşaretleri</li>
 <li><code>updatedAt</code>, <code>completedAt</code>, <code>completionEventId</code></li>
 </ul>
 <h3 id="tek-aktif-seans">Tek aktif seans</h3>
@@ -1775,7 +1901,8 @@
 <p>Canlı site bugün mağaza yönlendirmesi, tanıtım, duyuru ve yasal sayfalar için kullanılıyor. Web app aynı marka ve domain içinde ayrı <code>/app</code> alanında gelişebilir.</p>
 <h3 id="web-v1-ucretsiz-odak-masasi">Web v1: ücretsiz Odak Masası</h3>
 <ul>
-<li>Hesapsız 25/5, 50/10 ve Serbest sayaç</li>
+<li>Hesapsız Geri Sayım ve Kronometre; Geri Sayım içinde 20 dk, 40 dk ve Özel süre</li>
+<li>Aktif seansı bozmadan Çalışma İşareti ekleme ve temel tur özeti</li>
 <li>Tarayıcı kapanmadıkça yerel geçmiş</li>
 <li>Tema ve sade Baykuş</li>
 <li>Tam ekran çalışma görünümü</li>
@@ -1868,7 +1995,7 @@
 </ul>
 <h3 id="yeni-ana-bilgi-mimarisi">Yeni ana bilgi mimarisi</h3>
 <div class="table-scroll"><table><thead><tr><th>Alan</th><th>Kullanıcının sorusu</th><th>İçerik</th><th>Ana eylem</th></tr></thead><tbody>
-<tr><td>Odak</td><td>Şimdi neye başlayacağım?</td><td>Sayaç, Serbest, kategori, ses, aktif seans ve mola</td><td>Başla / Devam et</td></tr>
+<tr><td>Odak</td><td>Şimdi neye başlayacağım?</td><td>Geri Sayım, Kronometre, kategori, çalışma biçimi, ses, aktif seans ve mola</td><td>Başla / Devam et</td></tr>
 <tr><td>Plan</td><td>Bugün ne çalışacağım?</td><td>Bugünün planı, kitaplık, sınav, hedef ve alarm</td><td>Sıradaki işi başlat</td></tr>
 <tr><td>Köy</td><td>Çalışmam neye dönüştü?</td><td>Baykuş, oda, proje, gardırop, mağaza ve Odak Yuvası</td><td>Projeye devam et</td></tr>
 <tr><td>İlerleme</td><td>Düzenim nasıl gidiyor?</td><td>Gün/hafta/ay, seri, heatmap, başarımlar ve geçmiş</td><td>Bir sonraki adımı seç</td></tr>
@@ -1877,8 +2004,8 @@
 <p>İlk yayımlanabilir paket bu navigasyonu zorunlu kılmaz. Önce mevcut ekranlarda marka ve hiyerarşi borcu azaltılır; dört alanlı kabuk Faz 4'te, analitik ve deep link kaybı ölçülerek açılır.</p>
 <h3 id="ekran-ekran-nihai-karar">Ekran ekran nihai karar</h3>
 <div class="table-scroll"><table><thead><tr><th>Mevcut alan</th><th>Bugünkü sorun</th><th>Nihai değişiklik</th><th>İlk pakette yapılacak</th></tr></thead><tbody>
-<tr><td>Ana ekran</td><td>Üstte çok sayıda etiketsiz hedef, büyük söz kartı, küçük Baykuş</td><td>“Odak” alanına dönüşür; Baykuş ve timer tek sahne, modlar görünür, tek ana CTA</td><td>Üst araçları grupla, sözü küçült, Baykuş'u büyüt, Pomodoro/Serbest seçimini belirginleştir</td></tr>
-<tr><td>Aktif seans</td><td>Kontroller ve çevresel özellikler aynı önem düzeyine çıkabiliyor</td><td>Tam ekran sakin odak; süre, duraklat/bitir, kategori ve Baykuş durumu</td><td>Hareket tavanı, gece hali ve başka cihaz bildirimi için yer ayır</td></tr>
+<tr><td>Ana ekran</td><td>Üstte çok sayıda etiketsiz hedef, büyük söz kartı, küçük Baykuş; mod ile süre aynı çip sırasında</td><td>“Odak” alanına dönüşür; Baykuş ve timer tek sahne, Geri Sayım/Kronometre üst seçim, geri sayım süreleri alt seçim, tek ana CTA</td><td>Üst araçları grupla, sözü küçült, Baykuş'u büyüt, mod ve süre kararlarını ayır, başlangıç özetini görünür yap</td></tr>
+<tr><td>Aktif seans</td><td>Kontroller ve çevresel özellikler aynı önem düzeyine çıkabiliyor; çalışma içindeki geçiş kaydedilemiyor</td><td>Tam ekran sakin odak; süre, duraklat/sürdür, İşaretle, bitir, kategori ve Baykuş durumu</td><td>Hareket tavanı, tur geri bildirimi, gece hali ve başka cihaz bildirimi için yer ayır</td></tr>
 <tr><td>Seans sonu</td><td>Ödül, reklam ve sonraki adımın sırası kolayca karışabilir</td><td>Önce kayıt ve sonuç, sonra proje ilerlemesi, sonra isteğe bağlı ödül; reklam ancak çıkıştan sonra</td><td>Ödül tekilleştirme, proje kartı ve net “Yeni seans” eylemi</td></tr>
 <tr><td>Bugünkü Plan</td><td>Form uzun, çok seçenek aynı anda, ayrı sheet</td><td>Ajanda gibi okunur liste; hızlı ekle; karta dokununca hazır Odak ekranı</td><td>Hazır kategori ızgarasını daralt, mevcut planları üstte tut, silmeyi ikincil yap</td></tr>
 <tr><td>Kitaplık</td><td>Devam et önerisi iyi; okuma, hedef, erteleme ve katalog tek uzun sayfada</td><td>“Plan” içinde devam kartı ve ayrı kitaplık bölümü</td><td>“Kaldığın yerden devam et”i koru; ikincil araçları açılır bölümlere taşı</td></tr>
@@ -1891,7 +2018,7 @@
 <tr><td>Ayarlar</td><td>Temiz fakat çok uzun ve Premium kartı alanı domine ediyor</td><td>Çalışma, Görünüm ve Ses, Profil ve Cihazlar, Gizlilik ve Destek</td><td>Arama ve grupları koru; Premium durumunu kompaktlaştır; veri güven merkezini hazırla</td></tr>
 </tbody></table></div>
 <h3 id="temel-kullanici-akislari">Temel kullanıcı akışları</h3>
-<p><strong>İlk gün:</strong> kurulum -&gt; süre veya Serbest seçimi -&gt; ilk 10 uygun dakika -&gt; sakin kutlama -&gt; ilk köy parçası -&gt; hesap açmadan devam. Paywall en fazla bir kez, kapatılabilir ve ilk değerden sonra görünür.</p>
+<p><strong>İlk gün:</strong> kurulum -&gt; Geri Sayım veya Kronometre seçimi -&gt; isteğe bağlı çalışma bağlamı -&gt; ilk 10 uygun dakika -&gt; sakin kutlama -&gt; ilk köy parçası -&gt; hesap açmadan devam. Paywall en fazla bir kez, kapatılabilir ve ilk değerden sonra görünür.</p>
 <p><strong>Günlük dönüş:</strong> uygulama açılışı -&gt; tek “Sıradaki” önerisi -&gt; odak -&gt; proje katkısı -&gt; gerekirse Baykuş Postası -&gt; çıkış. Kullanıcı her dönüşte menü gezmek zorunda kalmaz.</p>
 <p><strong>14+ kullanıcı:</strong> köye giriş -&gt; aktif proje ve kalan gerçek odak günü -&gt; sahip olunanlarla düzenleme -&gt; yeni eşyanın odada önizlemesi -&gt; çalışma yoluyla açma veya Premium kozmetik seçimi. Seviye tek başına içerik dağıtmaz.</p>
 <p><strong>Gece çalışan kullanıcı:</strong> gece ışığı -&gt; uyanan Baykuş ve kahve hazırlığı -&gt; sakin aktif seans -&gt; sabahı beklemeden proje katkısı -&gt; rahatsız etmeyen kapanış. “Geç oldu, uyu” veya suçluluk dili kullanılmaz.</p>
@@ -2033,6 +2160,8 @@
 <li><code>economy_v2</code> hesabını saf ve iki platformda aynı sözleşme olarak kur; göç, 10 dakika, günlük tavan, kitap uygunluğu ve saat dilimi testlerini yaz, bu fazda kullanıcıya açma</li>
 <li>Kayıpsız merge motorunu ve sürümlü göçü hazırla</li>
 <li>Ortak <code>sessionId</code>, <code>eventId</code>, <code>revision</code> ve device sözleşmesini tanımla</li>
+<li><code>SessionMarker</code> şemasını, tombstone birleşimini ve marker başına tekrar korumasını iki platform için tanımla</li>
+<li>Tur eklemenin ödülü bölmediğini ve toplam uygun dakikayı büyütmediğini saf ekonomi testleriyle kilitle</li>
 <li>Mevcut reklam yollarını eşleştir ve 2 gösterim / 45 dakika hedefini ayrı feature flag'e bağla</li>
 <li><code>owl_level</code>, coin kaynağı, rewarded yuvası ve Watch kullanımı için karar verecek ölçümü ekle</li>
 </ul>
@@ -2045,6 +2174,9 @@
 <li>Apple Watch README gerçeğini düzelt</li>
 <li>Apple Watch kullanım olayını complication yatırımından önce ölç</li>
 <li>Telefon ve saatte aynı anda çalışan seansın çift ödül riskini kapat</li>
+<li>“Serbest” kullanıcı adını Kronometreye taşı; mevcut <code>.free</code> / <code>STOPWATCH</code> kayıtlarını veri kaybetmeden oku</li>
+<li>iOS ve Android'de çalışan seansa İşaretle, sekiz saniyelik geri alma, 100 işaret tavanı ve seans sonu tur çizelgesi ekle</li>
+<li>İşaretleri çalışan seans snapshot'ına kat; uygulama kapanması, restore, hızlı çift dokunma ve manuel bitirme testlerini iki platformda yaz</li>
 <li>Gerçek iPad doğrulamasından sonra Apple silicon'da iPad uygulaması dağıtımını fiyat ve pencere davranışıyla küçük uyumluluk denemesi olarak kontrol et</li>
 <li>Büyük bilgi mimarisi dönüşümünü bu faza yükleme</li>
 </ul>
@@ -2074,6 +2206,8 @@
 <li>Odak, Plan, Köy ve İlerleme kabuğunu iki platformda aynı kavramlarla kur</li>
 <li>Mevcut deep link, tutorial, bildirim, paywall ve aktif seans yollarını yeni kabuğa taşı</li>
 <li>Üst ikon kalabalığını profil ve bağlamsal eylemlere indir</li>
+<li>Ana ekranda Geri Sayım/Kronometre modunu süre seçiminden ayır; 20 dk, 40 dk ve Özel'i yalnız Geri Sayım altında göster</li>
+<li>Ana CTA'yı seçime göre adlandır, tek satırlık oturum özetini ve Son oturumu tekrarla yolunu ekle</li>
 <li>Mevcut sheet zincirlerini ölçerek ana alanlara dönüştür; kısa seçim sheet'lerini koru</li>
 <li>Tablet ve geniş Android penceresinde sidebar/navigation rail ile iki bölmeli Study Desk davranışını aç</li>
 <li>Eski ve yeni navigasyonu ayrı feature flag gruplarında karşılaştır</li>
@@ -2192,7 +2326,10 @@
 <h3 id="ui-ux-ve-bilgi-bulma">UI/UX ve bilgi bulma</h3>
 <ul>
 <li>Açılıştan seans başlatmaya kadar geçen süre ve dokunma sayısı</li>
-<li>Pomodoro ile Serbest kullanımının görünürlük sonrası dağılımı</li>
+<li>Geri Sayım ile Kronometre kullanımının görünürlük sonrası dağılımı</li>
+<li>Açılıştan başlatmaya kadar mod, süre ve bağlam seçiminde terk oranı</li>
+<li>İşaret kullanılan oturum oranı, oturum başına işaret dağılımı ve yanlış işaret geri alma oranı</li>
+<li>Çalışma biçimi etiketleme oranı; özel etiket metnini telemetriye göndermeden yalnız sabit tip dağılımı</li>
 <li>Plan, Köy, Mağaza ve İlerleme alanına ilk başarılı erişim</li>
 <li>Ana ekrandaki yanlış dokunma, geri dönüş ve yarım kalan sheet oranı</li>
 <li>Eski ve dört alanlı yeni navigasyonda seans başlatma ve tamamlama farkı</li>
@@ -2286,7 +2423,8 @@
 <li>iOS ve Android'de aynı ekonomi, içerik, hareket ve yedi dil</li>
 <li>Mevcut iPad ve Android tablet düzenlerinde erişim, taşma, yön değişimi ve durum koruma düzeltmeleri</li>
 <li>Telefon ile Apple Watch arasında çift ödül riskinin kapatılması</li>
-<li>Reduce Motion, düşük güç, gece yarısı ve uzun serbest seans doğrulaması</li>
+<li>Geri Sayım/Kronometre ayrımı, ücretsiz Çalışma İşaretleri ve seans sonu tur çizelgesi</li>
+<li>Reduce Motion, düşük güç, gece yarısı ve uzun Kronometre seansı doğrulaması</li>
 <li>Ekonomi, proje, Premium önizleme ve haftalık odak günü analitiği</li>
 </ul>
 <h3 id="bu-pakete-girmeyenler">Bu pakete girmeyenler</h3>
@@ -2342,7 +2480,9 @@
 <li>Gerçek level ve coin dağılımı</li>
 <li>14. seviyeye ulaşma süresi ve 14+ kullanıcıların çalışma temposu</li>
 <li>Kaynak başına XP ve coin üretimi</li>
-<li>Serbest seans sürelerinin yüzde 50, 90, 95 ve 99 değerleri</li>
+<li>Kronometre seans sürelerinin yüzde 50, 90, 95 ve 99 değerleri</li>
+<li>Kronometreyi “Serbest” adı nedeniyle bulamayan veya geri sayım sanan kullanıcı oranı</li>
+<li>Tur kullananların hangi çalışma geçişlerini işaretlediği ve 100 işaret sınırına yaklaşan gerçek kullanım oranı</li>
 <li>Eşya sahipliği ve harcama oranı</li>
 <li>Premium deneme, ödeme, yenileme ve iptal kohortları</li>
 <li>Birincil metrik için kullanıcı başına haftalık uygun odak günü dağılımı</li>
