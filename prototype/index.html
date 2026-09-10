@@ -399,6 +399,161 @@
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
     }
   </style>
+  <style id="sst-native-skin">
+    :root {
+      --page: #f3edf8;
+      --page-ink: #1a1720;
+      --page-muted: #706978;
+      --screen: #faf5ff;
+      --surface: #ffffff;
+      --surface-2: #f3e8ff;
+      --ink: #19171b;
+      --muted: #6d6870;
+      --line: #eee5f3;
+      --violet: #ad78f3;
+      --violet-strong: #9443e4;
+      --violet-soft: #f0e3ff;
+      --blue: #168bce;
+      --green: #26c766;
+      --green-soft: #e5f8ed;
+      --amber: #e5a332;
+      --amber-soft: #fff2d8;
+      --card-shadow: 0 7px 22px rgba(72, 51, 84, .055);
+    }
+    body { background: radial-gradient(circle at 12% 6%, rgba(173, 120, 243, .13), transparent 29rem), radial-gradient(circle at 92% 16%, rgba(255, 255, 255, .9), transparent 24rem), var(--page); }
+    .prototype-head .eyebrow, .screen-note .note-kicker { color: var(--violet-strong); }
+    .prototype-chip[aria-pressed="true"], .tour-button[aria-current="page"] .tour-no { background: linear-gradient(135deg, var(--violet-strong), var(--violet)); }
+    .phone { border-color: #111015; background: var(--screen); }
+    .phone[data-theme="night"] {
+      --screen: #080812;
+      --surface: #12121d;
+      --surface-2: #1b1928;
+      --ink: #faf8ff;
+      --muted: #aaa4b4;
+      --line: #272438;
+      --violet: #8a91f2;
+      --violet-strong: #759dff;
+      --violet-soft: #1d2544;
+      --blue: #63a9ff;
+      --green: #55d88a;
+      --green-soft: #173326;
+      --amber-soft: #342a17;
+    }
+    .screen { padding-top: 52px; padding-bottom: 0; }
+    .bottom-nav { display: none !important; }
+    .card { border-color: var(--line); border-radius: 22px; box-shadow: var(--card-shadow); }
+    .icon-button { border-color: var(--line); border-radius: 50%; background: var(--surface); box-shadow: var(--card-shadow); }
+    .primary-button { min-height: 58px; display: flex; align-items: center; justify-content: center; gap: 10px; border-radius: 18px; background: linear-gradient(100deg, #9c39e8, #ae59eb); box-shadow: 0 12px 25px rgba(148, 67, 228, .23); font-size: 16px; }
+    .primary-button .icon { width: 21px; height: 21px; }
+    .phone[data-theme="night"] .primary-button { background: linear-gradient(100deg, #586ed4, #799dff); box-shadow: 0 12px 26px rgba(73, 100, 204, .25); }
+    .section-label { color: var(--muted); font-size: 10px; letter-spacing: .09em; }
+
+    .home-pad { padding: 7px 18px 26px; }
+    .sst-topbar { min-height: 49px; display: flex; align-items: center; gap: 3px; color: var(--violet-strong); }
+    .topbar-space { flex: 1; }
+    .bare-icon { width: 33px; height: 40px; padding: 0; display: grid; place-items: center; border: 0; color: var(--violet-strong); background: transparent; cursor: pointer; }
+    .bare-icon .icon { width: 21px; height: 21px; stroke-width: 2.25; }
+    .owl-wallet { height: 40px; padding: 0 10px 0 5px; display: flex; align-items: center; gap: 6px; border: 1px solid color-mix(in srgb, var(--violet) 30%, var(--line)); border-radius: 999px; color: var(--ink); background: var(--surface); cursor: pointer; }
+    .wallet-owl { width: 29px; height: 31px; display: block; overflow: hidden; }
+    .wallet-owl svg { width: 100%; height: 100%; }
+    .coin-dot { width: 17px; height: 17px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ffd879, #dfa02d 60%, #bd741d); box-shadow: 0 2px 5px rgba(196, 119, 25, .3); }
+    .owl-wallet b { font-size: 13px; }
+    .owl-wallet em { color: var(--violet-strong); font-size: 11px; font-style: normal; font-weight: 850; }
+
+    .home-quote { min-height: 62px; margin-top: 8px; padding: 11px 12px; display: grid; grid-template-columns: 27px 1fr 30px; gap: 8px; align-items: center; }
+    .quote-mark { color: var(--violet-strong); font-family: Georgia, serif; font-size: 36px; line-height: .8; }
+    .home-quote b { display: block; color: var(--ink); font-size: 11px; font-weight: 700; line-height: 1.3; }
+    .home-quote small { display: block; margin-top: 3px; color: var(--muted); font-size: 9px; font-style: italic; }
+    .home-quote button { width: 30px; height: 30px; border: 0; color: var(--muted); background: transparent; cursor: pointer; font-size: 22px; }
+    .home-quote.dismissed { visibility: hidden; }
+
+    .home-timer { position: relative; width: 252px; height: 252px; margin: 13px auto 7px; display: grid; place-items: center; }
+    .home-timer-ring, .home-timer-ring::before { position: absolute; inset: 0; border-radius: 50%; }
+    .home-timer-ring { border: 3px solid color-mix(in srgb, var(--violet) 30%, transparent); }
+    .home-timer-ring::before { content: ""; inset: 14px; border: 15px solid color-mix(in srgb, var(--violet) 15%, transparent); border-top-color: var(--violet-strong); border-right-color: var(--violet); border-bottom-color: var(--violet); transform: rotate(18deg); box-shadow: 0 0 22px rgba(148, 67, 228, .08); }
+    .home-timer-copy { position: relative; z-index: 2; display: grid; grid-template-columns: auto auto; justify-content: center; align-items: baseline; column-gap: 5px; text-align: center; }
+    .home-timer-copy strong { font-size: 53px; line-height: 1; letter-spacing: -.055em; }
+    .home-timer-copy > b { color: var(--muted); font-size: 16px; }
+    .home-timer-copy span { grid-column: 1 / -1; margin-top: 8px; color: var(--muted); font-size: 12px; }
+    .home-timer-copy em { grid-column: 1 / -1; margin-top: 7px; padding: 5px 10px; border-radius: 999px; color: var(--green); background: var(--green-soft); font-size: 10px; font-style: normal; font-weight: 800; }
+    .ring-owl { position: absolute; z-index: 3; bottom: -18px; left: 50%; width: 61px; height: 68px; transform: translateX(-50%); filter: drop-shadow(0 5px 5px rgba(56, 38, 30, .14)); }
+    .ring-owl svg { width: 100%; height: 100%; }
+
+    .home-streak { width: 100%; min-height: 65px; padding: 9px 12px; display: grid; grid-template-columns: 42px 1fr 1.25fr 18px; gap: 9px; align-items: center; color: var(--ink); text-align: left; cursor: pointer; }
+    .streak-flame { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: linear-gradient(145deg, #ff9b4a, #ff6f3f); box-shadow: 0 6px 14px rgba(255, 116, 65, .2); font-size: 0; }
+    .streak-flame::after { content: "♨"; font-size: 21px; }
+    .home-streak small { display: block; color: var(--muted); font-size: 9px; }
+    .home-streak b { display: block; margin-top: 2px; font-size: 20px; }
+    .home-streak b em { color: var(--muted); font-size: 12px; font-style: normal; font-weight: 650; }
+    .streak-week { text-align: center; }
+    .streak-week small { letter-spacing: 2px; white-space: nowrap; }
+    .streak-week b { color: var(--violet-strong); font-size: 12px; letter-spacing: 2px; white-space: nowrap; }
+    .home-streak > .icon { width: 17px; color: var(--muted); }
+
+    .home-context { min-height: 49px; margin-top: 9px; padding: 7px 11px; display: grid; grid-template-columns: 30px 1fr 18px; gap: 8px; align-items: center; border: 1px solid var(--line); border-radius: 17px; color: var(--violet-strong); background: var(--surface); cursor: pointer; }
+    .home-context > .icon:first-child { width: 19px; }
+    .home-context b { display: block; color: var(--ink); font-size: 11px; }
+    .home-context small { display: block; margin-top: 2px; color: var(--muted); font-size: 9px; }
+    .mode-switch { background: var(--surface-2); }
+    .mode-button[aria-pressed="true"] { color: var(--ink); background: var(--surface); }
+    .duration-button { border-color: var(--line); background: var(--surface); }
+    .duration-button[aria-pressed="true"] { color: var(--violet-strong); border-color: var(--violet-strong); background: var(--violet-soft); }
+    .start-summary { margin-top: 8px; margin-bottom: 8px; }
+
+    .active-screen { background: var(--screen); }
+    .active-screen::before { content: ""; position: absolute; top: 95px; left: 50%; width: 300px; height: 300px; border-radius: 50%; background: color-mix(in srgb, var(--violet-soft) 70%, transparent); transform: translateX(-50%); filter: blur(7px); }
+    .session-head, .session-timer, .mini-owl, .session-progress, .last-marker, .session-controls { position: relative; z-index: 2; }
+    .session-timer { width: 270px; height: 270px; margin: 30px auto 0; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 16px solid color-mix(in srgb, var(--violet) 22%, transparent); border-top-color: var(--violet-strong); border-right-color: var(--violet); border-radius: 50%; box-shadow: 0 0 0 3px color-mix(in srgb, var(--violet) 22%, transparent); }
+    .session-timer .time { font-size: 58px; }
+    .mini-owl { width: 74px; height: 82px; margin: -55px auto 0; }
+    .session-progress { width: 230px; margin-top: 1px; }
+    .last-marker { margin-top: 18px; border-radius: 18px; background: var(--surface); }
+    .session-controls { padding-bottom: 22px; }
+    .control-button { border-radius: 20px; background: var(--surface); }
+    .control-button.marker { border-color: var(--violet-strong); background: linear-gradient(145deg, var(--violet-strong), var(--violet)); }
+
+    .completion-screen { background: linear-gradient(180deg, color-mix(in srgb, var(--violet-soft) 72%, var(--screen)), var(--screen) 38%); }
+    .complete-mark { width: 67px; height: 67px; border-radius: 50%; color: var(--violet-strong); background: color-mix(in srgb, var(--violet) 15%, var(--surface)); box-shadow: 0 0 0 15px color-mix(in srgb, var(--violet) 9%, transparent); }
+    .completion-hero { padding-top: 29px; }
+    .completion-hero .big-duration { margin-top: 15px; }
+    .impact-icon, .context-icon, .marker-no, .profile-avatar, .session-time { color: var(--violet-strong); background: var(--violet-soft); }
+    .completion-actions { background: linear-gradient(transparent, var(--screen) 22%); }
+
+    .screen-top { min-height: 60px; padding-inline: 19px; }
+    .screen-title h2 { font-size: 22px; }
+    .plan-hero { border-radius: 22px; background: linear-gradient(115deg, #963de4, #b35eea); }
+    .agenda-item, .book-card { border-radius: 20px; }
+    .agenda-start { background: var(--violet-strong); }
+
+    .village-stage { min-height: 330px; border-radius: 0 0 27px 27px; background: linear-gradient(#f1d9ad 0 58%, #bd9871 58% 100%); box-shadow: none; }
+    .phone[data-theme="night"] .village-stage { background: linear-gradient(#25223c 0 58%, #3e3340 58% 100%); }
+    .village-stage .hill { left: 0; right: 0; bottom: 0; width: auto; height: 138px; border-radius: 0; background: #bd9871; transform: none; }
+    .phone[data-theme="night"] .village-stage .hill { background: #3e3340; }
+    .village-stage::before { content: ""; position: absolute; left: 28px; top: 87px; width: 76px; height: 89px; border: 6px solid #925d39; background: linear-gradient(#bde4ee, #e5f4e6); box-shadow: inset 0 0 0 2px rgba(255,255,255,.4); }
+    .village-stage::after { content: ""; position: absolute; right: 28px; top: 91px; width: 64px; height: 75px; border: 6px solid #8d6849; background: repeating-linear-gradient(90deg, #d87261 0 9px, #efb649 9px 18px, #75ae88 18px 27px, #9277ba 27px 36px); }
+    .room-platform { left: 32px; right: 32px; bottom: 18px; height: 103px; border-color: #7e5b45; border-radius: 26px; background: #aa896c; }
+    .room-platform::before { background: rgba(255, 245, 224, .35); }
+    .village-owl { left: 41px; bottom: 38px; width: 117px; height: 130px; }
+    .train { right: 34px; bottom: 40px; transform: scale(.87); transform-origin: bottom right; }
+    .project-card { top: 14px; border-color: rgba(255,255,255,.62); background: rgba(255,255,255,.89); }
+    .phone[data-theme="night"] .project-card { background: rgba(18,18,29,.88); }
+    .village-action { background: var(--surface); }
+    .premium-preview { background: linear-gradient(125deg, #49385f, #765192); }
+    .phone[data-theme="night"] .premium-preview { background: linear-gradient(125deg, #1f2444, #3e4f86); }
+
+    .view-switch { background: var(--surface-2); }
+    .view-button[aria-pressed="true"] { background: var(--surface); }
+    .day-button.selected, .month-day.l3 { border-color: var(--violet-strong); background: var(--violet-strong); }
+    .month-day.l2 { background: color-mix(in srgb, var(--violet-strong) 62%, var(--surface)); }
+    .month-day.l1 { color: var(--violet-strong); background: color-mix(in srgb, var(--violet) 19%, var(--surface)); }
+    .week-summary, .activity-breakdown, .month-grid, .year-map, .day-detail { border-radius: 23px; }
+
+    @media (max-height: 760px) and (max-width: 680px) {
+      .home-timer { width: 220px; height: 220px; margin-top: 8px; }
+      .home-quote { min-height: 56px; }
+      .home-streak { min-height: 59px; }
+    }
+  </style>
 </head>
 <body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -421,6 +576,9 @@
     <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.4M8.7 13.3l6.6 4.4"/></symbol>
     <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5z"/></symbol>
     <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.7 9a2.5 2.5 0 1 1 3.8 2.1c-1 .6-1.5 1.1-1.5 2.4M12 17h.01"/></symbol>
+    <symbol id="i-headphones" viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2M4 14h3v6H5a1 1 0 0 1-1-1zM20 14h-3v6h2a1 1 0 0 0 1-1z"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-4V21a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 3 14H2.8v-4H3a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.2 7 7 4.2l.1.1a1.7 1.7 0 0 0 1.9.3A1.7 1.7 0 0 0 10 3V2.8h4V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v4H21a1.7 1.7 0 0 0-1.6 1z"/></symbol>
     <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></symbol>
     <symbol id="owl" viewBox="0 0 160 180">
@@ -441,9 +599,14 @@
       <path d="M57 95c8 8 15 9 23 5M103 95c-8 8-15 9-23 5" fill="none" stroke="#7a493a" stroke-width="2.5" stroke-linecap="round"/>
       <circle cx="44" cy="88" r="6" fill="#e9948f" opacity=".75"/>
       <circle cx="116" cy="88" r="6" fill="#e9948f" opacity=".75"/>
-      <path d="M66 37c4-10 8-15 14-19 6 4 10 9 14 19-9-5-19-5-28 0z" fill="#8052d8"/>
-      <path d="M50 122c19 10 41 10 60 0v25c-18 12-42 12-60 0z" fill="#8052d8"/>
-      <path d="M62 124v27M98 124v27" stroke="#a98ae8" stroke-width="3" opacity=".65"/>
+      <ellipse cx="80" cy="129" rx="29" ry="34" fill="#ead2aa"/>
+      <circle cx="58" cy="70" r="23" fill="none" stroke="#3b2b25" stroke-width="6"/>
+      <circle cx="102" cy="70" r="23" fill="none" stroke="#3b2b25" stroke-width="6"/>
+      <path d="M81 69h-2M35 65l-10-5M125 65l10-5" fill="none" stroke="#3b2b25" stroke-width="6" stroke-linecap="round"/>
+      <path d="m43 39 37-20 37 20-37 20z" fill="#252a4b"/>
+      <path d="M58 48v12c12 7 32 7 44 0V48" fill="#30375f"/>
+      <path d="M116 39v22" fill="none" stroke="#d89b32" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="116" cy="66" r="6" fill="#d89b32"/>
       <ellipse cx="61" cy="164" rx="18" ry="9" fill="#6b4334"/>
       <ellipse cx="99" cy="164" rx="18" ry="9" fill="#6b4334"/>
       <g class="coffee">
@@ -457,8 +620,8 @@
   <header class="prototype-head">
     <div>
       <p class="eyebrow">StudySprintTimer · Ürün prototipi</p>
-      <h1>Odaktan köye uzanan tek çalışma döngüsü</h1>
-      <p>Bu sayfa nihai ürün planının görsel örneğidir. Ekranlara dokunabilir, Kronometreye işaret ekleyebilir, sonucu tamamlayabilir ve geçmişten aynı düzene dönebilirsin.</p>
+      <h1>Mevcut SST çizgisinde yeni çalışma döngüsü</h1>
+      <p>Ana sayaç, lavanta teması, kart dili ve Baykuş kimliği korunuyor. Yeni Kronometre, tamamlama, köy ve takvim akışlarını aynı uygulamanın doğal devamı olarak deneyebilirsin.</p>
     </div>
     <div class="prototype-actions" aria-label="Prototip görünümü">
       <button class="prototype-chip" id="day-toggle" aria-pressed="true">Gündüz</button>
@@ -496,23 +659,47 @@
         <div class="app-status"><span>09:41</span><span class="status-icons"><span class="signal"><i></i><i></i><i></i><i></i></span><span class="battery"></span></span></div>
 
         <section class="screen active" data-screen="focus" aria-label="Odak başlangıcı">
-          <div class="screen-top">
-            <div class="screen-title"><small>11 Eylül, Perşembe</small><h2>Günaydın, Harun</h2></div>
-            <div class="top-actions">
-              <button class="icon-button" id="focus-theme" aria-label="Gündüz gece görünümünü değiştir"><svg class="icon"><use href="#i-moon"/></svg></button>
-              <button class="icon-button" data-open="profile" aria-label="Profili aç"><svg class="icon"><use href="#i-user"/></svg></button>
-            </div>
-          </div>
-          <div class="screen-scroll"><div class="screen-pad">
-            <div class="focus-stage">
-              <div class="stage-copy"><span class="day-word">Sıradaki</span><h3>Matematikte kaldığın yere dön</h3><p>Son çalışman 40 dk Test idi.</p></div>
-              <div class="stage-window"><i class="sun-moon"></i><i class="star"></i></div>
-              <div class="book-stack"><i></i><i></i><i></i></div>
-              <div class="desk"></div>
-              <div class="owl-wrap"><svg class="owl-svg" viewBox="0 0 160 180"><use href="#owl"/></svg></div>
+          <div class="screen-scroll"><div class="screen-pad home-pad">
+            <div class="sst-topbar">
+              <button class="bare-icon" id="home-help" aria-label="Yardımı aç"><svg class="icon"><use href="#i-help"/></svg></button>
+              <button class="owl-wallet" data-go="village" aria-label="Baykuş Köyünü aç">
+                <span class="wallet-owl"><svg viewBox="0 0 160 180"><use href="#owl"/></svg></span>
+                <span class="coin-dot"></span><b>1.860</b><em>Sv.14</em>
+              </button>
+              <span class="topbar-space"></span>
+              <button class="bare-icon" id="focus-audio" aria-label="Odak seslerini aç"><svg class="icon"><use href="#i-headphones"/></svg></button>
+              <button class="bare-icon" data-go="plan" aria-label="Bugünkü Planı aç"><svg class="icon"><use href="#i-plan"/></svg></button>
+              <button class="bare-icon" data-go="progress" aria-label="Çalışma Takvimini aç"><svg class="icon"><use href="#i-progress"/></svg></button>
+              <button class="bare-icon" id="focus-theme" aria-label="Gündüz gece görünümünü değiştir"><svg class="icon"><use href="#i-moon"/></svg></button>
+              <button class="bare-icon" data-open="profile" aria-label="Profili aç"><svg class="icon"><use href="#i-gear"/></svg></button>
             </div>
 
-            <div class="section-label">Nasıl sayalım?</div>
+            <div class="home-quote card">
+              <span class="quote-mark">“</span>
+              <span><b>Başlamak, ilerlemenin en sessiz hâlidir.</b><small>Bugünün notu</small></span>
+              <button id="dismiss-quote" aria-label="Sözü kapat">×</button>
+            </div>
+
+            <div class="home-timer" aria-label="Bugün 100 dakika, hedef 85 dakika">
+              <div class="home-timer-ring"><i></i></div>
+              <div class="home-timer-copy"><strong>100</strong><b>dk</b><span>Bugün · Hedef 85 dk</span><em>✓ Günlük hedef tamam</em></div>
+              <div class="ring-owl"><svg viewBox="0 0 160 180"><use href="#owl"/></svg></div>
+            </div>
+
+            <button class="home-streak card" data-go="progress">
+              <span class="streak-flame">●</span>
+              <span><small>Mevcut Seri</small><b>7 <em>gün</em></b></span>
+              <span class="streak-week"><small>S Ç P C C P P</small><b>✓ ✓ ✓ ✓ ✓ ✓ ✓</b></span>
+              <svg class="icon"><use href="#i-chevron"/></svg>
+            </button>
+
+            <div class="home-context" id="context-button">
+              <svg class="icon"><use href="#i-plan"/></svg>
+              <span><b>Matematik · Test</b><small>Kaldığın düzenden devam et</small></span>
+              <svg class="icon chevron"><use href="#i-chevron"/></svg>
+            </div>
+
+            <div class="section-label">Oturum türü</div>
             <div class="mode-switch" role="group" aria-label="Sayaç modu">
               <button class="mode-button" data-mode="countdown" aria-pressed="true">Geri Sayım</button>
               <button class="mode-button" data-mode="stopwatch" aria-pressed="false">Kronometre</button>
@@ -523,14 +710,8 @@
               <button class="duration-button" data-duration="custom" aria-pressed="false">Özel</button>
             </div>
 
-            <div class="section-label">Çalışma bağlamı</div>
-            <button class="card context-card" id="context-button" style="width:100%;text-align:left" aria-label="Çalışma bağlamını düzenle">
-              <span class="context-icon"><svg class="icon"><use href="#i-book"/></svg></span>
-              <span class="context-copy"><b>Matematik · Test</b><span>TYT hazırlığı · Yağmur sesi</span></span>
-              <svg class="icon chevron"><use href="#i-chevron"/></svg>
-            </button>
             <p class="start-summary" id="start-summary">40 dk · Matematik · Test · Yağmur sesi</p>
-            <button class="primary-button" id="start-session">40 dk başlat</button>
+            <button class="primary-button" id="start-session"><svg class="icon"><use href="#i-play"/></svg><span>40 dk başlat</span></button>
           </div></div>
         </section>
 
@@ -607,6 +788,7 @@
 
         <section class="screen" data-screen="plan" aria-label="Bugünkü Plan">
           <div class="screen-top">
+            <button class="icon-button" data-go="focus" aria-label="Ana ekrana dön"><svg class="icon"><path d="m15 5-7 7 7 7"/></svg></button>
             <div class="screen-title"><small>3 iş · 1 tamamlandı</small><h2>Bugünkü Plan</h2></div>
             <button class="icon-button" aria-label="Yeni plan ekle" id="add-plan"><svg class="icon"><use href="#i-plus"/></svg></button>
           </div>
@@ -634,6 +816,7 @@
 
         <section class="screen" data-screen="village" aria-label="Baykuş Köyü">
           <div class="screen-top">
+            <button class="icon-button" data-go="focus" aria-label="Ana ekrana dön"><svg class="icon"><path d="m15 5-7 7 7 7"/></svg></button>
             <div class="screen-title"><small>Baykuş Köyü · Sv.14</small><h2>Fener Mahallesi</h2></div>
             <span class="pill amber"><span class="dot"></span>1.860</span>
           </div>
@@ -658,6 +841,7 @@
 
         <section class="screen" data-screen="progress" aria-label="Çalışma Takvimi">
           <div class="screen-top">
+            <button class="icon-button" data-go="focus" aria-label="Ana ekrana dön"><svg class="icon"><path d="m15 5-7 7 7 7"/></svg></button>
             <div class="screen-title"><small>İlerleme</small><h2>Çalışma Takvimi</h2></div>
             <button class="icon-button" id="filter-calendar" aria-label="Takvimi filtrele"><svg class="icon"><path d="M4 6h16M7 12h10M10 18h4"/></svg></button>
           </div>
@@ -777,7 +961,7 @@
       let toastHandle = null;
 
       const notes = {
-        focus: ['Odak başlangıcı', 'İki karar birbirinden ayrılıyor', 'Geri Sayım veya Kronometre önce seçiliyor. 20, 40 ve Özel seçenekleri yalnız Geri Sayım içinde görünüyor.', ['Tek ana başlatma düğmesi', 'Bağlam seçmek isteğe bağlı', 'Gece görünümünde Baykuş kahvesiyle uyanıyor'], 'Temel timer ve bağlam ücretsiz kalır.'],
+        focus: ['Mevcut ana ekran', 'SST kimliği korunuyor', 'Büyük ilerleme halkası, üst araçlar, seri kartı ve lavanta teması bugünkü uygulamadan geliyor. Yeni mod seçimi mevcut yapının altına ekleniyor.', ['Sayaç yine ekranın kahramanı', 'Baykuş mevcut gözlük ve mezuniyet kepiyle devam ediyor', 'Kronometre ayrı ve açık bir seçim'], 'Yeni özellik, var olan SST kabuğuna yerleşiyor.'],
         active: ['Aktif seans', 'Çalışırken arayüz geri çekiliyor', 'Kronometre devam ederken İşaretle, konu anlatımı ile test gibi çalışma geçişlerini kaydediyor.', ['İşaret timerı durdurmuyor', 'Her işaret sekiz saniye geri alınabilir', 'Tur sayısı XP veya coin üretmiyor'], 'Tek oturum, tek ödül, en fazla 100 işaret.'],
         complete: ['Tamamlama', 'Kayıt, karşılık ve devam', 'Sonuç önce kaydoluyor. Kullanıcı çalışmasını görüyor, ayrıntı ekliyor ve mola ya da tekrar kararını kendisi veriyor.', ['Otomatik paywall yok', 'Erken bitişte sahte kutlama yok', 'Ayrıntılar takvimden değiştirilebilir'], 'Geçmiş düzenleme ekonomik ödülü değiştirmez.'],
         plan: ['Bugünkü Plan', 'Plan doğrudan çalışmaya açılıyor', 'Bugünün işleri, kaldığın kitap ve küçük bir ortak oda aynı akışta bulunuyor.', ['Tek dokunuşla hazır Odak ekranı', 'İki kişilik oda ücretsiz', 'Premium oda beş kişiye kadar büyür'], 'Plan hazırlamak ayrı bir angarya olmaz.'],
@@ -817,7 +1001,13 @@
         phone.dataset.theme = theme;
         document.getElementById('day-toggle').setAttribute('aria-pressed', theme === 'day');
         document.getElementById('night-toggle').setAttribute('aria-pressed', theme === 'night');
+        document.getElementById('focus-theme').innerHTML = icon(theme === 'night' ? 'i-sun' : 'i-moon');
+        document.getElementById('active-theme').innerHTML = icon(theme === 'night' ? 'i-sun' : 'i-moon');
         showToast(theme === 'night' ? 'Gece görünümü açık' : 'Gündüz görünümü açık', theme === 'night' ? 'Baykuş kahvesini aldı. Sayaç aynı kaldı.' : 'Oda gün ışığına döndü.');
+      }
+
+      function setStartButtonLabel(label) {
+        document.getElementById('start-session').innerHTML = `${icon('i-play')}<span>${label}</span>`;
       }
 
       function format(seconds) {
@@ -861,7 +1051,7 @@
         const options = document.getElementById('duration-options');
         options.style.display = mode === 'countdown' ? 'grid' : 'none';
         document.getElementById('start-summary').textContent = mode === 'countdown' ? `${duration === 'custom' ? '35' : duration} dk · Matematik · Test · Yağmur sesi` : 'Kronometre · Matematik · Test · Yağmur sesi';
-        document.getElementById('start-session').textContent = mode === 'countdown' ? `${duration === 'custom' ? 'Özel süreyi' : `${duration} dk`} başlat` : 'Kronometreyi başlat';
+        setStartButtonLabel(mode === 'countdown' ? `${duration === 'custom' ? 'Özel süreyi' : `${duration} dk`} başlat` : 'Kronometreyi başlat');
       }));
 
       document.querySelectorAll('[data-duration]').forEach(button => button.addEventListener('click', () => {
@@ -869,7 +1059,7 @@
         document.querySelectorAll('[data-duration]').forEach(item => item.setAttribute('aria-pressed', item === button));
         const readable = duration === 'custom' ? '35' : duration;
         document.getElementById('start-summary').textContent = `${readable} dk · Matematik · Test · Yağmur sesi`;
-        document.getElementById('start-session').textContent = duration === 'custom' ? 'Özel süreyi başlat' : `${duration} dk başlat`;
+        setStartButtonLabel(duration === 'custom' ? 'Özel süreyi başlat' : `${duration} dk başlat`);
       }));
 
       document.getElementById('start-session').addEventListener('click', () => setScreen('active'));
@@ -895,6 +1085,7 @@
         event.currentTarget.textContent = fields.classList.contains('open') ? 'Ayrıntıyı kapat' : 'Ayrıntı ekle';
       });
       document.getElementById('start-break').addEventListener('click', () => showToast('5 dakikalık mola başladı', 'Baykuş sessiz mola görünümüne geçti.'));
+      document.getElementById('dismiss-quote').addEventListener('click', () => document.querySelector('.home-quote').classList.add('dismissed'));
       document.getElementById('day-toggle').addEventListener('click', () => setTheme('day'));
       document.getElementById('night-toggle').addEventListener('click', () => setTheme('night'));
       document.getElementById('focus-theme').addEventListener('click', () => setTheme(phone.dataset.theme === 'night' ? 'day' : 'night'));
@@ -907,7 +1098,7 @@
         const overlay = document.getElementById('premium-overlay'); overlay.classList.add('open'); overlay.setAttribute('aria-hidden', 'false');
       });
       document.getElementById('premium-plan').addEventListener('click', () => showToast('Premium önizleme', 'Bu prototip satın alma işlemi başlatmaz.'));
-      ['context-button', 'add-plan', 'join-room', 'wardrobe', 'shop', 'showcase', 'filter-calendar', 'manage-streak'].forEach(id => {
+      ['home-help', 'focus-audio', 'context-button', 'add-plan', 'join-room', 'wardrobe', 'shop', 'showcase', 'filter-calendar', 'manage-streak'].forEach(id => {
         document.getElementById(id).addEventListener('click', () => showToast('Prototip eylemi', 'Bu alan ürün akışındaki yerini göstermek için çalışıyor.'));
       });
       document.querySelectorAll('[data-calendar]').forEach(button => button.addEventListener('click', () => {
