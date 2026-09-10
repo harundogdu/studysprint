@@ -1,0 +1,931 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="StudySprintTimer için etkileşimli ürün prototipi.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%238052d8'/%3E%3Ccircle cx='11' cy='14' r='5' fill='white'/%3E%3Ccircle cx='21' cy='14' r='5' fill='white'/%3E%3Cpath d='m13 20 3 3 3-3' fill='%23e6a43a'/%3E%3C/svg%3E">
+  <title>StudySprintTimer Ürün Prototipi</title>
+  <style>
+    :root {
+      --page: #efeaf3;
+      --page-ink: #2b2430;
+      --page-muted: #756d7b;
+      --frame: #17151a;
+      --screen: #f7f2fb;
+      --surface: #fffdfb;
+      --surface-2: #f0e8f8;
+      --ink: #261f2c;
+      --muted: #746b79;
+      --line: #e7dfee;
+      --violet: #8052d8;
+      --violet-strong: #6737c2;
+      --violet-soft: #eadffa;
+      --amber: #e6a43a;
+      --amber-soft: #fff2d8;
+      --green: #2f8b69;
+      --green-soft: #e1f3eb;
+      --coral: #e97a68;
+      --blue: #5f95c9;
+      --brown: #81533d;
+      --cream: #f5d6a8;
+      --shadow: 0 20px 70px rgba(56, 39, 68, .16);
+      --card-shadow: 0 8px 28px rgba(54, 39, 63, .07);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { min-height: 100%; background: var(--page); }
+    body { min-height: 100%; margin: 0; color: var(--page-ink); background:
+      radial-gradient(circle at 8% 8%, rgba(128, 82, 216, .15), transparent 28rem),
+      radial-gradient(circle at 92% 14%, rgba(230, 164, 58, .15), transparent 24rem),
+      var(--page); }
+    button { font: inherit; }
+    button, [role="button"] { -webkit-tap-highlight-color: transparent; }
+    button:focus-visible { outline: 3px solid rgba(128, 82, 216, .34); outline-offset: 3px; }
+
+    .prototype-head {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 28px 0 18px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .prototype-head .eyebrow { margin: 0 0 6px; color: var(--violet-strong); font-size: 12px; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+    .prototype-head h1 { margin: 0; max-width: 720px; font-size: clamp(26px, 4vw, 44px); line-height: 1.02; letter-spacing: -.035em; }
+    .prototype-head p { max-width: 620px; margin: 10px 0 0; color: var(--page-muted); font-size: 14px; line-height: 1.5; }
+    .prototype-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .prototype-chip {
+      min-height: 44px; padding: 0 14px; border: 1px solid rgba(103, 55, 194, .16); border-radius: 14px;
+      color: var(--page-ink); background: rgba(255, 255, 255, .66); cursor: pointer; font-weight: 750;
+      box-shadow: 0 6px 20px rgba(52, 36, 62, .05);
+    }
+    .prototype-chip[aria-pressed="true"] { color: #fff; border-color: var(--violet); background: var(--violet); }
+
+    .prototype-layout {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 8px 0 64px;
+      display: grid;
+      grid-template-columns: minmax(190px, 240px) minmax(390px, 430px) minmax(190px, 240px);
+      gap: clamp(20px, 4vw, 46px);
+      align-items: start;
+      justify-content: center;
+    }
+    .side-panel { position: sticky; top: 24px; padding-top: 70px; }
+    .side-panel h2 { margin: 0 0 10px; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--page-muted); }
+    .tour-list { display: grid; gap: 8px; }
+    .tour-button {
+      width: 100%; min-height: 52px; padding: 9px 12px; display: flex; align-items: center; gap: 10px;
+      border: 1px solid transparent; border-radius: 16px; text-align: left; color: var(--page-muted); background: transparent; cursor: pointer;
+    }
+    .tour-button:hover { background: rgba(255, 255, 255, .52); }
+    .tour-button[aria-current="page"] { color: var(--page-ink); border-color: rgba(128, 82, 216, .14); background: rgba(255, 255, 255, .8); box-shadow: var(--card-shadow); }
+    .tour-no { width: 30px; height: 30px; display: grid; place-items: center; flex: 0 0 auto; border-radius: 10px; background: rgba(128, 82, 216, .1); color: var(--violet-strong); font-size: 11px; font-weight: 850; }
+    .tour-button[aria-current="page"] .tour-no { color: #fff; background: var(--violet); }
+    .tour-label b { display: block; color: inherit; font-size: 13px; }
+    .tour-label span { display: block; margin-top: 2px; font-size: 11px; }
+
+    .screen-note { padding: 16px; border: 1px solid rgba(128, 82, 216, .12); border-radius: 18px; background: rgba(255, 255, 255, .62); box-shadow: var(--card-shadow); }
+    .screen-note .note-kicker { color: var(--violet-strong); font-size: 11px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+    .screen-note h3 { margin: 7px 0 7px; font-size: 17px; line-height: 1.18; }
+    .screen-note p { margin: 0; color: var(--page-muted); font-size: 12px; line-height: 1.55; }
+    .screen-note ul { margin: 12px 0 0; padding-left: 18px; color: var(--page-muted); font-size: 12px; line-height: 1.5; }
+    .screen-note li + li { margin-top: 6px; }
+    .note-key { margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(103, 55, 194, .12); color: var(--green); font-size: 11px; font-weight: 800; }
+
+    .device-wrap { position: relative; width: 100%; display: flex; justify-content: center; }
+    .phone {
+      position: relative; width: min(100%, 410px); height: min(844px, calc(100vh - 36px)); min-height: 690px;
+      overflow: hidden; border: 8px solid var(--frame); border-radius: 48px; background: var(--screen); color: var(--ink); box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+    .phone[data-theme="night"] {
+      --screen: #171523;
+      --surface: #242031;
+      --surface-2: #2d263d;
+      --ink: #f8f3fb;
+      --muted: #b5abbc;
+      --line: #3b3347;
+      --violet: #9b7aef;
+      --violet-strong: #b39aff;
+      --violet-soft: #332a49;
+      --amber-soft: #3b3022;
+      --green-soft: #20372f;
+      --card-shadow: 0 9px 28px rgba(0, 0, 0, .24);
+    }
+    .phone::before { content: ""; position: absolute; z-index: 50; top: 11px; left: 50%; width: 116px; height: 31px; transform: translateX(-50%); border-radius: 18px; background: #08080a; pointer-events: none; }
+    .app-status { position: absolute; z-index: 40; top: 0; left: 0; right: 0; height: 52px; padding: 15px 24px 0; display: flex; justify-content: space-between; color: var(--ink); font-size: 12px; font-weight: 800; pointer-events: none; }
+    .status-icons { display: flex; align-items: center; gap: 5px; }
+    .signal { display: flex; align-items: flex-end; gap: 1.5px; height: 10px; }
+    .signal i { width: 2px; border-radius: 2px; background: currentColor; }
+    .signal i:nth-child(1) { height: 4px; } .signal i:nth-child(2) { height: 6px; } .signal i:nth-child(3) { height: 8px; } .signal i:nth-child(4) { height: 10px; }
+    .battery { width: 19px; height: 9px; border: 1.5px solid currentColor; border-radius: 3px; position: relative; }
+    .battery::before { content: ""; position: absolute; inset: 1.5px; border-radius: 1px; background: var(--green); }
+    .battery::after { content: ""; position: absolute; right: -3px; top: 2px; width: 1.5px; height: 4px; border-radius: 1px; background: currentColor; }
+
+    .screen { position: absolute; inset: 0; padding: 52px 0 79px; display: none; flex-direction: column; background: var(--screen); }
+    .screen.active { display: flex; animation: screenIn .28s ease-out both; }
+    .screen-scroll { min-height: 0; flex: 1; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; }
+    .screen-scroll::-webkit-scrollbar { display: none; }
+    .screen-pad { padding: 12px 18px 28px; }
+    .screen-top { min-height: 52px; padding: 7px 18px 5px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .screen-title small { display: block; margin-bottom: 2px; color: var(--muted); font-size: 11px; font-weight: 650; }
+    .screen-title h2 { margin: 0; color: var(--ink); font-size: 23px; line-height: 1.05; letter-spacing: -.025em; }
+    .top-actions { display: flex; align-items: center; gap: 7px; }
+    .icon-button { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 15px; color: var(--ink); background: var(--surface); cursor: pointer; box-shadow: 0 4px 14px rgba(48, 34, 58, .05); }
+    .icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .icon.fill { fill: currentColor; stroke: none; }
+
+    .card { border: 1px solid var(--line); border-radius: 21px; background: var(--surface); box-shadow: var(--card-shadow); }
+    .card + .card { margin-top: 12px; }
+    .section-label { margin: 17px 2px 8px; color: var(--muted); font-size: 11px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+    .subtle { color: var(--muted); }
+    .divider { height: 1px; background: var(--line); }
+    .pill { display: inline-flex; min-height: 28px; align-items: center; gap: 6px; padding: 0 10px; border-radius: 999px; color: var(--violet-strong); background: var(--violet-soft); font-size: 11px; font-weight: 800; }
+    .pill.green { color: var(--green); background: var(--green-soft); }
+    .pill.amber { color: #a36a10; background: var(--amber-soft); }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+    .primary-button { width: 100%; min-height: 54px; border: 0; border-radius: 18px; color: #fff; background: linear-gradient(135deg, var(--violet), var(--violet-strong)); box-shadow: 0 11px 22px rgba(103, 55, 194, .24); cursor: pointer; font-weight: 850; }
+    .secondary-button { min-height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: 15px; color: var(--ink); background: var(--surface); cursor: pointer; font-weight: 760; }
+    .text-button { min-height: 44px; padding: 0 10px; border: 0; color: var(--violet-strong); background: transparent; cursor: pointer; font-weight: 800; }
+
+    .bottom-nav { position: absolute; z-index: 35; left: 0; right: 0; bottom: 0; height: 79px; padding: 8px 11px 13px; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(18px); }
+    .nav-button { min-height: 52px; border: 0; border-radius: 14px; display: grid; place-items: center; align-content: center; gap: 3px; color: var(--muted); background: transparent; cursor: pointer; font-size: 10px; font-weight: 750; }
+    .nav-button .icon { width: 21px; height: 21px; }
+    .nav-button[aria-current="page"] { color: var(--violet-strong); background: var(--violet-soft); }
+    .nav-hidden .bottom-nav { display: none; }
+    .nav-hidden .screen { padding-bottom: 0; }
+
+    .focus-stage { position: relative; min-height: 233px; overflow: hidden; border: 1px solid rgba(128, 82, 216, .13); border-radius: 26px; background: linear-gradient(145deg, #f5eafb 0%, #fff5e7 100%); }
+    .phone[data-theme="night"] .focus-stage { background: linear-gradient(145deg, #28223a 0%, #1b2135 100%); }
+    .stage-window { position: absolute; top: 18px; right: 20px; width: 94px; height: 105px; overflow: hidden; border: 8px solid rgba(255, 255, 255, .62); border-radius: 47px 47px 14px 14px; background: linear-gradient(#8cc7ef, #d9eff8); box-shadow: inset 0 -18px 0 rgba(102, 151, 117, .16); }
+    .phone[data-theme="night"] .stage-window { border-color: rgba(102, 90, 132, .45); background: linear-gradient(#202847, #38466c); box-shadow: inset 0 -18px 0 rgba(25, 30, 43, .35); }
+    .sun-moon { position: absolute; top: 14px; right: 16px; width: 31px; height: 31px; border-radius: 50%; background: #ffd46a; box-shadow: 0 0 0 9px rgba(255, 212, 106, .18); }
+    .phone[data-theme="night"] .sun-moon { width: 27px; height: 27px; background: #f1e5be; box-shadow: 9px -4px 0 0 #273150, 0 0 0 8px rgba(241, 229, 190, .08); }
+    .star { position: absolute; display: none; width: 3px; height: 3px; border-radius: 50%; background: #f7efcf; box-shadow: 20px 14px 0 #f7efcf, -12px 28px 0 #f7efcf, 24px 42px 0 #f7efcf; }
+    .phone[data-theme="night"] .star { display: block; top: 15px; left: 16px; }
+    .desk { position: absolute; left: 0; right: 0; bottom: 0; height: 54px; background: linear-gradient(#b97b52, #955f41); }
+    .desk::after { content: ""; position: absolute; left: 20px; right: 20px; top: 10px; height: 2px; border-radius: 2px; background: rgba(255, 236, 207, .28); }
+    .book-stack { position: absolute; right: 34px; bottom: 48px; width: 74px; height: 29px; }
+    .book-stack i { position: absolute; right: 0; width: 66px; height: 10px; border-radius: 3px; background: #6c9eca; box-shadow: inset 0 -2px rgba(42, 56, 83, .14); }
+    .book-stack i:nth-child(2) { right: 6px; bottom: 9px; background: #e99a79; }
+    .book-stack i:nth-child(3) { right: 1px; bottom: 18px; background: #8b69ca; }
+    .stage-copy { position: absolute; z-index: 3; top: 18px; left: 18px; max-width: 155px; }
+    .stage-copy .day-word { color: var(--violet-strong); font-size: 11px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+    .stage-copy h3 { margin: 7px 0 5px; max-width: 145px; font-size: 18px; line-height: 1.05; letter-spacing: -.02em; }
+    .stage-copy p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.35; }
+    .owl-wrap { position: absolute; z-index: 4; left: 118px; bottom: 31px; width: 150px; height: 175px; filter: drop-shadow(0 11px 10px rgba(55, 34, 40, .18)); }
+    .owl-svg { width: 100%; height: 100%; overflow: visible; }
+    .coffee { opacity: 0; transform-origin: center; transition: opacity .25s ease; }
+    .phone[data-theme="night"] .coffee { opacity: 1; }
+    .phone[data-theme="night"] .owl-wrap { animation: nightWake 1.9s ease-in-out 1; }
+
+    .mode-switch { padding: 4px; display: grid; grid-template-columns: 1fr 1fr; border-radius: 16px; background: var(--surface-2); }
+    .mode-button { min-height: 42px; border: 0; border-radius: 13px; color: var(--muted); background: transparent; cursor: pointer; font-weight: 800; }
+    .mode-button[aria-pressed="true"] { color: var(--ink); background: var(--surface); box-shadow: 0 3px 11px rgba(45, 31, 53, .08); }
+    .duration-grid { margin-top: 10px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .duration-button { min-height: 47px; border: 1px solid var(--line); border-radius: 15px; color: var(--ink); background: var(--surface); cursor: pointer; font-size: 13px; font-weight: 780; }
+    .duration-button[aria-pressed="true"] { color: var(--violet-strong); border-color: var(--violet); background: var(--violet-soft); }
+    .context-card { padding: 13px 14px; display: flex; align-items: center; gap: 11px; }
+    .context-icon { width: 40px; height: 40px; display: grid; place-items: center; flex: 0 0 auto; border-radius: 13px; color: var(--violet-strong); background: var(--violet-soft); }
+    .context-copy { min-width: 0; flex: 1; }
+    .context-copy b { display: block; overflow: hidden; color: var(--ink); font-size: 13px; text-overflow: ellipsis; white-space: nowrap; }
+    .context-copy span { display: block; margin-top: 2px; overflow: hidden; color: var(--muted); font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+    .chevron { color: var(--muted); }
+    .start-summary { margin: 9px 0 11px; color: var(--muted); text-align: center; font-size: 11px; }
+
+    .active-screen { background: radial-gradient(circle at 50% 23%, var(--violet-soft), var(--screen) 52%); }
+    .session-head { min-height: 58px; padding: 4px 18px 0; display: flex; align-items: center; justify-content: space-between; }
+    .session-head div { text-align: center; }
+    .session-head b { display: block; font-size: 13px; }
+    .session-head span { display: block; margin-top: 2px; color: var(--muted); font-size: 10px; }
+    .session-timer { margin-top: 20px; text-align: center; }
+    .session-timer .mode-name { color: var(--violet-strong); font-size: 11px; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+    .session-timer .time { margin-top: 8px; color: var(--ink); font-size: 64px; font-weight: 760; line-height: 1; letter-spacing: -.055em; font-variant-numeric: tabular-nums; }
+    .session-timer .segment-name { margin-top: 9px; color: var(--muted); font-size: 13px; }
+    .mini-owl { width: 114px; height: 126px; margin: 13px auto 0; filter: drop-shadow(0 8px 8px rgba(44, 28, 50, .13)); }
+    .session-progress { width: calc(100% - 40px); height: 5px; margin: 13px auto 0; overflow: hidden; border-radius: 99px; background: var(--line); }
+    .session-progress i { display: block; width: 44%; height: 100%; border-radius: inherit; background: var(--violet); }
+    .last-marker { margin: 16px 18px 0; padding: 12px 13px; display: flex; align-items: center; gap: 10px; border: 1px solid var(--line); border-radius: 16px; background: color-mix(in srgb, var(--surface) 75%, transparent); }
+    .marker-no { width: 34px; height: 34px; display: grid; place-items: center; flex: 0 0 auto; border-radius: 12px; color: var(--violet-strong); background: var(--violet-soft); font-size: 11px; font-weight: 900; }
+    .marker-copy b { display: block; font-size: 12px; }
+    .marker-copy span { display: block; margin-top: 2px; color: var(--muted); font-size: 10px; }
+    .session-controls { margin-top: auto; padding: 18px 18px 24px; display: grid; grid-template-columns: 1fr 1.25fr 1fr; gap: 10px; }
+    .control-button { min-height: 62px; border: 1px solid var(--line); border-radius: 20px; display: grid; place-items: center; align-content: center; gap: 4px; color: var(--ink); background: var(--surface); cursor: pointer; font-size: 10px; font-weight: 800; }
+    .control-button .icon { width: 22px; height: 22px; }
+    .control-button.marker { color: #fff; border-color: var(--violet); background: var(--violet); box-shadow: 0 10px 22px rgba(103, 55, 194, .22); }
+    .control-button.finish { color: var(--coral); }
+
+    .completion-screen { background: linear-gradient(180deg, color-mix(in srgb, var(--green-soft) 64%, var(--screen)), var(--screen) 44%); }
+    .completion-hero { padding: 14px 20px 16px; text-align: center; }
+    .complete-mark { width: 50px; height: 50px; margin: 3px auto 10px; display: grid; place-items: center; border-radius: 18px; color: #fff; background: var(--green); box-shadow: 0 9px 20px rgba(47, 139, 105, .2); }
+    .completion-hero .big-duration { font-size: 38px; font-weight: 850; letter-spacing: -.045em; }
+    .completion-hero h2 { margin: 2px 0 0; font-size: 18px; }
+    .completion-hero p { margin: 6px 0 0; color: var(--muted); font-size: 11px; }
+    .segment-card { padding: 14px; }
+    .segment-card-head { display: flex; align-items: center; justify-content: space-between; }
+    .segment-card-head b { font-size: 12px; }
+    .segment-bar { height: 10px; margin-top: 12px; display: flex; overflow: hidden; border-radius: 99px; background: var(--line); }
+    .segment-bar i:nth-child(1) { width: 34%; background: var(--blue); }
+    .segment-bar i:nth-child(2) { width: 45%; background: var(--violet); }
+    .segment-bar i:nth-child(3) { width: 21%; background: var(--amber); }
+    .segment-legend { margin-top: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+    .legend-item { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 10px; }
+    .legend-item i { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
+    .legend-item:nth-child(2) i { background: var(--violet); }
+    .legend-item:nth-child(3) i { background: var(--amber); }
+    .impact-card { padding: 14px; }
+    .impact-row { display: grid; grid-template-columns: 43px 1fr auto; gap: 10px; align-items: center; }
+    .impact-row + .impact-row { margin-top: 13px; padding-top: 13px; border-top: 1px solid var(--line); }
+    .impact-icon { width: 43px; height: 43px; display: grid; place-items: center; border-radius: 14px; color: var(--violet-strong); background: var(--violet-soft); }
+    .impact-copy b { display: block; font-size: 12px; }
+    .impact-copy span { display: block; margin-top: 2px; color: var(--muted); font-size: 10px; }
+    .impact-value { color: var(--green); font-size: 12px; font-weight: 900; }
+    .mini-progress { height: 5px; margin-top: 6px; overflow: hidden; border-radius: 99px; background: var(--line); }
+    .mini-progress i { display: block; height: 100%; border-radius: inherit; background: var(--violet); }
+    .completion-actions { padding: 12px 18px 21px; }
+    .completion-secondary { margin-top: 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .detail-fields { display: none; margin-top: 11px; padding-top: 11px; border-top: 1px solid var(--line); }
+    .detail-fields.open { display: grid; gap: 8px; }
+    .field { width: 100%; min-height: 43px; padding: 0 12px; border: 1px solid var(--line); border-radius: 13px; color: var(--ink); background: var(--screen); font: inherit; font-size: 12px; }
+
+    .plan-hero { padding: 15px; background: linear-gradient(135deg, var(--violet), var(--violet-strong)); color: #fff; }
+    .plan-hero small { opacity: .75; font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .plan-hero h3 { margin: 6px 0 4px; font-size: 19px; }
+    .plan-hero p { margin: 0; font-size: 11px; opacity: .82; }
+    .agenda-list { display: grid; gap: 9px; }
+    .agenda-item { min-height: 67px; padding: 10px 11px; display: grid; grid-template-columns: 41px 1fr auto; gap: 10px; align-items: center; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); }
+    .agenda-time { width: 41px; height: 41px; display: grid; place-items: center; border-radius: 13px; color: var(--violet-strong); background: var(--violet-soft); font-size: 10px; font-weight: 900; }
+    .agenda-copy b { display: block; color: var(--ink); font-size: 12px; }
+    .agenda-copy span { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; }
+    .agenda-start { width: 39px; height: 39px; display: grid; place-items: center; border: 0; border-radius: 13px; color: #fff; background: var(--violet); cursor: pointer; }
+    .agenda-item.done { opacity: .62; }
+    .agenda-item.done .agenda-start { color: var(--green); background: var(--green-soft); }
+    .book-card { padding: 13px; display: grid; grid-template-columns: 46px 1fr auto; gap: 11px; align-items: center; }
+    .book-cover { width: 46px; height: 62px; border-radius: 7px 11px 11px 7px; background: linear-gradient(145deg, #e78b73, #9b5b8e); box-shadow: inset 5px 0 rgba(255, 255, 255, .16), 0 6px 12px rgba(60, 35, 48, .14); }
+    .book-copy b { display: block; font-size: 12px; }
+    .book-copy span { display: block; margin-top: 4px; color: var(--muted); font-size: 10px; }
+
+    .village-stage { position: relative; min-height: 315px; overflow: hidden; border-radius: 26px; background: linear-gradient(#9dc9e5 0 45%, #b7d29e 45% 100%); box-shadow: var(--card-shadow); }
+    .phone[data-theme="night"] .village-stage { background: linear-gradient(#222a49 0 45%, #29352d 45% 100%); }
+    .village-stage .sun-moon { top: 28px; right: 31px; }
+    .hill { position: absolute; bottom: 70px; left: -20px; width: 260px; height: 95px; border-radius: 50%; background: #88b37a; transform: rotate(7deg); }
+    .phone[data-theme="night"] .hill { background: #31483a; }
+    .room-platform { position: absolute; left: 16px; right: 16px; bottom: 17px; height: 117px; border: 7px solid #85583f; border-radius: 24px 24px 16px 16px; background: #efcf9f; box-shadow: 0 11px 0 rgba(90, 58, 42, .18); }
+    .phone[data-theme="night"] .room-platform { background: #665144; border-color: #49372f; }
+    .room-platform::before { content: ""; position: absolute; left: 12px; right: 12px; top: 17px; height: 70px; border-radius: 15px; background: rgba(255, 250, 230, .38); }
+    .train { position: absolute; right: 24px; bottom: 42px; width: 125px; height: 75px; }
+    .train-body { position: absolute; left: 0; right: 0; bottom: 13px; height: 49px; border: 4px solid #4d3540; border-radius: 12px 21px 9px 9px; background: #925fc0; }
+    .train-window { position: absolute; top: 8px; width: 25px; height: 21px; border: 3px solid #4d3540; border-radius: 6px; background: #bce4ee; }
+    .train-window.one { left: 17px; } .train-window.two { left: 50px; }
+    .train-wheel { position: absolute; bottom: 0; width: 25px; height: 25px; border: 5px solid #4d3540; border-radius: 50%; background: #d9b16a; }
+    .train-wheel.one { left: 17px; } .train-wheel.two { right: 18px; }
+    .village-owl { position: absolute; z-index: 4; left: 29px; bottom: 38px; width: 133px; height: 147px; filter: drop-shadow(0 8px 8px rgba(52, 35, 39, .2)); }
+    .project-card { position: absolute; z-index: 6; left: 16px; right: 16px; top: 16px; padding: 12px 13px; border: 1px solid rgba(255, 255, 255, .42); border-radius: 17px; background: rgba(255, 253, 249, .84); backdrop-filter: blur(12px); box-shadow: 0 8px 22px rgba(47, 41, 56, .12); }
+    .phone[data-theme="night"] .project-card { background: rgba(35, 31, 48, .84); }
+    .project-head { display: flex; justify-content: space-between; gap: 10px; }
+    .project-head b { font-size: 12px; }
+    .project-head span { color: var(--violet-strong); font-size: 10px; font-weight: 850; }
+    .project-card p { margin: 4px 0 8px; color: var(--muted); font-size: 10px; }
+    .project-progress { height: 6px; overflow: hidden; border-radius: 99px; background: rgba(128, 82, 216, .14); }
+    .project-progress i { display: block; width: 67%; height: 100%; border-radius: inherit; background: var(--violet); }
+    .village-actions { margin-top: 12px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .village-action { min-height: 67px; padding: 8px 5px; border: 1px solid var(--line); border-radius: 17px; color: var(--ink); background: var(--surface); cursor: pointer; font-size: 10px; font-weight: 800; }
+    .village-action .icon { display: block; width: 22px; height: 22px; margin: 0 auto 5px; color: var(--violet-strong); }
+    .premium-preview { margin-top: 12px; padding: 14px; display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; overflow: hidden; position: relative; background: linear-gradient(135deg, #29213b, #57417b); color: #fff; }
+    .premium-preview::after { content: ""; position: absolute; right: -27px; top: -42px; width: 110px; height: 110px; border-radius: 50%; background: rgba(244, 184, 74, .15); }
+    .premium-preview small { color: #f4cf80; font-size: 9px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+    .premium-preview b { display: block; margin-top: 4px; font-size: 13px; }
+    .premium-preview p { margin: 3px 0 0; color: rgba(255, 255, 255, .7); font-size: 10px; }
+    .try-button { position: relative; z-index: 2; min-height: 41px; padding: 0 12px; border: 1px solid rgba(255, 255, 255, .22); border-radius: 13px; color: #261e33; background: #f4cf80; cursor: pointer; font-size: 10px; font-weight: 900; }
+
+    .view-switch { padding: 4px; display: grid; grid-template-columns: repeat(3, 1fr); border-radius: 15px; background: var(--surface-2); }
+    .view-button { min-height: 40px; border: 0; border-radius: 12px; color: var(--muted); background: transparent; cursor: pointer; font-size: 11px; font-weight: 850; }
+    .view-button[aria-pressed="true"] { color: var(--ink); background: var(--surface); box-shadow: 0 3px 11px rgba(45, 31, 53, .08); }
+    .week-summary { margin-top: 11px; padding: 14px; }
+    .week-summary-head { display: flex; justify-content: space-between; align-items: flex-start; }
+    .week-summary-head small { display: block; color: var(--muted); font-size: 10px; }
+    .week-summary-head b { display: block; margin-top: 3px; font-size: 18px; }
+    .week-days { margin-top: 15px; display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+    .day-button { min-height: 67px; padding: 6px 2px; border: 1px solid var(--line); border-radius: 14px; display: grid; place-items: center; align-content: center; gap: 5px; color: var(--muted); background: var(--surface); cursor: pointer; }
+    .day-button span { font-size: 9px; font-weight: 800; }
+    .day-button b { font-size: 11px; }
+    .day-button i { width: 8px; height: 8px; border-radius: 50%; background: var(--line); }
+    .day-button.studied i { background: var(--violet); box-shadow: 0 0 0 4px var(--violet-soft); }
+    .day-button.selected { color: #fff; border-color: var(--violet); background: var(--violet); }
+    .day-button.selected i { background: #fff; box-shadow: 0 0 0 4px rgba(255, 255, 255, .18); }
+    .day-button.frozen i { width: 13px; height: 13px; display: grid; place-items: center; color: var(--blue); background: transparent; }
+    .day-button.frozen i::before { content: "✣"; font-style: normal; }
+    .activity-breakdown { margin-top: 12px; padding: 13px 14px; }
+    .breakdown-row { display: grid; grid-template-columns: 90px 1fr 34px; gap: 9px; align-items: center; font-size: 10px; }
+    .breakdown-row + .breakdown-row { margin-top: 9px; }
+    .breakdown-track { height: 6px; overflow: hidden; border-radius: 99px; background: var(--line); }
+    .breakdown-track i { display: block; height: 100%; border-radius: inherit; background: var(--violet); }
+    .calendar-view { display: none; }
+    .calendar-view.active { display: block; }
+    .month-grid { margin-top: 11px; padding: 13px; display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+    .month-label { min-height: 22px; display: grid; place-items: center; color: var(--muted); font-size: 9px; font-weight: 800; }
+    .month-day { aspect-ratio: 1; display: grid; place-items: center; border: 0; border-radius: 10px; color: var(--muted); background: transparent; cursor: pointer; font-size: 10px; }
+    .month-day.l1 { color: var(--violet-strong); background: color-mix(in srgb, var(--violet) 17%, var(--surface)); }
+    .month-day.l2 { color: #fff; background: color-mix(in srgb, var(--violet) 55%, var(--surface)); }
+    .month-day.l3 { color: #fff; background: var(--violet); }
+    .month-day.freeze { color: var(--blue); border: 1px solid var(--blue); background: transparent; }
+    .year-map { margin-top: 11px; padding: 14px; }
+    .heatmap { display: grid; grid-template-columns: repeat(13, 1fr); gap: 5px; }
+    .heatmap i { aspect-ratio: 1; border-radius: 3px; background: var(--line); }
+    .heatmap i:nth-child(5n), .heatmap i:nth-child(7n) { background: color-mix(in srgb, var(--violet) 32%, var(--surface)); }
+    .heatmap i:nth-child(11n), .heatmap i:nth-child(17n) { background: color-mix(in srgb, var(--violet) 68%, var(--surface)); }
+    .heatmap i:nth-child(19n) { background: var(--violet); }
+    .year-lock { margin-top: 12px; padding: 11px; border-radius: 14px; color: var(--violet-strong); background: var(--violet-soft); font-size: 10px; font-weight: 750; }
+    .day-detail { margin-top: 12px; padding: 14px; }
+    .day-detail-head { display: flex; align-items: center; justify-content: space-between; }
+    .day-detail-head b { font-size: 13px; }
+    .session-row { margin-top: 11px; padding-top: 11px; display: grid; grid-template-columns: 39px 1fr auto; gap: 9px; align-items: center; border-top: 1px solid var(--line); }
+    .session-time { width: 39px; height: 39px; display: grid; place-items: center; border-radius: 12px; color: var(--violet-strong); background: var(--violet-soft); font-size: 9px; font-weight: 850; }
+    .session-row b { display: block; font-size: 11px; }
+    .session-row span { display: block; margin-top: 2px; color: var(--muted); font-size: 9px; }
+    .session-duration { color: var(--violet-strong); font-size: 11px; font-weight: 900; }
+
+    .overlay { position: absolute; z-index: 70; inset: 0; display: none; align-items: flex-end; background: rgba(20, 16, 26, .43); backdrop-filter: blur(2px); }
+    .overlay.open { display: flex; }
+    .sheet { width: 100%; max-height: 83%; overflow-y: auto; padding: 10px 18px 25px; border-radius: 28px 28px 0 0; color: var(--ink); background: var(--surface); box-shadow: 0 -18px 50px rgba(20, 16, 26, .18); animation: sheetIn .28s ease-out both; }
+    .grabber { width: 40px; height: 5px; margin: 0 auto 14px; border-radius: 99px; background: var(--line); }
+    .sheet h3 { margin: 0; font-size: 20px; }
+    .sheet > p { margin: 7px 0 15px; color: var(--muted); font-size: 11px; line-height: 1.45; }
+    .profile-owl { display: flex; align-items: center; gap: 12px; padding: 13px; }
+    .profile-avatar { width: 58px; height: 58px; overflow: hidden; border-radius: 20px; background: var(--violet-soft); }
+    .profile-avatar svg { width: 100%; height: 100%; }
+    .profile-copy b { display: block; font-size: 14px; }
+    .profile-copy span { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; }
+    .sheet-list { margin-top: 11px; overflow: hidden; border: 1px solid var(--line); border-radius: 18px; }
+    .sheet-row { min-height: 55px; padding: 0 13px; display: flex; align-items: center; gap: 11px; }
+    .sheet-row + .sheet-row { border-top: 1px solid var(--line); }
+    .sheet-row .icon { color: var(--violet-strong); }
+    .sheet-row div { min-width: 0; flex: 1; }
+    .sheet-row b { display: block; font-size: 11px; }
+    .sheet-row span { display: block; margin-top: 2px; color: var(--muted); font-size: 9px; }
+
+    .toast { position: absolute; z-index: 90; left: 18px; right: 18px; top: 57px; min-height: 50px; padding: 10px 12px; display: flex; align-items: center; gap: 9px; border: 1px solid var(--line); border-radius: 16px; color: var(--ink); background: var(--surface); box-shadow: 0 11px 28px rgba(30, 21, 36, .18); opacity: 0; transform: translateY(-10px); pointer-events: none; transition: .22s ease; }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    .toast .toast-icon { width: 29px; height: 29px; display: grid; place-items: center; border-radius: 10px; color: #fff; background: var(--green); }
+    .toast b { display: block; font-size: 11px; }
+    .toast span { display: block; margin-top: 2px; color: var(--muted); font-size: 9px; }
+
+    .mobile-tour { display: none; }
+    .mobile-tour select { width: 100%; min-height: 46px; padding: 0 12px; border: 1px solid rgba(128, 82, 216, .18); border-radius: 14px; color: var(--page-ink); background: rgba(255, 255, 255, .82); font: inherit; font-weight: 750; }
+
+    @keyframes screenIn { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
+    @keyframes sheetIn { from { transform: translateY(100%); } to { transform: translateY(0); } }
+    @keyframes nightWake { 0% { transform: translateY(4px) rotate(-2deg); } 48% { transform: translateY(-2px) rotate(2deg); } 100% { transform: none; } }
+
+    @media (max-width: 920px) {
+      .prototype-layout { grid-template-columns: minmax(390px, 430px) minmax(190px, 230px); }
+      .side-panel:first-child { display: none; }
+      .mobile-tour { display: block; width: min(430px, calc(100% - 36px)); margin: 0 auto 12px; }
+    }
+    @media (max-width: 680px) {
+      body { background: var(--frame); }
+      .prototype-head, .side-panel, .mobile-tour { display: none; }
+      .prototype-layout { width: 100%; padding: 0; display: block; }
+      .phone { width: 100%; height: 100dvh; min-height: 620px; border: 0; border-radius: 0; box-shadow: none; }
+      .phone::before { top: 9px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-focus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></symbol>
+    <symbol id="i-plan" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 8h8M8 12h8M8 16h5"/></symbol>
+    <symbol id="i-village" viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9H3z"/><path d="M8 20v-6h8v6M6 9V5h3v2"/></symbol>
+    <symbol id="i-progress" viewBox="0 0 24 24"><path d="M4 19V9M10 19V5M16 19v-7M22 19V3"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c.8-4.2 3.5-6.5 8-6.5s7.2 2.3 8 6.5"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5A3.5 3.5 0 0 1 7.5 2H12v18H7.5A3.5 3.5 0 0 0 4 23zM20 5.5A3.5 3.5 0 0 0 16.5 2H12v18h4.5A3.5 3.5 0 0 1 20 23z"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M6 21V4M6 5h10l-2 4 2 4H6"/></symbol>
+    <symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2c.7 5.1 2.9 7.3 8 8-5.1.7-7.3 2.9-8 8-.7-5.1-2.9-7.3-8-8 5.1-.7 7.3-2.9 8-8zM19 16c.2 1.7.8 2.3 2.5 2.5-1.7.2-2.3.8-2.5 2.5-.2-1.7-.8-2.3-2.5-2.5 1.7-.2 2.3-.8 2.5-2.5z"/></symbol>
+    <symbol id="i-coffee" viewBox="0 0 24 24"><path d="M4 8h13v6a6 6 0 0 1-6 6H10a6 6 0 0 1-6-6zM17 10h2a3 3 0 0 1 0 6h-2M8 3c0 1 1 1 1 2S8 6 8 7M13 3c0 1 1 1 1 2s-1 1-1 2"/></symbol>
+    <symbol id="i-shirt" viewBox="0 0 24 24"><path d="m8 4 4 2 4-2 5 4-3 4-2-2v11H8V10l-2 2-3-4z"/></symbol>
+    <symbol id="i-shop" viewBox="0 0 24 24"><path d="M4 10v10h16V10M3 5h18l-2 5H5zM9 20v-6h6v6"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.4M8.7 13.3l6.6 4.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></symbol>
+    <symbol id="owl" viewBox="0 0 160 180">
+      <ellipse cx="80" cy="120" rx="49" ry="53" fill="#81533d"/>
+      <path d="M35 111c-19 13-17 43 4 54 4-20 11-34 22-45z" fill="#6b4334"/>
+      <path d="M125 111c19 13 17 43-4 54-4-20-11-34-22-45z" fill="#6b4334"/>
+      <path d="M46 58 49 22l27 25M114 58l-3-36-27 25" fill="#81533d" stroke="#5f3b30" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M49 23 57 48 71 44zM111 23l-8 25-14-4z" fill="#e97a86"/>
+      <ellipse cx="80" cy="72" rx="52" ry="45" fill="#946146"/>
+      <path d="M80 53c-14-19-42-20-48 3-8 31 18 52 48 45 30 7 56-14 48-45-6-23-34-22-48-3z" fill="#f5d6a8"/>
+      <ellipse cx="58" cy="70" rx="19" ry="22" fill="#fffaf3"/>
+      <ellipse cx="102" cy="70" rx="19" ry="22" fill="#fffaf3"/>
+      <circle cx="60" cy="72" r="8" fill="#342834"/>
+      <circle cx="100" cy="72" r="8" fill="#342834"/>
+      <circle cx="63" cy="69" r="2.5" fill="#fff"/>
+      <circle cx="103" cy="69" r="2.5" fill="#fff"/>
+      <path d="m80 79-10 9 10 7 10-7z" fill="#e6a43a" stroke="#bc7728" stroke-width="2"/>
+      <path d="M57 95c8 8 15 9 23 5M103 95c-8 8-15 9-23 5" fill="none" stroke="#7a493a" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="44" cy="88" r="6" fill="#e9948f" opacity=".75"/>
+      <circle cx="116" cy="88" r="6" fill="#e9948f" opacity=".75"/>
+      <path d="M66 37c4-10 8-15 14-19 6 4 10 9 14 19-9-5-19-5-28 0z" fill="#8052d8"/>
+      <path d="M50 122c19 10 41 10 60 0v25c-18 12-42 12-60 0z" fill="#8052d8"/>
+      <path d="M62 124v27M98 124v27" stroke="#a98ae8" stroke-width="3" opacity=".65"/>
+      <ellipse cx="61" cy="164" rx="18" ry="9" fill="#6b4334"/>
+      <ellipse cx="99" cy="164" rx="18" ry="9" fill="#6b4334"/>
+      <g class="coffee">
+        <path d="M112 128h25v18a10 10 0 0 1-10 10h-5a10 10 0 0 1-10-10z" fill="#f4e9dd" stroke="#5f3b30" stroke-width="3"/>
+        <path d="M137 133h5a7 7 0 0 1 0 14h-5" fill="none" stroke="#5f3b30" stroke-width="3"/>
+        <path d="M119 120c-4 4 4 5 0 9M128 119c-4 4 4 5 0 9" fill="none" stroke="#d4c6b8" stroke-width="2" stroke-linecap="round"/>
+      </g>
+    </symbol>
+  </svg>
+
+  <header class="prototype-head">
+    <div>
+      <p class="eyebrow">StudySprintTimer · Ürün prototipi</p>
+      <h1>Odaktan köye uzanan tek çalışma döngüsü</h1>
+      <p>Bu sayfa nihai ürün planının görsel örneğidir. Ekranlara dokunabilir, Kronometreye işaret ekleyebilir, sonucu tamamlayabilir ve geçmişten aynı düzene dönebilirsin.</p>
+    </div>
+    <div class="prototype-actions" aria-label="Prototip görünümü">
+      <button class="prototype-chip" id="day-toggle" aria-pressed="true">Gündüz</button>
+      <button class="prototype-chip" id="night-toggle" aria-pressed="false">Gece</button>
+    </div>
+  </header>
+
+  <div class="mobile-tour">
+    <label for="mobile-screen" style="position:absolute;left:-9999px">Ekran seç</label>
+    <select id="mobile-screen">
+      <option value="focus">1. Odak başlangıcı</option>
+      <option value="active">2. Aktif Kronometre</option>
+      <option value="complete">3. Tamamlama</option>
+      <option value="plan">4. Bugünkü Plan</option>
+      <option value="village">5. Baykuş Köyü</option>
+      <option value="progress">6. Çalışma Takvimi</option>
+    </select>
+  </div>
+
+  <main class="prototype-layout">
+    <aside class="side-panel" aria-label="Prototip ekranları">
+      <h2>Ekranlar</h2>
+      <div class="tour-list">
+        <button class="tour-button" data-go="focus" aria-current="page"><span class="tour-no">01</span><span class="tour-label"><b>Odak</b><span>Mod, süre, bağlam</span></span></button>
+        <button class="tour-button" data-go="active"><span class="tour-no">02</span><span class="tour-label"><b>Aktif seans</b><span>İşaretle ve devam et</span></span></button>
+        <button class="tour-button" data-go="complete"><span class="tour-no">03</span><span class="tour-label"><b>Tamamlama</b><span>Kayıt, karşılık, devam</span></span></button>
+        <button class="tour-button" data-go="plan"><span class="tour-no">04</span><span class="tour-label"><b>Plan</b><span>Bugünü başlat</span></span></button>
+        <button class="tour-button" data-go="village"><span class="tour-no">05</span><span class="tour-label"><b>Baykuş Köyü</b><span>Emek görünür olur</span></span></button>
+        <button class="tour-button" data-go="progress"><span class="tour-no">06</span><span class="tour-label"><b>Çalışma Takvimi</b><span>Geçmişten geri dön</span></span></button>
+      </div>
+    </aside>
+
+    <div class="device-wrap">
+      <div class="phone" id="phone" data-theme="day">
+        <div class="app-status"><span>09:41</span><span class="status-icons"><span class="signal"><i></i><i></i><i></i><i></i></span><span class="battery"></span></span></div>
+
+        <section class="screen active" data-screen="focus" aria-label="Odak başlangıcı">
+          <div class="screen-top">
+            <div class="screen-title"><small>11 Eylül, Perşembe</small><h2>Günaydın, Harun</h2></div>
+            <div class="top-actions">
+              <button class="icon-button" id="focus-theme" aria-label="Gündüz gece görünümünü değiştir"><svg class="icon"><use href="#i-moon"/></svg></button>
+              <button class="icon-button" data-open="profile" aria-label="Profili aç"><svg class="icon"><use href="#i-user"/></svg></button>
+            </div>
+          </div>
+          <div class="screen-scroll"><div class="screen-pad">
+            <div class="focus-stage">
+              <div class="stage-copy"><span class="day-word">Sıradaki</span><h3>Matematikte kaldığın yere dön</h3><p>Son çalışman 40 dk Test idi.</p></div>
+              <div class="stage-window"><i class="sun-moon"></i><i class="star"></i></div>
+              <div class="book-stack"><i></i><i></i><i></i></div>
+              <div class="desk"></div>
+              <div class="owl-wrap"><svg class="owl-svg" viewBox="0 0 160 180"><use href="#owl"/></svg></div>
+            </div>
+
+            <div class="section-label">Nasıl sayalım?</div>
+            <div class="mode-switch" role="group" aria-label="Sayaç modu">
+              <button class="mode-button" data-mode="countdown" aria-pressed="true">Geri Sayım</button>
+              <button class="mode-button" data-mode="stopwatch" aria-pressed="false">Kronometre</button>
+            </div>
+            <div class="duration-grid" id="duration-options">
+              <button class="duration-button" data-duration="20" aria-pressed="false">20 dk</button>
+              <button class="duration-button" data-duration="40" aria-pressed="true">40 dk</button>
+              <button class="duration-button" data-duration="custom" aria-pressed="false">Özel</button>
+            </div>
+
+            <div class="section-label">Çalışma bağlamı</div>
+            <button class="card context-card" id="context-button" style="width:100%;text-align:left" aria-label="Çalışma bağlamını düzenle">
+              <span class="context-icon"><svg class="icon"><use href="#i-book"/></svg></span>
+              <span class="context-copy"><b>Matematik · Test</b><span>TYT hazırlığı · Yağmur sesi</span></span>
+              <svg class="icon chevron"><use href="#i-chevron"/></svg>
+            </button>
+            <p class="start-summary" id="start-summary">40 dk · Matematik · Test · Yağmur sesi</p>
+            <button class="primary-button" id="start-session">40 dk başlat</button>
+          </div></div>
+        </section>
+
+        <section class="screen active-screen" data-screen="active" aria-label="Aktif Kronometre">
+          <div class="session-head">
+            <button class="icon-button" data-go="focus" aria-label="Odak ekranına dön"><svg class="icon"><path d="m15 5-7 7 7 7"/></svg></button>
+            <div><b>Matematik · Test</b><span>TYT hazırlığı</span></div>
+            <button class="icon-button" id="active-theme" aria-label="Gündüz gece görünümünü değiştir"><svg class="icon"><use href="#i-moon"/></svg></button>
+          </div>
+          <div class="session-timer">
+            <div class="mode-name" id="active-mode-name">Kronometre</div>
+            <div class="time" id="timer-value">18:20</div>
+            <div class="segment-name" id="segment-name">1. bölüm · Konu Anlatımı</div>
+          </div>
+          <div class="mini-owl"><svg class="owl-svg" viewBox="0 0 160 180"><use href="#owl"/></svg></div>
+          <div class="session-progress"><i id="session-progress-bar"></i></div>
+          <div class="last-marker" id="last-marker">
+            <span class="marker-no">01</span>
+            <span class="marker-copy"><b>Başlangıç · Konu Anlatımı</b><span>Çalışma devam ediyor</span></span>
+          </div>
+          <div class="session-controls">
+            <button class="control-button" id="pause-session"><svg class="icon"><use href="#i-pause"/></svg><span>Duraklat</span></button>
+            <button class="control-button marker" id="mark-session"><svg class="icon"><use href="#i-flag"/></svg><span>İşaretle</span></button>
+            <button class="control-button finish" id="finish-session"><svg class="icon"><use href="#i-stop"/></svg><span>Bitir</span></button>
+          </div>
+        </section>
+
+        <section class="screen completion-screen" data-screen="complete" aria-label="Tamamlama ekranı">
+          <div class="screen-scroll">
+            <div class="completion-hero">
+              <div class="complete-mark"><svg class="icon" style="width:28px;height:28px"><use href="#i-check"/></svg></div>
+              <div class="big-duration" id="completed-duration">54 dk</div>
+              <h2>Odak kaydedildi</h2>
+              <p>Matematik · Kronometre · 21:10-22:04</p>
+            </div>
+            <div class="screen-pad" style="padding-top:0">
+              <div class="card segment-card">
+                <div class="segment-card-head"><b>Çalışma parçaları</b><button class="text-button" id="detail-toggle">Ayrıntı ekle</button></div>
+                <div class="segment-bar" aria-label="Konu anlatımı 18 dakika, test 24 dakika, tekrar 12 dakika"><i></i><i></i><i></i></div>
+                <div class="segment-legend"><span class="legend-item"><i></i>Konu · 18 dk</span><span class="legend-item"><i></i>Test · 24 dk</span><span class="legend-item"><i></i>Tekrar · 12 dk</span></div>
+                <div class="detail-fields" id="detail-fields">
+                  <input class="field" inputmode="numeric" placeholder="Kaç soru çözdün?" aria-label="Çözülen soru sayısı">
+                  <input class="field" placeholder="Kısa not ekle" aria-label="Oturum notu">
+                </div>
+              </div>
+              <div class="section-label">Çalışman neye dönüştü?</div>
+              <div class="card impact-card">
+                <div class="impact-row">
+                  <span class="impact-icon"><svg class="icon"><use href="#i-focus"/></svg></span>
+                  <span class="impact-copy"><b>Günlük hedef tamamlandı</b><span>85 dk hedeften 100 dk çalışmaya</span><span class="mini-progress"><i style="width:100%"></i></span></span>
+                  <span class="impact-value">+54 dk</span>
+                </div>
+                <div class="impact-row">
+                  <span class="impact-icon"><svg class="icon"><use href="#i-village"/></svg></span>
+                  <span class="impact-copy"><b>Tren Vagonu ilerledi</b><span>6 odak gününden 4'ü tamam</span><span class="mini-progress"><i style="width:67%"></i></span></span>
+                  <span class="impact-value">+1 gün</span>
+                </div>
+                <div class="impact-row">
+                  <span class="impact-icon"><svg class="icon"><use href="#i-spark"/></svg></span>
+                  <span class="impact-copy"><b>Baykuş gelişimi</b><span>+21 coin · +54 XP</span></span>
+                  <span class="impact-value">Sv.14</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="completion-actions">
+            <button class="primary-button" id="start-break">5 dk mola başlat</button>
+            <div class="completion-secondary">
+              <button class="secondary-button" data-go="focus">Aynı düzenle tekrar</button>
+              <button class="secondary-button" data-go="progress">Takvimde gör</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen" data-screen="plan" aria-label="Bugünkü Plan">
+          <div class="screen-top">
+            <div class="screen-title"><small>3 iş · 1 tamamlandı</small><h2>Bugünkü Plan</h2></div>
+            <button class="icon-button" aria-label="Yeni plan ekle" id="add-plan"><svg class="icon"><use href="#i-plus"/></svg></button>
+          </div>
+          <div class="screen-scroll"><div class="screen-pad">
+            <div class="card plan-hero"><small>Sıradaki çalışma</small><h3>TYT Matematik · Test</h3><p>40 dk · Yağmur sesi · Son çalışmandan devam</p></div>
+            <div class="section-label">Bugün</div>
+            <div class="agenda-list">
+              <div class="agenda-item done"><span class="agenda-time">08:30</span><span class="agenda-copy"><b>Paragraf denemesi</b><span>20 dk · 24 soru</span></span><button class="agenda-start" aria-label="Tamamlandı"><svg class="icon"><use href="#i-check"/></svg></button></div>
+              <div class="agenda-item"><span class="agenda-time">Şimdi</span><span class="agenda-copy"><b>Matematik · Test</b><span>40 dk · TYT hazırlığı</span></span><button class="agenda-start" data-go="active" aria-label="Matematik çalışmasını başlat"><svg class="icon"><use href="#i-play"/></svg></button></div>
+              <div class="agenda-item"><span class="agenda-time">19:00</span><span class="agenda-copy"><b>Fizik · Konu Anlatımı</b><span>20 dk · Kuvvet ve hareket</span></span><button class="agenda-start" data-go="active" aria-label="Fizik çalışmasını başlat"><svg class="icon"><use href="#i-play"/></svg></button></div>
+            </div>
+            <div class="section-label">Birlikte Odak</div>
+            <div class="card context-card">
+              <span class="context-icon"><svg class="icon"><use href="#i-user"/></svg></span>
+              <span class="context-copy"><b>Elif'in odası · 1/2</b><span>Aynı sayaç, sessiz çalışma · Free</span></span>
+              <button class="secondary-button" id="join-room" style="min-height:39px;padding:0 11px;font-size:10px">Katıl</button>
+            </div>
+            <p class="start-summary" style="margin-bottom:0">Premium odalarda 5 kişiye kadar birlikte çalışılır.</p>
+            <div class="section-label">Kaldığın yer</div>
+            <div class="card book-card"><span class="book-cover"></span><span class="book-copy"><b>İnce Memed</b><span>184 / 436 sayfa · 12 gündür okuyorsun</span><span class="mini-progress"><i style="width:42%"></i></span></span><button class="text-button" data-go="focus">Devam et</button></div>
+            <div class="section-label">Yaklaşan sınav</div>
+            <div class="card context-card"><span class="context-icon"><svg class="icon"><use href="#i-plan"/></svg></span><span class="context-copy"><b>TYT · 27 gün kaldı</b><span>Bu hafta 4 / 5 odak günü</span></span><svg class="icon chevron"><use href="#i-chevron"/></svg></div>
+          </div></div>
+        </section>
+
+        <section class="screen" data-screen="village" aria-label="Baykuş Köyü">
+          <div class="screen-top">
+            <div class="screen-title"><small>Baykuş Köyü · Sv.14</small><h2>Fener Mahallesi</h2></div>
+            <span class="pill amber"><span class="dot"></span>1.860</span>
+          </div>
+          <div class="screen-scroll"><div class="screen-pad">
+            <div class="village-stage">
+              <i class="sun-moon"></i><i class="star" style="top:30px;left:35px"></i><div class="hill"></div>
+              <div class="project-card"><div class="project-head"><b>Tren Vagonu</b><span>4 / 6 odak günü</span></div><p>İki farklı günde daha çalışınca vagon açılır.</p><div class="project-progress"><i></i></div></div>
+              <div class="room-platform"></div>
+              <div class="village-owl"><svg class="owl-svg" viewBox="0 0 160 180"><use href="#owl"/></svg></div>
+              <div class="train"><div class="train-body"><i class="train-window one"></i><i class="train-window two"></i></div><i class="train-wheel one"></i><i class="train-wheel two"></i></div>
+            </div>
+            <div class="village-actions">
+              <button class="village-action" id="wardrobe"><svg class="icon"><use href="#i-shirt"/></svg>Gardırop</button>
+              <button class="village-action" id="shop"><svg class="icon"><use href="#i-shop"/></svg>Mağaza</button>
+              <button class="village-action" id="showcase"><svg class="icon"><use href="#i-share"/></svg>Vitrinim</button>
+            </div>
+            <div class="card premium-preview"><div><small>Premium önizleme</small><b>Gece Yolcusu ambiyansı</b><p>Ay ışığı, masa lambası ve özel pencere görünümü.</p></div><button class="try-button" id="premium-try">Odamda dene</button></div>
+            <div class="section-label">Bu hafta köyde</div>
+            <div class="card context-card"><span class="context-icon"><svg class="icon"><use href="#i-spark"/></svg></span><span class="context-copy"><b>Hatıra Rafı'na 2 parça eklendi</b><span>7 günlük seri · 4 farklı çalışma biçimi</span></span><svg class="icon chevron"><use href="#i-chevron"/></svg></div>
+          </div></div>
+        </section>
+
+        <section class="screen" data-screen="progress" aria-label="Çalışma Takvimi">
+          <div class="screen-top">
+            <div class="screen-title"><small>İlerleme</small><h2>Çalışma Takvimi</h2></div>
+            <button class="icon-button" id="filter-calendar" aria-label="Takvimi filtrele"><svg class="icon"><path d="M4 6h16M7 12h10M10 18h4"/></svg></button>
+          </div>
+          <div class="screen-scroll"><div class="screen-pad">
+            <div class="view-switch" role="group" aria-label="Takvim görünümü">
+              <button class="view-button" data-calendar="week" aria-pressed="true">Hafta</button>
+              <button class="view-button" data-calendar="month" aria-pressed="false">Ay</button>
+              <button class="view-button" data-calendar="year" aria-pressed="false">Yıl</button>
+            </div>
+
+            <div class="calendar-view active" data-calendar-view="week">
+              <div class="card week-summary">
+                <div class="week-summary-head"><div><small>8-14 Eylül</small><b>4 gün · 3 sa 25 dk</b></div><span class="pill green">Hedef %82</span></div>
+                <div class="week-days">
+                  <button class="day-button studied"><span>Pzt</span><b>42</b><i></i></button>
+                  <button class="day-button studied"><span>Sal</span><b>58</b><i></i></button>
+                  <button class="day-button frozen"><span>Çar</span><b>0</b><i></i></button>
+                  <button class="day-button studied selected" data-day-detail><span>Per</span><b>54</b><i></i></button>
+                  <button class="day-button"><span>Cum</span><b>0</b><i></i></button>
+                  <button class="day-button"><span>Cmt</span><b>0</b><i></i></button>
+                  <button class="day-button"><span>Paz</span><b>0</b><i></i></button>
+                </div>
+              </div>
+              <div class="card activity-breakdown">
+                <div class="breakdown-row"><span>Test</span><span class="breakdown-track"><i style="width:72%"></i></span><b>2s 06</b></div>
+                <div class="breakdown-row"><span>Konu</span><span class="breakdown-track"><i style="width:46%;background:var(--blue)"></i></span><b>1s 05</b></div>
+                <div class="breakdown-row"><span>Tekrar</span><span class="breakdown-track"><i style="width:22%;background:var(--amber)"></i></span><b>34 dk</b></div>
+              </div>
+            </div>
+
+            <div class="calendar-view" data-calendar-view="month">
+              <div class="card month-grid" aria-label="Eylül 2026 çalışma yoğunluğu">
+                <span class="month-label">Pzt</span><span class="month-label">Sal</span><span class="month-label">Çar</span><span class="month-label">Per</span><span class="month-label">Cum</span><span class="month-label">Cmt</span><span class="month-label">Paz</span>
+                <button class="month-day"></button><button class="month-day l1">1</button><button class="month-day l2">2</button><button class="month-day l3">3</button><button class="month-day">4</button><button class="month-day l1">5</button><button class="month-day">6</button>
+                <button class="month-day l2">7</button><button class="month-day l3">8</button><button class="month-day freeze">9</button><button class="month-day l3" data-day-detail>10</button><button class="month-day">11</button><button class="month-day">12</button><button class="month-day">13</button>
+                <button class="month-day">14</button><button class="month-day">15</button><button class="month-day">16</button><button class="month-day">17</button><button class="month-day">18</button><button class="month-day">19</button><button class="month-day">20</button>
+                <button class="month-day">21</button><button class="month-day">22</button><button class="month-day">23</button><button class="month-day">24</button><button class="month-day">25</button><button class="month-day">26</button><button class="month-day">27</button>
+                <button class="month-day">28</button><button class="month-day">29</button><button class="month-day">30</button>
+              </div>
+              <div class="card context-card" style="margin-top:12px"><span class="context-icon"><svg class="icon"><use href="#i-progress"/></svg></span><span class="context-copy"><b>Eylül · 6 sa 18 dk</b><span>8 gerçek çalışma günü · 1 dondurma</span></span></div>
+            </div>
+
+            <div class="calendar-view" data-calendar-view="year">
+              <div class="card year-map"><div class="week-summary-head"><div><small>Son 90 gün</small><b>28 çalışma günü</b></div><span class="pill">31 sa</span></div><div class="heatmap" aria-label="Son 90 günlük çalışma haritası">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div><button class="year-lock" id="year-premium" style="width:100%;border:0;text-align:left">12 ayı ve dönem karşılaştırmasını Premium ile aç</button></div>
+            </div>
+
+            <div class="card day-detail" id="calendar-day-detail">
+              <div class="day-detail-head"><div><b>11 Eylül, Perşembe</b><span class="subtle" style="display:block;margin-top:3px;font-size:10px">2 oturum · 74 dk</span></div><button class="text-button" data-go="focus">Aynı düzenle başlat</button></div>
+              <div class="session-row"><span class="session-time">08:30</span><span><b>Paragraf · Test</b><span>20 dk · 24 soru</span></span><span class="session-duration">20 dk</span></div>
+              <div class="session-row"><span class="session-time">21:10</span><span><b>Matematik · 3 parça</b><span>Konu, Test, Tekrar · 42 soru</span></span><span class="session-duration">54 dk</span></div>
+            </div>
+            <button class="text-button" id="manage-streak" style="width:100%;margin-top:8px">Seriyi yönet · 7 gün</button>
+          </div></div>
+        </section>
+
+        <nav class="bottom-nav" aria-label="Ana navigasyon">
+          <button class="nav-button" data-go="focus" aria-current="page"><svg class="icon"><use href="#i-focus"/></svg><span>Odak</span></button>
+          <button class="nav-button" data-go="plan"><svg class="icon"><use href="#i-plan"/></svg><span>Plan</span></button>
+          <button class="nav-button" data-go="village"><svg class="icon"><use href="#i-village"/></svg><span>Köy</span></button>
+          <button class="nav-button" data-go="progress"><svg class="icon"><use href="#i-progress"/></svg><span>İlerleme</span></button>
+        </nav>
+
+        <div class="overlay" id="profile-overlay" aria-hidden="true">
+          <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="profile-title">
+            <div class="grabber"></div><h3 id="profile-title">Baykuş Pasaportu</h3><p>Profilin, çalışmaların ve Baykuşun bu cihazda güvende.</p>
+            <div class="card profile-owl"><span class="profile-avatar"><svg viewBox="0 0 160 180"><use href="#owl"/></svg></span><span class="profile-copy"><b>Harun'un Baykuşu · Sv.14</b><span>7 günlük seri · Tren Vagonu 4/6</span></span></div>
+            <div class="sheet-list"><div class="sheet-row"><svg class="icon"><use href="#i-check"/></svg><div><b>Bulut yedeği güncel</b><span>iPhone 12 · 2 dakika önce</span></div><span class="pill green">Ücretsiz</span></div><div class="sheet-row"><svg class="icon"><use href="#i-user"/></svg><div><b>Kurtarma kimliği ekle</b><span>Apple veya Google ile verini geri getir</span></div><svg class="icon chevron"><use href="#i-chevron"/></svg></div><div class="sheet-row"><svg class="icon"><use href="#i-spark"/></svg><div><b>Premium Everywhere</b><span>Tüm cihazlarında ambiyans ve gelişmiş geçmiş</span></div><svg class="icon chevron"><use href="#i-chevron"/></svg></div></div>
+            <button class="primary-button" data-close="profile" style="margin-top:14px">Bitti</button>
+          </div>
+        </div>
+
+        <div class="overlay" id="premium-overlay" aria-hidden="true">
+          <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="premium-title">
+            <div class="grabber"></div><span class="pill amber">Odan üzerinde canlı önizleme</span><h3 id="premium-title" style="margin-top:10px">Gece Yolcusu</h3><p>Ay ışığı ambiyansı, özel masa lambası, kayıtlı Odak Tarifleri ve 12 aylık karşılaştırma bütün cihazlarında açılır.</p>
+            <div class="focus-stage" style="min-height:205px"><div class="stage-window"><i class="sun-moon"></i><i class="star"></i></div><div class="desk"></div><div class="owl-wrap" style="left:105px;bottom:14px"><svg class="owl-svg" viewBox="0 0 160 180"><use href="#owl"/></svg></div></div>
+            <button class="primary-button" id="premium-plan" style="margin-top:14px">Planları gör</button><button class="text-button" data-close="premium" style="width:100%;margin-top:5px">Önizlemeyi kapat</button>
+          </div>
+        </div>
+
+        <div class="toast" id="toast" role="status" aria-live="polite"><span class="toast-icon"><svg class="icon"><use href="#i-check"/></svg></span><span><b id="toast-title">Kaydedildi</b><span id="toast-copy">Değişiklik uygulandı.</span></span></div>
+      </div>
+    </div>
+
+    <aside class="side-panel">
+      <div class="screen-note" id="screen-note">
+        <span class="note-kicker">Odak başlangıcı</span>
+        <h3>İki karar birbirinden ayrılıyor</h3>
+        <p>Geri Sayım veya Kronometre önce seçiliyor. 20, 40 ve Özel seçenekleri yalnız Geri Sayım içinde görünüyor.</p>
+        <ul><li>Tek ana başlatma düğmesi</li><li>Bağlam seçmek isteğe bağlı</li><li>Gece görünümünde Baykuş kahvesiyle uyanıyor</li></ul>
+        <div class="note-key">Temel timer ve bağlam ücretsiz kalır.</div>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    (() => {
+      const phone = document.getElementById('phone');
+      const screens = [...document.querySelectorAll('[data-screen]')];
+      const tourButtons = [...document.querySelectorAll('.tour-button')];
+      const navButtons = [...document.querySelectorAll('.nav-button')];
+      const mobileScreen = document.getElementById('mobile-screen');
+      const note = document.getElementById('screen-note');
+      const toast = document.getElementById('toast');
+      let timerSeconds = 1100;
+      let timerHandle = null;
+      let paused = false;
+      let markerCount = 1;
+      let mode = 'countdown';
+      let duration = '40';
+      let toastHandle = null;
+
+      const notes = {
+        focus: ['Odak başlangıcı', 'İki karar birbirinden ayrılıyor', 'Geri Sayım veya Kronometre önce seçiliyor. 20, 40 ve Özel seçenekleri yalnız Geri Sayım içinde görünüyor.', ['Tek ana başlatma düğmesi', 'Bağlam seçmek isteğe bağlı', 'Gece görünümünde Baykuş kahvesiyle uyanıyor'], 'Temel timer ve bağlam ücretsiz kalır.'],
+        active: ['Aktif seans', 'Çalışırken arayüz geri çekiliyor', 'Kronometre devam ederken İşaretle, konu anlatımı ile test gibi çalışma geçişlerini kaydediyor.', ['İşaret timerı durdurmuyor', 'Her işaret sekiz saniye geri alınabilir', 'Tur sayısı XP veya coin üretmiyor'], 'Tek oturum, tek ödül, en fazla 100 işaret.'],
+        complete: ['Tamamlama', 'Kayıt, karşılık ve devam', 'Sonuç önce kaydoluyor. Kullanıcı çalışmasını görüyor, ayrıntı ekliyor ve mola ya da tekrar kararını kendisi veriyor.', ['Otomatik paywall yok', 'Erken bitişte sahte kutlama yok', 'Ayrıntılar takvimden değiştirilebilir'], 'Geçmiş düzenleme ekonomik ödülü değiştirmez.'],
+        plan: ['Bugünkü Plan', 'Plan doğrudan çalışmaya açılıyor', 'Bugünün işleri, kaldığın kitap ve küçük bir ortak oda aynı akışta bulunuyor.', ['Tek dokunuşla hazır Odak ekranı', 'İki kişilik oda ücretsiz', 'Premium oda beş kişiye kadar büyür'], 'Plan hazırlamak ayrı bir angarya olmaz.'],
+        village: ['Baykuş Köyü', 'Çalışma kalıcı bir sahneye dönüşüyor', 'Kullanıcı aktif projesini ve kaç farklı odak gününe ihtiyacı kaldığını odasında görüyor.', ['Seviye tek başına içerik dağıtmıyor', 'Eşya önce odada deneniyor', 'Premium kozmetik ve ambiyans satıyor'], 'Premium XP veya çalışma dakikası satmaz.'],
+        progress: ['Çalışma Takvimi', 'Geçmiş yeni çalışmaya bağlanıyor', 'Hafta varsayılan açılıyor. Ay gerçek dakika yoğunluğunu, günlüğün içi de oturumları ve çalışma parçalarını gösteriyor.', ['Dondurma gerçek çalışma sayılmıyor', 'Son 90 gün ücretsiz', 'Geçmişten aynı düzen başlatılabiliyor'], 'Not ve özel ders adı telemetriye gönderilmez.']
+      };
+
+      function icon(id) { return `<svg class="icon"><use href="#${id}"/></svg>`; }
+      function setScreen(name) {
+        toast.classList.remove('show');
+        clearTimeout(toastHandle);
+        screens.forEach(screen => screen.classList.toggle('active', screen.dataset.screen === name));
+        const navName = ['focus', 'plan', 'village', 'progress'].includes(name) ? name : 'focus';
+        navButtons.forEach(button => button.setAttribute('aria-current', button.dataset.go === navName ? 'page' : 'false'));
+        tourButtons.forEach(button => button.setAttribute('aria-current', button.dataset.go === name ? 'page' : 'false'));
+        phone.classList.toggle('nav-hidden', name === 'active' || name === 'complete');
+        if (mobileScreen) mobileScreen.value = name;
+        updateNote(name);
+        if (name !== 'active' && timerHandle) { clearInterval(timerHandle); timerHandle = null; }
+        if (name === 'active') startTimer();
+      }
+
+      function updateNote(name) {
+        const data = notes[name] || notes.focus;
+        note.innerHTML = `<span class="note-kicker">${data[0]}</span><h3>${data[1]}</h3><p>${data[2]}</p><ul>${data[3].map(item => `<li>${item}</li>`).join('')}</ul><div class="note-key">${data[4]}</div>`;
+      }
+
+      function showToast(title, copy) {
+        document.getElementById('toast-title').textContent = title;
+        document.getElementById('toast-copy').textContent = copy;
+        toast.classList.add('show');
+        clearTimeout(toastHandle);
+        toastHandle = setTimeout(() => toast.classList.remove('show'), 2400);
+      }
+
+      function setTheme(theme) {
+        phone.dataset.theme = theme;
+        document.getElementById('day-toggle').setAttribute('aria-pressed', theme === 'day');
+        document.getElementById('night-toggle').setAttribute('aria-pressed', theme === 'night');
+        showToast(theme === 'night' ? 'Gece görünümü açık' : 'Gündüz görünümü açık', theme === 'night' ? 'Baykuş kahvesini aldı. Sayaç aynı kaldı.' : 'Oda gün ışığına döndü.');
+      }
+
+      function format(seconds) {
+        const mins = Math.floor(Math.abs(seconds) / 60);
+        const secs = Math.abs(seconds) % 60;
+        return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+      }
+
+      function startTimer() {
+        if (timerHandle) return;
+        document.getElementById('active-mode-name').textContent = mode === 'stopwatch' ? 'Kronometre' : 'Geri Sayım';
+        timerSeconds = mode === 'stopwatch' ? 1100 : Number(duration === 'custom' ? 35 : duration) * 60;
+        document.getElementById('timer-value').textContent = format(timerSeconds);
+        timerHandle = setInterval(() => {
+          if (paused) return;
+          timerSeconds += mode === 'stopwatch' ? 1 : -1;
+          document.getElementById('timer-value').textContent = format(timerSeconds);
+          const width = mode === 'stopwatch' ? Math.min(92, 44 + markerCount * 4) : Math.max(2, timerSeconds / (Number(duration === 'custom' ? 35 : duration) * 60) * 100);
+          document.getElementById('session-progress-bar').style.width = `${width}%`;
+        }, 1000);
+      }
+
+      document.addEventListener('click', event => {
+        const go = event.target.closest('[data-go]');
+        if (go) setScreen(go.dataset.go);
+        const opener = event.target.closest('[data-open]');
+        if (opener) {
+          const overlay = document.getElementById(`${opener.dataset.open}-overlay`);
+          overlay.classList.add('open'); overlay.setAttribute('aria-hidden', 'false');
+        }
+        const closer = event.target.closest('[data-close]');
+        if (closer) {
+          const overlay = document.getElementById(`${closer.dataset.close}-overlay`);
+          overlay.classList.remove('open'); overlay.setAttribute('aria-hidden', 'true');
+        }
+      });
+
+      document.querySelectorAll('[data-mode]').forEach(button => button.addEventListener('click', () => {
+        mode = button.dataset.mode;
+        document.querySelectorAll('[data-mode]').forEach(item => item.setAttribute('aria-pressed', item === button));
+        const options = document.getElementById('duration-options');
+        options.style.display = mode === 'countdown' ? 'grid' : 'none';
+        document.getElementById('start-summary').textContent = mode === 'countdown' ? `${duration === 'custom' ? '35' : duration} dk · Matematik · Test · Yağmur sesi` : 'Kronometre · Matematik · Test · Yağmur sesi';
+        document.getElementById('start-session').textContent = mode === 'countdown' ? `${duration === 'custom' ? 'Özel süreyi' : `${duration} dk`} başlat` : 'Kronometreyi başlat';
+      }));
+
+      document.querySelectorAll('[data-duration]').forEach(button => button.addEventListener('click', () => {
+        duration = button.dataset.duration;
+        document.querySelectorAll('[data-duration]').forEach(item => item.setAttribute('aria-pressed', item === button));
+        const readable = duration === 'custom' ? '35' : duration;
+        document.getElementById('start-summary').textContent = `${readable} dk · Matematik · Test · Yağmur sesi`;
+        document.getElementById('start-session').textContent = duration === 'custom' ? 'Özel süreyi başlat' : `${duration} dk başlat`;
+      }));
+
+      document.getElementById('start-session').addEventListener('click', () => setScreen('active'));
+      document.getElementById('pause-session').addEventListener('click', event => {
+        paused = !paused;
+        event.currentTarget.innerHTML = paused ? `${icon('i-play')}<span>Sürdür</span>` : `${icon('i-pause')}<span>Duraklat</span>`;
+        showToast(paused ? 'Seans duraklatıldı' : 'Seans sürüyor', paused ? 'İşaret eklenmedi.' : 'Kaldığın yerden devam ediyorsun.');
+      });
+      document.getElementById('mark-session').addEventListener('click', () => {
+        markerCount += 1;
+        const label = markerCount % 3 === 2 ? 'Test' : markerCount % 3 === 0 ? 'Tekrar' : 'Konu Anlatımı';
+        document.getElementById('segment-name').textContent = `${markerCount}. bölüm · ${label}`;
+        document.getElementById('last-marker').innerHTML = `<span class="marker-no">${String(markerCount).padStart(2, '0')}</span><span class="marker-copy"><b>${format(timerSeconds)} · ${label}</b><span>Yeni bölüm başladı · 8 sn geri al</span></span>`;
+        showToast(`${markerCount}. işaret eklendi`, `${label} bölümü başladı. Sayaç devam ediyor.`);
+      });
+      document.getElementById('finish-session').addEventListener('click', () => {
+        document.getElementById('completed-duration').textContent = mode === 'stopwatch' ? `${Math.floor(timerSeconds / 60)} dk` : `${duration === 'custom' ? 35 : duration} dk`;
+        setScreen('complete');
+      });
+      document.getElementById('detail-toggle').addEventListener('click', event => {
+        const fields = document.getElementById('detail-fields');
+        fields.classList.toggle('open');
+        event.currentTarget.textContent = fields.classList.contains('open') ? 'Ayrıntıyı kapat' : 'Ayrıntı ekle';
+      });
+      document.getElementById('start-break').addEventListener('click', () => showToast('5 dakikalık mola başladı', 'Baykuş sessiz mola görünümüne geçti.'));
+      document.getElementById('day-toggle').addEventListener('click', () => setTheme('day'));
+      document.getElementById('night-toggle').addEventListener('click', () => setTheme('night'));
+      document.getElementById('focus-theme').addEventListener('click', () => setTheme(phone.dataset.theme === 'night' ? 'day' : 'night'));
+      document.getElementById('active-theme').addEventListener('click', () => setTheme(phone.dataset.theme === 'night' ? 'day' : 'night'));
+      document.getElementById('premium-try').addEventListener('click', () => {
+        setTheme('night');
+        const overlay = document.getElementById('premium-overlay'); overlay.classList.add('open'); overlay.setAttribute('aria-hidden', 'false');
+      });
+      document.getElementById('year-premium').addEventListener('click', () => {
+        const overlay = document.getElementById('premium-overlay'); overlay.classList.add('open'); overlay.setAttribute('aria-hidden', 'false');
+      });
+      document.getElementById('premium-plan').addEventListener('click', () => showToast('Premium önizleme', 'Bu prototip satın alma işlemi başlatmaz.'));
+      ['context-button', 'add-plan', 'join-room', 'wardrobe', 'shop', 'showcase', 'filter-calendar', 'manage-streak'].forEach(id => {
+        document.getElementById(id).addEventListener('click', () => showToast('Prototip eylemi', 'Bu alan ürün akışındaki yerini göstermek için çalışıyor.'));
+      });
+      document.querySelectorAll('[data-calendar]').forEach(button => button.addEventListener('click', () => {
+        const view = button.dataset.calendar;
+        document.querySelectorAll('[data-calendar]').forEach(item => item.setAttribute('aria-pressed', item === button));
+        document.querySelectorAll('[data-calendar-view]').forEach(item => item.classList.toggle('active', item.dataset.calendarView === view));
+        document.getElementById('calendar-day-detail').style.display = view === 'year' ? 'none' : 'block';
+      }));
+      document.querySelectorAll('[data-day-detail]').forEach(button => button.addEventListener('click', () => {
+        document.getElementById('calendar-day-detail').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        showToast('11 Eylül açıldı', 'İki oturum ve çalışma parçaları aşağıda.');
+      }));
+      mobileScreen.addEventListener('change', () => setScreen(mobileScreen.value));
+      document.querySelectorAll('.overlay').forEach(overlay => overlay.addEventListener('click', event => {
+        if (event.target === overlay) { overlay.classList.remove('open'); overlay.setAttribute('aria-hidden', 'true'); }
+      }));
+      updateNote('focus');
+    })();
+  </script>
+</body>
+</html>
