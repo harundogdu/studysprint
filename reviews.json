@@ -1,8 +1,15 @@
 {
-  "updatedAt": "2026-09-07T12:32:14Z",
-  "totalReviews": 18,
+  "updatedAt": "2026-09-14T12:46:33Z",
+  "totalReviews": 20,
   "averageRating": 5.0,
   "reviews": [
+    {
+      "body": "Kullanım amacını belirlemek için sunulan filtrelemeler sayesinde kişisel planımı oluşturabildim. Odaklanmamı kolaylaştırıp ders sürecinden verim almamı sağladı. Pratik bir uygulama, ben çok beğendim",
+      "nickname": "eminegk",
+      "territory": "TUR",
+      "rating": 5,
+      "date": "2026-09-09"
+    },
     {
       "body": "Uygulamayı kullanmaya başladıktan sonra günün nasıl geçtiğini değil günü nasıl değerlendirdiğimi düşünmeye başladım. Sprintleri tamamladıkça hem motivasyonum artıyor hem de “bugün zamanımı iyi kullandım”…",
       "nickname": "Cekubalm",
@@ -16,13 +23,6 @@
       "territory": "TUR",
       "rating": 5,
       "date": "2026-07-26"
-    },
-    {
-      "body": "Günlük işleriniz yada çalışmalarınız için süper bir takip uygulaması olmuş. Ne kadar çalıştığınızı takip etmek verimi artırıyor. Motivasyon cümleleri de insanı daha çok çalışmaya motive ediyor.",
-      "nickname": "Akın Çömlek",
-      "territory": "TUR",
-      "rating": 5,
-      "date": "2026-07-22"
     }
   ]
 }
