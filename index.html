@@ -111,7 +111,7 @@
   .eyebrow { display:inline-flex; align-items:center; gap:9px; font-size:0.69rem; font-weight:800; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent-ink); }
   .eyebrow::before { content:''; width:20px; height:1.5px; background:currentColor; border-radius:2px; flex:0 0 auto; }
   .eyebrow.c2 { color:var(--accent2-ink); }
-  .badge-new { display:inline-block; background:var(--accent); color:var(--on-accent); font-size:0.6rem; font-weight:800; letter-spacing:0.14em; padding:4px 10px; border-radius:999px; margin-left:10px; vertical-align:2px; }
+  .badge-plat { display:inline-block; border:1px solid var(--line); color:var(--muted); font-size:0.6rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:3px 8px; border-radius:999px; margin-left:8px; vertical-align:2px; white-space:nowrap; }
 
   /* Telefon çerçevesi */
   .device { position:relative; border-radius:38px; border:7px solid var(--frame); overflow:hidden; background:var(--soft); box-shadow:0 44px 96px -34px rgba(0,0,0,0.72); }
@@ -248,7 +248,7 @@
   "sameAs": ["https://apps.apple.com/app/id6788031531", "https://play.google.com/store/apps/details?id=com.harundogdu.studysprinttimer"],
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
   "author": { "@type": "Person", "name": "Harun Doğdu" },
-  "inLanguage": ["en","tr","de","es","fr","ru"]
+  "inLanguage": ["en","tr","de","es","fr","ru","pt"]
 }
 </script>
   <noscript><style>
@@ -313,12 +313,12 @@
     </div>
   </div>
 
-  <!-- SAHNE 1: OKUMA MODU (1.4) -->
+  <!-- SAHNE 1: OKUMA MODU -->
   <section class="scene" id="okuma">
     <div class="wrap scene-in reveal">
       <div class="media"><div class="device"><img data-shot="02-reading" data-i18n-alt="alt_reading" alt="" width="660" height="1434" /></div></div>
       <div>
-        <span class="eyebrow"><span data-i18n="v_14">Version 1.4</span><span class="badge-new" data-i18n="new_badge">NEW</span></span>
+        <span class="eyebrow" data-i18n="rd_e">Reading mode</span>
         <h2 data-i18n="rd_t">Study Sprint can now be your reading app.</h2>
         <p class="lede" data-i18n="rd_d">Tell the setup you're here to read more books and the whole app follows: your current book on the home screen, pages instead of study jargon.</p>
         <ul class="points">
@@ -335,7 +335,7 @@
     <div class="wrap scene-in reveal">
       <div class="media"><div class="device"><img data-shot="03-shield" data-i18n-alt="alt_shield" alt="" loading="lazy" width="660" height="1434" /></div></div>
       <div>
-        <span class="eyebrow" data-i18n="g15_t">Focus Shield</span>
+        <span class="eyebrow"><span data-i18n="g15_t">Focus Shield</span><span class="badge-plat" data-i18n="plat_ios">iOS only</span></span>
         <h2 data-i18n="s2_t">The apps that pull you away stay shut while you work.</h2>
         <p class="lede" data-i18n="g15_d">Pick the apps that pull you away and they stay shut while a session runs. You can switch it off whenever you want, and the list never leaves your phone.</p>
         <ul class="points">
@@ -379,7 +379,7 @@
         <p class="lede" data-i18n="g5_d">Earn coins as you study and unlock rooms, outfits and achievements for your owl.</p>
         <ul class="points">
           <li><b data-i18n="g8_t">Streak Safety Net</b><span data-i18n="g8_d">Freeze tokens and one-day repair keep a busy day from breaking your streak.</span></li>
-          <li><b data-i18n="g9_t">Game Center Leaderboards</b><span data-i18n="g9_d">Compete for weekly focus minutes and longest streak, and unlock 15 achievements along the way.</span></li>
+          <li><b><span data-i18n="g9_t">Game Center Leaderboards</span><span class="badge-plat" data-i18n="plat_ios">iOS only</span></b><span data-i18n="g9_d">Compete for weekly focus minutes and longest streak, and unlock 15 achievements along the way.</span></li>
         </ul>
       </div>
     </div>
@@ -410,7 +410,7 @@
         <h2 data-i18n="s7_t">Your streak and your next exam, without opening the app.</h2>
         <p class="lede" data-i18n="g17_d">Put your streak, an exam countdown or a one-tap start on the Home Screen or the Lock Screen.</p>
         <ul class="points">
-          <li><b data-i18n="w_p1_t">Live Activity</b><span data-i18n="w_p1_d">While a sprint runs, the timer keeps counting in the Dynamic Island and on the Lock Screen.</span></li>
+          <li><b><span data-i18n="w_p1_t">Live Activity</span><span class="badge-plat" data-i18n="plat_ios">iOS only</span></b><span data-i18n="w_p1_d">While a sprint runs, the timer keeps counting in the Dynamic Island and on the Lock Screen.</span></li>
           <li><b data-i18n="w_p2_t">Your theme comes along</b><span data-i18n="w_p2_d">Widgets use the accent color you picked in the app.</span></li>
         </ul>
       </div>
@@ -430,8 +430,8 @@
       <div class="mgrid reveal">
         <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"/></svg><span data-i18n="g4_t">100% Offline</span></h3><p data-i18n="g4_d">No sign-up, no account, no distractions. Your data stays on your device.</p></div>
         <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span data-i18n="f2_t">Pomodoro Flow</span></h3><p data-i18n="f2_d">Proven focus/break cycles keep your mind fresh through long study sessions.</p></div>
-        <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="3"/><path d="M9 22v-4h6v4"/></svg><span data-i18n="g6_t">Watch &amp; iPad</span></h3><p data-i18n="g6_d">Start sprints from your wrist with the Apple Watch app. Full iPad support included.</p></div>
-        <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg><span data-i18n="g16_t">Siri in Six Languages</span></h3><p data-i18n="g16_d">Ask Siri to start a sprint in English, Turkish, German, Spanish, French or Russian.</p></div>
+        <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="3"/><path d="M9 22v-4h6v4"/></svg><span data-i18n="g6_t">Watch &amp; iPad</span><span class="badge-plat" data-i18n="plat_ios">iOS only</span></h3><p data-i18n="g6_d">Start sprints from your wrist with the Apple Watch app. Full iPad support included.</p></div>
+        <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg><span data-i18n="g16_t">Siri in Six Languages</span><span class="badge-plat" data-i18n="plat_ios">iOS only</span></h3><p data-i18n="g16_d">Ask Siri to start a sprint in English, Turkish, German, Spanish, French or Russian.</p></div>
         <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span data-i18n="g10_t">My Library</span></h3><p data-i18n="g10_d">Add the books you're reading, log pages after a session and watch each one fill up.</p></div>
         <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><span data-i18n="g14_t">Find Any Setting</span></h3><p data-i18n="g14_d">Settings has a search field and shortcuts to the rows you open most, so nothing is buried three taps deep.</p></div>
         <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m4.5 16.5 15-9M4.5 7.5l15 9"/></svg><span data-i18n="g13_t">Set Up in a Minute</span></h3><p data-i18n="g13_d">Say why you're studying and the app suggests your subjects, a daily goal and an exam countdown. Change any of it later.</p></div>
@@ -602,8 +602,8 @@
         ft_productH:`Product`, ft_supportH:`Support`, ft_legalH:`Legal`,
         ft_features:`Features`, ft_how:`How It Works`, ft_reviews:`Reviews`, ft_help:`Help Center`, ft_contact:`Contact Us`, ft_privacy:`Privacy Policy`, ft_terms:`Terms of Service`,
         ft_copy:`© 2026 Study Sprint Timer · Harun Doğdu`,
-        v_14:`Version 1.4`,
-        new_badge:`NEW`,
+        rd_e:`Reading mode`,
+        plat_ios:`iOS only`,
         rd_t:`Study Sprint can now be your reading app.`,
         rd_d:`Tell the setup you're here to read more books and the whole app follows: your current book on the home screen, pages instead of study jargon.`,
         rd_p1_t:`Start a session with a book`,
@@ -678,8 +678,8 @@
         ft_productH:`Ürün`, ft_supportH:`Destek`, ft_legalH:`Yasal`,
         ft_features:`Özellikler`, ft_how:`Nasıl Çalışır`, ft_reviews:`Yorumlar`, ft_help:`Yardım Merkezi`, ft_contact:`Bize Ulaşın`, ft_privacy:`Gizlilik Politikası`, ft_terms:`Kullanım Şartları`,
         ft_copy:`© 2026 Study Sprint Timer · Harun Doğdu`,
-        v_14:`Sürüm 1.4`,
-        new_badge:`YENİ`,
+        rd_e:`Okuma modu`,
+        plat_ios:`Yalnız iOS`,
         rd_t:`Study Sprint artık kitap uygulaman da olabilir.`,
         rd_d:`Kurulumda kitap okumak için geldiğini söyle; ana ekranda okuduğun kitap durur, uygulama ders dili yerine sayfa dili konuşur.`,
         rd_p1_t:`Kitapla oturum başlat`,
@@ -754,8 +754,8 @@
         ft_productH:`Produkt`, ft_supportH:`Support`, ft_legalH:`Rechtliches`,
         ft_features:`Funktionen`, ft_how:`So funktioniert's`, ft_reviews:`Bewertungen`, ft_help:`Hilfe-Center`, ft_contact:`Kontakt`, ft_privacy:`Datenschutz`, ft_terms:`Nutzungsbedingungen`,
         ft_copy:`© 2026 Study Sprint Timer · Harun Doğdu`,
-        v_14:`Version 1.4`,
-        new_badge:`NEU`,
+        rd_e:`Lesemodus`,
+        plat_ios:`Nur iOS`,
         rd_t:`Study Sprint kann jetzt deine Lese-App sein.`,
         rd_d:`Sag beim Einrichten, dass du mehr lesen willst, und die App richtet sich danach: dein aktuelles Buch auf dem Startbildschirm, Seiten statt Lernvokabular.`,
         rd_p1_t:`Session mit einem Buch starten`,
@@ -830,8 +830,8 @@
         ft_productH:`Producto`, ft_supportH:`Soporte`, ft_legalH:`Legal`,
         ft_features:`Funciones`, ft_how:`Cómo funciona`, ft_reviews:`Opiniones`, ft_help:`Centro de ayuda`, ft_contact:`Contáctanos`, ft_privacy:`Política de privacidad`, ft_terms:`Términos del servicio`,
         ft_copy:`© 2026 Study Sprint Timer · Harun Doğdu`,
-        v_14:`Versión 1.4`,
-        new_badge:`NUEVO`,
+        rd_e:`Modo lectura`,
+        plat_ios:`Solo iOS`,
         rd_t:`Study Sprint ya puede ser tu app de lectura.`,
         rd_d:`Dile en la configuración que vienes a leer más libros y la app entera se adapta: tu libro actual en la pantalla de inicio, páginas en lugar de jerga de estudio.`,
         rd_p1_t:`Empieza una sesión con un libro`,
@@ -906,8 +906,8 @@
         ft_productH:`Produit`, ft_supportH:`Support`, ft_legalH:`Légal`,
         ft_features:`Fonctionnalités`, ft_how:`Comment ça marche`, ft_reviews:`Avis`, ft_help:`Centre d'aide`, ft_contact:`Nous contacter`, ft_privacy:`Politique de confidentialité`, ft_terms:`Conditions d'utilisation`,
         ft_copy:`© 2026 Study Sprint Timer · Harun Doğdu`,
-        v_14:`Version 1.4`,
-        new_badge:`NOUVEAU`,
+        rd_e:`Mode lecture`,
+        plat_ios:`iOS uniquement`,
         rd_t:`Study Sprint peut maintenant être ton app de lecture.`,
         rd_d:`Dis à la configuration que tu viens lire plus de livres et toute l'app suit : ton livre en cours sur l'écran d'accueil, des pages au lieu du vocabulaire scolaire.`,
         rd_p1_t:`Lance une session avec un livre`,
@@ -982,8 +982,8 @@
         ft_productH:`Продукт`, ft_supportH:`Поддержка`, ft_legalH:`Правовое`,
         ft_features:`Функции`, ft_how:`Как это работает`, ft_reviews:`Отзывы`, ft_help:`Центр помощи`, ft_contact:`Связаться`, ft_privacy:`Политика конфиденциальности`, ft_terms:`Условия использования`,
         ft_copy:`© 2026 Study Sprint Timer · Harun Doğdu`,
-        v_14:`Версия 1.4`,
-        new_badge:`НОВОЕ`,
+        rd_e:`Режим чтения`,
+        plat_ios:`Только iOS`,
         rd_t:`Study Sprint теперь может быть и читательским приложением.`,
         rd_d:`Скажи при настройке, что пришёл читать больше книг, и приложение перестроится: текущая книга на главном экране, страницы вместо учебных формулировок.`,
         rd_p1_t:`Начинай сессию с книгой`,
@@ -1117,8 +1117,8 @@
         ft_privacy:`Política de Privacidade`,
         ft_terms:`Termos de Serviço`,
         ft_copy:`© 2026 Study Sprint Timer · Harun Doğdu`,
-        v_14:`Versão 1.4`,
-        new_badge:`NOVO`,
+        rd_e:`Modo leitura`,
+        plat_ios:`Só no iOS`,
         rd_t:`O Study Sprint agora pode ser seu app de leitura.`,
         rd_d:`Diga na configuração que você veio para ler mais livros e o app inteiro acompanha: seu livro atual na tela de início, páginas no lugar do jargão de estudo.`,
         rd_p1_t:`Comece uma sessão com um livro`,
