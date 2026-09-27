@@ -43,9 +43,9 @@ if [ -z "$UDID" ]; then
 fi
 [ -z "$UDID" ] && { echo "✗ simülatör yok"; exit 1; }
 
-BUNDLE=com.harundogdu.studysprint.timer.StudySprintTimer
 APP=${SST_APP:-$(ls -dt ~/Library/Developer/Xcode/DerivedData/StudySprintTimer-*/Build/Products/Debug-iphonesimulator/StudySprintTimer.app 2>/dev/null | head -1)}
 [ -z "$APP" ] && { echo "✗ Debug build bulunamadı; önce uygulamayı simülatöre build et"; exit 1; }
+BUNDLE=${SST_BUNDLE:-$(/usr/libexec/PlistBuddy -c "Print CFBundleIdentifier" "$APP/Info.plist" 2>/dev/null)}
 
 OUT="${SST_RAW_OUT:-$(dirname "$0")/../.shots-raw}/$LANG_ARG-$STYLE"
 mkdir -p "$OUT"
@@ -60,6 +60,12 @@ hazirla() {
   xcrun simctl status_bar "$UDID" override --time "9:41" --batteryState charged \
     --batteryLevel 100 --wifiBars 3 --wifiMode active >/dev/null 2>&1
   xcrun simctl install "$UDID" "$APP" >/dev/null 2>&1
+  # Isınma açılışı: yeni kurulumun ilk açılışında iOS "simgesini değiştirdiniz"
+  # uyarısı çıkıyor ve ilk kareye (01-home) giriyordu. Uyarıyı burada tüketiyoruz.
+  xcrun simctl launch "$UDID" "$BUNDLE" -seedScreenshots -suppressNotifPermission \
+    -suppressReviewPrompt -suppressAdConsent >/dev/null 2>&1
+  sleep 12
+  xcrun simctl terminate "$UDID" "$BUNDLE" >/dev/null 2>&1
 }
 
 acik_mi() {
@@ -74,8 +80,8 @@ capture() { name=$1; shift
   acik_mi
   xcrun simctl terminate "$UDID" "$BUNDLE" >/dev/null 2>&1; sleep 1
   xcrun simctl launch "$UDID" "$BUNDLE" -seedScreenshots -suppressNotifPermission \
-    -suppressReviewPrompt -seedTheme "$THEME" -seedLang "$LANG_ARG" "$@" >/dev/null 2>&1
-  sleep 11   # kitap kapakları Open Library'den geç geliyor; 11 sn onları da kurtarıyor
+    -suppressReviewPrompt -suppressAdConsent -seedTheme "$THEME" -seedLang "$LANG_ARG" "$@" >/dev/null 2>&1
+  sleep 16   # 11 sn 1.6 ile yetmedi (takvim/analiz sayfası açılmadan kare alındı); kitap kapakları Open Library'den geç geliyor; 11 sn onları da kurtarıyor
   local i
   for i in 1 2 3; do
     if xcrun simctl io "$UDID" screenshot "$OUT/$name.png" >/dev/null 2>&1; then
