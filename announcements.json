@@ -2,26 +2,26 @@
   "version": 1,
   "announcements": [
     {
-      "id": "1_6_0_guncelle",
+      "id": "1_6_0_guncelle_v2",
       "title": {
-        "en": "Version 1.6 is out",
-        "tr": "1.6 çıktı",
-        "de": "Version 1.6 ist da",
-        "es": "Ya está la versión 1.6",
-        "fr": "La version 1.6 est là",
-        "ru": "Вышла версия 1.6",
-        "pt": "A versão 1.6 chegou",
-        "id": "Versi 1.6 sudah keluar"
+        "tr": "Yeni güncelleme geldi",
+        "en": "A new update is here",
+        "de": "Ein neues Update ist da",
+        "es": "Llegó una nueva actualización",
+        "fr": "Une nouvelle mise à jour est là",
+        "ru": "Вышло новое обновление",
+        "pt": "Chegou uma nova atualização",
+        "id": "Pembaruan baru sudah hadir"
       },
       "body": {
-        "en": "Focus now sits in the middle of the bottom bar. Your owl has a village: studying opens new rooms, and you can try outfits on it in the Wardrobe.",
-        "tr": "Odak artık alt barın ortasında. Baykuşunun bir köyü var: çalıştıkça yeni odalar açılıyor, Gardırop'ta ona kıyafet deniyorsun.",
-        "de": "Fokus steht jetzt in der Mitte der unteren Leiste. Deine Eule hat ein Dorf: Beim Lernen öffnen sich neue Räume, und in der Garderobe probierst du Outfits an ihr aus.",
-        "es": "Enfoque ahora está en el centro de la barra inferior. Tu búho tiene una aldea: al estudiar se abren salas nuevas y en el armario le pruebas ropa.",
-        "fr": "Concentration est maintenant au milieu de la barre du bas. Ton hibou a un village : en étudiant, tu ouvres de nouvelles pièces, et tu lui essaies des tenues dans le vestiaire.",
-        "ru": "Фокус теперь в центре нижней панели. У твоей совы есть деревня: пока ты учишься, открываются новые комнаты, а в гардеробе можно примерить на неё наряды.",
-        "pt": "Foco agora fica no meio da barra inferior. Sua coruja tem uma vila: estudando você abre cômodos novos e no guarda-roupa experimenta roupas nela.",
-        "id": "Fokus sekarang ada di tengah bilah bawah. Burung hantumu punya desa: belajar membuka ruangan baru, dan di Lemari kamu bisa mencoba pakaian untuknya."
+        "tr": "Baykuşun seni köyünde bekliyor. Devamı da yolda, kolaylıklar dileriz.",
+        "en": "Your owl is waiting for you in its village. More is on the way. Good luck with your studies!",
+        "de": "Deine Eule wartet in ihrem Dorf auf dich. Es kommt noch mehr. Viel Erfolg beim Lernen!",
+        "es": "Tu búho te espera en su aldea. Vienen más novedades. ¡Mucho ánimo con tus estudios!",
+        "fr": "Ton hibou t'attend dans son village. La suite arrive bientôt. Bon courage pour tes révisions !",
+        "ru": "Твоя сова ждёт тебя в своей деревне. Скоро будет ещё больше. Удачи в учёбе!",
+        "pt": "Sua coruja está te esperando na vila dela. Vem mais por aí. Bons estudos!",
+        "id": "Burung hantumu menunggumu di desanya. Masih ada lagi yang akan datang. Semangat belajar!"
       },
       "action": "update",
       "maxVersion": "1.5.9"
