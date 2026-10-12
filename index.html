@@ -159,6 +159,10 @@
   }
 
   /* Ayrıca: kutusuz üç sütun */
+  .store { padding:100px 0; border-top:1px solid var(--line); }
+  .store h2 { font-size:clamp(1.65rem,3.2vw,2.45rem); font-weight:500; line-height:1.12; margin-top:18px; }
+  .store-row { display:flex; gap:18px; overflow-x:auto; scroll-snap-type:x mandatory; padding:36px 0 12px; -webkit-overflow-scrolling:touch; }
+  .store-row img { flex:0 0 auto; width:min(62vw,253px); height:auto; aspect-ratio:1320/2868; border-radius:22px; scroll-snap-align:start; background:var(--soft); }
   .more { padding:100px 0; border-top:1px solid var(--line); background:var(--soft); }
   .more-head { display:flex; justify-content:space-between; align-items:flex-end; gap:30px; flex-wrap:wrap; margin-bottom:44px; }
   .more-head h2 { font-size:clamp(1.55rem,3vw,2.2rem); font-weight:500; margin-top:14px; }
@@ -437,6 +441,28 @@
     </div>
   </section>
 
+  <!-- MAGAZA GALERISI (1.6.4 magaza gorselleri, lavanta) -->
+  <section class="store" id="screens">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow" data-i18n="st_e">From the store page</span>
+        <h2 data-i18n="st_t">The whole app in ten screens.</h2>
+      </div>
+      <div class="store-row reveal">
+        <img data-store="01" alt="" loading="lazy" width="506" height="1100" />
+        <img data-store="02" alt="" loading="lazy" width="506" height="1100" />
+        <img data-store="03" alt="" loading="lazy" width="506" height="1100" />
+        <img data-store="04" alt="" loading="lazy" width="506" height="1100" />
+        <img data-store="05" alt="" loading="lazy" width="506" height="1100" />
+        <img data-store="06" alt="" loading="lazy" width="506" height="1100" />
+        <img data-store="07" alt="" loading="lazy" width="506" height="1100" />
+        <img data-store="08" alt="" loading="lazy" width="506" height="1100" />
+        <img data-store="09" alt="" loading="lazy" width="506" height="1100" />
+        <img data-store="10" alt="" loading="lazy" width="506" height="1100" />
+      </div>
+    </div>
+  </section>
+
   <!-- AYRICA -->
   <section class="more" id="more">
     <div class="wrap">
@@ -551,6 +577,7 @@
             sc_eyebrow:`Внутри приложения`, sc_title:`Каждый экран создан для фокуса`, sc_sub:`От таймера до учебной совы: короткая экскурсия по тому, чем вы будете пользоваться каждый день.`,
             sh1:`Таймер и отсчёт до экзамена`, sh2:`Звуки фокуса`, sh3:`Ваша учебная сова`, sh4:`Календарь серий`, sh5:`Статистика`, sh6:`Ежедневные задания` },
       pt: {
+        st_e:`Da página da loja`, st_t:`O app inteiro em dez telas.`,
         st1_v:`100%`,
         hero_eyebrow:`App de foco`,
         hero_title:`Foco em <em>sprints de estudo</em> cronometrados.`,
@@ -575,6 +602,7 @@
     var PLAY_IC = '<svg class="btn-ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3.5v17l15-8.5-15-8.5z"/></svg>';
     var I18N = {
       en: {
+        st_e:`From the store page`, st_t:`The whole app in ten screens.`,
         v16:`Version 1.6`, new_badge:`NEW`, n_t:`The bottom bar has five tabs: Plan, Village, Focus, Progress and Library.`, n_d:`Settings live in your Profile, behind the owl button.`, n_p1_t:`Owl Village`, n_p1_d:`A map shows the rooms you have unlocked and what comes next.`, n_p2_t:`Wardrobe`, n_p2_d:`See body colors and accessories on your owl as you try them.`, n_p3_t:`Your owl on the widget`, n_p3_d:`The home-screen widget shows the owl look you equipped.`, n_p4_t:`Marks stay put`, n_p4_d:`Adding a mark during a session no longer shifts the timer.`, 
         d_eyebrow:`See It Move`, d_title:`The App, Actually Running`, d_sub:`Short clips recorded straight from the app. No mockups, no edits.`, d1_t:`A sprint in progress`, d1_d:`The dial fills as the minutes pass, and your owl waits at the bottom.`, d2_t:`Themes, previewed live`, d2_d:`Pick a colour and the phone above shows it before you commit.`, d3_t:`Sounds you can mix`, d3_d:`Layer rain over a fire and set each one to its own volume.`,
         rs_label:`App Store reviews`,
@@ -652,6 +680,7 @@
         alt_widgets:`Home screen with the Study Sprint widgets: streak, exam countdown and one-tap start`
       },
       tr: {
+        st_e:`Mağaza sayfasından`, st_t:`Uygulamanın tamamı on ekranda.`,
         v16:`Sürüm 1.6`, new_badge:`YENİ`, n_t:`Alt barda beş sekme var: Plan, Köy, Odak, İlerleme ve Kitaplık.`, n_d:`Ayarlar baykuş düğmesinin arkasındaki Profil'de.`, n_p1_t:`Baykuş Köyü`, n_p1_d:`Haritada açtığın odaları ve sırada neler olduğunu gör.`, n_p2_t:`Gardırop`, n_p2_d:`Gövde renklerini ve aksesuarları baykuşunun üzerinde dene.`, n_p3_t:`Widget’ta baykuşun`, n_p3_d:`Ana ekran widget’ı Gardıropta taktığın baykuş görünümünü gösteriyor.`, n_p4_t:`İşaretler sayacı oynatmıyor`, n_p4_d:`Çalışırken işaret eklemek artık sayacı yerinden oynatmıyor.`, 
         d_eyebrow:`Hareket Hâlinde`, d_title:`Uygulamanın Kendisi, Çalışırken`, d_sub:`Doğrudan uygulamadan alınmış kısa kayıtlar. Tasarım maketi yok, kurgu yok.`, d1_t:`Süren işlerken`, d1_d:`Dakikalar geçtikçe kadran doluyor, baykuşun aşağıda seni bekliyor.`, d2_t:`Temalar, anında önizlemeli`, d2_d:`Bir renk seç, yukarıdaki telefon onaylamadan önce sana göstersin.`, d3_t:`Sesleri karıştır`, d3_d:`Yağmuru ateşin üstüne koy, her birinin sesini ayrı ayarla.`,
         rs_label:`App Store yorumu`,
@@ -729,6 +758,7 @@
         alt_widgets:`Ana ekranda Study Sprint widget'ları: seri, sınav geri sayımı ve tek dokunuşla başlatma`
       },
       de: {
+        st_e:`Von der Store-Seite`, st_t:`Die ganze App in zehn Screens.`,
         v16:`Version 1.6`, new_badge:`NEU`, n_t:`Die Leiste unten hat fünf Tabs: Plan, Dorf, Fokus, Fortschritt und Bibliothek.`, n_d:`Die Einstellungen findest du in deinem Profil hinter dem Eulen-Button.`, n_p1_t:`Eulendorf`, n_p1_d:`Eine Karte zeigt deine freigeschalteten Räume und was als Nächstes kommt.`, n_p2_t:`Kleiderschrank`, n_p2_d:`Körperfarben und Accessoires direkt an deiner Eule sehen.`, n_p3_t:`Deine Eule im Widget`, n_p3_d:`Das Widget auf dem Startbildschirm zeigt den Eulenlook, den du angelegt hast.`, n_p4_t:`Markierungen ohne Sprung`, n_p4_d:`Eine Markierung während einer Sitzung verschiebt den Timer nicht mehr.`, 
         d_eyebrow:`In Bewegung`, d_title:`Die App, im laufenden Betrieb`, d_sub:`Kurze Aufnahmen direkt aus der App. Keine Mockups, kein Schnitt.`, d1_t:`Ein laufender Sprint`, d1_d:`Der Ring füllt sich mit den Minuten, deine Eule wartet unten.`, d2_t:`Themes in der Live-Vorschau`, d2_d:`Wähle eine Farbe und das Handy oben zeigt sie dir vor dem Übernehmen.`, d3_t:`Klänge zum Mischen`, d3_d:`Leg Regen über ein Feuer und regle beide getrennt.`,
         rs_label:`App-Store-Rezensionen`,
@@ -806,6 +836,7 @@
         alt_widgets:`Startbildschirm mit den Study-Sprint-Widgets: Serie, Prüfungs-Countdown und Schnellstart`
       },
       es: {
+        st_e:`De la página de la tienda`, st_t:`Toda la app en diez pantallas.`,
         v16:`Versión 1.6`, new_badge:`NUEVO`, n_t:`La barra inferior tiene cinco pestañas: Plan, Aldea, Concentración, Progreso y Biblioteca.`, n_d:`Los ajustes están en tu Perfil, detrás del botón del búho.`, n_p1_t:`Aldea Búho`, n_p1_d:`El mapa muestra las salas que has desbloqueado y lo que viene después.`, n_p2_t:`Armario`, n_p2_d:`Mira colores y accesorios directamente en tu búho.`, n_p3_t:`Tu búho en el widget`, n_p3_d:`El widget de la pantalla de inicio muestra el estilo de búho que has equipado.`, n_p4_t:`Las marcas no mueven nada`, n_p4_d:`Añadir una marca durante la sesión ya no mueve el temporizador.`, 
         d_eyebrow:`En movimiento`, d_title:`La app, funcionando de verdad`, d_sub:`Clips cortos grabados directamente de la app. Sin maquetas ni montajes.`, d1_t:`Un sprint en marcha`, d1_d:`El círculo se llena con los minutos y tu búho espera abajo.`, d2_t:`Temas con vista previa en vivo`, d2_d:`Elige un color y el teléfono de arriba te lo muestra antes de aplicarlo.`, d3_t:`Sonidos que puedes mezclar`, d3_d:`Pon lluvia sobre un fuego y ajusta el volumen de cada uno.`,
         rs_label:`reseñas de App Store`,
@@ -883,6 +914,7 @@
         alt_widgets:`Pantalla de inicio con los widgets de Study Sprint: racha, cuenta atrás de examen e inicio rápido`
       },
       fr: {
+        st_e:`Depuis la page de l’App Store`, st_t:`Toute l’app en dix écrans.`,
         v16:`Version 1.6`, new_badge:`NOUVEAU`, n_t:`La barre du bas compte cinq onglets : Plan, Village, Concentration, Progression et Bibliothèque.`, n_d:`Les réglages sont dans ton Profil, derrière le bouton du hibou.`, n_p1_t:`Village des hiboux`, n_p1_d:`La carte montre les pièces débloquées et celles qui t’attendent.`, n_p2_t:`Garde-robe`, n_p2_d:`Vois les couleurs et accessoires directement sur ton hibou.`, n_p3_t:`Ton hibou dans le widget`, n_p3_d:`Le widget de l’écran d’accueil reprend le style de hibou que tu as équipé.`, n_p4_t:`Des repères qui ne bougent rien`, n_p4_d:`Ajouter un repère pendant une séance ne déplace plus le minuteur.`, 
         d_eyebrow:`En mouvement`, d_title:`L'appli, vraiment en marche`, d_sub:`De courts extraits enregistrés directement depuis l'appli. Sans maquette ni montage.`, d1_t:`Une session en cours`, d1_d:`Le cadran se remplit au fil des minutes et votre hibou attend en bas.`, d2_t:`Les thèmes en aperçu direct`, d2_d:`Choisissez une couleur : le téléphone du haut vous la montre avant validation.`, d3_t:`Des sons à mélanger`, d3_d:`Posez la pluie sur un feu et réglez le volume de chacun.`,
         rs_label:`avis App Store`,
@@ -960,6 +992,7 @@
         alt_widgets:`Écran d'accueil avec les widgets Study Sprint : série, compte à rebours d'examen et démarrage rapide`
       },
       ru: {
+        st_e:`Со страницы в магазине`, st_t:`Всё приложение на десяти экранах.`,
         v16:`Версия 1.6`, new_badge:`НОВОЕ`, n_t:`В нижней панели пять вкладок: План, Деревня, Фокус, Прогресс и Библиотека.`, n_d:`Настройки находятся в Профиле, за кнопкой с совой.`, n_p1_t:`Деревня сов`, n_p1_d:`На карте видны открытые комнаты и то, что ждёт впереди.`, n_p2_t:`Гардероб`, n_p2_d:`Примеряй цвета и аксессуары прямо на своей сове.`, n_p3_t:`Твоя сова в виджете`, n_p3_d:`Виджет на главном экране показывает образ совы, выбранный в гардеробе.`, n_p4_t:`Отметки на месте`, n_p4_d:`Отметки во время занятия больше не сдвигают таймер.`, 
         d_eyebrow:`В движении`, d_title:`Приложение в действии`, d_sub:`Короткие записи прямо из приложения. Без макетов и монтажа.`, d1_t:`Отрезок в процессе`, d1_d:`Круг заполняется минута за минутой, а сова ждёт внизу.`, d2_t:`Темы с живым предпросмотром`, d2_d:`Выберите цвет: телефон сверху покажет его ещё до применения.`, d3_t:`Звуки можно смешивать`, d3_d:`Наложите дождь на огонь и задайте каждому свою громкость.`,
         rs_label:`отзывов в App Store`,
@@ -1037,6 +1070,7 @@
         alt_widgets:`Главный экран с виджетами Study Sprint: серия, отсчёт до экзамена и быстрый старт`
       },
       pt: {
+        st_e:`Da página da loja`, st_t:`O app inteiro em dez telas.`,
         v16:`Versão 1.6`, new_badge:`NOVO`, n_t:`A barra inferior tem cinco abas: Plano, Vila, Foco, Progresso e Biblioteca.`, n_d:`Os ajustes ficam no seu Perfil, atrás do botão da coruja.`, n_p1_t:`Vila das Corujas`, n_p1_d:`O mapa mostra as salas que você desbloqueou e o que vem pela frente.`, n_p2_t:`Guarda-roupa`, n_p2_d:`Veja cores e acessórios direto na sua coruja.`, n_p3_t:`Sua coruja no widget`, n_p3_d:`O widget da tela inicial acompanha o visual de coruja que você equipou.`, n_p4_t:`Marcas sem deslocar nada`, n_p4_d:`Adicionar uma marca durante a sessão não desloca mais o cronômetro.`, 
         d_eyebrow:`Veja funcionando`,
         d_title:`O app, rodando de verdade`,
@@ -1312,7 +1346,22 @@
     // bu satirin altindaki bir `var` HENUZ atanmamis oluyor (hoisting ile tanimli ama
     // undefined). Disarida durdugunda ilk cagri TypeError atiyor ve script blogunun
     // geri kalani hic kosmuyordu: alt metinleri cevriliyor, gorseller bos kaliyordu.
+    function applyStore() {
+      var L = ['en','tr','de','es','fr','ru','pt'];
+      var ALT = {"en": ["Meet your study owl.", "Focus without distractions.", "Your progress in plain sight.", "Furnish every room your way.", "Ready by exam day?", "Plan your day in minutes.", "Cut the noise, stay calm.", "Don't break your streak.", "Every page you read, on record.", "Race your shadow."], "tr": ["Çalışma baykuşunla tanış.", "Dağılmadan odaklan.", "İlerlemen gözünün önünde.", "Her odayı kendin döşe.", "Sınava yetişecek misin?", "Gününü dakikalar içinde planla.", "Gürültüyü kes, sakin kal.", "Serini bozma.", "Okuduğun her sayfa kayıtta.", "Gölgenle yarış."], "de": ["Lern deine Eule kennen.", "Fokus statt Ablenkung.", "Dein Fortschritt im Blick.", "Richte jedes Zimmer selbst ein.", "Bereit für die Prüfung?", "Plane deinen Tag in Minuten.", "Lärm aus, Ruhe an.", "Halt deine Serie am Leben.", "Jede gelesene Seite zählt.", "Tritt gegen deinen Schatten an."], "es": ["Conoce a tu búho de estudio.", "Concéntrate sin distraerte.", "Tu progreso, siempre a la vista.", "Decora cada habitación a tu gusto.", "¿Llegarás a tiempo al examen?", "Planifica tu día en minutos.", "Corta el ruido, mantén la calma.", "No rompas tu racha.", "Cada página que lees, registrada.", "Compite con tu sombra."], "fr": ["Voici ton hibou de révision.", "Concentre-toi sans te disperser.", "Ta progression sous les yeux.", "Aménage chaque chambre à ton goût.", "À temps pour l'examen ?", "Planifie ta journée en minutes.", "Coupe le bruit, reste calme.", "Garde ta série vivante.", "Chaque page lue, enregistrée.", "Fais la course avec ton ombre."], "ru": ["Познакомься с учебной совой.", "Сосредоточься и не отвлекайся.", "Твой прогресс перед глазами.", "Обставь каждую комнату по-своему.", "Успеешь к экзамену?", "Спланируй день за пару минут.", "Убери шум, сохрани спокойствие.", "Не теряй свою серию.", "Каждая страница учтена.", "Обгони свою тень."], "pt": ["Conheça sua coruja de estudos.", "Foque sem se distrair.", "Seu progresso sempre à vista.", "Decore cada quarto do seu jeito.", "Vai dar tempo até a prova?", "Planeje seu dia em minutos.", "Corte o barulho, mantenha a calma.", "Não quebre sua sequência.", "Cada página lida fica registrada.", "Corra contra sua sombra."]};
+      var l = document.documentElement.lang || 'en';
+      if (l.indexOf('pt') === 0) l = 'pt';
+      if (L.indexOf(l) < 0) l = 'en';
+      document.querySelectorAll('img[data-store]').forEach(function(img){
+        var n = img.getAttribute('data-store');
+        var next = './shots/store/' + l + '/' + n + '.webp';
+        if (img.getAttribute('src') !== next) img.setAttribute('src', next);
+        img.setAttribute('alt', ALT[l][parseInt(n,10)-1]);
+      });
+    }
+
     function applyShots() {
+      applyStore();
       var SHOT_LANGS = ['en','tr','de','es','fr','ru'];
       var theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
       var l = document.documentElement.lang || 'en';
