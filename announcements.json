@@ -2,29 +2,29 @@
   "version": 1,
   "announcements": [
     {
-      "id": "1_6_0_guncelle_v2",
+      "id": "1_6_4_guncelle",
       "title": {
-        "tr": "Yeni güncelleme geldi",
-        "en": "A new update is here",
-        "de": "Ein neues Update ist da",
-        "es": "Llegó una nueva actualización",
-        "fr": "Une nouvelle mise à jour est là",
-        "ru": "Вышло новое обновление",
-        "pt": "Chegou uma nova atualização",
-        "id": "Pembaruan baru sudah hadir"
+        "tr": "1.6.4 geldi",
+        "en": "Version 1.6.4 is out",
+        "de": "Version 1.6.4 ist da",
+        "es": "Ya está la versión 1.6.4",
+        "fr": "La version 1.6.4 est là",
+        "ru": "Вышла версия 1.6.4",
+        "pt": "A versão 1.6.4 chegou",
+        "id": "Versi 1.6.4 sudah hadir"
       },
       "body": {
-        "tr": "Baykuşun seni köyünde bekliyor. Devamı da yolda, kolaylıklar dileriz.",
-        "en": "Your owl is waiting for you in its village. More is on the way. Good luck with your studies!",
-        "de": "Deine Eule wartet in ihrem Dorf auf dich. Es kommt noch mehr. Viel Erfolg beim Lernen!",
-        "es": "Tu búho te espera en su aldea. Vienen más novedades. ¡Mucho ánimo con tus estudios!",
-        "fr": "Ton hibou t'attend dans son village. La suite arrive bientôt. Bon courage pour tes révisions !",
-        "ru": "Твоя сова ждёт тебя в своей деревне. Скоро будет ещё больше. Удачи в учёбе!",
-        "pt": "Sua coruja está te esperando na vila dela. Vem mais por aí. Bons estudos!",
-        "id": "Burung hantumu menunggumu di desanya. Masih ada lagi yang akan datang. Semangat belajar!"
+        "tr": "Plan, İlerleme ve Kitaplık yenilendi. Artık her odayı ayrı döşeyebilirsin.",
+        "en": "Plan, Progress and Library got a refresh, and every room now has its own setup.",
+        "de": "Plan, Fortschritt und Bibliothek wurden überarbeitet, und jeden Raum richtest du jetzt einzeln ein.",
+        "es": "Plan, Progreso y Biblioteca se renovaron, y ahora cada sala tiene su propia decoración.",
+        "fr": "Plan, Progression et Bibliothèque ont été revus, et chaque pièce a maintenant sa propre déco.",
+        "ru": "План, Прогресс и Библиотека обновились, а каждую комнату теперь можно обставить отдельно.",
+        "pt": "Plano, Progresso e Biblioteca foram renovados, e agora cada sala tem sua própria decoração.",
+        "id": "Rencana, Progres, dan Pustaka diperbarui, dan kini setiap ruangan bisa ditata sendiri."
       },
       "action": "update",
-      "maxVersion": "1.5.9"
+      "maxVersion": "1.6.3"
     }
   ]
 }
