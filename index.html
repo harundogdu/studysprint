@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Study Sprint Timer: Focus, Pomodoro & Streaks</title>
-<meta name="description" content="Beat procrastination with focused study sprints. Set a timer, build daily streaks, track exam countdowns. Fully offline, no account needed." />
+<meta name="description" content="Beat procrastination with focused study sprints. Set a timer, build daily streaks, track exam countdowns. Works offline, no account needed." />
 <link rel="canonical" href="https://studysprinttimer.com/" />
 <meta name="theme-color" content="#0a171a" />
 <meta name="apple-itunes-app" content="app-id=6788031531" />
@@ -12,13 +12,13 @@
 <meta property="og:site_name" content="Study Sprint Timer" />
 <meta property="og:url" content="https://studysprinttimer.com/" />
 <meta property="og:title" content="Study Sprint Timer: Focus, Pomodoro & Streaks" />
-<meta property="og:description" content="Beat procrastination with focused study sprints. Set a timer, build daily streaks, track exam countdowns. Fully offline, no account needed." />
+<meta property="og:description" content="Beat procrastination with focused study sprints. Set a timer, build daily streaks, track exam countdowns. Works offline, no account needed." />
 <meta property="og:image" content="https://studysprinttimer.com/og.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Study Sprint Timer: Focus, Pomodoro & Streaks" />
-<meta name="twitter:description" content="Beat procrastination with focused study sprints. Set a timer, build daily streaks, track exam countdowns. Fully offline, no account needed." />
+<meta name="twitter:description" content="Beat procrastination with focused study sprints. Set a timer, build daily streaks, track exam countdowns. Works offline, no account needed." />
 <meta name="twitter:image" content="https://studysprinttimer.com/og.png" />
 <link rel="icon" type="image/png" href="./favicon.png" />
 <link rel="apple-touch-icon" href="./icon.png" />
@@ -159,6 +159,10 @@
   }
 
   /* Ayrıca: kutusuz üç sütun */
+  .store { padding:100px 0; border-top:1px solid var(--line); }
+  .store h2 { font-size:clamp(1.65rem,3.2vw,2.45rem); font-weight:500; line-height:1.12; margin-top:18px; }
+  .store-row { display:flex; gap:18px; overflow-x:auto; scroll-snap-type:x mandatory; padding:36px 0 12px; -webkit-overflow-scrolling:touch; }
+  .store-row img { flex:0 0 auto; width:min(62vw,253px); height:auto; aspect-ratio:1320/2868; border-radius:22px; scroll-snap-align:start; background:var(--soft); }
   .more { padding:100px 0; border-top:1px solid var(--line); background:var(--soft); }
   .more-head { display:flex; justify-content:space-between; align-items:flex-end; gap:30px; flex-wrap:wrap; margin-bottom:44px; }
   .more-head h2 { font-size:clamp(1.55rem,3vw,2.2rem); font-weight:500; margin-top:14px; }
@@ -244,7 +248,7 @@
   "applicationCategory": "EducationalApplication",
   "description": "An offline-first Pomodoro study timer with daily streaks, exam countdowns, focus sounds and a study owl companion.",
   "url": "https://studysprinttimer.com/",
-  "softwareVersion": "1.6.0",
+  "softwareVersion": "1.6.4",
   "image": "https://studysprinttimer.com/og.png",
   "installUrl": "https://apps.apple.com/app/id6788031531",
   "sameAs": ["https://apps.apple.com/app/id6788031531", "https://play.google.com/store/apps/details?id=com.harundogdu.studysprinttimer"],
@@ -297,14 +301,14 @@
   <div class="wrap hero">
     <span class="eyebrow up" data-i18n="hero_eyebrow">Focus App</span>
     <h1 class="up d1" data-i18n="hero_title">Focus in timed <em>study sprints.</em></h1>
-    <p class="sub up d2" data-i18n="hero_sub">Beat procrastination with focused study sessions. Set a timer, build daily streaks, and stay motivated. Fully offline, no account needed.</p>
+    <p class="sub up d2" data-i18n="hero_sub">Beat procrastination with focused study sessions. Set a timer, build daily streaks, and stay motivated. Works offline, no account needed.</p>
     <div class="cta-row up d3">
       <a class="btn btn-primary" href="https://apps.apple.com/app/id6788031531" target="_blank" rel="noopener" data-i18n="hero_cta1"><svg class="btn-ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.5 8.2c-.6 0-1.6.6-2.6.6s-2.1-.6-3.2-.6C4.9 8.2 3 9.9 3 13.1c0 3.3 2.4 7.4 4.2 7.4 1 0 1.4-.6 2.6-.6s1.5.6 2.6.6c1.6 0 3.5-3 4.1-5-2.3-.9-2.7-4.1-.4-5.5-1-1.3-2.4-1.8-3.6-1.8z"/><path d="M13.6 6.6c.7-.9.6-2 .5-2.4-1 .1-2.1.8-2.7 1.6-.6.8-.9 1.8-.7 2.7 1-.1 2.1-.9 2.9-1.9z"/></svg>Download on the App Store</a>
       <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.harundogdu.studysprinttimer" target="_blank" rel="noopener" data-i18n="hero_cta_play"><svg class="btn-ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3.5v17l15-8.5-15-8.5z"/></svg>Get it on Google Play</a>
       <a class="btn btn-ghost" href="#okuma" data-i18n="hero_cta2">See Features</a>
     </div>
     <div class="stats up d4">
-      <div><div class="stat-v" data-i18n="st1_v">100%</div><div class="stat-l" data-i18n="st1_l">offline</div></div>
+      <div><div class="stat-v" data-i18n="st1_v">Offline</div><div class="stat-l" data-i18n="st1_l">still works</div></div>
       <div><div class="stat-v">7</div><div class="stat-l" data-i18n="st2_l">languages</div></div>
       <div><div class="stat-v">0</div><div class="stat-l" data-i18n="st3_l">accounts needed</div></div>
     </div>
@@ -399,7 +403,7 @@
         <p class="lede" data-i18n="g5_d">Earn coins as you study and unlock rooms, outfits and achievements for your owl.</p>
         <ul class="points">
           <li><b data-i18n="g8_t">Streak Safety Net</b><span data-i18n="g8_d">Freeze tokens and one-day repair keep a busy day from breaking your streak.</span></li>
-          <li><b><span data-i18n="g9_t">Game Center Leaderboards</span><span class="badge-plat" data-i18n="plat_ios">iOS only</span></b><span data-i18n="g9_d">Compete for weekly focus minutes and longest streak, and unlock 15 achievements along the way.</span></li>
+          <li><b data-i18n="g9_t">Leaderboard &amp; 20 Achievements</b><span data-i18n="g9_d">Compete on weekly, monthly and all-time focus and on your streak. After your third session you are added under a random name; you can change it or leave. You can report or block a name.</span></li>
         </ul>
       </div>
     </div>
@@ -437,6 +441,28 @@
     </div>
   </section>
 
+  <!-- MAGAZA GALERISI (1.6.4 magaza gorselleri, lavanta) -->
+  <section class="store" id="screens">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow" data-i18n="st_e">From the store page</span>
+        <h2 data-i18n="st_t">The whole app in ten screens.</h2>
+      </div>
+      <div class="store-row reveal">
+        <img data-store="01" alt="" loading="lazy" width="506" height="1100" />
+        <img data-store="02" alt="" loading="lazy" width="506" height="1100" />
+        <img data-store="03" alt="" loading="lazy" width="506" height="1100" />
+        <img data-store="04" alt="" loading="lazy" width="506" height="1100" />
+        <img data-store="05" alt="" loading="lazy" width="506" height="1100" />
+        <img data-store="06" alt="" loading="lazy" width="506" height="1100" />
+        <img data-store="07" alt="" loading="lazy" width="506" height="1100" />
+        <img data-store="08" alt="" loading="lazy" width="506" height="1100" />
+        <img data-store="09" alt="" loading="lazy" width="506" height="1100" />
+        <img data-store="10" alt="" loading="lazy" width="506" height="1100" />
+      </div>
+    </div>
+  </section>
+
   <!-- AYRICA -->
   <section class="more" id="more">
     <div class="wrap">
@@ -448,7 +474,7 @@
         <p data-i18n="mo_d">They are here because you reach for them, not to make the list longer.</p>
       </div>
       <div class="mgrid reveal">
-        <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"/></svg><span data-i18n="g4_t">100% Offline</span></h3><p data-i18n="g4_d">No sign-up, no account, no distractions. Your data stays on your device.</p></div>
+        <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"/></svg><span data-i18n="g4_t">Works Offline</span></h3><p data-i18n="g4_d">No sign-up or password. The timer, stats and streaks work without a connection, and your study sessions stay on your phone.</p></div>
         <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span data-i18n="f2_t">Pomodoro Flow</span></h3><p data-i18n="f2_d">Proven focus/break cycles keep your mind fresh through long study sessions.</p></div>
         <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="3"/><path d="M9 22v-4h6v4"/></svg><span data-i18n="g6_t">Watch &amp; iPad</span><span class="badge-plat" data-i18n="plat_ios">iOS only</span></h3><p data-i18n="g6_d">Start sprints from your wrist with the Apple Watch app. Full iPad support included.</p></div>
         <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg><span data-i18n="g16_t">Siri in Six Languages</span><span class="badge-plat" data-i18n="plat_ios">iOS only</span></h3><p data-i18n="g16_d">Ask Siri to start a sprint in English, Turkish, German, Spanish, French or Russian.</p></div>
@@ -457,6 +483,8 @@
         <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m4.5 16.5 15-9M4.5 7.5l15 9"/></svg><span data-i18n="g13_t">Set Up in a Minute</span></h3><p data-i18n="g13_d">Say why you're studying and the app suggests your subjects, a daily goal and an exam countdown. Change any of it later.</p></div>
         <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M10.3 21a2 2 0 0 0 3.4 0"/></svg><span data-i18n="f3_t">Gentle Reminders</span></h3><p data-i18n="f3_d">Smart study reminders help you never miss a session.</p></div>
         <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg><span data-i18n="g3_t">Progress Insights</span></h3><p data-i18n="g3_d">See completed sessions and streaks at a glance to stay motivated.</p></div>
+        <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><circle cx="12" cy="12" r="2.5"/></svg><span data-i18n="pr_t">Room Scene</span></h3><p data-i18n="pr_d">Premium adds a room scene behind the focus screen that follows the time of day.</p></div>
+        <div class="mitem"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 10 12 5l10 5-10 5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg><span data-i18n="cs_t">Campus Style</span></h3><p data-i18n="cs_d">The Shop has its first cosmetic pack: Campus Style.</p></div>
       </div>
     </div>
   </section>
@@ -532,29 +560,31 @@
 
   <script>
     var I18N_EXTRA = {
-      en: { st1_v:`100%`, hero_eyebrow:`Focus App`, hero_title:`Focus in timed <em>study sprints.</em>`, st1_l:`offline & private`, st2_l:`languages`, st3_l:`accounts needed`,
+      en: { st1_v:`Offline`, hero_eyebrow:`Focus App`, hero_title:`Focus in timed <em>study sprints.</em>`, st1_l:`still works`, st2_l:`languages`, st3_l:`accounts needed`,
             sc_eyebrow:`Inside the App`, sc_title:`Every Screen, Built for Focus`, sc_sub:`From the timer to your study owl: a quick tour of what you'll use every day.`,
             sh1:`Timer & exam countdown`, sh2:`Focus sounds`, sh3:`Your study owl`, sh4:`Streak calendar`, sh5:`Statistics`, sh6:`Daily quests` },
-      tr: { st1_v:`%100`, hero_eyebrow:`Odaklanma Uygulaması`, hero_title:`Zamanlı sprint'lerle <em>derin odağa</em> gir.`, st1_l:`çevrimdışı ve gizli`, st2_l:`dil`, st3_l:`hesap gerekir`,
+      tr: { st1_v:`Çevrimdışı`, hero_eyebrow:`Odaklanma Uygulaması`, hero_title:`Zamanlı sprint'lerle <em>derin odağa</em> gir.`, st1_l:`da çalışır`, st2_l:`dil`, st3_l:`hesap gerekir`,
             sc_eyebrow:`Uygulamanın İçinden`, sc_title:`Her Ekran Odak İçin Tasarlandı`, sc_sub:`Zamanlayıcıdan çalışma baykuşuna: her gün kullanacağın ekranlara hızlı bir bakış.`,
             sh1:`Zamanlayıcı ve sınav geri sayımı`, sh2:`Odak sesleri`, sh3:`Çalışma baykuşun`, sh4:`Seri takvimi`, sh5:`İstatistikler`, sh6:`Günlük görevler` },
-      de: { st1_v:`100&nbsp;%`, hero_eyebrow:`Fokus-App`, hero_title:`Fokussiert lernen in <em>getakteten Sprints.</em>`, st1_l:`offline & privat`, st2_l:`Sprachen`, st3_l:`Konten nötig`,
+      de: { st1_v:`Offline`, hero_eyebrow:`Fokus-App`, hero_title:`Fokussiert lernen in <em>getakteten Sprints.</em>`, st1_l:`funktioniert trotzdem`, st2_l:`Sprachen`, st3_l:`Konten nötig`,
             sc_eyebrow:`Ein Blick in die App`, sc_title:`Jeder Bildschirm, gebaut für Fokus`, sc_sub:`Vom Timer bis zur Lern-Eule: eine kurze Tour durch das, was du täglich nutzt.`,
             sh1:`Timer & Prüfungs-Countdown`, sh2:`Fokus-Sounds`, sh3:`Deine Lern-Eule`, sh4:`Serien-Kalender`, sh5:`Statistiken`, sh6:`Tagesaufgaben` },
-      es: { st1_v:`100&nbsp;%`, hero_eyebrow:`App de concentración`, hero_title:`Concéntrate en <em>sprints cronometrados.</em>`, st1_l:`sin conexión y privada`, st2_l:`idiomas`, st3_l:`cuentas necesarias`,
+      es: { st1_v:`Sin conexión`, hero_eyebrow:`App de concentración`, hero_title:`Concéntrate en <em>sprints cronometrados.</em>`, st1_l:`también funciona`, st2_l:`idiomas`, st3_l:`cuentas necesarias`,
             sc_eyebrow:`Dentro de la app`, sc_title:`Cada pantalla, hecha para concentrarte`, sc_sub:`Del temporizador a tu búho de estudio: un recorrido rápido por lo que usarás cada día.`,
             sh1:`Temporizador y cuenta atrás`, sh2:`Sonidos de enfoque`, sh3:`Tu búho de estudio`, sh4:`Calendario de rachas`, sh5:`Estadísticas`, sh6:`Misiones diarias` },
-      fr: { st1_v:`100&nbsp;%`, hero_eyebrow:`App de concentration`, hero_title:`Concentrez-vous par <em>sprints minutés.</em>`, st1_l:`hors ligne et privé`, st2_l:`langues`, st3_l:`compte requis`,
+      fr: { st1_v:`Hors ligne`, hero_eyebrow:`App de concentration`, hero_title:`Concentrez-vous par <em>sprints minutés.</em>`, st1_l:`ça marche aussi`, st2_l:`langues`, st3_l:`compte requis`,
             sc_eyebrow:`Au cœur de l'appli`, sc_title:`Chaque écran, conçu pour la concentration`, sc_sub:`Du minuteur à votre chouette d'étude : un tour rapide de ce que vous utiliserez chaque jour.`,
             sh1:`Minuteur et compte à rebours`, sh2:`Sons de concentration`, sh3:`Votre chouette d'étude`, sh4:`Calendrier des séries`, sh5:`Statistiques`, sh6:`Quêtes quotidiennes` },
-      ru: { st1_v:`100%`, hero_eyebrow:`Приложение для фокуса`, hero_title:`Фокус в <em>таймерных спринтах.</em>`, st1_l:`офлайн и приватно`, st2_l:`языков`, st3_l:`аккаунтов нужно`,
+      ru: { st1_v:`Офлайн`, hero_eyebrow:`Приложение для фокуса`, hero_title:`Фокус в <em>таймерных спринтах.</em>`, st1_l:`тоже работает`, st2_l:`языков`, st3_l:`аккаунтов нужно`,
             sc_eyebrow:`Внутри приложения`, sc_title:`Каждый экран создан для фокуса`, sc_sub:`От таймера до учебной совы: короткая экскурсия по тому, чем вы будете пользоваться каждый день.`,
             sh1:`Таймер и отсчёт до экзамена`, sh2:`Звуки фокуса`, sh3:`Ваша учебная сова`, sh4:`Календарь серий`, sh5:`Статистика`, sh6:`Ежедневные задания` },
       pt: {
-        st1_v:`100%`,
+        pr_t:`Cena de quarto`, pr_d:`No Premium, uma cena de quarto que acompanha a hora do dia aparece atrás da tela de foco.`, cs_t:`Estilo Campus`, cs_d:`A Loja ganhou o primeiro pacote cosmético: Estilo Campus.`,
+        st_e:`Da página da loja`, st_t:`O app inteiro em dez telas.`,
+        st1_v:`Offline`,
         hero_eyebrow:`App de foco`,
         hero_title:`Foco em <em>sprints de estudo</em> cronometrados.`,
-        st1_l:`offline e privado`,
+        st1_l:`também funciona`,
         st2_l:`idiomas`,
         st3_l:`contas necessárias`,
         sc_eyebrow:`Por dentro do app`,
@@ -575,11 +605,13 @@
     var PLAY_IC = '<svg class="btn-ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3.5v17l15-8.5-15-8.5z"/></svg>';
     var I18N = {
       en: {
-        v16:`Version 1.6`, new_badge:`NEW`, n_t:`A new tab bar, with Focus in the middle.`, n_d:`Plan and Village sit on one side, Progress and Settings on the other.`, n_p1_t:`Owl Village`, n_p1_d:`A map shows the rooms you have unlocked and what comes next.`, n_p2_t:`Wardrobe`, n_p2_d:`See body colors and accessories on your owl as you try them.`, n_p3_t:`Your owl on the widget`, n_p3_d:`The home-screen widget shows the owl look you equipped.`, n_p4_t:`Marks stay put`, n_p4_d:`Adding a mark during a session no longer shifts the timer.`, 
+        pr_t:`Room Scene`, pr_d:`Premium adds a room scene behind the focus screen that follows the time of day.`, cs_t:`Campus Style`, cs_d:`The Shop has its first cosmetic pack: Campus Style.`,
+        st_e:`From the store page`, st_t:`The whole app in ten screens.`,
+        v16:`Version 1.6`, new_badge:`NEW`, n_t:`The bottom bar has five tabs: Plan, Village, Focus, Progress and Library.`, n_d:`Settings live in your Profile, behind the owl button.`, n_p1_t:`Owl Village`, n_p1_d:`A map shows the rooms you have unlocked and what comes next.`, n_p2_t:`Wardrobe`, n_p2_d:`See body colors and accessories on your owl as you try them.`, n_p3_t:`Your owl on the widget`, n_p3_d:`The home-screen widget shows the owl look you equipped.`, n_p4_t:`Marks stay put`, n_p4_d:`Adding a mark during a session no longer shifts the timer.`, 
         d_eyebrow:`See It Move`, d_title:`The App, Actually Running`, d_sub:`Short clips recorded straight from the app. No mockups, no edits.`, d1_t:`A sprint in progress`, d1_d:`The dial fills as the minutes pass, and your owl waits at the bottom.`, d2_t:`Themes, previewed live`, d2_d:`Pick a colour and the phone above shows it before you commit.`, d3_t:`Sounds you can mix`, d3_d:`Layer rain over a fire and set each one to its own volume.`,
         rs_label:`App Store reviews`,
         nav_home:`Home`, nav_features:`Features`, nav_reviews:`Reviews`, nav_support:`Support`, nav_help:`Get Help`,
-        hero_sub:`Beat procrastination with focused study sessions. Set a timer, build daily streaks, and stay motivated. Fully offline, no account needed.`,
+        hero_sub:`Beat procrastination with focused study sessions. Set a timer, build daily streaks, and stay motivated. Works offline, no account needed.`,
         hero_cta1:APPLE_IC+`Download on the App Store`, hero_cta_play:PLAY_IC+`Get it on Google Play`, hero_cta2:`See Features`,
         p_eyebrow:`The Struggle`, p_title:`Studying Without Structure Feels Hard`,
         p_sub:`Focus is easy to lose and hard to rebuild. Most study tools are cluttered, online-only, or simply get in the way.`,
@@ -597,7 +629,7 @@
         g1_t:`Daily Streaks`, g1_d:`Build a study habit that lasts. Watch your streak grow one day at a time.`,
         g2_t:`Appearance Studio`, g2_d:`26 themes, a timer dial and an effect on one screen, with a live preview. Nothing changes until you tap Done, and the app icon follows the color you pick.`,
         g3_t:`Progress Insights`, g3_d:`See completed sessions and streaks at a glance to stay motivated.`,
-        g4_t:`100% Offline`, g4_d:`No sign-up, no account, no distractions. Your data stays on your device.`,
+        g4_t:`Works Offline`, g4_d:`No sign-up or password. The timer, stats and streaks work without a connection, and your study sessions stay on your phone.`,
         g5_t:`Your Study Owl`, g5_d:`Earn coins as you study and unlock rooms, outfits and achievements for your owl.`,
         g6_t:`Watch & iPad`, g6_d:`Start sprints from your wrist with the Apple Watch app. Full iPad support included.`,
         g17_t:`Widgets & Live Activity`, g17_d:`Put your streak, an exam countdown or a one-tap start on the Home Screen or the Lock Screen.`,
@@ -606,9 +638,9 @@
         w_p2_t:`Your theme comes along`, w_p2_d:`Widgets use the accent color you picked in the app.`,
         g7_t:`Exam Countdowns`, g7_d:`Add every exam you're preparing for and see the days left on your home screen and Lock Screen.`,
         g8_t:`Streak Safety Net`, g8_d:`Freeze tokens and one-day repair keep a busy day from breaking your streak.`,
-        g9_t:`Game Center Leaderboards`, g9_d:`Compete for weekly focus minutes and longest streak, and unlock 15 achievements along the way.`,
+        g9_t:`Leaderboard & 20 Achievements`, g9_d:`Compete on weekly, monthly and all-time focus and on your streak. After your third session you are added under a random name; you can change it or leave. You can report or block a name.`,
         g10_t:`My Library`, g10_d:`Add the books you're reading, log pages after a session and watch each one fill up.`,
-        g11_t:`Today's Plan`, g11_d:`Set how many sprints you want per subject, then watch the day fill in as you work.`,
+        g11_t:`Today's Plan`, g11_d:`Set how many sprints you want per subject, then watch the day fill in as you work. Plan shows your week, lets you move a missed task to another day, and keeps your exams and reminders.`,
         g12_t:`Exam-Linked Sessions`, g12_d:`Tie a session to an exam and see how many hours went into it. Finished sessions can go to Apple Calendar too.`,
         g13_t:`Set Up in a Minute`, g13_d:`Say why you're studying and the app suggests your subjects, a daily goal and an exam countdown. Change any of it later.`,
         g14_t:`Find Any Setting`, g14_d:`Settings has a search field and shortcuts to the rows you open most, so nothing is buried three taps deep.`,
@@ -632,7 +664,7 @@
         rd_p2_t:`Reading time left`,
         rd_p2_d:`The home screen estimates how much reading time your book has left, based on your own pace.`,
         rd_p3_t:`A yearly book goal`,
-        rd_p3_d:`Set one in Settings and watch it fill up in your library.`,
+        rd_p3_d:`Set one in your Library and watch it fill up.`,
         s2_t:`The apps that pull you away stay shut while you work.`,
         s2_p1_t:`It works while reading too`,
         s2_p1_d:`The same shield is on during a book session, if Instagram keeps calling.`,
@@ -652,11 +684,13 @@
         alt_widgets:`Home screen with the Study Sprint widgets: streak, exam countdown and one-tap start`
       },
       tr: {
-        v16:`Sürüm 1.6`, new_badge:`YENİ`, n_t:`Yeni alt barda Odak ortada.`, n_d:`Plan ve Köy bir yanında, İlerleme ve Ayarlar diğer yanında.`, n_p1_t:`Baykuş Köyü`, n_p1_d:`Haritada açtığın odaları ve sırada neler olduğunu gör.`, n_p2_t:`Gardırop`, n_p2_d:`Gövde renklerini ve aksesuarları baykuşunun üzerinde dene.`, n_p3_t:`Widget’ta baykuşun`, n_p3_d:`Ana ekran widget’ı Gardıropta taktığın baykuş görünümünü gösteriyor.`, n_p4_t:`İşaretler sayacı oynatmıyor`, n_p4_d:`Çalışırken işaret eklemek artık sayacı yerinden oynatmıyor.`, 
+        pr_t:`Oda sahnesi`, pr_d:`Premium'da odak ekranının arkasında günün saatine göre oda sahnesi var.`, cs_t:`Kampüs Stili`, cs_d:`Dükkân'a ilk kozmetik paket geldi: Kampüs Stili.`,
+        st_e:`Mağaza sayfasından`, st_t:`Uygulamanın tamamı on ekranda.`,
+        v16:`Sürüm 1.6`, new_badge:`YENİ`, n_t:`Alt barda beş sekme var: Plan, Köy, Odak, İlerleme ve Kitaplık.`, n_d:`Ayarlar baykuş düğmesinin arkasındaki Profil'de.`, n_p1_t:`Baykuş Köyü`, n_p1_d:`Haritada açtığın odaları ve sırada neler olduğunu gör.`, n_p2_t:`Gardırop`, n_p2_d:`Gövde renklerini ve aksesuarları baykuşunun üzerinde dene.`, n_p3_t:`Widget’ta baykuşun`, n_p3_d:`Ana ekran widget’ı Gardıropta taktığın baykuş görünümünü gösteriyor.`, n_p4_t:`İşaretler sayacı oynatmıyor`, n_p4_d:`Çalışırken işaret eklemek artık sayacı yerinden oynatmıyor.`, 
         d_eyebrow:`Hareket Hâlinde`, d_title:`Uygulamanın Kendisi, Çalışırken`, d_sub:`Doğrudan uygulamadan alınmış kısa kayıtlar. Tasarım maketi yok, kurgu yok.`, d1_t:`Süren işlerken`, d1_d:`Dakikalar geçtikçe kadran doluyor, baykuşun aşağıda seni bekliyor.`, d2_t:`Temalar, anında önizlemeli`, d2_d:`Bir renk seç, yukarıdaki telefon onaylamadan önce sana göstersin.`, d3_t:`Sesleri karıştır`, d3_d:`Yağmuru ateşin üstüne koy, her birinin sesini ayrı ayarla.`,
         rs_label:`App Store yorumu`,
         nav_home:`Ana Sayfa`, nav_features:`Özellikler`, nav_reviews:`Yorumlar`, nav_support:`Destek`, nav_help:`Yardım Al`,
-        hero_sub:`Odaklı çalışma seanslarıyla erteleme alışkanlığını yen. Zamanlayıcıyı kur, günlük seriler oluştur ve motive kal, tamamen çevrimdışı, hesap gerekmez.`,
+        hero_sub:`Odaklı çalışma seanslarıyla erteleme alışkanlığını yen. Zamanlayıcıyı kur, günlük seriler oluştur ve motive kal, çevrimdışı çalışır, hesap gerekmez.`,
         hero_cta1:APPLE_IC+`App Store'dan İndir`, hero_cta_play:PLAY_IC+`Google Play'den İndir`, hero_cta2:`Özellikleri Gör`,
         p_eyebrow:`Zorluk`, p_title:`Düzensiz Çalışmak Zor Geliyor`,
         p_sub:`Odak kolayca kaybolur, yeniden kurmak zordur. Çoğu çalışma aracı karmaşık, yalnızca çevrimiçi ya da yolunda engeldir.`,
@@ -674,7 +708,7 @@
         g1_t:`Günlük Seriler`, g1_d:`Kalıcı bir çalışma alışkanlığı oluştur. Serini her gün büyürken izle.`,
         g2_t:`Görünüm Stüdyosu`, g2_d:`26 tema, gösterge ve efekt tek ekranda, canlı önizlemeyle. Sen Tamam'a basana kadar hiçbir şey değişmiyor; uygulama ikonu da seçtiğin renge geçiyor.`,
         g3_t:`İlerleme Görünümü`, g3_d:`Tamamlanan seansları ve serileri tek bakışta gör, motive kal.`,
-        g4_t:`%100 Çevrimdışı`, g4_d:`Kayıt yok, hesap yok, dikkat dağıtan yok. Verilerin cihazında kalır.`,
+        g4_t:`Çevrimdışı Çalışır`, g4_d:`Kayıt ya da şifre yok. Sayaç, istatistikler ve seri bağlantı olmadan çalışır, çalışma oturumların telefonunda kalır.`,
         g5_t:`Çalışma Baykuşun`, g5_d:`Çalıştıkça coin kazan, baykuşun için odalar, kostümler ve başarımlar aç.`,
         g6_t:`Watch ve iPad`, g6_d:`Apple Watch uygulamasıyla sprintleri bileğinden başlat, artık tam iPad desteğiyle.`,
         g17_t:`Widget'lar ve Live Activity`, g17_d:`Çalışma serini, sınav geri sayımını ya da tek dokunuşla başlatmayı ana ekrana veya kilit ekranına koy.`,
@@ -683,9 +717,9 @@
         w_p2_t:`Temanı da götürüyor`, w_p2_d:`Widget'lar uygulamada seçtiğin vurgu rengini kullanıyor.`,
         g7_t:`Sınav Geri Sayımı`, g7_d:`Hazırlandığın her sınavı ekle; kalan günleri ana ekranda ve kilit ekranında gör.`,
         g8_t:`Seri Güvencesi`, g8_d:`Dondurma jetonu ve tek günlük telafi, yoğun bir günün çalışma serini bozmasına izin vermez.`,
-        g9_t:`Game Center Liderlik Tabloları`, g9_d:`Haftalık odak dakikan ve en uzun çalışma serin için yarış, 15 başarımın kilidini aç.`,
+        g9_t:`Lider Tablosu ve 20 Başarım`, g9_d:`Haftalık, aylık ve tüm zamanların odak dakikasında ve seride yarış. Üçüncü oturumundan sonra rastgele bir adla eklenirsin; adı değiştirebilir ya da tablodan çıkabilirsin. Bir adı bildirebilir ya da engelleyebilirsin.`,
         g10_t:`Kitaplığım`, g10_d:`Okuduğun kitapları ekle, oturumdan sonra sayfa gir ve her birinin dolmasını izle.`,
-        g11_t:`Bugünün Planı`, g11_d:`Her ders için kaç sprint istediğini belirle, gün çalıştıkça dolsun.`,
+        g11_t:`Bugünün Planı`, g11_d:`Her ders için kaç sprint istediğini belirle, gün çalıştıkça dolsun. Plan'da haftanı görür, kaçan görevi başka güne taşır, sınavlarını ve hatırlatmalarını kurarsın.`,
         g12_t:`Sınava Bağlı Oturumlar`, g12_d:`Oturumu bir sınava bağla, o sınav için kaç saat harcadığını gör. Biten oturumlar istersen Apple Takvim'e de yazılır.`,
         g13_t:`Bir Dakikada Kurulum`, g13_d:`Neden çalıştığını söyle, uygulama sana dersleri, günlük hedefi ve sınav geri sayımını önersin. Hepsini sonradan değiştirebilirsin.`,
         g14_t:`Aradığın Ayarı Bul`, g14_d:`Ayarlar'da arama alanı ve en çok açtığın satırların kısayolu var; hiçbir şey üç dokunuş derinde kalmıyor.`,
@@ -709,7 +743,7 @@
         rd_p2_t:`Kalan okuma süresi`,
         rd_p2_d:`Ana ekran senin hızına bakıp kitabın ne kadar okuma süresi kaldığını tahmin ediyor.`,
         rd_p3_t:`Yıllık kitap hedefi`,
-        rd_p3_d:`Ayarlar'dan koy, kitaplığında dolmasını izle.`,
+        rd_p3_d:`Kitaplık'ta koy, dolmasını izle.`,
         s2_t:`Seni çeken uygulamalar sen çalışırken kapalı.`,
         s2_p1_t:`Okurken de çalışıyor`,
         s2_p1_d:`Kitap oturumunda da aynı kalkan devrede; Instagram çağırıp duruyorsa kilitle.`,
@@ -729,11 +763,13 @@
         alt_widgets:`Ana ekranda Study Sprint widget'ları: seri, sınav geri sayımı ve tek dokunuşla başlatma`
       },
       de: {
-        v16:`Version 1.6`, new_badge:`NEU`, n_t:`Die neue Leiste zeigt Fokus in der Mitte.`, n_d:`Plan und Dorf stehen links, Fortschritt und Einstellungen rechts.`, n_p1_t:`Eulendorf`, n_p1_d:`Eine Karte zeigt deine freigeschalteten Räume und was als Nächstes kommt.`, n_p2_t:`Kleiderschrank`, n_p2_d:`Körperfarben und Accessoires direkt an deiner Eule sehen.`, n_p3_t:`Deine Eule im Widget`, n_p3_d:`Das Widget auf dem Startbildschirm zeigt den Eulenlook, den du angelegt hast.`, n_p4_t:`Markierungen ohne Sprung`, n_p4_d:`Eine Markierung während einer Sitzung verschiebt den Timer nicht mehr.`, 
+        pr_t:`Raumszene`, pr_d:`Mit Premium liegt hinter dem Fokus-Bildschirm eine Raumszene, die der Tageszeit folgt.`, cs_t:`Campus-Stil`, cs_d:`Im Laden gibt es das erste kosmetische Paket: Campus-Stil.`,
+        st_e:`Von der Store-Seite`, st_t:`Die ganze App in zehn Screens.`,
+        v16:`Version 1.6`, new_badge:`NEU`, n_t:`Die Leiste unten hat fünf Tabs: Plan, Dorf, Fokus, Fortschritt und Bibliothek.`, n_d:`Die Einstellungen findest du in deinem Profil hinter dem Eulen-Button.`, n_p1_t:`Eulendorf`, n_p1_d:`Eine Karte zeigt deine freigeschalteten Räume und was als Nächstes kommt.`, n_p2_t:`Kleiderschrank`, n_p2_d:`Körperfarben und Accessoires direkt an deiner Eule sehen.`, n_p3_t:`Deine Eule im Widget`, n_p3_d:`Das Widget auf dem Startbildschirm zeigt den Eulenlook, den du angelegt hast.`, n_p4_t:`Markierungen ohne Sprung`, n_p4_d:`Eine Markierung während einer Sitzung verschiebt den Timer nicht mehr.`, 
         d_eyebrow:`In Bewegung`, d_title:`Die App, im laufenden Betrieb`, d_sub:`Kurze Aufnahmen direkt aus der App. Keine Mockups, kein Schnitt.`, d1_t:`Ein laufender Sprint`, d1_d:`Der Ring füllt sich mit den Minuten, deine Eule wartet unten.`, d2_t:`Themes in der Live-Vorschau`, d2_d:`Wähle eine Farbe und das Handy oben zeigt sie dir vor dem Übernehmen.`, d3_t:`Klänge zum Mischen`, d3_d:`Leg Regen über ein Feuer und regle beide getrennt.`,
         rs_label:`App-Store-Rezensionen`,
         nav_home:`Start`, nav_features:`Funktionen`, nav_reviews:`Bewertungen`, nav_support:`Support`, nav_help:`Hilfe`,
-        hero_sub:`Überwinde Aufschieberei mit fokussierten Lernsessions. Timer stellen, tägliche Serien aufbauen und motiviert bleiben, komplett offline, kein Konto nötig.`,
+        hero_sub:`Überwinde Aufschieberei mit fokussierten Lernsessions. Timer stellen, tägliche Serien aufbauen und motiviert bleiben, funktioniert offline, kein Konto nötig.`,
         hero_cta1:APPLE_IC+`Jetzt im App Store laden`, hero_cta_play:PLAY_IC+`Jetzt bei Google Play laden`, hero_cta2:`Funktionen ansehen`,
         p_eyebrow:`Die Herausforderung`, p_title:`Lernen ohne Struktur fällt schwer`,
         p_sub:`Fokus geht leicht verloren und ist schwer wiederherzustellen. Die meisten Lern-Tools sind überladen, nur online oder einfach im Weg.`,
@@ -751,7 +787,7 @@
         g1_t:`Tägliche Serien`, g1_d:`Baue eine dauerhafte Lerngewohnheit auf. Sieh deiner Serie beim Wachsen zu.`,
         g2_t:`Darstellungs-Studio`, g2_d:`26 Themes, Timer-Anzeige und Effekt auf einem Bildschirm, mit Live-Vorschau. Nichts ändert sich, bis du auf Fertig tippst, und das App-Symbol übernimmt deine Farbe.`,
         g3_t:`Fortschritts-Einblicke`, g3_d:`Sieh abgeschlossene Sessions und Serien auf einen Blick und bleib motiviert.`,
-        g4_t:`100 % Offline`, g4_d:`Keine Anmeldung, kein Konto, keine Ablenkung. Deine Daten bleiben auf deinem Gerät.`,
+        g4_t:`Funktioniert offline`, g4_d:`Keine Anmeldung, kein Passwort. Timer, Statistik und Serie laufen ohne Verbindung, und deine Lernsitzungen bleiben auf deinem Handy.`,
         g5_t:`Deine Lern-Eule`, g5_d:`Verdiene Coins beim Lernen, schalte Räume, Outfits und Erfolge für deine Eule frei.`,
         g6_t:`Watch & iPad`, g6_d:`Starte Sprints mit der Apple-Watch-App vom Handgelenk, jetzt mit voller iPad-Unterstützung.`,
         g17_t:`Widgets & Live Activity`, g17_d:`Leg deine Serie, einen Prüfungs-Countdown oder den Start mit einem Tipp auf Start- oder Sperrbildschirm.`,
@@ -760,9 +796,9 @@
         w_p2_t:`Dein Thema kommt mit`, w_p2_d:`Widgets übernehmen die Akzentfarbe, die du in der App gewählt hast.`,
         g7_t:`Prüfungs-Countdown`, g7_d:`Füge jede Prüfung hinzu und sieh die verbleibenden Tage auf Start- und Sperrbildschirm.`,
         g8_t:`Serien-Schutz`, g8_d:`Einfrier-Token und die Ein-Tages-Reparatur verhindern, dass ein voller Tag deine Serie beendet.`,
-        g9_t:`Game-Center-Bestenlisten`, g9_d:`Tritt mit deinen wöchentlichen Lernminuten und deiner längsten Serie an und schalte 15 Erfolge frei.`,
+        g9_t:`Bestenliste und 20 Erfolge`, g9_d:`Miss dich bei Lernminuten pro Woche, Monat und insgesamt und bei deiner Serie. Nach deiner dritten Sitzung nehmen wir dich mit einem zufälligen Namen auf; du kannst ihn ändern oder austreten. Namen kannst du melden oder blockieren.`,
         g10_t:`Meine Bibliothek`, g10_d:`Trag die Bücher ein, die du liest, halte nach einer Session die Seiten fest und sieh jedes Buch voller werden.`,
-        g11_t:`Plan für heute`, g11_d:`Leg fest, wie viele Sprints du pro Fach schaffen willst, und sieh den Tag beim Arbeiten voller werden.`,
+        g11_t:`Plan für heute`, g11_d:`Leg fest, wie viele Sprints du pro Fach schaffen willst, und sieh den Tag beim Arbeiten voller werden. In Plan siehst du deine Woche, verschiebst eine verpasste Aufgabe auf einen anderen Tag und verwaltest Prüfungen und Erinnerungen.`,
         g12_t:`Sitzungen mit Prüfungsbezug`, g12_d:`Verknüpf eine Session mit einer Prüfung und sieh, wie viele Stunden hineingeflossen sind. Beendete Sessions können auch in Apple Kalender wandern.`,
         g13_t:`In einer Minute eingerichtet`, g13_d:`Sag, wofür du lernst, und die App schlägt dir Fächer, ein Tagesziel und einen Prüfungs-Countdown vor. Alles lässt sich später ändern.`,
         g14_t:`Jede Einstellung finden`, g14_d:`Die Einstellungen haben ein Suchfeld und Kurzbefehle für die Zeilen, die du am häufigsten öffnest. Nichts liegt drei Tipps tief vergraben.`,
@@ -786,7 +822,7 @@
         rd_p2_t:`Verbleibende Lesezeit`,
         rd_p2_d:`Der Startbildschirm schätzt aus deinem eigenen Tempo, wie viel Lesezeit dein Buch noch hat.`,
         rd_p3_t:`Ein Jahresziel für Bücher`,
-        rd_p3_d:`Setz es in den Einstellungen und sieh zu, wie es sich in deiner Bibliothek füllt.`,
+        rd_p3_d:`Setz es in der Bibliothek und sieh zu, wie es sich füllt.`,
         s2_t:`Die Apps, die dich wegziehen, bleiben zu, während du arbeitest.`,
         s2_p1_t:`Wirkt auch beim Lesen`,
         s2_p1_d:`Derselbe Schild ist in einer Buch-Session an, falls Instagram ruft.`,
@@ -806,11 +842,13 @@
         alt_widgets:`Startbildschirm mit den Study-Sprint-Widgets: Serie, Prüfungs-Countdown und Schnellstart`
       },
       es: {
-        v16:`Versión 1.6`, new_badge:`NUEVO`, n_t:`La nueva barra sitúa Enfoque en el centro.`, n_d:`Plan y Aldea quedan a un lado, Progreso y Ajustes al otro.`, n_p1_t:`Aldea Búho`, n_p1_d:`El mapa muestra las salas que has desbloqueado y lo que viene después.`, n_p2_t:`Armario`, n_p2_d:`Mira colores y accesorios directamente en tu búho.`, n_p3_t:`Tu búho en el widget`, n_p3_d:`El widget de la pantalla de inicio muestra el estilo de búho que has equipado.`, n_p4_t:`Las marcas no mueven nada`, n_p4_d:`Añadir una marca durante la sesión ya no mueve el temporizador.`, 
+        pr_t:`Escena de habitación`, pr_d:`Con Premium, detrás de la pantalla de concentración hay una escena de habitación que sigue la hora del día.`, cs_t:`Estilo Campus`, cs_d:`La Tienda tiene su primer paquete cosmético: Estilo Campus.`,
+        st_e:`De la página de la tienda`, st_t:`Toda la app en diez pantallas.`,
+        v16:`Versión 1.6`, new_badge:`NUEVO`, n_t:`La barra inferior tiene cinco pestañas: Plan, Aldea, Concentración, Progreso y Biblioteca.`, n_d:`Los ajustes están en tu Perfil, detrás del botón del búho.`, n_p1_t:`Aldea Búho`, n_p1_d:`El mapa muestra las salas que has desbloqueado y lo que viene después.`, n_p2_t:`Armario`, n_p2_d:`Mira colores y accesorios directamente en tu búho.`, n_p3_t:`Tu búho en el widget`, n_p3_d:`El widget de la pantalla de inicio muestra el estilo de búho que has equipado.`, n_p4_t:`Las marcas no mueven nada`, n_p4_d:`Añadir una marca durante la sesión ya no mueve el temporizador.`, 
         d_eyebrow:`En movimiento`, d_title:`La app, funcionando de verdad`, d_sub:`Clips cortos grabados directamente de la app. Sin maquetas ni montajes.`, d1_t:`Un sprint en marcha`, d1_d:`El círculo se llena con los minutos y tu búho espera abajo.`, d2_t:`Temas con vista previa en vivo`, d2_d:`Elige un color y el teléfono de arriba te lo muestra antes de aplicarlo.`, d3_t:`Sonidos que puedes mezclar`, d3_d:`Pon lluvia sobre un fuego y ajusta el volumen de cada uno.`,
         rs_label:`reseñas de App Store`,
         nav_home:`Inicio`, nav_features:`Funciones`, nav_reviews:`Opiniones`, nav_support:`Soporte`, nav_help:`Ayuda`,
-        hero_sub:`Vence la procrastinación con sesiones de estudio enfocadas. Pon un temporizador, crea rachas diarias y mantén la motivación, totalmente sin conexión, sin cuenta.`,
+        hero_sub:`Vence la procrastinación con sesiones de estudio enfocadas. Pon un temporizador, crea rachas diarias y mantén la motivación, funciona sin conexión, sin cuenta.`,
         hero_cta1:APPLE_IC+`Descargar en la App Store`, hero_cta_play:PLAY_IC+`Descargar en Google Play`, hero_cta2:`Ver funciones`,
         p_eyebrow:`El reto`, p_title:`Estudiar sin estructura se hace difícil`,
         p_sub:`La concentración se pierde fácil y cuesta recuperarla. La mayoría de apps son recargadas, solo en línea o simplemente estorban.`,
@@ -828,7 +866,7 @@
         g1_t:`Rachas diarias`, g1_d:`Crea un hábito de estudio duradero. Mira crecer tu racha día a día.`,
         g2_t:`Estudio de apariencia`, g2_d:`26 temas, la esfera del temporizador y el efecto en una pantalla, con vista previa en vivo. Nada cambia hasta que tocas Listo, y el icono adopta tu color.`,
         g3_t:`Perspectivas de progreso`, g3_d:`Ve tus sesiones completadas y rachas de un vistazo para mantener la motivación.`,
-        g4_t:`100 % sin conexión`, g4_d:`Sin registro, sin cuenta, sin distracciones. Tus datos se quedan en tu dispositivo.`,
+        g4_t:`Funciona sin conexión`, g4_d:`Sin registro ni contraseña. El temporizador, las estadísticas y la racha funcionan sin conexión, y tus sesiones de estudio se quedan en tu teléfono.`,
         g5_t:`Tu búho de estudio`, g5_d:`Gana monedas al estudiar, desbloquea salas, atuendos y logros para tu búho.`,
         g6_t:`Watch y iPad`, g6_d:`Inicia sprints desde tu muñeca con la app de Apple Watch, ahora con soporte completo para iPad.`,
         g17_t:`Widgets y Live Activity`, g17_d:`Pon tu racha, una cuenta atrás de examen o el inicio con un toque en la pantalla de inicio o la de bloqueo.`,
@@ -837,9 +875,9 @@
         w_p2_t:`Tu tema va contigo`, w_p2_d:`Los widgets usan el color de acento que elegiste en la app.`,
         g7_t:`Cuenta atrás de exámenes`, g7_d:`Añade cada examen que preparas y ve los días restantes en la pantalla de inicio y la de bloqueo.`,
         g8_t:`Red de seguridad para tu racha`, g8_d:`Los tokens de congelación y la reparación de un día evitan que un día ocupado rompa tu racha.`,
-        g9_t:`Tablas de Game Center`, g9_d:`Compite por tus minutos de enfoque semanales y tu racha más larga, y desbloquea 15 logros.`,
+        g9_t:`Clasificación y 20 logros`, g9_d:`Compite por tus minutos de enfoque de la semana, del mes y totales y por tu racha. Después de tu tercera sesión te añadimos con un nombre aleatorio; puedes cambiarlo o salir. Puedes denunciar o bloquear un nombre.`,
         g10_t:`Mi biblioteca`, g10_d:`Añade los libros que estás leyendo, anota las páginas al terminar una sesión y ve cómo se van llenando.`,
-        g11_t:`Plan de hoy`, g11_d:`Decide cuántos sprints quieres por asignatura y mira cómo se completa el día mientras trabajas.`,
+        g11_t:`Plan de hoy`, g11_d:`Decide cuántos sprints quieres por asignatura y mira cómo se completa el día mientras trabajas. En Plan ves tu semana, mueves una tarea que se te pasó a otro día y guardas tus exámenes y recordatorios.`,
         g12_t:`Sesiones ligadas a un examen`, g12_d:`Vincula una sesión a un examen y consulta cuántas horas le has dedicado. Las sesiones terminadas también pueden ir a Calendario de Apple.`,
         g13_t:`Configúrala en un minuto`, g13_d:`Di por qué estudias y la app te propone tus asignaturas, una meta diaria y una cuenta atrás para el examen. Todo se puede cambiar después.`,
         g14_t:`Encuentra cualquier ajuste`, g14_d:`Ajustes tiene un campo de búsqueda y accesos directos a las filas que más abres. Nada queda enterrado a tres toques.`,
@@ -863,7 +901,7 @@
         rd_p2_t:`Tiempo de lectura restante`,
         rd_p2_d:`La pantalla de inicio calcula cuánto tiempo de lectura le queda a tu libro, según tu propio ritmo.`,
         rd_p3_t:`Una meta anual de libros`,
-        rd_p3_d:`Ponla en Ajustes y mírala llenarse en tu biblioteca.`,
+        rd_p3_d:`Ponla en la Biblioteca y mírala llenarse.`,
         s2_t:`Las apps que te distraen quedan cerradas mientras trabajas.`,
         s2_p1_t:`También funciona mientras lees`,
         s2_p1_d:`El mismo escudo está activo en una sesión de lectura, por si Instagram insiste.`,
@@ -883,11 +921,13 @@
         alt_widgets:`Pantalla de inicio con los widgets de Study Sprint: racha, cuenta atrás de examen e inicio rápido`
       },
       fr: {
-        v16:`Version 1.6`, new_badge:`NOUVEAU`, n_t:`La nouvelle barre place Concentration au milieu.`, n_d:`Plan et Village d’un côté, Progrès et Réglages de l’autre.`, n_p1_t:`Village des hiboux`, n_p1_d:`La carte montre les pièces débloquées et celles qui t’attendent.`, n_p2_t:`Garde-robe`, n_p2_d:`Vois les couleurs et accessoires directement sur ton hibou.`, n_p3_t:`Ton hibou dans le widget`, n_p3_d:`Le widget de l’écran d’accueil reprend le style de hibou que tu as équipé.`, n_p4_t:`Des repères qui ne bougent rien`, n_p4_d:`Ajouter un repère pendant une séance ne déplace plus le minuteur.`, 
+        pr_t:`Scène de pièce`, pr_d:`Avec Premium, une scène de pièce suit l’heure de la journée derrière l’écran de concentration.`, cs_t:`Style Campus`, cs_d:`La Boutique a son premier pack cosmétique : Style Campus.`,
+        st_e:`Depuis la page de l’App Store`, st_t:`Toute l’app en dix écrans.`,
+        v16:`Version 1.6`, new_badge:`NOUVEAU`, n_t:`La barre du bas compte cinq onglets : Plan, Village, Concentration, Progression et Bibliothèque.`, n_d:`Les réglages sont dans ton Profil, derrière le bouton du hibou.`, n_p1_t:`Village des hiboux`, n_p1_d:`La carte montre les pièces débloquées et celles qui t’attendent.`, n_p2_t:`Garde-robe`, n_p2_d:`Vois les couleurs et accessoires directement sur ton hibou.`, n_p3_t:`Ton hibou dans le widget`, n_p3_d:`Le widget de l’écran d’accueil reprend le style de hibou que tu as équipé.`, n_p4_t:`Des repères qui ne bougent rien`, n_p4_d:`Ajouter un repère pendant une séance ne déplace plus le minuteur.`, 
         d_eyebrow:`En mouvement`, d_title:`L'appli, vraiment en marche`, d_sub:`De courts extraits enregistrés directement depuis l'appli. Sans maquette ni montage.`, d1_t:`Une session en cours`, d1_d:`Le cadran se remplit au fil des minutes et votre hibou attend en bas.`, d2_t:`Les thèmes en aperçu direct`, d2_d:`Choisissez une couleur : le téléphone du haut vous la montre avant validation.`, d3_t:`Des sons à mélanger`, d3_d:`Posez la pluie sur un feu et réglez le volume de chacun.`,
         rs_label:`avis App Store`,
         nav_home:`Accueil`, nav_features:`Fonctionnalités`, nav_reviews:`Avis`, nav_support:`Support`, nav_help:`Aide`,
-        hero_sub:`Vainquez la procrastination avec des sessions d'étude concentrées. Lancez un minuteur, bâtissez des séries quotidiennes et restez motivé, 100 % hors ligne, sans compte.`,
+        hero_sub:`Vainquez la procrastination avec des sessions d'étude concentrées. Lancez un minuteur, bâtissez des séries quotidiennes et restez motivé, fonctionne hors ligne, sans compte.`,
         hero_cta1:APPLE_IC+`Télécharger sur l'App Store`, hero_cta_play:PLAY_IC+`Télécharger sur Google Play`, hero_cta2:`Voir les fonctionnalités`,
         p_eyebrow:`Le défi`, p_title:`Étudier sans structure, c'est difficile`,
         p_sub:`La concentration se perd vite et se reconstruit mal. La plupart des outils sont surchargés, uniquement en ligne ou tout simplement gênants.`,
@@ -905,7 +945,7 @@
         g1_t:`Séries quotidiennes`, g1_d:`Installez une habitude d'étude durable. Regardez votre série grandir jour après jour.`,
         g2_t:`Studio d'apparence`, g2_d:`26 thèmes, le cadran du minuteur et l'effet sur un seul écran, avec aperçu en direct. Rien ne change tant que vous n'avez pas touché Terminé, et l'icône prend votre couleur.`,
         g3_t:`Aperçu des progrès`, g3_d:`Voyez sessions terminées et séries d'un coup d'œil pour rester motivé.`,
-        g4_t:`100 % hors ligne`, g4_d:`Pas d'inscription, pas de compte, pas de distraction. Vos données restent sur votre appareil.`,
+        g4_t:`Fonctionne hors ligne`, g4_d:`Ni inscription ni mot de passe. Le minuteur, les statistiques et la série marchent sans connexion, et vos sessions d'étude restent sur votre téléphone.`,
         g5_t:`Votre chouette d'étude`, g5_d:`Gagnez des pièces en étudiant, débloquez salles, tenues et succès pour votre chouette.`,
         g6_t:`Watch et iPad`, g6_d:`Lancez des sprints depuis votre poignet avec l'app Apple Watch, désormais avec prise en charge complète de l'iPad.`,
         g17_t:`Widgets et Live Activity`, g17_d:`Placez votre série, un compte à rebours d'examen ou le démarrage en un geste sur l'écran d'accueil ou l'écran verrouillé.`,
@@ -914,9 +954,9 @@
         w_p2_t:`Votre thème suit`, w_p2_d:`Les widgets reprennent la couleur d'accent choisie dans l'app.`,
         g7_t:`Comptes à rebours d'examens`, g7_d:`Ajoutez chaque examen que vous préparez et voyez les jours restants sur l'écran d'accueil et l'écran verrouillé.`,
         g8_t:`Filet de sécurité pour votre série`, g8_d:`Les jetons de gel et la réparation d'un jour évitent qu'une journée chargée ne brise votre série.`,
-        g9_t:`Classements Game Center`, g9_d:`Affrontez les autres avec vos minutes de concentration hebdomadaires et votre plus longue série, et débloquez 15 succès.`,
+        g9_t:`Classement et 20 succès`, g9_d:`Mesurez-vous sur vos minutes de concentration de la semaine, du mois et au total, et sur votre série. Après votre troisième session, nous vous ajoutons sous un nom aléatoire ; vous pouvez le changer ou quitter le classement. Vous pouvez signaler ou bloquer un nom.`,
         g10_t:`Ma bibliothèque`, g10_d:`Ajoutez les livres que vous lisez, notez les pages après une session et voyez chacun se remplir.`,
-        g11_t:`Plan du jour`, g11_d:`Choisissez combien de sprints vous voulez par matière, puis regardez la journée se remplir.`,
+        g11_t:`Plan du jour`, g11_d:`Choisissez combien de sprints vous voulez par matière, puis regardez la journée se remplir. Dans Plan, vous voyez votre semaine, déplacez une tâche manquée vers un autre jour et gérez vos examens et vos rappels.`,
         g12_t:`Sessions liées à un examen`, g12_d:`Reliez une session à un examen et voyez combien d'heures vous y avez consacrées. Les sessions terminées peuvent aussi rejoindre Calendrier Apple.`,
         g13_t:`Configurée en une minute`, g13_d:`Dites pourquoi vous révisez et l'app vous propose vos matières, un objectif quotidien et un compte à rebours d'examen. Tout reste modifiable ensuite.`,
         g14_t:`Trouvez n'importe quel réglage`, g14_d:`Les Réglages ont un champ de recherche et des raccourcis vers les lignes que vous ouvrez le plus. Rien n'est enfoui à trois touches.`,
@@ -940,7 +980,7 @@
         rd_p2_t:`Temps de lecture restant`,
         rd_p2_d:`L'écran d'accueil estime le temps de lecture qu'il reste à ton livre, d'après ton propre rythme.`,
         rd_p3_t:`Un objectif annuel de livres`,
-        rd_p3_d:`Fixe-le dans les Réglages et regarde-le se remplir dans ta bibliothèque.`,
+        rd_p3_d:`Fixe-le dans la Bibliothèque et regarde-le se remplir.`,
         s2_t:`Les apps qui t'attirent restent fermées pendant que tu travailles.`,
         s2_p1_t:`Ça marche aussi pendant la lecture`,
         s2_p1_d:`Le même bouclier est actif pendant une session de lecture, si Instagram insiste.`,
@@ -960,11 +1000,13 @@
         alt_widgets:`Écran d'accueil avec les widgets Study Sprint : série, compte à rebours d'examen et démarrage rapide`
       },
       ru: {
-        v16:`Версия 1.6`, new_badge:`НОВОЕ`, n_t:`В новой нижней панели Фокус находится в центре.`, n_d:`План и Деревня с одной стороны, Прогресс и Настройки с другой.`, n_p1_t:`Деревня сов`, n_p1_d:`На карте видны открытые комнаты и то, что ждёт впереди.`, n_p2_t:`Гардероб`, n_p2_d:`Примеряй цвета и аксессуары прямо на своей сове.`, n_p3_t:`Твоя сова в виджете`, n_p3_d:`Виджет на главном экране показывает образ совы, выбранный в гардеробе.`, n_p4_t:`Отметки на месте`, n_p4_d:`Отметки во время занятия больше не сдвигают таймер.`, 
+        pr_t:`Сцена комнаты`, pr_d:`В Premium за экраном фокуса появилась сцена комнаты, которая меняется вместе со временем суток.`, cs_t:`Кампусный стиль`, cs_d:`В Магазине первый косметический набор: Кампусный стиль.`,
+        st_e:`Со страницы в магазине`, st_t:`Всё приложение на десяти экранах.`,
+        v16:`Версия 1.6`, new_badge:`НОВОЕ`, n_t:`В нижней панели пять вкладок: План, Деревня, Фокус, Прогресс и Библиотека.`, n_d:`Настройки находятся в Профиле, за кнопкой с совой.`, n_p1_t:`Деревня сов`, n_p1_d:`На карте видны открытые комнаты и то, что ждёт впереди.`, n_p2_t:`Гардероб`, n_p2_d:`Примеряй цвета и аксессуары прямо на своей сове.`, n_p3_t:`Твоя сова в виджете`, n_p3_d:`Виджет на главном экране показывает образ совы, выбранный в гардеробе.`, n_p4_t:`Отметки на месте`, n_p4_d:`Отметки во время занятия больше не сдвигают таймер.`, 
         d_eyebrow:`В движении`, d_title:`Приложение в действии`, d_sub:`Короткие записи прямо из приложения. Без макетов и монтажа.`, d1_t:`Отрезок в процессе`, d1_d:`Круг заполняется минута за минутой, а сова ждёт внизу.`, d2_t:`Темы с живым предпросмотром`, d2_d:`Выберите цвет: телефон сверху покажет его ещё до применения.`, d3_t:`Звуки можно смешивать`, d3_d:`Наложите дождь на огонь и задайте каждому свою громкость.`,
         rs_label:`отзывов в App Store`,
         nav_home:`Главная`, nav_features:`Функции`, nav_reviews:`Отзывы`, nav_support:`Поддержка`, nav_help:`Помощь`,
-        hero_sub:`Победите прокрастинацию с помощью сфокусированных учебных сессий. Ставьте таймер, набирайте ежедневные серии и оставайтесь мотивированными, полностью офлайн, без аккаунта.`,
+        hero_sub:`Победите прокрастинацию с помощью сфокусированных учебных сессий. Ставьте таймер, набирайте ежедневные серии и оставайтесь мотивированными, работает офлайн, без аккаунта.`,
         hero_cta1:APPLE_IC+`Загрузить в App Store`, hero_cta_play:PLAY_IC+`Загрузить в Google Play`, hero_cta2:`Смотреть функции`,
         p_eyebrow:`Проблема`, p_title:`Учиться без структуры тяжело`,
         p_sub:`Концентрацию легко потерять и трудно восстановить. Большинство инструментов перегружены, работают только онлайн или просто мешают.`,
@@ -982,7 +1024,7 @@
         g1_t:`Ежедневные серии`, g1_d:`Формируйте стойкую привычку к учёбе. Наблюдайте, как растёт ваша серия день за днём.`,
         g2_t:`Студия оформления`, g2_d:`26 тем, циферблат таймера и эффект на одном экране, с живым предпросмотром. Ничего не меняется, пока ты не нажмёшь «Готово», а иконка подхватывает выбранный цвет.`,
         g3_t:`Обзор прогресса`, g3_d:`Видите завершённые сессии и серии с одного взгляда, чтобы оставаться мотивированными.`,
-        g4_t:`100% офлайн`, g4_d:`Без регистрации, без аккаунта, без отвлечений. Ваши данные остаются на устройстве.`,
+        g4_t:`Работает офлайн`, g4_d:`Без регистрации и пароля. Таймер, статистика и серия работают без интернета, а ваши учебные сессии остаются на телефоне.`,
         g5_t:`Ваша учебная сова`, g5_d:`Зарабатывайте монеты за учёбу, открывайте комнаты, наряды и достижения для совы.`,
         g6_t:`Watch и iPad`, g6_d:`Запускайте спринты с запястья через приложение для Apple Watch, теперь с полной поддержкой iPad.`,
         g17_t:`Виджеты и Live Activity`, g17_d:`Разместите серию, обратный отсчёт до экзамена или запуск в одно касание на главном экране или экране блокировки.`,
@@ -991,9 +1033,9 @@
         w_p2_t:`Тема переезжает с вами`, w_p2_d:`Виджеты используют акцентный цвет, выбранный в приложении.`,
         g7_t:`Обратный отсчёт до экзаменов`, g7_d:`Добавьте каждый экзамен и следите за оставшимися днями на главном экране и экране блокировки.`,
         g8_t:`Защита серии`, g8_d:`Жетоны заморозки и восстановление пропущенного дня не дадут загруженному дню оборвать вашу серию.`,
-        g9_t:`Рейтинги Game Center`, g9_d:`Соревнуйся за недельные минуты фокуса и самую длинную серию, открывай 15 достижений.`,
+        g9_t:`Рейтинг и 20 достижений`, g9_d:`Соревнуйся по минутам фокуса за неделю, месяц и всё время и по серии. После третьего занятия мы добавляем тебя под случайным именем; его можно сменить, а из рейтинга можно выйти. На имя можно пожаловаться или заблокировать его.`,
         g10_t:`Моя библиотека`, g10_d:`Добавляйте книги, которые читаете, отмечайте страницы после сессии и следите, как каждая заполняется.`,
-        g11_t:`План на день`, g11_d:`Задайте, сколько спринтов хотите по каждому предмету, и наблюдайте, как день заполняется.`,
+        g11_t:`План на день`, g11_d:`Задайте, сколько спринтов хотите по каждому предмету, и наблюдайте, как день заполняется. В Плане видна вся неделя: пропущенную задачу можно перенести на другой день, там же экзамены и напоминания.`,
         g12_t:`Сессии, привязанные к экзамену`, g12_d:`Привяжите сессию к экзамену и смотрите, сколько часов на него ушло. Завершённые сессии могут уходить и в Календарь Apple.`,
         g13_t:`Настройка за минуту`, g13_d:`Скажи, ради чего ты занимаешься, и приложение предложит предметы, дневную цель и обратный отсчёт до экзамена. Всё можно поменять позже.`,
         g14_t:`Найди любую настройку`, g14_d:`В настройках есть поиск и быстрые ссылки на строки, которые ты открываешь чаще всего. Ничего не спрятано на три касания вглубь.`,
@@ -1017,7 +1059,7 @@
         rd_p2_t:`Сколько чтения осталось`,
         rd_p2_d:`Главный экран считает по твоему собственному темпу, сколько времени чтения осталось до конца книги.`,
         rd_p3_t:`Годовая цель по книгам`,
-        rd_p3_d:`Поставь её в настройках и следи, как она заполняется в библиотеке.`,
+        rd_p3_d:`Поставь её в Библиотеке и следи, как она заполняется.`,
         s2_t:`Приложения, которые тебя отвлекают, закрыты, пока ты работаешь.`,
         s2_p1_t:`Работает и во время чтения`,
         s2_p1_d:`Тот же щит включён в книжной сессии, если Instagram зовёт.`,
@@ -1037,7 +1079,9 @@
         alt_widgets:`Главный экран с виджетами Study Sprint: серия, отсчёт до экзамена и быстрый старт`
       },
       pt: {
-        v16:`Versão 1.6`, new_badge:`NOVO`, n_t:`A nova barra traz Foco no centro.`, n_d:`Plano e Vila ficam de um lado, Progresso e Ajustes do outro.`, n_p1_t:`Vila das Corujas`, n_p1_d:`O mapa mostra as salas que você desbloqueou e o que vem pela frente.`, n_p2_t:`Guarda-roupa`, n_p2_d:`Veja cores e acessórios direto na sua coruja.`, n_p3_t:`Sua coruja no widget`, n_p3_d:`O widget da tela inicial acompanha o visual de coruja que você equipou.`, n_p4_t:`Marcas sem deslocar nada`, n_p4_d:`Adicionar uma marca durante a sessão não desloca mais o cronômetro.`, 
+        pr_t:`Cena de quarto`, pr_d:`No Premium, uma cena de quarto que acompanha a hora do dia aparece atrás da tela de foco.`, cs_t:`Estilo Campus`, cs_d:`A Loja ganhou o primeiro pacote cosmético: Estilo Campus.`,
+        st_e:`Da página da loja`, st_t:`O app inteiro em dez telas.`,
+        v16:`Versão 1.6`, new_badge:`NOVO`, n_t:`A barra inferior tem cinco abas: Plano, Vila, Foco, Progresso e Biblioteca.`, n_d:`Os ajustes ficam no seu Perfil, atrás do botão da coruja.`, n_p1_t:`Vila das Corujas`, n_p1_d:`O mapa mostra as salas que você desbloqueou e o que vem pela frente.`, n_p2_t:`Guarda-roupa`, n_p2_d:`Veja cores e acessórios direto na sua coruja.`, n_p3_t:`Sua coruja no widget`, n_p3_d:`O widget da tela inicial acompanha o visual de coruja que você equipou.`, n_p4_t:`Marcas sem deslocar nada`, n_p4_d:`Adicionar uma marca durante a sessão não desloca mais o cronômetro.`, 
         d_eyebrow:`Veja funcionando`,
         d_title:`O app, rodando de verdade`,
         d_sub:`Clipes curtos gravados direto do app. Sem mockup, sem edição.`,
@@ -1086,8 +1130,8 @@
         g2_d:`26 temas, o mostrador do cronômetro e o efeito numa tela só, com prévia ao vivo. Nada muda até você tocar em Concluir, e o ícone do app segue a cor que você escolher.`,
         g3_t:`Visão do progresso`,
         g3_d:`Veja num relance as sessões concluídas e as sequências para manter a motivação.`,
-        g4_t:`100% offline`,
-        g4_d:`Sem cadastro, sem conta, sem distração. Seus dados ficam no seu aparelho.`,
+        g4_t:`Funciona offline`,
+        g4_d:`Sem cadastro nem senha. O cronômetro, as estatísticas e a sequência funcionam sem conexão, e suas sessões de estudo ficam no seu celular.`,
         g5_t:`Sua coruja de estudo`,
         g5_d:`Ganhe moedas estudando e libere cômodos, roupas e conquistas para sua coruja.`,
         g6_t:`Watch e iPad`,
@@ -1103,12 +1147,12 @@
         g7_d:`Adicione cada prova que você está preparando e veja os dias que faltam na tela de início e na tela bloqueada.`,
         g8_t:`Rede de proteção da sequência`,
         g8_d:`Congelamentos e o conserto de um dia impedem que um dia corrido quebre sua sequência.`,
-        g9_t:`Rankings do Game Center`,
-        g9_d:`Dispute os minutos de foco da semana e a maior sequência, e libere 15 conquistas no caminho.`,
+        g9_t:`Ranking e 20 conquistas`,
+        g9_d:`Dispute os minutos de foco da semana, do mês e de todos os tempos e a sequência. Depois da sua terceira sessão, você entra com um nome aleatório; dá para mudar o nome ou sair. Dá para denunciar ou bloquear um nome.`,
         g10_t:`Minha biblioteca`,
         g10_d:`Adicione os livros que está lendo, anote as páginas depois da sessão e veja cada um se encher.`,
         g11_t:`Plano de hoje`,
-        g11_d:`Defina quantos sprints quer por matéria e veja o dia se preencher enquanto você trabalha.`,
+        g11_d:`Defina quantos sprints quer por matéria e veja o dia se preencher enquanto você trabalha. No Plano você vê sua semana, passa uma tarefa perdida para outro dia e guarda suas provas e lembretes.`,
         g12_t:`Sessões ligadas à prova`,
         g12_d:`Ligue uma sessão a uma prova e veja quantas horas foram para ela. Sessões concluídas também podem ir para o Calendário da Apple.`,
         g13_t:`Configure em um minuto`,
@@ -1153,7 +1197,7 @@
         rd_p2_t:`Tempo de leitura restante`,
         rd_p2_d:`A tela de início estima quanto tempo de leitura falta no seu livro, com base no seu próprio ritmo.`,
         rd_p3_t:`Uma meta anual de livros`,
-        rd_p3_d:`Defina uma nos Ajustes e veja ela se encher na sua biblioteca.`,
+        rd_p3_d:`Defina uma na Biblioteca e veja ela se encher.`,
         s2_t:`Os apps que te tiram do sério ficam fechados enquanto você trabalha.`,
         s2_p1_t:`Funciona na leitura também`,
         s2_p1_d:`O mesmo escudo fica ligado numa sessão de livro, se o Instagram insistir.`,
@@ -1312,7 +1356,22 @@
     // bu satirin altindaki bir `var` HENUZ atanmamis oluyor (hoisting ile tanimli ama
     // undefined). Disarida durdugunda ilk cagri TypeError atiyor ve script blogunun
     // geri kalani hic kosmuyordu: alt metinleri cevriliyor, gorseller bos kaliyordu.
+    function applyStore() {
+      var L = ['en','tr','de','es','fr','ru','pt'];
+      var ALT = {"en": ["Meet your study owl.", "Focus without distractions.", "Your progress in plain sight.", "Furnish every room your way.", "Ready by exam day?", "Plan your day in minutes.", "Cut the noise, stay calm.", "Don't break your streak.", "Every page you read, on record.", "Race your shadow."], "tr": ["Çalışma baykuşunla tanış.", "Dağılmadan odaklan.", "İlerlemen gözünün önünde.", "Her odayı kendin döşe.", "Sınava yetişecek misin?", "Gününü dakikalar içinde planla.", "Gürültüyü kes, sakin kal.", "Serini bozma.", "Okuduğun her sayfa kayıtta.", "Gölgenle yarış."], "de": ["Lern deine Eule kennen.", "Fokus statt Ablenkung.", "Dein Fortschritt im Blick.", "Richte jedes Zimmer selbst ein.", "Bereit für die Prüfung?", "Plane deinen Tag in Minuten.", "Lärm aus, Ruhe an.", "Halt deine Serie am Leben.", "Jede gelesene Seite zählt.", "Tritt gegen deinen Schatten an."], "es": ["Conoce a tu búho de estudio.", "Concéntrate sin distraerte.", "Tu progreso, siempre a la vista.", "Decora cada habitación a tu gusto.", "¿Llegarás a tiempo al examen?", "Planifica tu día en minutos.", "Corta el ruido, mantén la calma.", "No rompas tu racha.", "Cada página que lees, registrada.", "Compite con tu sombra."], "fr": ["Voici ton hibou de révision.", "Concentre-toi sans te disperser.", "Ta progression sous les yeux.", "Aménage chaque chambre à ton goût.", "À temps pour l'examen ?", "Planifie ta journée en minutes.", "Coupe le bruit, reste calme.", "Garde ta série vivante.", "Chaque page lue, enregistrée.", "Fais la course avec ton ombre."], "ru": ["Познакомься с учебной совой.", "Сосредоточься и не отвлекайся.", "Твой прогресс перед глазами.", "Обставь каждую комнату по-своему.", "Успеешь к экзамену?", "Спланируй день за пару минут.", "Убери шум, сохрани спокойствие.", "Не теряй свою серию.", "Каждая страница учтена.", "Обгони свою тень."], "pt": ["Conheça sua coruja de estudos.", "Foque sem se distrair.", "Seu progresso sempre à vista.", "Decore cada quarto do seu jeito.", "Vai dar tempo até a prova?", "Planeje seu dia em minutos.", "Corte o barulho, mantenha a calma.", "Não quebre sua sequência.", "Cada página lida fica registrada.", "Corra contra sua sombra."]};
+      var l = document.documentElement.lang || 'en';
+      if (l.indexOf('pt') === 0) l = 'pt';
+      if (L.indexOf(l) < 0) l = 'en';
+      document.querySelectorAll('img[data-store]').forEach(function(img){
+        var n = img.getAttribute('data-store');
+        var next = './shots/store/' + l + '/' + n + '.webp';
+        if (img.getAttribute('src') !== next) img.setAttribute('src', next);
+        img.setAttribute('alt', ALT[l][parseInt(n,10)-1]);
+      });
+    }
+
     function applyShots() {
+      applyStore();
       var SHOT_LANGS = ['en','tr','de','es','fr','ru'];
       var theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
       var l = document.documentElement.lang || 'en';
