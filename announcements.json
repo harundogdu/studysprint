@@ -25,6 +25,31 @@
       },
       "action": "update",
       "maxVersion": "1.6.3"
+    },
+    {
+      "id": "1_6_5_degerlendirme",
+      "title": {
+        "en": "Is Sprint helping you study?",
+        "tr": "Sprint çalışmana yardım ediyor mu?",
+        "de": "Hilft dir Sprint beim Lernen?",
+        "es": "¿Sprint te ayuda a estudiar?",
+        "fr": "Sprint t'aide à réviser ?",
+        "ru": "Sprint помогает тебе учиться?",
+        "pt": "O Sprint está te ajudando a estudar?",
+        "id": "Apakah Sprint membantumu belajar?"
+      },
+      "body": {
+        "en": "A short review in the store helps other students find Sprint. Thank you.",
+        "tr": "Mağazaya kısa bir yorum yazarsan Sprint'i başka öğrenciler de bulur. Teşekkürler.",
+        "de": "Eine kurze Bewertung im Store hilft anderen Schülern, Sprint zu finden. Danke.",
+        "es": "Una reseña corta en la tienda ayuda a otros estudiantes a encontrar Sprint. Gracias.",
+        "fr": "Un petit avis sur le store aide d'autres élèves à trouver Sprint. Merci.",
+        "ru": "Короткий отзыв в магазине поможет другим ученикам найти Sprint. Спасибо.",
+        "pt": "Uma avaliação curta na loja ajuda outros estudantes a encontrar o Sprint. Obrigado.",
+        "id": "Ulasan singkat di toko membantu pelajar lain menemukan Sprint. Terima kasih."
+      },
+      "action": "review",
+      "minVersion": "1.6.5"
     }
   ]
 }
