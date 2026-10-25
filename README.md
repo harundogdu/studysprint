@@ -1,7 +1,9 @@
 # studysprinttimer.com
 
-Marketing and support site for **[Study Sprint Timer](https://apps.apple.com/app/id6788031531)** —
-an offline-first Pomodoro study timer for iPhone, iPad and Apple Watch.
+Marketing and support site for **Study Sprint Timer**, an offline-first Pomodoro study timer for
+iPhone, iPad, Apple Watch ([App Store](https://apps.apple.com/app/id6788031531)) and Android
+([Google Play](https://play.google.com/store/apps/details?id=com.harundogdu.studysprinttimer)).
+The app ships in 8 languages (EN, TR, DE, ES, FR, RU, PT-BR, ID); the site covers 7 of them (no ID yet).
 
 ![Study Sprint Timer](og.png)
 
@@ -14,8 +16,14 @@ an offline-first Pomodoro study timer for iPhone, iPad and Apple Watch.
 - `privacy.html` / `terms.html` — legal pages (content dictionaries in `legal.js`)
 - `404.html`, `robots.txt`, `sitemap.xml`, `og.png` — SEO & error handling
 - `shots/<lang>/<theme>-<screen>.webp` — real app screenshots, one set per language and
-  theme (6 languages × light/dark × 12 screens). The page swaps them when the visitor
-  changes language or theme, so a Turkish reader sees a Turkish phone.
+  theme (6 languages × light/dark × 13 screens, captured on 1.6.0). The page swaps them when the
+  visitor changes language or theme, so a Turkish reader sees a Turkish phone.
+- `shots/<lang>/v165-<screen>.webp` — 1.6.5 screens (village, focus, leaderboard, room) from the
+  raw captures of the 1.6.5 store set: 7 languages, lavender light theme only.
+- `shots/store/<lang>/NN.webp` — the 10 App Store frames of the current release (1.6.5, set A).
+- `media/village-*.mp4` + `village-poster.webp` — the 1.6.5 village loop (store header animation,
+  fixed camera, muted).
+- `icon.png` / `favicon.png` — the app icon (`AppIcon.appiconset/icon-light.png` in the app repo).
 - `app-ads.txt` — AdMob authorized sellers
 - `.well-known/security.txt` — where to report a security issue (RFC 9116); `.nojekyll` keeps
   GitHub Pages from dropping that dot-folder
@@ -23,9 +31,10 @@ an offline-first Pomodoro study timer for iPhone, iPad and Apple Watch.
 ## Features
 
 - **Zero build step.** Hand-written static HTML/CSS/JS — no framework, no bundler.
-- **6 languages** (EN, TR, DE, ES, FR, RU) via inline `data-i18n` dictionaries with a
+- **7 languages** (EN, TR, DE, ES, FR, RU, PT) via inline `data-i18n` dictionaries with a
   client-side switcher; the visitor's browser language is auto-detected.
-- **Dark / light theme** with a toggle, persisted in `localStorage` (dark by default).
+- **Dark / light theme** with a toggle, persisted in `localStorage` (dark by default). The palette
+  follows the app's default Lavender theme (light) and Purple Dark (dark).
 - **SEO ready:** per-page canonical + Open Graph/Twitter cards, JSON-LD
   `SoftwareApplication` schema, sitemap and an App Store Smart Banner.
 
