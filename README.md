@@ -16,7 +16,9 @@ The app ships in 8 languages (EN, TR, DE, ES, FR, RU, PT-BR, ID); the site cover
 - `privacy.html` / `terms.html` — legal pages (content dictionaries in `legal.js`)
 - `404.html`, `robots.txt`, `sitemap.xml`, `og.png` — SEO & error handling
 - `shots/<lang>/<theme>-<screen>.webp` — real app screenshots, one set per language and
-  theme (6 languages × light/dark × 13 screens, captured on 1.6.0). The page swaps them when the
+  theme (6 languages × light/dark). The six screens the page uses (02-reading, 03-shield,
+  04-studio, 05-sounds, 09-exam, 13-widgets) were recaptured on 1.6.5 in the lavender theme;
+  the other screen files are 1.6.0 leftovers the page no longer loads. The page swaps them when the
   visitor changes language or theme, so a Turkish reader sees a Turkish phone.
 - `shots/<lang>/v165-<screen>.webp` — 1.6.5 screens (village, focus, leaderboard, room) from the
   raw captures of the 1.6.5 store set: 7 languages, lavender light theme only.

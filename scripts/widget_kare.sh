@@ -23,8 +23,8 @@ FAZ=${3:?faz gerekli (hazirla|cek)}
 
 UDID=${SST_SIM_UDID:-$(xcrun simctl list devices available | grep -m1 "SST-Shots (" | grep -oE "[0-9A-F-]{36}")}
 [ -z "$UDID" ] && { echo "✗ SST-Shots simülatörü yok"; exit 1; }
-BUNDLE=com.harundogdu.studysprint.timer.StudySprintTimer
-THEME=$([ "$STYLE" = "dark" ] && echo turquoise_dark || echo turquoise)
+BUNDLE=${SST_BUNDLE:-com.harundogdu.studysprint.timer.StudySprintTimer}   # Debug build: .debug son eki
+THEME=$([ "$STYLE" = "dark" ] && echo purple_dark || echo lavender_purple)
 OUT="${SST_RAW_OUT:-$(dirname "$0")/../.shots-raw}/$DIL-$STYLE"
 
 case "$FAZ" in
@@ -42,7 +42,11 @@ case "$FAZ" in
     DIL_KODU=(turkish tr english en german de spanish es french fr russian ru)
     local kod=${DIL_KODU[$DIL]:-en}
     xcrun simctl spawn "$UDID" defaults write -g AppleLanguages -array "$kod" >/dev/null 2>&1
-    xcrun simctl spawn "$UDID" defaults write -g AppleLocale -string "$kod" >/dev/null 2>&1
+    # Bölge tam kodla yazılır: yalnız "tr" verilince widget'taki tarih ("Wed, Nov 4")
+    # İngilizce kalıyordu (1.6.5 sınav widget'ı tarih gösteriyor).
+    typeset -A BOLGE
+    BOLGE=(tr tr_TR en en_US de de_DE es es_ES fr fr_FR ru ru_RU)
+    xcrun simctl spawn "$UDID" defaults write -g AppleLocale -string "${BOLGE[$kod]:-en_US}" >/dev/null 2>&1
     xcrun simctl spawn "$UDID" launchctl kickstart -k system/com.apple.SpringBoard >/dev/null 2>&1
     sleep 9
 
