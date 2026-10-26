@@ -28,7 +28,8 @@ fi
 
 LANG_ARG=${1:-turkish}
 STYLE=${2:-dark}
-THEME=$([ "$STYLE" = "dark" ] && echo turquoise_dark || echo turquoise)
+# 1.6.5: ürünün varsayılanı lavanta (lavender_purple), koyu eşi purple_dark.
+THEME=$([ "$STYLE" = "dark" ] && echo purple_dark || echo lavender_purple)
 
 # ADANMIŞ SİMÜLATÖR: ortak "iPhone 16 Pro Max"te çekim yapmak, aynı cihazda test
 # koşan başka bir oturumun paketini düşürüyor (ve onun install/terminate'i de bu
@@ -76,12 +77,14 @@ acik_mi() {
 hazirla
 
 capture() { name=$1; shift
+  # SST_SADECE="02-reading 03-shield" yalnız sitede kullanılan kareleri çeker.
+  if [ -n "$SST_SADECE" ] && [[ " $SST_SADECE " != *" $name "* ]]; then return 0; fi
   if [ -n "$SST_RESUME" ] && [ -s "$OUT/$name.png" ]; then echo "· atlandı $LANG_ARG/$STYLE $name"; return 0; fi
   acik_mi
   xcrun simctl terminate "$UDID" "$BUNDLE" >/dev/null 2>&1; sleep 1
   xcrun simctl launch "$UDID" "$BUNDLE" -seedScreenshots -suppressNotifPermission \
     -suppressReviewPrompt -suppressAdConsent -seedTheme "$THEME" -seedLang "$LANG_ARG" "$@" >/dev/null 2>&1
-  sleep 16   # 11 sn 1.6 ile yetmedi (takvim/analiz sayfası açılmadan kare alındı); kitap kapakları Open Library'den geç geliyor; 11 sn onları da kurtarıyor
+  sleep ${SST_BEKLE:-16}   # yüklü makinede SST_BEKLE=30; 11 sn 1.6 ile yetmedi (takvim/analiz sayfası açılmadan kare alındı); kitap kapakları Open Library'den geç geliyor; 11 sn onları da kurtarıyor
   local i
   for i in 1 2 3; do
     if xcrun simctl io "$UDID" screenshot "$OUT/$name.png" >/dev/null 2>&1; then
@@ -93,7 +96,8 @@ capture() { name=$1; shift
 }
 
 capture 01-home       -seedExam
-capture 02-reading    -seedReading
+# 1.6.5: okuma modunda kitap ana ekranda değil, Kitaplık sekmesinde (`-sekme kitaplik`).
+capture 02-reading    -seedReading -sekme kitaplik
 capture 03-shield     -settings -appShield -seedShieldApproved
 # -appearanceStudio YALNIZ Ayarlar içinde işleniyor (SettingsView.onAppear); `-settings`
 # olmadan sessizce ana ekranı veriyor. -studioSelect marka rengini sabitler.
