@@ -1,9 +1,20 @@
 {
-  "updatedAt": "2026-10-26T13:01:42Z",
-  "totalReviews": 22,
-  "averageRating": 5.0,
+  "updatedAt": "2026-10-28T06:17:08Z",
+  "totalReviews": 40,
+  "appStoreReviews": 22,
+  "playReviews": 18,
+  "averageRating": 4.9,
   "reviews": [
     {
+      "store": "play",
+      "body": "herkes odaktan bahsetmiş ama odaklanmadada yarasada daha birçok faydası var: iki gündür kullanmama rağmen ders çalışma hevesim geliyor ve seni kontrol eden bir şey olduğu için daha düzenli çalışıyorsun uzun…",
+      "nickname": "Ayşenur",
+      "territory": "",
+      "rating": 5,
+      "date": "2026-10-22"
+    },
+    {
+      "store": "appstore",
       "body": "Kullanım amacını belirlemek için sunulan filtrelemeler sayesinde kişisel planımı oluşturabildim. Odaklanmamı kolaylaştırıp ders sürecinden verim almamı sağladı. Pratik bir uygulama, ben çok beğendim",
       "nickname": "eminegk",
       "territory": "TUR",
@@ -11,18 +22,12 @@
       "date": "2026-09-09"
     },
     {
+      "store": "appstore",
       "body": "Uygulamayı kullanmaya başladıktan sonra günün nasıl geçtiğini değil günü nasıl değerlendirdiğimi düşünmeye başladım. Sprintleri tamamladıkça hem motivasyonum artıyor hem de “bugün zamanımı iyi kullandım”…",
       "nickname": "Cekubalm",
       "territory": "TUR",
       "rating": 5,
       "date": "2026-07-29"
-    },
-    {
-      "body": "Benim gibi odağı çabuk dağılan birisiyseniz kesinlikle öneririm. Veri depolaması ve sunumu gerçekten çok iyi. Kullanmaya başladığım ilk haftada çalışmamdaki verimin iki kat arttığını görüyorum.",
-      "nickname": "Umeyr musab",
-      "territory": "TUR",
-      "rating": 5,
-      "date": "2026-07-26"
     }
   ]
 }
