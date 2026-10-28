@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""App Store yorumlarını çekip site için reviews.json üretir.
+"""App Store yorumlarını çekip Google Play arşiviyle birleştirir, site için reviews.json üretir.
+
+Play tarafı buradan çekilemiyor (sahip hesabın kimliği gerekiyor); ios-apps reposundaki
+scripts/site_play_yorumlari.py play_reviews.json arşivini tazeler, bu betik onu okur.
+Kartların en az biri her mağazadan gelir (iki tarafta da uygun yorum varsa).
 
 Seçim kuralı: yalnızca 5 yıldızlı yorumlar; içinde en dolgun metni olanlar öne geçer,
 eşitlikte daha yeni olan kazanır. Tek cümlelik "harika uygulama" yorumları kart olarak
@@ -68,7 +72,7 @@ CONCRETE = (
 def score(attrs: dict) -> tuple:
     body = (attrs.get("body") or "").strip()
     lower = body.lower()
-    created = attrs.get("createdDate") or ""
+    created = attrs.get("createdDate") or attrs.get("date") or ""
 
     points = min(len(body), LENGTH_CAP)
     if sum(lower.count(ch) for ch in ".!?") >= 2:
@@ -98,6 +102,32 @@ def clean(body: str) -> str:
     return cut.rsplit(" ", 1)[0].strip() + "…"
 
 
+def load_play() -> list:
+    path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                        "play_reviews.json")
+    try:
+        with open(path, encoding="utf-8") as fh:
+            return json.load(fh).get("reviews", [])
+    except (OSError, ValueError):
+        return []
+
+
+def pick(apple: list, play: list) -> list:
+    """En iyi CARD_COUNT kart; iki mağazada da aday varsa ikisi de en az bir kartla temsil edilir."""
+    ranked = sorted(apple + play, key=score, reverse=True)
+    picked = ranked[:CARD_COUNT]
+    for store, pool in (("play", play), ("appstore", apple)):
+        if pool and not any(p["store"] == store for p in picked):
+            best = max(pool, key=score)
+            # Diğer mağazadan, kendi mağazasında tek kalmayan en zayıf kartı çıkar.
+            for i in range(len(picked) - 1, -1, -1):
+                other = picked[i]["store"]
+                if sum(1 for p in picked if p["store"] == other) > 1:
+                    picked[i] = best
+                    break
+    return picked
+
+
 def main() -> int:
     try:
         rows = fetch_all()
@@ -105,33 +135,40 @@ def main() -> int:
         print(f"ASC isteği başarısız: {exc.code} {exc.read()[:300]!r}", file=sys.stderr)
         return 1
 
-    five_star = [r["attributes"] for r in rows
-                 if r["attributes"].get("rating") == 5
-                 and (r["attributes"].get("body") or "").strip()]
-    if len(five_star) < CARD_COUNT:
+    apple = [{"store": "appstore",
+              "body": a.get("body") or "",
+              "nickname": (a.get("reviewerNickname") or "").strip(),
+              "territory": a.get("territory") or "",
+              "rating": a.get("rating"),
+              "date": (a.get("createdDate") or "")[:10]}
+             for a in (r["attributes"] for r in rows)]
+    play_all = load_play()
+    play = [{"store": "play",
+             "body": p.get("body") or "",
+             "nickname": p.get("nickname") or "",
+             "territory": "",
+             "rating": p.get("rating"),
+             "date": p.get("date") or ""}
+            for p in play_all]
+
+    candidates = [r for r in apple + play if r["rating"] == 5 and r["body"].strip()]
+    if len(candidates) < CARD_COUNT:
         # Yeterli yorum yoksa mevcut dosyaya dokunma; site eldeki kartlarla devam etsin.
-        print(f"Yalnızca {len(five_star)} uygun yorum var, dosya güncellenmedi.", file=sys.stderr)
+        print(f"Yalnızca {len(candidates)} uygun yorum var, dosya güncellenmedi.", file=sys.stderr)
         return 0
 
-    picked = sorted(five_star, key=score, reverse=True)[:CARD_COUNT]
-    ratings = [r["attributes"].get("rating") for r in rows
-               if isinstance(r["attributes"].get("rating"), int)]
+    picked = pick([r for r in candidates if r["store"] == "appstore"],
+                  [r for r in candidates if r["store"] == "play"])
+    ratings = [r["rating"] for r in apple + play if isinstance(r["rating"], int)]
     average = round(sum(ratings) / len(ratings), 1) if ratings else None
 
     payload = {
         "updatedAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "totalReviews": len(rows),
+        "totalReviews": len(apple) + len(play),
+        "appStoreReviews": len(apple),
+        "playReviews": len(play),
         "averageRating": average,
-        "reviews": [
-            {
-                "body": clean(a.get("body") or ""),
-                "nickname": (a.get("reviewerNickname") or "").strip(),
-                "territory": a.get("territory") or "",
-                "rating": a.get("rating"),
-                "date": (a.get("createdDate") or "")[:10],
-            }
-            for a in picked
-        ],
+        "reviews": [dict(r, body=clean(r["body"])) for r in picked],
     }
 
     out = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
@@ -139,9 +176,10 @@ def main() -> int:
     with open(out, "w", encoding="utf-8") as fh:
         json.dump(payload, fh, ensure_ascii=False, indent=2)
         fh.write("\n")
-    print(f"{len(rows)} yorum tarandı, {CARD_COUNT} kart yazıldı: {out}")
+    print(f"{len(apple)} App Store + {len(play)} Google Play yorumu tarandı, "
+          f"{len(picked)} kart yazıldı: {out}")
     for r in payload["reviews"]:
-        print(f'  {r["date"]} | {r["nickname"]} | {r["body"][:60]}')
+        print(f'  {r["store"]} | {r["date"]} | {r["nickname"]} | {r["body"][:60]}')
     return 0
 
 
