@@ -2,6 +2,18 @@
   "version": 1,
   "announcements": [
     {
+      "id": "2026_10_29_cumhuriyet",
+      "title": {
+        "tr": "Cumhuriyet Bayramımız kutlu olsun 🇹🇷"
+      },
+      "body": {
+        "tr": "Cumhuriyetimiz 103 yaşında. Bugün çalışsan da dinlensen de güzel bir gün geçirmeni dileriz."
+      },
+      "action": "none",
+      "startsAt": "2026-10-28T21:00:00Z",
+      "endsAt": "2026-10-29T21:00:00Z"
+    },
+    {
       "id": "1_6_4_guncelle",
       "title": {
         "tr": "1.6.4 geldi",
