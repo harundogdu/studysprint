@@ -2,6 +2,21 @@
   "version": 1,
   "announcements": [
     {
+      "id": "1_6_5_guncelle_ios",
+      "title": {
+        "tr": "Köy büyüdü, Kıyı'ya tren var"
+      },
+      "body": {
+        "tr": "Terzi, Meydan ve Kıyı geldi; gardırop yeni kıyafetlerle doldu. Görmek için uygulamayı güncelle."
+      },
+      "action": "update",
+      "platforms": [
+        "ios"
+      ],
+      "minVersion": "1.6.4",
+      "maxVersion": "1.6.4"
+    },
+    {
       "id": "2026_10_29_cumhuriyet",
       "title": {
         "tr": "Cumhuriyet Bayramımız kutlu olsun 🇹🇷"
