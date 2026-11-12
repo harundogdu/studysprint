@@ -2,27 +2,29 @@
   "version": 1,
   "announcements": [
     {
-      "id": "1_6_6_guncelle",
+      "id": "1_6_7_guncelle",
       "title": {
-        "tr": "Yeni sürüm: 1.6.6"
+        "en": "New version: 1.6.7",
+        "tr": "Yeni sürüm: 1.6.7",
+        "de": "Neue Version: 1.6.7",
+        "es": "Nueva versión: 1.6.7",
+        "fr": "Nouvelle version : 1.6.7",
+        "ru": "Новая версия: 1.6.7",
+        "pt": "Nova versão: 1.6.7",
+        "id": "Versi baru: 1.6.7"
       },
       "body": {
-        "tr": "Onur tablosu, Orman ve oylama geldi. Güncellemek için dokun."
+        "en": "The timer no longer freezes in the background, and iPad and tablets get a new layout. Tap to update.",
+        "tr": "Arka planda donan sayaç düzeldi, iPad ve tablette yeni düzen geldi. Güncellemek için dokun.",
+        "de": "Der Timer hängt im Hintergrund nicht mehr, und iPad und Tablet haben ein neues Layout. Tippe zum Aktualisieren.",
+        "es": "El temporizador ya no se congela en segundo plano, y el iPad y las tabletas tienen un diseño nuevo. Toca para actualizar.",
+        "fr": "Le minuteur ne se fige plus en arrière-plan, et l'iPad et les tablettes ont une nouvelle mise en page. Touche pour mettre à jour.",
+        "ru": "Таймер больше не зависает в фоне, а на iPad и планшетах новый вид. Нажми, чтобы обновить.",
+        "pt": "O cronômetro não congela mais em segundo plano, e o iPad e os tablets ganharam um novo layout. Toque para atualizar.",
+        "id": "Timer tidak lagi macet di latar belakang, dan iPad serta tablet punya tata letak baru. Ketuk untuk memperbarui."
       },
       "action": "update",
-      "maxVersion": "1.6.5"
-    },
-    {
-      "id": "2026_10_29_cumhuriyet",
-      "title": {
-        "tr": "Cumhuriyet Bayramımız kutlu olsun 🇹🇷"
-      },
-      "body": {
-        "tr": "Cumhuriyetimiz 103 yaşında. Bugün çalışsan da dinlensen de güzel bir gün geçirmeni dileriz."
-      },
-      "action": "none",
-      "startsAt": "2026-10-28T21:00:00Z",
-      "endsAt": "2026-10-29T21:00:00Z"
+      "maxVersion": "1.6.6"
     },
     {
       "id": "1_6_5_degerlendirme",
